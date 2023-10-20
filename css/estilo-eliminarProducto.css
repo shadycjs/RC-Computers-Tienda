@@ -1,0 +1,587 @@
+@import url(headerUser.css);
+@import url(estilo-modalCerrarSesion.css);
+* {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-sizing: border-box;
+}
+
+html, body{
+    min-width: 100vw;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    background: radial-gradient(circle, #fff, #bbb);
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav a{   
+    font-weight: 600;
+    display: inline-block;
+}
+
+
+/* DETALLE DE PRODUCTO */
+
+main{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.containerTodo{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    min-height: 80%;
+    height: 80%;
+    background-color: #fff;
+    box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
+    margin-top: 120px;
+}
+
+.containerTodo a{
+    color: #000;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerModal{
+    display: flex;
+    width: 100%;
+    height: 90%;
+    background-color: #fff;
+}
+
+.containerModal__imagenes{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+}
+
+.imagenPrincipal{
+    height: 70%;
+    overflow: hidden;
+}
+
+.imagenPrincipal img{
+    width: 100%;
+    height: 100%;
+    transition: all .3s;
+}
+
+.imagenPrincipal img:hover{
+    transform: scale(1.2);
+}
+
+.imagenesSecundarias{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.imagenesSecundarias li img{
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.containerModalInfo{
+    width: 60%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.containerModalInfo h1{
+    font-size: 2.5vw;
+}
+
+.containerModalInfoDetalles{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+
+.containerModalInfoGarantias{
+    list-style: none;
+}
+
+.containerModalInfoGarantias li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.containerModalInfoPrecioCantidad{
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.containerModalInfoPrecioCantidad__precio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+}
+
+.containerModalInfoPrecioCantidad__precio h2{
+    font-size: 40px;
+}
+
+.containerModalInfoPrecioCantidad__cantidad{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: 40px;
+}
+
+.containerModalInfoPrecioCantidad__cantidad input{
+    height: 100%;
+    width: 50px;
+}
+
+.containerModalInfoConfig{
+    padding: 10px;
+}
+
+.containerModalInfoConfig h3{
+    font-size: 1.7vw;
+}
+
+.containerModalInfoConfig p{
+    font-size:  1.3vw;
+}
+
+.containerModalInfoConfig li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.containerModalInfoConfig li img{
+    width: 2.1vw;
+    height: 2.1vw;
+}
+
+.containerTodoEliminar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    
+    transition: .7s;
+}
+
+.containerTodoEliminar:hover{
+    background-color: red;
+}
+
+
+
+/* INICIO DEL FOOTER */
+footer{
+    background: linear-gradient(to bottom, black, #575353);
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    bottom: 0;
+}
+
+footer p{
+    align-self: center;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* FIN DEL FOOTER */
+
+
+
+
+/* INICIO DEL RESPONSIVE DESIGN */
+
+@media screen and (max-width: 1088px) {
+    
+
+
+    /* HEADER */
+    .header-container{
+        display: flex;
+        height: auto;
+        position: relative;
+    }
+
+    .contenedor-todo{
+        display: flex;
+        flex-direction: column;   
+        width: 500px;
+        height: auto;
+        position: relative;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .logo{
+        width: 120px;
+        top: 30px;
+        right: 90px;
+        position: relative;
+    }
+
+    .logo img{     
+        height: 100%;
+        width: 100%;
+    }
+
+    .contenedor-enlaces{
+        height: auto;
+        width: 190px;
+        display: flex;
+        position: relative;
+        bottom: 105px;    
+        left: 30px;
+    }
+
+    .contenedor-enlaces ul{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        justify-content: center;
+        display: inline-block;
+    }
+
+    .contenedor-enlaces li{
+        display: inline-block;
+        margin: 5px;
+        width: 40px;
+    }
+
+    .nav-link{
+        border-radius: 10%;
+        padding: 20px;
+        min-width: 50px;
+        min-height: 50px;   
+    }
+
+    .contenedor-menu{
+        position: relative;
+        display: flex;     
+        width: 350px;
+        height: 41px;
+        top: 30px;
+        margin-left: auto;
+        margin-right: auto;       
+    }
+
+    .contenedor-menu ul{
+        width: 100%;
+        height: 100%;
+    }
+
+    .contenedor-menu li{
+        display: flex;
+        margin: 5px;  
+    }
+/* FIN DEL HEADER */
+
+/* PERFIL DEL HEADER ADMIN */
+
+.contenedor__perfil__subir{
+    height: 100%;
+    width: auto;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    right: 0;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contenedor__perfil{
+    width: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedor__perfil-imagen{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid green;
+}
+
+.contenedor__perfil-imagen img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.contenedor__perfil h5{
+    color: #fff;
+}
+
+/* FIN DEL PERFIL DEL HEADER ADMIN */
+
+/* SUBIR PUBLI */
+
+.contenedor__subir{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.contenedor__subir a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* FIN SUBIR PUBLI */
+
+/* DETALLE DE PRODUCTO */
+
+main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.containerTodo{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    min-height: 80%;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
+    margin: 0;
+}
+
+.containerTodo a{
+    color: #000;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerModal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+
+.containerModalInfo h1{
+    font-size: 6.3vw;
+}
+
+.containerModal__imagenes{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+}
+
+.imagenPrincipal{
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.imagenPrincipal img{
+    width: 100%;
+    height: 100%;
+    transition: all .3s;
+}
+
+.imagenPrincipal img:hover{
+    transform: scale(1.2);
+}
+
+.imagenesSecundarias{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.imagenesSecundarias li img{
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.containerModalInfo{
+    width: 100%;
+    height: 50%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.containerModalInfoMarcaCodigo{
+    font-size: 2.7vw;
+}
+
+.containerModalInfoGarantias{
+    font-size: 3vw;
+}
+
+
+.containerModalInfoDetalles{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+.containerModalInfoGarantias{
+    list-style: none;
+}
+
+.containerModalInfoGarantias li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.containerModalInfoPrecioCantidad{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.containerModalInfoPrecioCantidad__precio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    justify-content: center;
+}
+
+.containerModalInfoPrecioCantidad__precio h2{
+    font-size: 45px;
+}
+
+.containerModalInfoPrecioCantidad__cantidad{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 15px;
+}
+
+.containerModalInfoPrecioCantidad__cantidad input{
+    height: 100%;
+    width: 50px;
+}
+
+.containerModalInfoConfig{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+}
+
+.containerModalInfoConfig h3{
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 4.5vw;
+}
+
+.containerModalInfoConfig p{
+    font-size:  3.5vw;
+}
+
+.containerModalInfoConfig li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.containerModalInfoConfig li img{
+    width: 10vw;
+    height: 10vw;
+}
+
+.containerModalInfoButton{
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+}
+
+#agregarCarrito{
+    border: none;
+    background-color: none;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 10px;
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    position: relative;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerTodo a{
+    font-size: 10px;
+    padding: 10px 0;
+}
+
+}

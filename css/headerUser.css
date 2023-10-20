@@ -1,0 +1,549 @@
+/* INICIO DEL HEADER */
+.header-container{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    height: auto;
+    background: linear-gradient(to bottom, black, #575353);
+    align-items: center; 
+    outline: 4px solid rgb(115, 115, 129);  
+    z-index: 50;
+}
+
+/* Div dentro del Header que contiene todo*/
+.contenedor-todo{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+}
+/* NAV que tiene el menu (Tienda, Empresa, etc)*/
+.contenedor-menu{
+    display: flex;
+    width: auto;
+    padding: 0;
+}
+
+.contenedor-menu ul{
+    display: flex;
+    background-color: transparent;
+    width: 100%;
+    padding: 0;
+    border-radius: 4%;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.contenedor-menu li{
+    padding: 3px 15px 3px 15px;
+    justify-content: center;
+    font-size: 20px;
+    list-style: none;
+}
+
+.contenedor-menu a:hover{
+    color: #bbb;
+}
+
+/* Nav que tiene las redes sociales */
+.contenedor-enlaces{
+    height: 100%;
+    display: flex;
+    margin-left: 16px;
+}
+
+.contenedor-enlaces ul{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style: none;
+}
+
+.contenedor-enlaces li{
+    justify-content: center;
+    list-style: none;
+    margin: 3px;
+    width: 40px;
+}
+
+.nav-link{
+    background-color: transparent;
+    border-width: 2px;
+    transition: all .3s;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10%;
+    padding: 6px;
+    min-width: 15px;
+    text-align: center;
+}
+
+.nav-link:hover{
+    background-color: white;
+    color: black;
+}
+
+.nav-link{
+    min-width: 30px;
+}
+
+
+/* Logo del header */
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 120px;  
+}
+
+.logo img:hover{
+    transform: scale(1.2);
+}
+
+/* FIN DEL HEADER */
+
+/* PERFIL DEL HEADER USER */
+
+.contenedor__perfil__subir{
+    height: 100%;
+    width: auto;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    right: 0;
+    align-items: center;
+    margin-right: 60px;
+}
+
+.contenedor__perfil{
+    width: auto;
+    min-height: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedor__perfil-imagen{
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 100%;
+    outline: 2px solid green;
+}
+
+.contenedor__perfil-imagen img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.contenedor__perfil__info--user{
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor__perfil__info{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #fff;
+    background-color: transparent;
+    width: auto;
+    height: 100%;
+    font-size: 1vw;
+    padding: 7px;
+    border-radius: 3px;
+    border: 2px solid #fff;
+}
+
+.contenedor__perfil__info--logout{
+    background-color: #000;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    padding: 7px;
+    width: auto;
+    border-radius: 3px;
+}
+
+.on{
+    display: flex;
+}
+
+.contenedor__perfil__info--logout li{
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    width: auto;
+}
+
+.ion__icon{
+    width: 30px;
+    height: 30px;
+}
+
+.contenedor__perfil__info--logout li:hover{
+    opacity: 70%;
+}
+
+#logOut:hover{
+    color: red;
+    cursor: pointer;
+}
+
+#contra:hover{
+    color: darkgoldenrod;
+}
+
+.flechitaUserRotate{
+    transform: rotate(90deg);
+}
+
+
+/* FIN DEL PERFIL DEL HEADER USER */
+
+/* SUBIR PUBLI */
+
+.contenedor__subir{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.contenedor__subir a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* FIN SUBIR PUBLI */
+
+/* INICIO DEL CARRITO */
+
+.contenedor__carrito{
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.contenedor__carrito-a{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+}
+
+.contenedor__conteo{
+    color: #fff;
+    background-color: #1a9e30;
+    border-radius: 50%;
+    position: absolute;
+    padding: 5px;
+}
+
+.cart{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor__carrito__modal{
+    display: none;
+}
+
+.carrito__modal__on{
+    display: flex;
+    background-color: #fff;
+    width: 600px;
+    height: auto;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    border-radius: 4px;
+    outline: 2px solid grey;
+    text-align: center;
+}
+
+.contenedor__carrito__modal__sub{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.container__sinProductosCarrito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#iconoSinProductosCarrito{
+    opacity: 70%;
+    width: 200px;
+    height: 200px;
+}
+
+.contenedor__carrito__modal__sub--item{
+    display: flex;
+    height: 180px;
+    width: 100%;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 1px;
+    border-radius: 4px;
+}
+
+.contenedor__carrito__modal__sub--item-cantidad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.contenedor__carrito__modal__sub--item-cantidad b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.contenedor__carrito__modal__sub--item-cantidad-agregarRestar{
+    display: flex;
+
+}
+
+.contenedor__carrito__modal__sub--item-cantidad-agregarRestar button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+}
+
+.iconoRemoverAgregaPrd{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor__carrito__modal__sub--item-img{
+    width: 30%;
+    height: 100%;
+}
+
+.contenedor__carrito__modal__sub--item-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contenedor__carrito__modal__sub--item-nombrePrecioCantidadSubtotal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.contenedor__carrito__modal__sub--continuarComprando{
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+.contenedor__carrito__modal__sub--continuarComprando a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor__carrito__modal__sub--item-eliminarItem button{
+    background-color: transparent;
+    border: none;
+}
+
+.iconoEliminarItem:hover{
+    color: red;
+    cursor: pointer;
+}
+
+/* FIN DEL CARRITO */
+
+
+/* INICIO DEL RESPONSIVE DESIGN */
+
+@media screen and (max-width: 1088px) {
+    
+
+
+    /* HEADER */
+    .header-container{
+        display: flex;
+        height: auto;
+        position: relative;
+    }
+
+    .contenedor-todo{
+        display: flex;
+        flex-direction: column;   
+        width: 500px;
+        height: auto;
+        position: relative;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .logo{
+        width: 120px;
+        top: 30px;
+        right: 90px;
+        position: relative;
+    }
+
+    .logo img{     
+        height: 100%;
+        width: 100%;
+    }
+
+    .contenedor-enlaces{
+        height: auto;
+        width: 190px;
+        display: flex;
+        position: relative;
+        bottom: 105px;    
+        left: 30px;
+    }
+
+    .contenedor-enlaces ul{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        justify-content: center;
+        display: inline-block;
+    }
+
+    .contenedor-enlaces li{
+        display: inline-block;
+        margin: 5px;
+        width: 40px;
+    }
+
+    .nav-link{
+        border-radius: 10%;
+        padding: 20px;
+        min-width: 50px;
+        min-height: 50px;   
+    }
+
+    .contenedor-menu{
+        position: relative;
+        display: flex;     
+        width: 350px;
+        height: 41px;
+        top: 30px;
+        margin-left: auto;
+        margin-right: auto;       
+    }
+
+    .contenedor-menu ul{
+        width: 100%;
+        height: 100%;
+    }
+
+    .contenedor-menu li{
+        display: flex;
+        margin: 5px;  
+    }
+/* FIN DEL HEADER */
+
+/* PERFIL DEL HEADER ADMIN */
+
+.contenedor__perfil__subir{
+    height: 100%;
+    width: auto;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    right: 0;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contenedor__perfil{
+    width: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedor__perfil-imagen{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid green;
+}
+
+.contenedor__perfil-imagen img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.contenedor__perfil h5{
+    color: #fff;
+}
+
+/* FIN DEL PERFIL DEL HEADER ADMIN */
+
+/* SUBIR PUBLI */
+
+.contenedor__subir{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.contenedor__subir a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+}
+/* FIN SUBIR PUBLI */

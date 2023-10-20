@@ -1,0 +1,215 @@
+/* INICIO DEL HEADER */
+.header-container{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    height: auto;
+    background: linear-gradient(to bottom, black, #575353);
+    align-items: center; 
+    outline: 4px solid rgb(115, 115, 129);  
+    z-index: 50;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Div dentro del Header que contiene todo*/
+.contenedor-todo{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+}
+/* NAV que tiene el menu (Tienda, Empresa, etc)*/
+.contenedor-menu{
+    display: flex;
+    width: auto;
+    padding: 0;
+}
+
+.contenedor-menu ul{
+    display: flex;
+    background-color: transparent;
+    width: 100%;
+    padding: 0;
+    border-radius: 4%;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.contenedor-menu li{
+    padding: 3px 15px 3px 15px;
+    justify-content: center;
+    font-size: 20px;
+    list-style: none;
+}
+
+.contenedor-menu a:hover{
+    color: #bbb;
+}
+
+/* Nav que tiene las redes sociales */
+.contenedor-enlaces{
+    height: 100%;
+    display: flex;
+    margin-left: 16px;
+}
+
+.contenedor-enlaces ul{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style: none;
+}
+
+.contenedor-enlaces li{
+    justify-content: center;
+    list-style: none;
+    margin: 3px;
+    width: 40px;
+}
+
+.nav-link{
+    background-color: transparent;
+    border-width: 2px;
+    transition: all .3s;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10%;
+    padding: 6px;
+    min-width: 15px;
+    text-align: center;
+}
+
+.nav-link:hover{
+    background-color: white;
+    color: black;
+}
+
+.nav-link{
+    min-width: 30px;
+}
+
+
+/* Logo del header */
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 120px;  
+}
+
+.logo img:hover{
+    transform: scale(1.2);
+}
+
+/* FIN DEL HEADER */
+
+/* Boton de LOGIN en el HEADER */
+.btnLogin-popup{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;  
+    transition: .5s;
+    position: absolute;
+    right: 5%;
+}
+
+.btnLogin-popup:hover{
+    background: #fff;
+    color: #575353;
+}
+
+.btnfondo{
+    display: none;
+    background-color: #00000029;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* FIN del Boton de LOGIN en el HEADER */
+
+
+
+
+
+
+/* INICIO DEL RESPONSIVE DESIGN 996px */
+@media screen and (max-width: 996px){
+    /* Boton de LOGIN en el HEADER */
+    
+    .contenedor-todo{
+        flex-direction: column;
+        position: relative;
+    }
+    
+    .contenedor-enlaces ul{
+        flex-direction: row;
+    }
+    
+    .btnLogin-popup{
+        width: 130px;
+        height: 50px;
+        background: transparent;
+        border: 2px solid #fff;
+        outline: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1.1em;
+        color: #fff;
+        font-weight: 500;  
+        transition: .5s;
+        position: static;
+        margin: 5px 0;
+    
+    }
+    
+    .btnLogin-popup:hover{
+        background: #fff;
+        color: #575353;
+    }
+    
+    /* FIN del Boton de LOGIN en el HEADER */
+}
+
+
+/* INICIO DEL RESPONSIVE DESIGN 412px*/
+@media screen and (max-width: 412px){
+    /* Boton de LOGIN en el HEADER */
+    .btnLogin-popup{
+        width: 130px;
+        height: 50px;
+        background: transparent;
+        border: 2px solid #fff;
+        outline: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1.1em;
+        color: #fff;
+        font-weight: 500;  
+        transition: .5s;
+        position: relative;
+        left: 2px;
+        top: -15px;
+    }
+    
+    .btnLogin-popup:hover{
+        background: #fff;
+        color: #575353;
+    }
+    
+    /* FIN del Boton de LOGIN en el HEADER */
+}
