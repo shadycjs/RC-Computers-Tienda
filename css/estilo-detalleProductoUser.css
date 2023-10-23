@@ -188,9 +188,18 @@ main{
     display: flex;
     justify-content: space-between;
     padding-right: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+.containerModalInfoMarcaCodigo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .containerModalInfoGarantias{
+    padding: 0;
     list-style: none;
 }
 
@@ -214,6 +223,7 @@ main{
     flex-direction: row;
     align-items: center;
     height: 40px;
+    padding-bottom: 5px;
 }
 
 .containerModalInfoPrecioCantidad__precio h2{
@@ -227,7 +237,7 @@ main{
     align-items: center;
     text-align: center;
     gap: 5px;
-    height: 40px;
+    height: 100%;
 }
 
 .containerModalInfoPrecioCantidad__cantidad p{
@@ -242,13 +252,50 @@ main{
     width: 50px;
 }
 
+.containerModalInfoPrecioCantidadFormasPago{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+.containerModalFormasPago--imagenes{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.containerModalFormasPago--imagenes-mercadopago{
+    width: 50%;
+    height: 100%;
+}
+
+.containerModalFormasPago--imagenes-mercadopago img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.containerModalFormasPago--imagenes-banco{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.containerModalFormasPago--imagenes-banco img{
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
+}
+
 .containerModalInfoConfig{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: self-start;
     padding: 10px;
-    gap: 5px;
+    gap: 25px;
 }
 
 .containerModalInfoConfig h3{
@@ -307,8 +354,117 @@ footer p{
 }
 /* FIN DEL FOOTER */
 
+/* INICIO DEL CONTAINER DE LA INFO DEL MICROPROCESADOR */
 
+.containerModalInfoConfig__micro{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    word-break: break-all;
+}
 
+.containerModalInfoConfig__micro h4{
+    border-bottom: 1px solid #000;
+}
+
+.containerModalInfoConfig__micro ul{
+    margin-top: 10px;
+}
+
+.containerModalInfoConfig__micro li{
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+.containerModalInfoConfig__micro--caracteristicasGenerales{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.containerModalInfoConfig__micro--caracteristicasGenerales ul{
+    padding: 0;
+}
+
+.containerModalInfoConfig__micro--coolerDisipadoresMemoria{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.containerModalInfoConfig__micro--coolerDisipadoresMemoria ul{
+    padding: 0;
+}
+
+/* FIN DEL CONTAINER DE LA INFO DEL MICROPROCESADOR */
+
+/* INICIO DEL CONTAINER DE LA INFO DE LA MOTHERBOARD */
+
+.containerModalInfoConfig__mother{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    word-break: break-all;
+}
+
+.containerModalInfoConfig__mother h4{
+    border-bottom: 1px solid #000;
+}
+
+.containerModalInfoConfig__mother ul{
+    margin-top: 10px;
+    padding: 0;
+}
+
+.containerModalInfoConfig__mother li{
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+.containerModalInfoConfig__mother--caracteristicasGeneralesMemoria{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+
+.containerModalInfoConfig__mother--conectividad{
+    word-break: normal;
+    width: 60%;
+    font-size: .7em;
+}
+
+.containerModalInfoConfig__mother--conectividad h4{
+    font-size: 1.5em;
+}
+
+/* FIN DEL CONTAINER DE LA INFO DE LA MOTHERBOARD */
+
+/* INICIO DEL CONTAINER DE LA INFO DE LA RAM */
+
+.containerModalInfoConfig__ram{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    word-break: break-all;
+}
+
+.containerModalInfoConfig__ram h4{
+    border-bottom: 1px solid #000;
+}
+
+.containerModalInfoConfig__ram ul{
+    margin-top: 10px;
+    padding: 0;
+}
+
+/* FIN DEL CONTAINER DE LA INFO DE LA RAM */
 
 /* INICIO DEL RESPONSIVE DESIGN */
 

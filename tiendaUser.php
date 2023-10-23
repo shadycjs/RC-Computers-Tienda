@@ -1,7 +1,7 @@
 <?php
     require 'funciones/conexionbd.php';
     require 'funciones/carrito.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/usuarios.php';
     require 'funciones/autenticar.php';
     require 'funciones/clientes.php';
@@ -11,11 +11,11 @@
     if( isset($_POST['btnReg']) ){
         registrarUser();
     }
-    $computadoras = buscarPc();
-    $resultadoBusqueda = mysqli_num_rows($computadoras);
+    $productos = listarProductos();
+    $resultadoBusqueda = mysqli_num_rows($productos);
 
     //PAGINACION
-    $total_registros = totalRegistrosPc();
+    $total_registros = totalRegistrosProductos();
     $registros_por_pagina = 6;
     $total_paginas = ceil($total_registros/$registros_por_pagina);
     $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
@@ -85,17 +85,17 @@
 ?>
 
 <?php
-    while($computadora = mysqli_fetch_assoc($computadoras)) {
+    while($producto = mysqli_fetch_assoc($productos)) {
 ?>
     <div class="item">
         <figure>
-            <img src="http://localhost/RC/Tienda/images/<?= $computadora['img1'] ?>" alt="producto">
+            <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>
         <div class="info-producto">
-            <h2><?= $computadora['nombrePc'] ?></h2>
-            <p class="precio">$<?= $computadora['precioPc'] ?></p>
-            <p>Stock: <?= $computadora['stockPc'] ?></p>
-            <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $computadora['idPrd'] ?>" class="info-producto-submit">VER DETALLE</a>
+            <h2><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h2>
+            <p class="precio">$<?= number_format($producto['precioPrd'], 2, ',', '.') ?></p>
+            <p>Stock: <?= $producto['stockPrd'] ?></p>
+            <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
         </div>
         <ul class="item__contacto">
             <li><ion-icon name="logo-whatsapp"></ion-icon>Whatsapp</li>

@@ -161,7 +161,7 @@ if(!empty($_SESSION['CARRITO'])){
                                 </div>
                                 
                                 <div class="contenedor__carrito__modal__sub--item-precio">
-                                    <b>Precio unitario: $<?= $precioProducto ?></b>
+                                    <b>Precio unitario: $<?= number_format($precioProducto, 2, ',', '.') ?></b>
                                 </div>
 
                                 <form action="" method="post" class="contenedor__carrito__modal__sub--item-cantidad">
@@ -174,7 +174,7 @@ if(!empty($_SESSION['CARRITO'])){
                                 </form>
 
                                 <div class="contenedor__carrito__modal__sub--item--subtotal">
-                                    <p>Subtotal: </p><b>$<?= number_format($precioProducto*$cantidadProducto,2) ?></b>
+                                    <p>Subtotal: </p><b>$<?= number_format($precioProducto*$cantidadProducto,2, ',', '.') ?></b>
                                 </div>
 
                             </div>
@@ -193,7 +193,7 @@ if(!empty($_SESSION['CARRITO'])){
 
 ?>
                         <div class="contenedor__carrito__modal__sub--totalCompra">
-                            <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2,'.',',') : '0' ?></h1>
+                            <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2, ',', '.') : '0' ?></h1>
                         </div>
 <?php
     if( $verificarCliente && isset($_SESSION['envio']) ){

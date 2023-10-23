@@ -26,40 +26,55 @@
     //     }
     // }
     
-    function totalRegistrosPc() : int
+    function totalRegistrosProductos() : int
     {
       $link = conectar();
 
-      $sql = "SELECT * FROM pc_venta";
+      $sql = "SELECT * FROM productos";
       $consulta = mysqli_query($link,$sql);
       $resultado = mysqli_num_rows($consulta);
       return $resultado;
     }
 
-    function listarPC()
+    function listarProductos()
     {
         //Paginacion
-        $total_registros = totalRegistrosPc();
+        $total_registros = totalRegistrosProductos();
         $registros_por_pagina = 6;
         $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
         $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
 
         $link = conectar();
-        $sql = "SELECT * FROM pc_venta pv
-                    INNER JOIN marca m ON pv.idMarca = m.idMarca
-                      LIMIT $registros_por_pagina OFFSET $primer_registro";
+        $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, nucleosMicro, hilosMicro, socketMicro, frecuenciaBaseMicro, frecuenciaMaxMicro, cacheL1Micro, cacheL2Micro, cacheL3Micro,
+                  graficosIntegrados, modeloGraficosIntegradosMicro, cooler, tdpMicro, tempMaximaMicro, litografiaMicro, img1, img2, img3, img4 FROM productos p
+                    INNER JOIN categoria c ON p.idCategoria = c.idCategoria
+                      INNER JOIN marca m ON p.idMarca = m.idMarca
+                        LIMIT $registros_por_pagina OFFSET $primer_registro";
         $resultado = mysqli_query( $link,$sql );
         return $resultado;
     }
 
-    function verPcPorId( int $idPc )
+    function verPrdPorId( int $idPrd )
     {
         $link = conectar();
 
-        $sql = "SELECT pv.idPrd, pv.nombrePc, pv.stockPc, pv.precioPc, pv.estadoPc, pv.micro, pv.mother, pv.ram, pv.video, pv.hdd, pv.ssd,
-                  pv.fuente, pv.gabinete, pv.monitor, pv.img1, pv.img2, pv.img3, pv.img4, m.idMarca, m.nombreMarca FROM pc_venta pv
-                    INNER JOIN marca m ON pv.idMarca = m.idMarca
-                          WHERE pv.idPrd = ".$idPc;
+        if($_GET['idCategoria'] == 1){
+          $camposSQL = 'nucleosMicro, hilosMicro, socketMicro, frecuenciaBaseMicro, frecuenciaMaxMicro, cacheL1Micro, cacheL2Micro, cacheL3Micro,
+                        graficosIntegrados, modeloGraficosIntegradosMicro, cooler, tdpMicro, tempMaximaMicro, litografiaMicro,';
+        }
+        if($_GET['idCategoria'] == 2){
+          $camposSQL = 'socketMother, chipsetMother, factorFormaMother, slotsRamMother, cantMaxRamMother, velocidadMaxRamMother, cantCanalesRamMother, slotsExpasionMother, cantSataMother, interfazm2Mother,
+          cantPuertosM2Mother, lanMother, wifiMother, bluetoothMother, chipsetAudioMother, puertosUsb20Mother, puertosUsb30Mother, cantDisplayPortMother, cantHdmiMother,
+          cantVgaMother, flashBiosButtonMother,';
+        }if($_GET['idCategoria'] == 3){
+          $camposSQL = 'ddrMemoriaRam, tamanioMemoriaRam, velocidadMemoriaRam, latenciaMemoriaRam, disipadorMemoriaRam, colorMemoriaRam, compatibilidadMemoriaRam,';
+        }
+
+        $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, ".$camposSQL." img1, img2, img3, img4 FROM productos p
+                    INNER JOIN categoria c ON p.idCategoria = c.idCategoria
+                      INNER JOIN marca m ON p.idMarca = m.idMarca
+                          WHERE idPrd = ".$idPrd;
+                          
         $resultado = mysqli_query( $link,$sql );
         return $resultado; 
     }
