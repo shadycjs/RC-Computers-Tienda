@@ -76,6 +76,9 @@
         if($_GET['idCategoria'] == 4){
           $camposSQL = 'factorFormaDiscoDuro, interfazDiscoDuro, capacidadDiscoDuro, rpmDiscoDuro, memoriaCacheDiscoDuro,';
         }
+        if($_GET['idCategoria'] == 5){
+          $camposSQL = 'factorFormaDiscoSolido, interfazDiscoSolido, capacidadDiscoSolido, lecturaDiscoSolido, escrituraDiscoSolido,';
+        }
 
         $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, ".$camposSQL." img1, img2, img3, img4 FROM productos p
                     INNER JOIN categoria c ON p.idCategoria = c.idCategoria

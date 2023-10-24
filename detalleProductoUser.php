@@ -332,7 +332,7 @@ if($producto['idCategoria'] == 15){
         <div class="containerModalInfoConfig__discoDuro">
 
             <div class="containerModalInfoConfig__discoDuro--caracteristicasGenerales">
-            <h4>CARACTERISTICAS GENERALES</h4>
+                <h4>CARACTERISTICAS GENERALES</h4>
                 <ul>
                     <li>Tipo de conexion: <b><?= $producto['interfazDiscoDuro'] ?></b></li>
                     <li>Capacidad: <b><?= $producto['capacidadDiscoDuro'] ?>Gb</b></li>
@@ -345,6 +345,31 @@ if($producto['idCategoria'] == 15){
                 <ul>
                     <li>Revoluciones por minuto: <b><?= $producto['rpmDiscoDuro'] ?>RPM</b></li>
                     <li>Cache: <b><?= $producto['memoriaCacheDiscoDuro'] ?>Gb</b></li>
+                </ul>
+            </div>
+
+        </div>
+
+<?php
+    }elseif($producto['idCategoria'] == 5){
+?>
+
+        <div class="containerModalInfoConfig__discoSolido">
+
+            <div class="containerModalInfoConfig__discoSolido--caracteristicasGenerales">
+                <h4>CARACTERISTICAS GENERALES</h4>
+                <ul>
+                    <li>Tipo de conexion: <b><?= $producto['interfazDiscoSolido'] ?></b></li>
+                    <li>Capacidad: <b><?= $producto['capacidadDiscoSolido'] ?>Gb</b></li>
+                    <li>Factor de forma:<b> <?= $producto['factorFormaDiscoSolido'] ?>''</b></li>
+                </ul>
+            </div>
+
+            <div class="containerModalInfoConfig__discoSolido--rendimiento">
+            <h4>RENDIMIENTO</h4>
+                <ul>
+                    <li>Lectura: <b><?= $producto['lecturaDiscoSolido'] ?>MB/Seg</b></li>
+                    <li>Escritura: <b><?= $producto['escrituraDiscoSolido'] ?>MB/Seg</b></li>
                 </ul>
             </div>
 
