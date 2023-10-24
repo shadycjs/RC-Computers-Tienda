@@ -374,6 +374,8 @@ footer p{
 }
 
 .containerModalInfoConfig__micro li{
+    display: flex;
+    flex-wrap: wrap;
     background-color: aliceblue;
     padding: 5px;
 }
@@ -421,6 +423,8 @@ footer p{
 }
 
 .containerModalInfoConfig__mother li{
+    display: flex;
+    flex-wrap: wrap;
     background-color: aliceblue;
     padding: 5px;
 }
@@ -464,7 +468,62 @@ footer p{
     padding: 0;
 }
 
+.containerModalInfoConfig__ram li{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+.containerModalInfoConfig__placaVideo--caracteristicasGenerales{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+
 /* FIN DEL CONTAINER DE LA INFO DE LA RAM */
+
+/* INICIO DEL CONTAINER DE LA INFO DE LA PLACA DE VIDEO */
+
+.containerModalInfoConfig__placaVideo{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    word-break: break-all;
+}
+
+.containerModalInfoConfig__placaVideo h4{
+    border-bottom: 1px solid #000;
+}
+
+.containerModalInfoConfig__placaVideo ul{
+    margin-top: 10px;
+    padding: 0;
+}
+
+.containerModalInfoConfig__placaVideo li{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+.containerModalInfoConfig__placaVideo--dimensionesConectividad{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.containerModalInfoConfig__placaVideo--caracteristicasGenerales{
+    display: flex;
+    justify-content: start;
+}
+
+/* FIN DEL CONTAINER DE LA INFO DE LA PLACA DE VIDEO */
 
 /* INICIO DEL RESPONSIVE DESIGN */
 
