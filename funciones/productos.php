@@ -73,6 +73,9 @@
           $camposSQL = 'frecuenciaBasePlacaVideo, frecuenciaMaximaPlacaVideo, tipoPciePlacaVideo, gddrPlacaVideo, tamanioMemoriaPlacaVideo, busPlacaVideo, 
           multiplesPantallasPlacaVideo, numeroFanCoolersPlacaVideo, displayPortPlacaVideo, hdmiPlacaVideo, dviPlacaVideo, anchoPlacaVideo, largoPlacaVideo, pesoPlacaVideo,';
         }
+        if($_GET['idCategoria'] == 4){
+          $camposSQL = 'factorFormaDiscoDuro, interfazDiscoDuro, capacidadDiscoDuro, rpmDiscoDuro, memoriaCacheDiscoDuro,';
+        }
 
         $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, ".$camposSQL." img1, img2, img3, img4 FROM productos p
                     INNER JOIN categoria c ON p.idCategoria = c.idCategoria

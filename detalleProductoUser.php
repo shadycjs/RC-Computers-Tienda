@@ -326,6 +326,31 @@ if($producto['idCategoria'] == 15){
 
         </div>
 <?php
+    }elseif($producto['idCategoria'] == 4){
+?>
+
+        <div class="containerModalInfoConfig__discoDuro">
+
+            <div class="containerModalInfoConfig__discoDuro--caracteristicasGenerales">
+            <h4>CARACTERISTICAS GENERALES</h4>
+                <ul>
+                    <li>Tipo de conexion: <b><?= $producto['interfazDiscoDuro'] ?></b></li>
+                    <li>Capacidad: <b><?= $producto['capacidadDiscoDuro'] ?>Gb</b></li>
+                    <li>Factor de forma:<b> <?= $producto['factorFormaDiscoDuro'] ?>''</b></li>
+                </ul>
+            </div>
+
+            <div class="containerModalInfoConfig__discoDuro--rendimiento">
+            <h4>RENDIMIENTO</h4>
+                <ul>
+                    <li>Revoluciones por minuto: <b><?= $producto['rpmDiscoDuro'] ?>RPM</b></li>
+                    <li>Cache: <b><?= $producto['memoriaCacheDiscoDuro'] ?>Gb</b></li>
+                </ul>
+            </div>
+
+        </div>
+
+<?php
     }
 ?>
         <div class="containerModalInfoButton">

@@ -525,6 +525,35 @@ footer p{
 
 /* FIN DEL CONTAINER DE LA INFO DE LA PLACA DE VIDEO */
 
+/* INICIO DEL CONTAINER DE LA INFO DEL DISCO DURO */
+
+.containerModalInfoConfig__discoDuro{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    word-break: break-all;
+}
+
+.containerModalInfoConfig__discoDuro h4{
+    border-bottom: 1px solid #000;
+}
+
+.containerModalInfoConfig__discoDuro ul{
+    margin-top: 10px;
+    padding: 0;
+}
+
+.containerModalInfoConfig__discoDuro li{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+/* FIN DEL CONTAINER DE LA INFO DEL DISCO DURO */
+
 /* INICIO DEL RESPONSIVE DESIGN */
 
 @media screen and (max-width: 1088px) {
