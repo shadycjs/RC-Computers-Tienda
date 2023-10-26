@@ -11,7 +11,7 @@
     if( isset($_POST['btnReg']) ){
         registrarUser();
     }
-    $productos = listarProductos();
+    $productos = buscarProducto();
     $resultadoBusqueda = mysqli_num_rows($productos);
 
     //PAGINACION
@@ -94,6 +94,7 @@
         <div class="info-producto">
             <h2><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h2>
             <p class="precio">$<?= number_format($producto['precioPrd'], 2, ',', '.') ?></p>
+            <p><?= $producto['descPrd'] ?></p>
             <p>Stock: <?= $producto['stockPrd'] ?></p>
             <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
         </div>

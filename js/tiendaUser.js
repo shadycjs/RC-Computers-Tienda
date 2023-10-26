@@ -29,6 +29,15 @@ if(contenedorCarrito != null){
         contenedorCarritoModal.classList.toggle('carrito__modal__on');
     })
 }
+
+//HEIGHT DEL CARRITO
+
+const contenedorCarritoModalSub = document.querySelector('.contenedor__carrito__modal__sub');
+
+if(contenedorCarritoModalSub.style.height == 600){
+    contenedorCarritoModalSub.style.overflowy = "scroll";
+}
+
 // USER
 
 const nameUser = document.querySelector('.contenedor__perfil__info--user');
@@ -430,6 +439,7 @@ if(contenedorBanco != null){
         contenedorMercadopago.style.border = "2px solid #000";
     });
 }
+
 // GRID
 
 // const productos = [

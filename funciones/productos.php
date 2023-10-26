@@ -45,8 +45,7 @@
         $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
 
         $link = conectar();
-        $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, nucleosMicro, hilosMicro, socketMicro, frecuenciaBaseMicro, frecuenciaMaxMicro, cacheL1Micro, cacheL2Micro, cacheL3Micro,
-                  graficosIntegrados, modeloGraficosIntegradosMicro, cooler, tdpMicro, tempMaximaMicro, litografiaMicro, img1, img2, img3, img4 FROM productos p
+        $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, img1 FROM productos p
                     INNER JOIN categoria c ON p.idCategoria = c.idCategoria
                       INNER JOIN marca m ON p.idMarca = m.idMarca
                         LIMIT $registros_por_pagina OFFSET $primer_registro";
@@ -79,6 +78,10 @@
         if($_GET['idCategoria'] == 5){
           $camposSQL = 'factorFormaDiscoSolido, interfazDiscoSolido, capacidadDiscoSolido, lecturaDiscoSolido, escrituraDiscoSolido,';
         }
+        if($_GET['idCategoria'] == 8){
+          $camposSQL = 'certificacionFuente, potenciaFuente, factorFormaFuente, tamanioFanCoolerFuente, 
+          conectorMother204PinFuente, conectorCpu44PinFuente, conectorCpu8PinFuente, conectorSataFuente, conectorMolex4PinFuente, conectorFloppy4PinFuente, conectorPcie62PinFuente, conectorPcie124Pin, iluminacionCoolerFuente,';
+        }
 
         $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, ".$camposSQL." img1, img2, img3, img4 FROM productos p
                     INNER JOIN categoria c ON p.idCategoria = c.idCategoria
@@ -89,20 +92,22 @@
         return $resultado; 
     }
 
-    function buscarPc()
+    function buscarProducto()
     {
       $search = $_GET['search'] ?? '';
       //Paginacion
-      $total_registros = totalRegistrosPc();
+      $total_registros = totalRegistrosProductos();
       $registros_por_pagina = 6;
       $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
       $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
 
       $link = conectar();
-      $sql = "SELECT * FROM pc_venta pv
-                INNER JOIN marca m ON pv.idMarca = m.idMarca
-                  WHERE pv.nombrePc LIKE '%".$search."%'
-                  LIMIT $registros_por_pagina OFFSET $primer_registro";
+      $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, stockPrd, descPrd, img1 FROM productos p
+                INNER JOIN categoria c ON p.idCategoria = c.idCategoria
+                  INNER JOIN marca m ON p.idMarca = m.idMarca
+                      WHERE p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
+                        OR m.nombreMarca LIKE '%".$search."%'
+                          LIMIT $registros_por_pagina OFFSET $primer_registro";
       
       $filtroCategoria = '';
       if( isset( $_GET['idCategoria'] ) && $_GET['idCategoria'] != 0 ){

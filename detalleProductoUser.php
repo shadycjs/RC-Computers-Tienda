@@ -376,6 +376,43 @@ if($producto['idCategoria'] == 15){
         </div>
 
 <?php
+    }elseif($producto['idCategoria'] == 8 ){
+?>
+
+        <div class="containerModalInfoConfig__fuente">
+
+            <div class="containerModalInfoConfig__fuente--caracteristicasGenerales">
+                <h4>CARACTERISTICAS GENERALES</h4>
+                <ul>
+                    <li>Watts Reales: <b><?= $producto['potenciaFuente'] ?>W</b></li>
+                    <li>Formato: <b><?= $producto['factorFormaFuente'] ?></b></li>
+                    <li>Tamaño fan cooler:<b> <?= $producto['tamanioFanCoolerFuente'] ?>mm</b></li>
+                </ul>
+            </div>
+
+            <div class="containerModalInfoConfig__fuente--cableado">
+                <h4>CABLEADO</h4>
+                <ul>
+                    <li>Conector Mother 20 pin: <b><?= $producto['conectorMother204PinFuente'] ?></b></li>
+                    <li>Conector CPU 4 pines: <b><?= $producto['conectorCpu44PinFuente'] ?></b></li>
+                    <li>Conector CPU 8 pines: <b><?= $producto['conectorCpu8PinFuente'] ?></b></li>
+                    <li>Conexiones SATA: <b><?= $producto['conectorSataFuente'] ?></b></li>
+                    <li>Conexiones MOLEX: <b><?= $producto['conectorMolex4PinFuente'] ?></b></li>
+                    <li>Conexiones FLOPPY: <b><?= $producto['conectorFloppy4PinFuente'] ?></b></li>
+                    <li>Conector PCIe 6 Pines: <b><?= $producto['conectorPcie62PinFuente'] ?></b></li>
+                </ul>
+            </div>
+
+            <div class="containerModalInfoConfig__fuente--iluminacion">
+                <h4>ILUMINACION</h4>
+                <ul>
+                    <li>Cooler: <b><?= ($producto['iluminacionCoolerFuente']) ? 'Si' : 'Sin iluminacion' ?></b></li>
+                </ul>
+            </div>
+
+        </div>
+
+<?php
     }
 ?>
         <div class="containerModalInfoButton">
