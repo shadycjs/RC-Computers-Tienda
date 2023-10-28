@@ -57,6 +57,10 @@ main h1{
     color: #000;
 }
 
+.container__agregarPubli a:hover{
+    color: green;
+}
+
 /* INICIO DEL GRID */
 
 .container-items{
@@ -74,8 +78,8 @@ main h1{
 
 .item{
     display: flex;
-    min-height: 300px;
-    height: auto;
+    height: 300px;
+
     width: 100%;
     border-radius: 10px;
     background-color: #fff;

@@ -222,15 +222,9 @@ if(!empty($_SESSION['CARRITO'])){
         </div> 
 
 <?php
-    
-    }else{
-?>
-            <div class="contenedor__subir">
-                <a href="publicacionesListado.php"><ion-icon name="folder-open"></ion-icon> PUBLICACIONES </a>
-            </div> 
-<?php
     }
 ?>
+
             <div class="contenedor__perfil"> <!-- PERFIL DEL USER -->
                 <a href="<?= $_SESSION['idRol'] == 1 ? 'configuracionAdmin.php' : 'configuracionUser.php' ?>" class="contenedor__perfil-imagen">
                     <img src="http://localhost/RC/Tienda/images/<?= $_SESSION['imagenActual']['usuImg'] ?>" alt="">
@@ -250,6 +244,7 @@ if(!empty($_SESSION['CARRITO'])){
     if($_SESSION['idRol'] == 1){
 ?>
                         <li id="users"><ion-icon name="people" class="ion__icon"></ion-icon><a id="users" href="listadoUsuarios.php">Usuarios</a></li>
+                        <li><ion-icon name="folder-open" class="ion__icon"></ion-icon><a href="publicacionesListado.php">Publicaciones </a></li>
 <?php
     }
 ?>

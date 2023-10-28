@@ -2,7 +2,7 @@
 
     require 'funciones/conexionbd.php';
     require 'funciones/carrito.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
     require 'funciones/clientes.php';
@@ -169,8 +169,12 @@ if(!empty($_SESSION['CARRITO'])){
             <div class="containerModal__carrito">
 
                 <div class="containerModal__carrito__imgNombre">
-                    <img src="images/<?= $imagenProducto ?>" alt="">
-                    <b><?= $nombreProducto ?></b>
+                    <div class="containerModal__carrito__imgNombre--img">
+                        <img src="images/<?= $imagenProducto ?>" alt="">
+                    </div>
+                    <div class="containerModal__carrito__imgNombre--nombre">
+                        <b><?= $nombreProducto ?></b>
+                    </div>
                 </div>
 
                 <div class="containerModal__carrito__precio">

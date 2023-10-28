@@ -1,13 +1,14 @@
 <?php
 
     require 'funciones/conexionbd.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
+    require 'funciones/clientes.php';
     session_start();
-    include 'C:\xampp\htdocs\RC\Tienda\headerUser.php';
+    include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     autenticar();
-    $computadoras = listarPC();
+    $productos = listarProductos();
 ?>
 
 <!DOCTYPE html>
@@ -37,21 +38,21 @@
     </div>
     <div class="container-items" id="shopContent"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
 <?php
-    while ($computadora = mysqli_fetch_assoc($computadoras)) {
+    while ($producto = mysqli_fetch_assoc($productos)) {
 ?>
 
     <div class="item">
         <figure>
-            <img src="http://localhost/RC/Tienda/images/<?= $computadora['img1'] ?>" alt="producto">
+            <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>
         <div class="info-producto">
-            <h2><?= $computadora['nombrePc'] ?></h2>
-            <p class="precio">$<?= $computadora['precioPc'] ?></p>
-            <p>Stock: <?= $computadora['stockPc'] ?></p>
+            <h2><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h2>
+            <p class="precio">$<?= $producto['precioPrd'] ?></p>
+            <p>Stock: <?= $producto['stockPrd'] ?></p>
             <div class="info-producto__buttons">
-                <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $computadora['idPrd'] ?>" class="info-producto-submit">VER DETALLE</a>
-                <a href="http://localhost/RC/Tienda/eliminarProducto.php?id=<?= $computadora['idPrd'] ?>" class="info-producto-submit" id="buttonEliminar">ELIMINAR PRODUCTO</a>
-                <a href="http://localhost/RC/Tienda/modificarProducto.php?id=<?= $computadora['idPrd'] ?>" class="info-producto-submit" id="buttonModificar">MODIFICAR PRODUCTO</a>
+                <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
+                <a href="http://localhost/RC/Tienda/eliminarProducto.php?id=<?= $producto['idPrd'] ?>" class="info-producto-submit" id="buttonEliminar">ELIMINAR PRODUCTO</a>
+                <a href="http://localhost/RC/Tienda/modificarProducto.php?id=<?= $producto['idPrd'] ?>" class="info-producto-submit" id="buttonModificar">MODIFICAR PRODUCTO</a>
             </div>
         </div>
 

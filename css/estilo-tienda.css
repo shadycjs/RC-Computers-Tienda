@@ -130,7 +130,7 @@ main{
     font-family: 'Lato';
     gap: 20px;
     grid-template-rows: 50px repeat(3,.8fr);
-    width: 70%;
+    width: 100%;
     height: auto;
     margin: 30px 30px 30px 10px;
     float: right;
@@ -142,9 +142,9 @@ main{
     display: grid;
     font-family: 'Lato';
     gap: 20px;
-    grid-template-columns: repeat(3, 25%);
-    grid-template-rows: .01fr .8fr .8fr;
-    width: 70%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: .01fr .8fr .8fr .01fr;
+    width: 100%;
     height: auto;
     margin: 30px 30px 30px 10px;
     float: right;
@@ -158,11 +158,9 @@ main{
     grid-row-end: 2;
 }
 
-.item-grilla{
+.item{
     display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    height: auto;
+    height: 400px;
     width: 100%;
     border-radius: 10px;
     background-color: #fff;
@@ -170,10 +168,10 @@ main{
     overflow: hidden;
 }
 
-.item{
+.item-grilla{
     display: flex;
-    min-height: 300px;
-    height: auto;
+    flex-direction: column;
+    height: 500px;
     width: 100%;
     border-radius: 10px;
     background-color: #fff;

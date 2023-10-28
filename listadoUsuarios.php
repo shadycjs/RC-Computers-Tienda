@@ -3,8 +3,9 @@
     require 'funciones/conexionbd.php';
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
+    require 'funciones/clientes.php';
     session_start();
-    include 'C:\xampp\htdocs\RC\Tienda\headerUser.php';
+    include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     $usuarios = listarUsuarios();
 ?>
 

@@ -2,7 +2,7 @@
 
     require 'funciones/conexionbd.php';
     require 'funciones/carrito.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
     require 'funciones/clientes.php';

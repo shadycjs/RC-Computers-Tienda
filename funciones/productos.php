@@ -339,18 +339,18 @@
     {
       $link = conectar();
 
-      $sql = "SELECT MAX(idPrd) FROM pc_venta";
+      $sql = "SELECT MAX(idPrd) FROM productos";
       $consulta = mysqli_query( $link,$sql );
       $resultado = mysqli_fetch_assoc( $consulta );
       $maximo = $resultado['MAX(idPrd)'] - 4; 
       return $maximo;
     }
 
-    function idRandomPc() 
+    function idRandomPrd() 
     {
       $link = conectar();
 
-      $sql = "SELECT idPrd, nombrePc, stockPc, precioPc, img1 FROM pc_venta
+      $sql = "SELECT idPrd, nombrePrd, stockPrd, precioPrd, img1 FROM productos
                 LIMIT 4 OFFSET ".rand(1,maxIdPc());
       $resultado = mysqli_query( $link,$sql );
       return $resultado;

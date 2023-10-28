@@ -1,7 +1,7 @@
 <?php
 
     require 'funciones/conexionbd.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
     session_start();
@@ -9,7 +9,7 @@
     if( isset($_POST['btnReg']) ){
         registrarUser();
     }
-    $computadoras = idRandomPc();
+    $productos = idRandomPrd();
     if( isset($_POST['btnIngresar']) ){
         login();
     }
@@ -68,17 +68,17 @@
     <div class="container-items" id="shopContent"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
         <h1 id="prdDestacado">PRODUCTOS DESTACADOS</h1>
 <?php
-    while ($computadora = mysqli_fetch_assoc($computadoras)) {
+    while ($producto = mysqli_fetch_assoc($productos)) {
 ?>
     
     <div class="item">
         <figure>
-            <img src="http://localhost/RC/Tienda/images/<?= $computadora['img1'] ?>" alt="producto">
+            <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>
         <div class="info-producto">
-            <h2><?= $computadora['nombrePc'] ?></h2>
-            <p class="precio">$<?= $computadora['precioPc'] ?></p>
-            <p>Stock: <?= $computadora['stockPc'] ?></p>
+            <h2><?= $producto['nombrePrd'] ?></h2>
+            <p class="precio">$<?= $producto['precioPrd'] ?></p>
+            <p>Stock: <?= $producto['stockPrd'] ?></p>
             <a href="http://localhost/RC/Tienda/detalleProductoLogOut.php?id=<?= $computadora['idPrd'] ?>" class="info-producto-submit">VER DETALLE</a>
         </div>
         <ul class="item__contacto">

@@ -27,17 +27,8 @@ const contenedorCarritoModal = document.querySelector('.contenedor__carrito__mod
 if(contenedorCarrito != null){
     contenedorCarrito.addEventListener('click', ()=>{
         contenedorCarritoModal.classList.toggle('carrito__modal__on');
-    })
+    });
 }
-
-//HEIGHT DEL CARRITO
-
-const contenedorCarritoModalSub = document.querySelector('.contenedor__carrito__modal__sub');
-
-if(contenedorCarritoModalSub.style.height == 600){
-    contenedorCarritoModalSub.style.overflowy = "scroll";
-}
-
 // USER
 
 const nameUser = document.querySelector('.contenedor__perfil__info--user');
