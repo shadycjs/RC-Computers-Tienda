@@ -37,7 +37,7 @@
 
             <div class="container__todo__sub--input">
                 <div class="container__todo__sub2--input">
-                    <a href=""><img src="http://localhost/RC/microprocesador.png" alt="">Microprocesador</a>
+                    <a href="agregarMicro.php"><img src="http://localhost/RC/microprocesador.png" alt="">Microprocesador</a>
                 </div>
             </div>
             <div class="container__todo__sub--input">

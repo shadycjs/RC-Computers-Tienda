@@ -1,0 +1,246 @@
+@import url(headerUser.css);
+@import url(estilo-modalCerrarSesion.css);
+@import url(menuLogin.css);
+
+* {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-sizing: border-box;
+}
+
+html, body{
+    min-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    background: radial-gradient(circle, #fff, #bbb);
+    display: flex;
+    flex-direction: column;
+}   
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav a{   
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* INICIO DEL MAIN */
+
+main{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.container__todo{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
+    margin-top: 120px;
+    flex-wrap: wrap;
+}
+
+.container__todo__sub{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.container__todo__sub__generalRefrigeracionMemoria{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #e7eee7;
+    align-items: start;
+    padding: 10px 0;
+}
+
+.container__todo__sub__generalRefrigeracionMemoria input[type="text"]{
+    height: 30px;
+}
+
+.container__todo__sub__generalRefrigeracionMemoria input[type="number"]{
+    width: 40px;
+    height: 50px;
+}
+
+.container__todo__sub__caracteristicasGenerales{
+    display: flex;
+    flex-direction: column;
+}
+
+.caracteristicasGenerales--input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #000;
+    padding: 5px 0;
+    font-size: 1.3em;
+}
+
+.container__todo__sub__coolerDisipador{
+    display: flex;
+    flex-direction: column;
+}
+
+.coolerDisipador--input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #000;
+    padding: 5px 0;
+    font-size: 1.3em;
+}
+
+.container__todo__sub__memoria{
+    display: flex;
+    flex-direction: column;
+}
+
+/* INICIO DEL CONTAINER IMAGENES */
+
+.container__todo__sub__imagenes{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container__todo__sub__imagenes--img1{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    border: 6px solid #000;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+.container__todo__sub__imagenes--img1 input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+}
+
+#uploadIcon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+}
+
+.container__todo__sub__imagenesSecundarias{
+    display: flex;
+    height: 100px;
+    border: 6px solid #000;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+.container__todo__sub__imagenesSecundariasSub{
+    width: 33.33%;
+    border-right: 2px solid #000;
+    position: relative;
+}
+
+.container__todo__sub__imagenesSecundariasSub input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+}
+
+#uploadIconSecundarias{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    z-index: 0;
+}
+
+/* FIN DEL CONTAINER IMAGENES */
+
+.memoria--input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #000;
+    padding: 5px 0;
+    font-size: 1.3em;
+}
+
+.container__todo__sub--input--siguiente{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.container__todo__sub--input--siguiente input{
+    color: #fff;
+    background-color: #000;
+    border-radius: 4px;
+}
+
+.container__todo__sub--input--siguiente input:hover{
+    color: #000;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.container__todo__sub--input--siguiente a{
+    color: #fff;
+    background-color: #000;
+    border-radius: 4px;
+    height: 100%;
+    width: 75px;
+}
+
+.container__todo__sub--input--siguiente a:hover{
+    color: #000;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* INICIO DEL FOOTER */
+footer{
+    background: linear-gradient(to bottom, black, #575353);
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    bottom: 0;
+}
+
+footer p{
+    align-self: center;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* FIN DEL FOOTER */
