@@ -42,7 +42,7 @@
             </div>
             <div class="container__todo__sub--input">
                 <div class="container__todo__sub2--input">
-                    <a href=""><img src="http://localhost/RC/motherboard.png" alt="">Motherboard</a>
+                    <a href="agregarMother.php"><img src="http://localhost/RC/motherboard.png" alt="">Motherboard</a>
                 </div>
             </div>
             <div class="container__todo__sub--input">

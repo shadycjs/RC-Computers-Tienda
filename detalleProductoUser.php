@@ -188,8 +188,8 @@ if($producto['idCategoria'] == 15){
                     <h4>COOLER Y DISIPADORES</h4>
                     <ul>
                         <li>Cooler: <b><?= ($producto['cooler'] == 0) ? 'No' : 'Si' ?></b></li>
-                        <li>TDP: <b><?= $producto['tdpMicro'] ?></b></li>
-                        <li>Max Temp: <b><?= $producto['tempMaximaMicro'] ?></b> </li>
+                        <li>TDP: <b><?= $producto['tdpMicro'] ?>W</b></li>
+                        <li>Max Temp: <b><?= $producto['tempMaximaMicro'] ?>°C</b> </li>
                     </ul>
                 </div>
                 <div class="containerModalInfoConfig__micro--memoria">
@@ -217,7 +217,7 @@ if($producto['idCategoria'] == 15){
                         <li>Socket: <b><?= $producto['socketMother'] ?></b></li>
                         <li>Chipset: <b><?= $producto['chipsetMother'] ?></b></li>
                         <li>Boton FlashBios<b> <?= ($producto['flashBiosButtonMother'] == 0) ? 'No' : 'Si' ?></b></li>
-                        <li><b></b></li>
+                        <li>Factor de forma: <b><?= $producto['factorFormaMother'] ?></b></li>
                     </ul>
                 </div>
 

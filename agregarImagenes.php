@@ -1,11 +1,12 @@
 <?php
 
     require 'funciones/conexionbd.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
+    require 'funciones/clientes.php';
     session_start();
-    include 'C:\xampp\htdocs\RC\Tienda\headerUser.php';
+    include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     autenticar();
     $_SESSION['marcaPc'] = $_POST['marcaPc'];
     $_SESSION['monitor'] = $_POST['monitor'];

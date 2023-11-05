@@ -53,7 +53,7 @@
         </div>
 </div>
 
-<div class="container-items" id="shopContent"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
+<div class="container-items"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
 
     <div class="container__buscador__grilla">
 
@@ -85,9 +85,11 @@
 ?>
 
 <?php
+    $class = 0;
     while($producto = mysqli_fetch_assoc($productos)) {
+        $class ++;
 ?>
-    <div class="item">
+    <div class="item" id="item__grid-<?= $class ?>">
         <figure>
             <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>

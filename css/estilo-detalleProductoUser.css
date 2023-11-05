@@ -113,10 +113,11 @@ main{
     flex-direction: column;
     width: 80%;
     min-height: 80%;
-    height: 80%;
     background-color: #fff;
     box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
     margin-top: 120px;
+    justify-content: center;
+    white-space: wrap;
 }
 
 .containerTodo a{
@@ -130,7 +131,7 @@ main{
 .containerModal{
     display: flex;
     width: 100%;
-    height: 95%;
+    height: 100%;
     background-color: #fff;
     padding: 20px;
 }
@@ -139,7 +140,8 @@ main{
     display: flex;
     flex-direction: column;
     width: 40%;
-    height: 100%;
+    height: auto;
+    border: 1px solid #c2c2c2;
 }
 
 .imagenPrincipal{
@@ -257,6 +259,7 @@ main{
     width: 100%;
     height: 100px;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #c2c2c2;
 }
 
@@ -492,7 +495,6 @@ footer p{
     width: 100%;
     height: 100%;
     font-size: 1.5em;
-    word-break: break-all;
 }
 
 .containerModalInfoConfig__placaVideo h4{
