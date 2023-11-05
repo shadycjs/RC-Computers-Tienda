@@ -468,3 +468,46 @@
             return FALSE;
           }
         }
+
+    #PARTE MEMORIA RAM
+
+    function agregarMemoriaRam()
+    {
+      $link = conectar();
+
+      $nombreProducto = $_POST['nombreProducto'];
+      $marcaProducto = $_POST['marcaProducto'];
+      $descripcionProducto = $_POST['descProducto'];
+      $categoriaProducto = $_SESSION['categoria'];
+      $unidadesProducto = $_POST['unidadesProducto'];
+      $precioProducto = $_POST['precioProducto'];
+
+      $ddr = $_POST['ddrMemoriaRam'];
+      $capacidad = $_POST['capacidadMemoriaRam'];
+      $velocidad = $_POST['velocidadMemoriaRam'];
+      $latencia = $_POST['latenciaMemoriaRam'];
+      $color = $_POST['colorMemoriaRam'];
+
+      $tipo = $_POST['tipoMemoriaRam'];
+      $disipador = $_POST['disipadorMemoriaRam'];
+
+      $img1 = subirImagen();
+      $img2 = subirImagen2();
+      $img3 = subirImagen3();
+      $img4 = subirImagen4();
+
+      $sql = "INSERT INTO productos
+      ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4, 
+        ddrMemoriaRam, tamanioMemoriaRam, velocidadMemoriaRam, latenciaMemoriaRam, disipadorMemoriaRam, 
+        colorMemoriaRam, compatibilidadMemoriaRam)
+      VALUES
+      ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
+       '$ddr', $capacidad, $velocidad, $latencia, $disipador, '$color', '$tipo')";
+
+      try{
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+      }catch(EXCEPTION $e){
+        return FALSE;
+      }
+    }

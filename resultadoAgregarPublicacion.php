@@ -20,7 +20,10 @@
     if( isset($_POST['agregarMother']) ){
         $agregarProducto = agregarMother();
     }
-    var_dump($agregarProducto);
+    
+    if( isset($_POST['agregarRam']) ){
+        $agregarProducto = agregarMemoriaRam();
+    }
 ?>
 
 <!DOCTYPE html>

@@ -47,7 +47,7 @@
             </div>
             <div class="container__todo__sub--input">
                 <div class="container__todo__sub2--input">
-                    <a href=""><img src="http://localhost/RC/memoriaram.png" alt="">Memoria ram</a>
+                    <a href="agregarRam.php"><img src="http://localhost/RC/memoriaram.png" alt="">Memoria ram</a>
                 </div>
             </div>
             <div class="container__todo__sub--input">
