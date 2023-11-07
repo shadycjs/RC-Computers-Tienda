@@ -201,17 +201,6 @@ if(list != null){
     });
 } 
 
-//IMAGENES TIENDA
-
-const imgPrincipal = document.querySelector('.mainImg');
-const imgSecundarias = document.querySelectorAll('.secuImg');
-
-imgSecundarias.forEach(secu => {
-    secu.addEventListener('click', ()=>{
-        imgPrincipal.src = this.src;
-    })
-})
-
 
 //VALIDACION DE FORM CAMBIAR CLAVE
 

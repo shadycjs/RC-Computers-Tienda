@@ -623,3 +623,43 @@
         return FALSE;
       }
     }
+
+    #PARTE DISCO SOLIDO
+
+    function agregarDiscoSolido()
+    {
+      $link = conectar();
+
+      $nombreProducto = $_POST['nombreProducto'];
+      $marcaProducto = $_POST['marcaProducto'];
+      $descripcionProducto = $_POST['descProducto'];
+      $categoriaProducto = $_SESSION['categoria'];
+      $unidadesProducto = $_POST['unidadesProducto'];
+      $precioProducto = $_POST['precioProducto'];
+
+      $interfaz = $_POST['interfazDiscoSolido'];
+      $capacidad = $_POST['capacidadDiscoSolido'];
+      $factorForma = $_POST['factorFormaDiscoSolido'];
+
+      $lectura = $_POST['lecturaDiscoSolido'];
+      $escritura = $_POST['escrituraDiscoSolido'];
+
+      $img1 = subirImagen();
+      $img2 = subirImagen2();
+      $img3 = subirImagen3();
+      $img4 = subirImagen4();
+
+      $sql = "INSERT INTO productos
+      ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4,
+        factorFormaDiscoSolido, interfazDiscoSolido, capacidadDiscoSolido, lecturaDiscoSolido, escrituraDiscoSolido)
+      VALUES
+      ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
+       $factorForma, '$interfaz', $capacidad, $lectura, $escritura )";
+
+      try{
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+      }catch(EXCEPTION $e){
+        return FALSE;
+      }
+    }

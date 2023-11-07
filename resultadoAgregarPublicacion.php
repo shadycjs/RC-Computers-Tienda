@@ -32,6 +32,10 @@
     if( isset($_POST['agregarDiscoDuro']) ){
         $agregarProducto = agregarDiscoDuro();
     }
+
+    if( isset($_POST['agregarDiscoSolido']) ){
+        $agregarProducto = agregarDiscoSolido();
+    }
 ?>
 
 <!DOCTYPE html>
