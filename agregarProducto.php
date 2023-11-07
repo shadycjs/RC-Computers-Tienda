@@ -67,7 +67,7 @@
             </div>
             <div class="container__todo__sub--input">
                 <div class="container__todo__sub2--input">
-                    <a href=""><img src="http://localhost/RC/fuente.png" alt="">Fuente</a>
+                    <a href="agregarFuente.php"><img src="http://localhost/RC/fuente.png" alt="">Fuente</a>
                 </div>
             </div>
             <div class="container__todo__sub--input">

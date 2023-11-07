@@ -170,7 +170,7 @@
       return $prdImagen;
     }
 
-    function subirImagen2() : string
+    function subirImagen2() : string  
     {
       //si no enviaron un archivo
       $prdImagen = 'sinImagen.png';
@@ -655,6 +655,58 @@
       VALUES
       ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
        $factorForma, '$interfaz', $capacidad, $lectura, $escritura )";
+
+      try{
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+      }catch(EXCEPTION $e){
+        return FALSE;
+      }
+    }
+
+    #PARTE FUENTE
+
+    function agregarFuente()
+    {
+      $link = conectar();
+
+      $nombreProducto = $_POST['nombreProducto'];
+      $marcaProducto = $_POST['marcaProducto'];
+      $descripcionProducto = $_POST['descProducto'];
+      $categoriaProducto = $_SESSION['categoria'];
+      $unidadesProducto = $_POST['unidadesProducto'];
+      $precioProducto = $_POST['precioProducto'];
+
+      $potencia = $_POST['potenciaFuente'];
+      $factorForma = $_POST['factorFormaFuente'];
+      $tamañoFanCooler = $_POST['tamanioFanCoolerFuente'];
+      $certificacion = $_POST['certificacionFuente'];
+
+      $conectorMother204Pin = $_POST['conectorMother204PinFuente'];
+      $conectorCpu44Pin = $_POST['conectorCpu44PinFuente'];
+      $conectorCpu8Pin = $_POST['conectorCpu8PinFuente'];
+      $conectorSata = $_POST['conectorSataFuente'];
+      $conectorMolex4Pin = $_POST['conectorMolex4PinFuente'];
+      $conectorFloppy4Pin = $_POST['conectorFloppy4PinFuente'];
+      $conectorPcie62Pin = $_POST['conectorPcie62PinFuente'];
+
+      $iluminacion = $_POST['iluminacionFuente'];
+
+      $img1 = subirImagen();
+      $img2 = subirImagen2();
+      $img3 = subirImagen3();
+      $img4 = subirImagen4();
+
+      $sql = "INSERT INTO productos
+      ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4,
+        certificacionFuente, potenciaFuente, factorFormaFuente, tamanioFanCoolerFuente, conectorMother204PinFuente, conectorCpu44PinFuente, 
+        conectorCpu8PinFuente, conectorSataFuente, conectorMolex4PinFuente, conectorFloppy4PinFuente, 
+        conectorPcie62PinFuente, iluminacionCoolerFuente)
+      VALUES
+      ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
+       '$certificacion', $potencia, '$factorForma', $tamañoFanCooler, $conectorMother204Pin, $conectorCpu44Pin, 
+       $conectorCpu8Pin, $conectorSata, $conectorMolex4Pin, $conectorFloppy4Pin,
+       $conectorPcie62Pin, $iluminacion )";
 
       try{
         $resultado = mysqli_query( $link,$sql );
