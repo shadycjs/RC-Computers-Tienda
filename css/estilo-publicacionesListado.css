@@ -61,6 +61,31 @@ main h1{
     color: green;
 }
 
+/* INICIO DEL CONTAINER BUSCADOR */
+
+.container__buscador__grilla--buscador{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button__buscador{
+    width: 30px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.icono__buscador{
+    width: 100%;
+    height: 100%;
+}
+
+/* FIN DEL CONTAINER BUSCADOR */
+
 /* INICIO DEL GRID */
 
 .container-items{

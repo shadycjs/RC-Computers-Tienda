@@ -24,6 +24,14 @@
     if( isset($_POST['agregarRam']) ){
         $agregarProducto = agregarMemoriaRam();
     }
+
+    if( isset($_POST['agregarPlacaVideo']) ){
+        $agregarProducto = agregarPlacaVideo();
+    }
+
+    if( isset($_POST['agregarDiscoDuro']) ){
+        $agregarProducto = agregarDiscoDuro();
+    }
 ?>
 
 <!DOCTYPE html>

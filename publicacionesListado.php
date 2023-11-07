@@ -8,7 +8,7 @@
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     autenticar();
-    $productos = listarProductos();
+    $productos = buscarProductoPublicacionesListado();
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +36,12 @@
     <div class="container__agregarPubli">
         <a href="agregarProducto.php"><ion-icon name="cloud-upload"></ion-icon> AGREGAR PUBLICACION NUEVA </a>
     </div>
+
+    <form action="" method="get" class="container__buscador__grilla--buscador">
+        <button type="submit" class="button__buscador"><ion-icon name="search-circle" class="icono__buscador"></ion-icon></button>
+        <input type="search" name="search" id=""> 
+    </form>
+
     <div class="container-items" id="shopContent"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
 <?php
     while ($producto = mysqli_fetch_assoc($productos)) {

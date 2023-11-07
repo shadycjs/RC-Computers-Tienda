@@ -52,17 +52,17 @@
             </div>
             <div class="container__todo__sub--input">
                 <div class="container__todo__sub2--input">
-                    <a href=""><img src="http://localhost/RC/placadevideo.png" alt="">Placa de video</a>
+                    <a href="agregarPlacaVideo.php"><img src="http://localhost/RC/placadevideo.png" alt="">Placa de video</a>
                 </div>
             </div>
             <div class="container__todo__sub--input">
                 <div class="container__todo__sub2--input">
-                    <a href=""><img src="http://localhost/RC/almacenamiento.png" alt="">Disco duro</a>
+                    <a href="agregarDiscoDuro.php"><img src="http://localhost/RC/almacenamiento.png" alt="">Disco duro</a>
                 </div>
             </div>
             <div class="container__todo__sub--input">
                 <div class="container__todo__sub2--input">
-                    <a href=""><img src="http://localhost/RC/almacenamiento.png" alt="">Disco solido</a>
+                    <a href="agregarDiscoSolido.php"><img src="http://localhost/RC/almacenamiento.png" alt="">Disco solido</a>
                 </div>
             </div>
             <div class="container__todo__sub--input">

@@ -129,6 +129,21 @@
       return $resultado;
     }
 
+    function buscarProductoPublicacionesListado()
+    {
+      $search = $_GET['search'] ?? '';
+
+      $link = conectar();
+      $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, stockPrd, descPrd, img1 FROM productos p
+                INNER JOIN categoria c ON p.idCategoria = c.idCategoria
+                  INNER JOIN marca m ON p.idMarca = m.idMarca
+                      WHERE p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
+                        OR m.nombreMarca LIKE '%".$search."%'";
+
+      $resultado = mysqli_query( $link,$sql );
+      return $resultado;
+    }
+
     function subirImagen() : string
     {
       //si no enviaron un archivo
@@ -503,6 +518,103 @@
       VALUES
       ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
        '$ddr', $capacidad, $velocidad, $latencia, $disipador, '$color', '$tipo')";
+
+      try{
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+      }catch(EXCEPTION $e){
+        return FALSE;
+      }
+    }
+
+    #PARTE PLACA DE VIDEO
+
+    function agregarPlacaVideo()
+    {
+      $link = conectar();
+
+      $nombreProducto = $_POST['nombreProducto'];
+      $marcaProducto = $_POST['marcaProducto'];
+      $descripcionProducto = $_POST['descProducto'];
+      $categoriaProducto = $_SESSION['categoria'];
+      $unidadesProducto = $_POST['unidadesProducto'];
+      $precioProducto = $_POST['precioProducto'];
+
+      $tipoPcie = $_POST['tipoPciePlacaVideo'];
+      $gddr = $_POST['gddrPlacaVideo'];
+      $frecuenciaBase = $_POST['frecuenciaBasePlacaVideo'];
+      $frecuenciaMaxima = $_POST['frecuenciaMaximaPlacaVideo'];
+      $tamañoMemoria = $_POST['tamañoMemoriaPlacaVideo'];
+
+      $ancho = $_POST['anchoPlacaVideo'];
+      $largo = $_POST['largoPlacaVideo'];
+      $peso = $_POST['pesoPlacaVideo'];
+
+      $displayPort = $_POST['displayPortPlacaVideo'];
+      $hdmi = $_POST['hdmiPlacaVideo'];
+      $dvi = $_POST['dviPlacaVideo'];
+
+      $bus = $_POST['busPlacaVideo'];
+      $multiplesMonitores = $_POST['multiplesMonitoresPlacaVideo'];
+      $numeroCoolers = $_POST['numeroCoolersPlacaVideo'];
+
+      $img1 = subirImagen();
+      $img2 = subirImagen2();
+      $img3 = subirImagen3();
+      $img4 = subirImagen4();
+
+      $sql = "INSERT INTO productos
+      ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4, 
+      frecuenciaBasePlacaVideo, frecuenciaMaximaPlacaVideo, tipoPciePlacaVideo, gddrPlacaVideo, tamanioMemoriaPlacaVideo, busPlacaVideo, 
+      multiplesPantallasPlacaVideo, numeroFanCoolersPlacaVideo, displayPortPlacaVideo, hdmiPlacaVideo, dviPlacaVideo,
+      anchoPlacaVideo, largoPlacaVideo, pesoPlacaVideo)
+      VALUES
+      ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
+       $frecuenciaBase, $frecuenciaMaxima, '$tipoPcie', '$gddr', $tamañoMemoria, $bus, 
+       $multiplesMonitores, $numeroCoolers, $displayPort, $hdmi, $dvi,
+       $ancho, $largo, $peso )";
+
+      try{
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+      }catch(EXCEPTION $e){
+        return FALSE;
+      }
+    }
+
+    #PARTE DISCO DURO
+
+    function agregarDiscoDuro()
+    {
+      $link = conectar();
+
+      $nombreProducto = $_POST['nombreProducto'];
+      $marcaProducto = $_POST['marcaProducto'];
+      $descripcionProducto = $_POST['descProducto'];
+      $categoriaProducto = $_SESSION['categoria'];
+      $unidadesProducto = $_POST['unidadesProducto'];
+      $precioProducto = $_POST['precioProducto'];
+
+      $interfaz = $_POST['interfazDiscoDuro'];
+      $capacidad = $_POST['capacidadDiscoDuro'];
+      $factorForma = $_POST['factorFormaDiscoDuro'];
+      $tamañoMemoria = $_POST['tamañoMemoriaDiscoDuro'];
+
+      $rpm = $_POST['rpmDiscoDuro'];
+      $memoriaCache = $_POST['memoriaCacheDiscoDuro'];
+      $lecturaEscritura = $_POST['lecturaEscrituraDiscoDuro'];
+
+      $img1 = subirImagen();
+      $img2 = subirImagen2();
+      $img3 = subirImagen3();
+      $img4 = subirImagen4();
+
+      $sql = "INSERT INTO productos
+      ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4,
+        factorFormaDiscoDuro, interfazDiscoDuro, capacidadDiscoDuro, rpmDiscoDuro, memoriaCacheDiscoDuro)
+      VALUES
+      ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
+       $factorForma, '$interfaz', $capacidad, $rpm, $memoriaCache )";
 
       try{
         $resultado = mysqli_query( $link,$sql );
