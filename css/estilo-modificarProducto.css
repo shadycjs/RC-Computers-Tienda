@@ -185,6 +185,15 @@ main{
     text-align: center;
 }
 
+.containerModalInfoPrecioCantidad__descripcion{
+    display: flex;
+    flex-direction: column;
+}
+
+.containerModalInfoPrecioCantidad__descripcion textarea{
+    width: 100%;
+    resize: none;
+}
 
 .containerModalInfoPrecioCantidad__cantidad{
     display: flex;
@@ -260,6 +269,32 @@ main{
     width: 200px;
     position: relative;
 }
+
+/* INICIO DE LA PARTE MICROPROCESADOR */
+
+.containerModalInfoConfig__micro{
+    display: flex;
+    gap: 20px;
+}
+
+.containerModalInfoConfig__micro ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.containerModalInfoConfig__micro input[type="text"], select{
+    height: 30px;
+}
+
+.containerModalInfoConfig__micro input[type="number"]{
+    height: 40px;
+    width: 50px;
+}
+
+/* FIN DE LA PARTE MICROPROCESADOR */
 
 /* INICIO DEL FOOTER */
 footer{

@@ -86,7 +86,7 @@
           $camposSQL = 'microPc, motherPc, ramPc, videoPc, hddPc, ssdPc, fuentePc, gabinetePc, monitorPc,';
         }
 
-        $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd, ".$camposSQL." img1, img2, img3, img4 FROM productos p
+        $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, stockPrd, descPrd,  estadoPrd,".$camposSQL." img1, img2, img3, img4 FROM productos p
                     INNER JOIN categoria c ON p.idCategoria = c.idCategoria
                       INNER JOIN marca m ON p.idMarca = m.idMarca
                           WHERE idPrd = ".$idPrd;
@@ -105,7 +105,7 @@
       $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
 
       $link = conectar();
-      $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, stockPrd, descPrd, img1 FROM productos p
+      $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, stockPrd, descPrd, estadoPrd, img1 FROM productos p
                 INNER JOIN categoria c ON p.idCategoria = c.idCategoria
                   INNER JOIN marca m ON p.idMarca = m.idMarca
                       WHERE p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
@@ -299,31 +299,57 @@
     {
       $link = conectar();
 
-      $id = $_POST['idPrd'];
-      $marca = $_POST['marcaPc'];
-      $monitor = $_POST['monitor'];
-      $micro = $_POST['micro'];
-      $mother = $_POST['mother'];
-      $ram = $_POST['ram'];
-      $video = $_POST['video'];
-      $duro = $_POST['duro'];
-      $solido = $_POST['solido'];
-      $fuente = $_POST['fuente'];
-      $gabinete = $_POST['gabinete'];
+      if($_SESSION['idCategoria'] == 15){ //PARTE PC
+        $marca = $_POST['marca'];
+        $monitor = $_POST['monitor'];
+        $micro = $_POST['micro'];
+        $mother = $_POST['mother'];
+        $ram = $_POST['ram'];
+        $video = $_POST['video'];
+        $duro = $_POST['duro'];
+        $solido = $_POST['solido'];
+        $fuente = $_POST['fuente'];
+        $gabinete = $_POST['gabinete'];
 
+        $camposSQL = "microPc = '$micro', motherPc = '$mother', ramPc = '$ram', videoPc = '$video', hddPc = '$duro', ssdPc = '$solido', fuentePc = '$fuente',
+        gabinetePc = '$gabinete', monitorPc = '$monitor',";
+      }elseif($_SESSION['idCategoria'] == 1){ //PARTE MICROPROCESADOR
+  
+        $nucleos = $_POST['nucleosMicro'];
+        $hilos = $_POST['hilosMicro'];
+        $socket = $_POST['socketMicro'];
+        $frecuenciaBase = $_POST['frecuenciaBaseMicro'];
+        $frecuenciaMaxima = $_POST['frecuenciaMaximaMicro'];
+        $graficosIntegrados = $_POST['graficosIntegradosMicro'];
+        $modeloGraficosIntegrados = $_POST['modeloGraficosIntegradosMicro'];
+        $litografia = $_POST['litografiaMicro'];
+  
+        $cooler = $_POST['coolerMicro'];
+        $tdp = $_POST['tdpMicro'];
+        $maxTemp = $_POST['maxTempMicro'];
+  
+        $cacheL1 = $_POST['cacheL1Micro'];
+        $cacheL2 = $_POST['cacheL2Micro'];
+        $cacheL3 = $_POST['cacheL3Micro'];
+
+        $camposSQL = "nucleosMicro = $nucleos, hilosMicro = $hilos, socketMicro = '$socket', frecuenciaBaseMicro = $frecuenciaBase, 
+        frecuenciaMaxMicro = $frecuenciaMaxima, cacheL1Micro = $cacheL1, cacheL2Micro = $cacheL2, cacheL3Micro = $cacheL3,
+        graficosIntegrados = $graficosIntegrados, modeloGraficosIntegradosMicro = '$modeloGraficosIntegrados', cooler = $cooler,
+        tdpMicro = '$tdp', tempMaximaMicro = '$maxTemp', litografiaMicro = '$litografia',";
+      }
+      $id = $_POST['idPrd'];
       $nombrePubli = $_POST['nombrePubli'];
       $precio = $_POST['precio'];
       $stock = $_POST['stock'];
       $estado = $_POST['estadoPc'];
+      $descripcion = $_POST['descPrd'];
 
       $img1 = subirImagen();
       $img2 = subirImagen2();
       $img3 = subirImagen3();
       $img4 = subirImagen4();
 
-      $sql = "UPDATE pc_venta SET nombrePc = '$nombrePubli', stockPc = $stock, precioPc = $precio, estadoPc = $estado, 
-      micro = '$micro', mother = '$mother', ram = '$ram', video = '$video', hdd = '$duro', ssd = '$solido', fuente = '$fuente',
-      gabinete = '$gabinete', monitor = '$monitor', img1 = '$img1', img2 = '$img2', img3 = '$img3', img4 = '$img4'
+      $sql = "UPDATE productos SET nombrePrd = '$nombrePubli', stockPrd = $stock, precioPrd = $precio, descPrd = '$descripcion', estadoPrd = $estado, ".$camposSQL." img1 = '$img1', img2 = '$img2', img3 = '$img3', img4 = '$img4'
         WHERE idPrd = ".$id;
 
       try{

@@ -58,7 +58,7 @@
             <div class="info-producto__buttons">
                 <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
                 <a href="http://localhost/RC/Tienda/eliminarProducto.php?id=<?= $producto['idPrd'] ?>" class="info-producto-submit" id="buttonEliminar">ELIMINAR PRODUCTO</a>
-                <a href="http://localhost/RC/Tienda/modificarProducto.php?id=<?= $producto['idPrd'] ?>" class="info-producto-submit" id="buttonModificar">MODIFICAR PRODUCTO</a>
+                <a href="http://localhost/RC/Tienda/modificarProducto.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria']?>&idMarca=<?= $producto['idMarca'] ?>" class="info-producto-submit" id="buttonModificar">MODIFICAR PRODUCTO</a>
             </div>
         </div>
 

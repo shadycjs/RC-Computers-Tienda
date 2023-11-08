@@ -1,9 +1,11 @@
 <?php
 
     require 'funciones/conexionbd.php';
-    require 'funciones/computadoras.php';
-    include 'C:\xampp\htdocs\RC\Tienda\headerAdmin.php';
+    require 'funciones/productos.php';
+    require 'funciones/usuarios.php';
+    require 'funciones/clientes.php';
     session_start();
+    include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     require 'funciones/autenticar.php';
     autenticar();
 
