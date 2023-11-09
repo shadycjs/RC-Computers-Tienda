@@ -87,7 +87,6 @@
 <?php
     $class = 0;
     while($producto = mysqli_fetch_assoc($productos)) {
-        if($producto['estadoPrd'] == 1){
         $class ++;
 ?>
     <div class="item" id="item__grid-<?= $class ?>">
@@ -107,7 +106,7 @@
         </ul>
     </div>
 <?php
-    }}
+    }
 ?>
 
     <div class="container__todo__paginacion">

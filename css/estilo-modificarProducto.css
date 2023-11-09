@@ -322,6 +322,32 @@ main{
 
 /* FIN DE LA PARTE MOTHERBOARD */
 
+/* INICIO DE LA PARTE MEMORIA RAM */
+
+.containerModalInfoConfig__ram{
+    display: flex;
+    gap: 20px;
+}
+
+.containerModalInfoConfig__ram ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.containerModalInfoConfig__ram input[type="text"], select{
+    height: 30px;
+}
+
+.containerModalInfoConfig__ram input[type="number"]{
+    height: 40px;
+    width: 50px;
+}
+
+/* FIN DE LA PARTE MEMORIA RAM */
+
 /* INICIO DEL FOOTER */
 footer{
     background: linear-gradient(to bottom, black, #575353);

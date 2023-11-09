@@ -47,11 +47,11 @@
     while ($producto = mysqli_fetch_assoc($productos)) {
 ?>
 
-    <div class="item" style="<?= ($producto['estadoPrd'] == 0) ? 'background-color: orange' : 'background-color: lightgreen' ?>">
+    <div class="item" >
         <figure>
             <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>
-        <div class="info-producto">
+        <div class="info-producto" style="<?= ($producto['estadoPrd'] == 0) ? 'background-color: orange' : 'background-color: lightgreen' ?>">
             <h2><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h2>
             <p class="precio">$<?= $producto['precioPrd'] ?></p>
             <p>Stock: <?= $producto['stockPrd'] ?></p>

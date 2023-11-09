@@ -108,8 +108,8 @@
       $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, stockPrd, descPrd, estadoPrd, img1 FROM productos p
                 INNER JOIN categoria c ON p.idCategoria = c.idCategoria
                   INNER JOIN marca m ON p.idMarca = m.idMarca
-                      WHERE p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
-                        OR m.nombreMarca LIKE '%".$search."%'
+                      WHERE estadoPrd = 1 AND (p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
+                        OR m.nombreMarca LIKE '%".$search."%')
                           LIMIT $registros_por_pagina OFFSET $primer_registro";
       
       $filtroCategoria = '';
@@ -368,6 +368,21 @@
         slotsExpasionMother = '$slotsExpansion', cantSataMother = $cantSata, interfazm2Mother = $interfazM2, cantPuertosM2Mother = $cantM2,
         lanMother = $lan, wifiMother = $wifi, bluetoothMother = $bluetooth, chipsetAudioMother = '$chipsetAudio', puertosUsb20Mother = $cantUsb20,
         puertosUsb30Mother = $cantUsb30, cantDisplayPortMother = $displayPort, cantHdmiMother = $hdmi, cantVgaMother = $vga, flashBiosButtonMother = $botonFlashBios,";
+
+      }elseif($_SESSION['idCategoria'] == 3){//PARTE MEMORIA RAM
+
+        $ddr = $_POST['ddrMemoriaRam'];
+        $capacidad = $_POST['capacidadMemoriaRam'];
+        $velocidad = $_POST['velocidadMemoriaRam'];
+        $latencia = $_POST['latenciaMemoriaRam'];
+        $color = $_POST['colorMemoriaRam'];
+  
+        $tipo = $_POST['tipoMemoriaRam'];
+        $disipador = $_POST['disipadorMemoriaRam'];
+
+        $camposSQL = "ddrMemoriaRam = '$ddr', tamanioMemoriaRam = $capacidad, velocidadMemoriaRam = $velocidad,
+        latenciaMemoriaRam = $latencia, disipadorMemoriaRam = $disipador, colorMemoriaRam = '$color', 
+        compatibilidadMemoriaRam = '$tipo',";
 
       }
 
