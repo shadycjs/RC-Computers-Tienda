@@ -372,11 +372,11 @@ if($producto['idCategoria'] == 15){
     <div class="containerModalInfoConfig__placaVideo--caracteristicasGenerales">
         <h4>CARACTERISTICAS GENERALES</h4>
         <ul>
-            <li>Conectividad: <b><?= $producto['tipoPciePlacaVideo'] ?></b></li>
-            <li>Tipo: <b><?= $producto['gddrPlacaVideo'] ?></b></li>
-            <li>Frecuencia base:<b> <?= $producto['frecuenciaBasePlacaVideo'] ?>Mhz</b></li>
-            <li>Frecuencia maxima: <b><?= $producto['frecuenciaMaximaPlacaVideo'] ?>Mhz</b></li>
-            <li>Tamaño memoria: <b><?= $producto['tamanioMemoriaPlacaVideo'] ?>Gb</b></li>
+            <li>Conectividad: <b><input type="text" name="tipoPciePlacaVideo" value="<?= $producto['tipoPciePlacaVideo'] ?>"></b></li>
+            <li>Tipo: <b><input type="text" name="gddrPlacaVideo" value="<?= $producto['gddrPlacaVideo'] ?>"></b></li>
+            <li>Frecuencia base:<b><input type="number" name="frecuenciaBasePlacaVideo" value="<?= $producto['frecuenciaBasePlacaVideo'] ?>"></b></li>
+            <li>Frecuencia maxima: <b><input type="number" name="frecuenciaMaximaPlacaVideo" value="<?= $producto['frecuenciaMaximaPlacaVideo'] ?>"></b></li>
+            <li>Tamaño memoria: <b><input type="number" name="tamañoMemoriaPlacaVideo" value="<?= $producto['tamanioMemoriaPlacaVideo'] ?>"></b></li>
         </ul>
     </div>
 
@@ -384,18 +384,18 @@ if($producto['idCategoria'] == 15){
         <div class="containerModalInfoConfig__placaVideo--dimensiones">
             <h4>DIMENSIONES</h4>
             <ul>
-                <li>Ancho de placa: <b><?= $producto['anchoPlacaVideo'] ?>mm</b></li>
-                <li>Largo de placa: <b><?= $producto['largoPlacaVideo'] ?>mm</b></li>
-                <li>Peso de placa:<b> <?= $producto['pesoPlacaVideo'] ?>g</b></li>
+                <li>Ancho de placa: <b><input type="number" name="anchoPlacaVideo" value="<?= $producto['anchoPlacaVideo'] ?>"></b></li>
+                <li>Largo de placa: <b><input type="number" name="largoPlacaVideo" value="<?= $producto['largoPlacaVideo'] ?>"></b></li>
+                <li>Peso de placa:<b><input type="number" name="pesoPlacaVideo" value="<?= $producto['pesoPlacaVideo'] ?>"></b></li>
             </ul>
         </div>
 
         <div class="containerModalInfoConfig__placaVideo--conectividad">
             <h4>CONECTIVIDAD</h4>
             <ul>
-                <li>DisplayPort: <b><?= $producto['displayPortPlacaVideo'] ?></b></li>
-                <li>HDMI: <b><?= $producto['hdmiPlacaVideo'] ?></b></li>
-                <li>DVI:<b> <?= $producto['dviPlacaVideo'] ?></b></li>
+                <li>DisplayPort: <b><input type="number" name="displayPortPlacaVideo" value="<?= $producto['displayPortPlacaVideo'] ?>"></b></li>
+                <li>HDMI: <b><input type="number" name="hdmiPlacaVideo" value="<?= $producto['hdmiPlacaVideo'] ?>"></b></li>
+                <li>DVI:<b><input type="number" name="dviPlacaVideo" value="<?= $producto['dviPlacaVideo'] ?>"></b></li>
             </ul>
         </div>
     </div>
@@ -403,9 +403,12 @@ if($producto['idCategoria'] == 15){
     <div class="containerModalInfoConfig__placaVideo--extras">
         <h4>EXTRAS</h4>
         <ul>
-            <li>Bus: <b><?= $producto['busPlacaVideo'] ?></b></li>
-            <li>Multiples monitores: <b><?= ($producto['multiplesPantallasPlacaVideo']) ? 'Si' : 'No' ?></b></li>
-            <li>Numero coolers: <b><?= $producto['numeroFanCoolersPlacaVideo'] ?></b></li>
+            <li>Bus: <b><input type="number" name="busPlacaVideo" value="<?= $producto['busPlacaVideo'] ?>"></b></li>
+            <li>Multiples monitores: <b><select name="multiplesMonitoresPlacaVideo" id="">
+                <option <?= ($producto['multiplesPantallasPlacaVideo'] == 0) ? 'Selected' : '' ?> value="0">No</option>
+                <option <?= ($producto['multiplesPantallasPlacaVideo'] == 1) ? 'Selected' : '' ?> value="1">Si</option>
+            </select></b></li>
+            <li>Numero coolers: <b><input type="number" name="numeroCoolersPlacaVideo" value="<?= $producto['numeroFanCoolersPlacaVideo'] ?>"></b></li>
         </ul>
     </div>
 

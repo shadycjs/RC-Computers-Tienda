@@ -41,7 +41,8 @@ main{
 .containerTodo{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    min-width: 30%;
+    max-width: 60%;
     min-height: 80%;
     height: auto;
     background-color: #fff;
@@ -274,6 +275,7 @@ main{
 
 .containerModalInfoConfig__micro{
     display: flex;
+    justify-content: space-around;
     gap: 20px;
 }
 
@@ -283,6 +285,12 @@ main{
     gap: 5px;
     list-style: none;
     padding: 0;
+    margin-top: 5px;
+}
+
+.containerModalInfoConfig__micro ul li{
+    display: flex;
+    justify-content: space-between;
 }
 
 .containerModalInfoConfig__micro input[type="text"], select{
@@ -294,12 +302,17 @@ main{
     width: 50px;
 }
 
+.containerModalInfoConfig__micro h4{
+    border-bottom: 1px solid #000;
+}
+
 /* FIN DE LA PARTE MICROPROCESADOR */
 
 /* INICIO DE LA PARTE MOTHERBOARD */
 
 .containerModalInfoConfig__mother{
     display: flex;
+    justify-content: space-around;
     gap: 20px;
 }
 
@@ -309,6 +322,12 @@ main{
     gap: 5px;
     list-style: none;
     padding: 0;
+    margin-top: 5px;
+}
+
+.containerModalInfoConfig__mother ul li{
+    display: flex;
+    justify-content: space-between;
 }
 
 .containerModalInfoConfig__mother input[type="text"], select{
@@ -320,12 +339,24 @@ main{
     width: 50px;
 }
 
+.containerModalInfoConfig__mother h4{
+    border-bottom: 1px solid #000;
+}
+
+.containerModalInfoConfig__mother--caracteristicasGeneralesMemoria{
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* FIN DE LA PARTE MOTHERBOARD */
 
 /* INICIO DE LA PARTE MEMORIA RAM */
 
 .containerModalInfoConfig__ram{
     display: flex;
+    justify-content: space-around;
     gap: 20px;
 }
 
@@ -335,6 +366,12 @@ main{
     gap: 5px;
     list-style: none;
     padding: 0;
+    margin-top: 5px;
+}
+
+.containerModalInfoConfig__ram ul li{
+    display: flex;
+    justify-content: space-between;
 }
 
 .containerModalInfoConfig__ram input[type="text"], select{
@@ -346,7 +383,48 @@ main{
     width: 50px;
 }
 
+.containerModalInfoConfig__ram h4{
+    border-bottom: 1px solid #000;
+}
+
 /* FIN DE LA PARTE MEMORIA RAM */
+
+/* INICIO DE LA PARTE PLACA DE VIDEO */
+
+.containerModalInfoConfig__placaVideo{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.containerModalInfoConfig__placaVideo ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.containerModalInfoConfig__placaVideo ul li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerModalInfoConfig__placaVideo input[type="text"], select{
+    height: 30px;
+}
+
+.containerModalInfoConfig__placaVideo input[type="number"]{
+    height: 40px;
+    width: 50px;
+}
+
+.containerModalInfoConfig__placaVideo h4{
+    border-bottom: 1px solid #000;
+}
+
+/* FIN DE LA PARTE PLACA DE VIDEO */
 
 /* INICIO DEL FOOTER */
 footer{

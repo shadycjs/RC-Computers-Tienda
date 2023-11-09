@@ -384,6 +384,31 @@
         latenciaMemoriaRam = $latencia, disipadorMemoriaRam = $disipador, colorMemoriaRam = '$color', 
         compatibilidadMemoriaRam = '$tipo',";
 
+      }elseif($_SESSION['idCategoria'] == 6){
+
+        $tipoPcie = $_POST['tipoPciePlacaVideo'];
+        $gddr = $_POST['gddrPlacaVideo'];
+        $frecuenciaBase = $_POST['frecuenciaBasePlacaVideo'];
+        $frecuenciaMaxima = $_POST['frecuenciaMaximaPlacaVideo'];
+        $tamañoMemoria = $_POST['tamañoMemoriaPlacaVideo'];
+  
+        $ancho = $_POST['anchoPlacaVideo'];
+        $largo = $_POST['largoPlacaVideo'];
+        $peso = $_POST['pesoPlacaVideo'];
+  
+        $displayPort = $_POST['displayPortPlacaVideo'];
+        $hdmi = $_POST['hdmiPlacaVideo'];
+        $dvi = $_POST['dviPlacaVideo'];
+  
+        $bus = $_POST['busPlacaVideo'];
+        $multiplesMonitores = $_POST['multiplesMonitoresPlacaVideo'];
+        $numeroCoolers = $_POST['numeroCoolersPlacaVideo'];
+
+        $camposSQL = "frecuenciaBasePlacaVideo = $frecuenciaBase, frecuenciaMaximaPlacaVideo = $frecuenciaMaxima, tipoPciePlacaVideo = '$tipoPcie',
+        gddrPlacaVideo = '$gddr', tamanioMemoriaPlacaVideo = $tamañoMemoria, busPlacaVideo = $bus, multiplesPantallasPlacaVideo = $multiplesMonitores,
+        numeroFanCoolersPlacaVideo = $numeroCoolers, displayPortPlacaVideo = $displayPort, hdmiPlacaVideo = $hdmi, dviPlacaVideo = $dvi,
+        anchoPlacaVideo = $ancho, largoPlacaVideo = $largo, pesoPlacaVideo = $peso,";
+
       }
 
       $id = $_POST['idPrd'];
