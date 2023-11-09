@@ -134,7 +134,7 @@
       $search = $_GET['search'] ?? '';
 
       $link = conectar();
-      $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, stockPrd, descPrd, img1 FROM productos p
+      $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, estadoPrd, stockPrd, descPrd, img1 FROM productos p
                 INNER JOIN categoria c ON p.idCategoria = c.idCategoria
                   INNER JOIN marca m ON p.idMarca = m.idMarca
                       WHERE p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
@@ -313,6 +313,7 @@
 
         $camposSQL = "microPc = '$micro', motherPc = '$mother', ramPc = '$ram', videoPc = '$video', hddPc = '$duro', ssdPc = '$solido', fuentePc = '$fuente',
         gabinetePc = '$gabinete', monitorPc = '$monitor',";
+
       }elseif($_SESSION['idCategoria'] == 1){ //PARTE MICROPROCESADOR
   
         $nucleos = $_POST['nucleosMicro'];
@@ -336,7 +337,40 @@
         frecuenciaMaxMicro = $frecuenciaMaxima, cacheL1Micro = $cacheL1, cacheL2Micro = $cacheL2, cacheL3Micro = $cacheL3,
         graficosIntegrados = $graficosIntegrados, modeloGraficosIntegradosMicro = '$modeloGraficosIntegrados', cooler = $cooler,
         tdpMicro = '$tdp', tempMaximaMicro = '$maxTemp', litografiaMicro = '$litografia',";
+        
+      }elseif($_SESSION['idCategoria'] == 2){//PARTE MOTHERBOARD
+
+        $socket = $_POST['socketMother'];
+        $chipset = $_POST['chipsetMother'];
+        $botonFlashBios = $_POST['botonFlashBiosMother'];
+        $factorForma = $_POST['factorFormaMother'];
+  
+        $slotsExpansion = $_POST['slotExpansionMother'];
+        $cantSata = $_POST['cantSataMother'];
+        $interfazM2 = $_POST['interfazM2Mother'];
+        $cantM2 = $_POST['cantM2Mother'];
+        $lan = $_POST['lanMother'];
+        $wifi = $_POST['wifiMother'];
+        $bluetooth = $_POST['bluetoothMother'];
+        $chipsetAudio = $_POST['chipsetAudioMother'];
+        $cantUsb20 = $_POST['cantUsb20Mother'];
+        $cantUsb30 = $_POST['cantUsb30Mother'];
+        $displayPort = $_POST['displayPortMother'];
+        $hdmi = $_POST['hdmiMother'];
+        $vga = $_POST['vgaMother'];
+  
+        $cantSlotsMemoria = $_POST['cantSlotsMemoriaMother'];
+        $capacidadMaximaMemoria = $_POST['capacidadMaximaMemoriaMother'];
+        $velocidadMaximaMemoria = $_POST['velocidadMaximaMemoriaMother'];
+
+        $camposSQL = "socketMother = '$socket', chipsetMother = '$chipset', factorFormaMother = '$factorForma', slotsRamMother = $cantSlotsMemoria, 
+        cantMaxRamMother = $capacidadMaximaMemoria, velocidadMaxRamMother = $velocidadMaximaMemoria, cantCanalesRamMother = $cantSlotsMemoria,
+        slotsExpasionMother = '$slotsExpansion', cantSataMother = $cantSata, interfazm2Mother = $interfazM2, cantPuertosM2Mother = $cantM2,
+        lanMother = $lan, wifiMother = $wifi, bluetoothMother = $bluetooth, chipsetAudioMother = '$chipsetAudio', puertosUsb20Mother = $cantUsb20,
+        puertosUsb30Mother = $cantUsb30, cantDisplayPortMother = $displayPort, cantHdmiMother = $hdmi, cantVgaMother = $vga, flashBiosButtonMother = $botonFlashBios,";
+
       }
+
       $id = $_POST['idPrd'];
       $nombrePubli = $_POST['nombrePubli'];
       $precio = $_POST['precio'];
@@ -451,64 +485,64 @@
     }
 
 
-        #PARTE MOTHERBOARD
+    #PARTE MOTHERBOARD
 
-        function agregarMother()
-        {
-          $link = conectar();
-    
-          $nombreProducto = $_POST['nombreProducto'];
-          $marcaProducto = $_POST['marcaProducto'];
-          $categoriaProducto = $_SESSION['categoria'];
-          $descripcionProducto = $_POST['descProducto'];
-          $unidadesProducto = $_POST['unidadesProducto'];
-          $precioProducto = $_POST['precioProducto'];
-    
-          $socket = $_POST['socketMother'];
-          $chipset = $_POST['chipsetMother'];
-          $botonFlashBios = $_POST['botonFlashBiosMother'];
-          $factorForma = $_POST['factorFormaMother'];
-    
-          $slotsExpansion = $_POST['slotExpansionMother'];
-          $cantSata = $_POST['cantSataMother'];
-          $interfazM2 = $_POST['interfazM2Mother'];
-          $cantM2 = $_POST['cantM2Mother'];
-          $lan = $_POST['lanMother'];
-          $wifi = $_POST['wifiMother'];
-          $bluetooth = $_POST['bluetoothMother'];
-          $chipsetAudio = $_POST['chipsetAudioMother'];
-          $cantUsb20 = $_POST['cantUsb20Mother'];
-          $cantUsb30 = $_POST['cantUsb30Mother'];
-          $displayPort = $_POST['displayPortMother'];
-          $hdmi = $_POST['hdmiMother'];
-          $vga = $_POST['vgaMother'];
-    
-          $cantSlotsMemoria = $_POST['cantSlotsMemoriaMother'];
-          $capacidadMaximaMemoria = $_POST['capacidadMaximaMemoriaMother'];
-          $velocidadMaximaMemoria = $_POST['velocidadMaximaMemoriaMother'];
-    
-          $img1 = subirImagen();
-          $img2 = subirImagen2();
-          $img3 = subirImagen3();
-          $img4 = subirImagen4();
-    
-          $sql = "INSERT INTO productos
-          ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4, 
-          socketMother, chipsetMother, factorFormaMother, slotsRamMother, cantMaxRamMother, velocidadMaxRamMother, slotsExpasionMother, cantSataMother, interfazm2Mother,
-          cantPuertosM2Mother, lanMother, wifiMother, bluetoothMother, chipsetAudioMother, puertosUsb20Mother, puertosUsb30Mother, cantDisplayPortMother, cantHdmiMother,
-          cantVgaMother, flashBiosButtonMother)
-          VALUES
-          ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
-           '$socket', '$chipset', '$factorForma', $cantSlotsMemoria, $capacidadMaximaMemoria, $velocidadMaximaMemoria, '$slotsExpansion', $cantSata, $interfazM2,
-            $cantM2, $lan, $wifi, $bluetooth, '$chipsetAudio', $cantUsb20, $cantUsb30, $displayPort, $hdmi, $vga, $botonFlashBios )";
-    
-          try{
-            $resultado = mysqli_query( $link,$sql );
-            return $resultado;
-          }catch(EXCEPTION $e){
-            return FALSE;
-          }
-        }
+    function agregarMother()
+    {
+      $link = conectar();
+
+      $nombreProducto = $_POST['nombreProducto'];
+      $marcaProducto = $_POST['marcaProducto'];
+      $categoriaProducto = $_SESSION['categoria'];
+      $descripcionProducto = $_POST['descProducto'];
+      $unidadesProducto = $_POST['unidadesProducto'];
+      $precioProducto = $_POST['precioProducto'];
+
+      $socket = $_POST['socketMother'];
+      $chipset = $_POST['chipsetMother'];
+      $botonFlashBios = $_POST['botonFlashBiosMother'];
+      $factorForma = $_POST['factorFormaMother'];
+
+      $slotsExpansion = $_POST['slotExpansionMother'];
+      $cantSata = $_POST['cantSataMother'];
+      $interfazM2 = $_POST['interfazM2Mother'];
+      $cantM2 = $_POST['cantM2Mother'];
+      $lan = $_POST['lanMother'];
+      $wifi = $_POST['wifiMother'];
+      $bluetooth = $_POST['bluetoothMother'];
+      $chipsetAudio = $_POST['chipsetAudioMother'];
+      $cantUsb20 = $_POST['cantUsb20Mother'];
+      $cantUsb30 = $_POST['cantUsb30Mother'];
+      $displayPort = $_POST['displayPortMother'];
+      $hdmi = $_POST['hdmiMother'];
+      $vga = $_POST['vgaMother'];
+
+      $cantSlotsMemoria = $_POST['cantSlotsMemoriaMother'];
+      $capacidadMaximaMemoria = $_POST['capacidadMaximaMemoriaMother'];
+      $velocidadMaximaMemoria = $_POST['velocidadMaximaMemoriaMother'];
+
+      $img1 = subirImagen();
+      $img2 = subirImagen2();
+      $img3 = subirImagen3();
+      $img4 = subirImagen4();
+
+      $sql = "INSERT INTO productos
+      ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4, 
+      socketMother, chipsetMother, factorFormaMother, slotsRamMother, cantMaxRamMother, velocidadMaxRamMother, slotsExpasionMother, cantSataMother, interfazm2Mother,
+      cantPuertosM2Mother, lanMother, wifiMother, bluetoothMother, chipsetAudioMother, puertosUsb20Mother, puertosUsb30Mother, cantDisplayPortMother, cantHdmiMother,
+      cantVgaMother, flashBiosButtonMother)
+      VALUES
+      ($marcaProducto, $categoriaProducto, '$nombreProducto', $precioProducto, $unidadesProducto, '$descripcionProducto', '$img1', '$img2', '$img3', '$img4',
+        '$socket', '$chipset', '$factorForma', $cantSlotsMemoria, $capacidadMaximaMemoria, $velocidadMaximaMemoria, '$slotsExpansion', $cantSata, $interfazM2,
+        $cantM2, $lan, $wifi, $bluetooth, '$chipsetAudio', $cantUsb20, $cantUsb30, $displayPort, $hdmi, $vga, $botonFlashBios )";
+
+      try{
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+      }catch(EXCEPTION $e){
+        return FALSE;
+      }
+    }
 
     #PARTE MEMORIA RAM
 

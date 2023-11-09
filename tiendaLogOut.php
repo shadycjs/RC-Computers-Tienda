@@ -66,12 +66,14 @@
 
         $mensaje = match( $error ){
             '1' => 'Intentelo nuevamente haciendo click aqui...',
-            '2' => 'Tiene que loguearse para ingresar al sitio'
+            '2' => 'Tiene que loguearse para ingresar al sitio',
+            '3' => 'Debe registrarse y loguearse para agregar productos al carrito'
         };
 
         $mensaje2 = match( $error ){
             '1' => 'USUARIO Y/O CONTRASEÑA INCORRECTAS',
-            '2' => 'NO TIENE PERMISO PARA ACCEDER'
+            '2' => 'NO TIENE PERMISO PARA ACCEDER',
+            '3' => 'TIENE QUE REGISTRARSE PARA COMPRAR'
         }
 ?>
     <div class="errorFondo"></div>
@@ -116,9 +118,12 @@
 ?>
 
 <?php
+    $class = 0;
     while($producto = mysqli_fetch_assoc($productos)) {
+        if($producto['estadoPrd'] == 1){
+            $class ++;
 ?>
-    <div class="item">
+    <div class="item" id="item__grid-<?= $class ?>">
         <figure>
             <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>
@@ -127,7 +132,7 @@
             <p class="precio">$<?= $producto['precioPrd'] ?></p>
             <p><?= $producto['descPrd'] ?></p>
             <p>Stock: <?= $producto['stockPrd'] ?></p>
-            <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>" class="info-producto-submit">VER DETALLE</a>
+            <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
         </div>
         <ul class="item__contacto">
             <li><ion-icon name="logo-whatsapp"></ion-icon>Whatsapp</li>
@@ -135,7 +140,7 @@
         </ul>
     </div>
 <?php
-    }
+    }}
 ?>
 
     <div class="container__todo__paginacion">

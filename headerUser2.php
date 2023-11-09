@@ -1,4 +1,5 @@
 <?php
+
     $verificarCliente = verificarCliente();
 
     $_SESSION['imagenActual'] = verImagenPorId();

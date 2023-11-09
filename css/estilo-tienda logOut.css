@@ -133,18 +133,49 @@ main{
     display: grid;
     font-family: 'Lato';
     gap: 20px;
-    grid-template-rows: repeat(3, .8fr);
-    width: 70%;
+    grid-template-rows: 50px repeat(3,.8fr);
+    width: 100%;
     height: auto;
     margin: 30px 30px 30px 10px;
     float: right;
     order: 1;
 }
 
+.container-items.container-items-grilla{
+    color: #333;
+    display: grid;
+    font-family: 'Lato';
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: .01fr 1fr 1fr .01fr;
+    width: 100%;
+    height: auto;
+    margin: 30px 30px 30px 10px;
+    float: right;
+    order: 1;
+}
+
+.container__buscador__grilla-grilla{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
 .item{
     display: flex;
-    min-height: 300px;
-    height: auto;
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: background-color 2s;
+    overflow: hidden;
+}
+
+.item-grilla{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
     width: 100%;
     border-radius: 10px;
     background-color: #fff;
@@ -161,10 +192,19 @@ figure{
     height: 100%;
 }
 
+.figure-grilla{
+    width: 100%;
+    height: 100%;
+}
+
+.figure-grilla img{
+    object-fit: contain;
+}
+
 figure img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px 10px 0 0;
     transition: all .5s;
 }
@@ -177,6 +217,15 @@ figure img{
     display: flex;
     flex-direction: column;
     width: 60%;
+    height: 100%;
+    padding: 15px;
+    justify-content: space-between;
+}
+
+.info-producto-grilla{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     height: 100%;
     padding: 15px;
     justify-content: space-between;
@@ -199,6 +248,10 @@ figure img{
     text-align: center;
 }
 
+.info-producto-submit-grilla{
+    width: 100%;
+}
+
 .item figure{
     overflow: hidden;
     border-radius: 10px 0 0 10px;
@@ -211,6 +264,10 @@ figure img{
     position: relative;
 }
 
+.item__contacto-grilla{
+    display: none;
+}
+
 .item__contacto li{
     display: flex;
     flex-direction: row;
@@ -220,6 +277,35 @@ figure img{
     top: 85%;
 }
 
+#item__grid-1.item.item-grilla {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#item__grid-2.item.item-grilla{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#item__grid-3.item.item-grilla{
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+#item__grid-4.item.item-grilla{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+#item__grid-5.item.item-grilla{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+#item__grid-6.item.item-grilla{
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+}
 
 /* FIN DEL GRID */
 

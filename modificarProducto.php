@@ -157,8 +157,8 @@
             <div class="containerModalInfoEstado">
                 <h2>ESTADO PUBLICACION:</h2>
                 <select name="estadoPc" id="">
+                    <option <?= ($producto['estadoPrd'] == 0) ? 'selected' : '' ?> value="0">Desactivar</option>
                     <option <?= ($producto['estadoPrd'] == 1) ? 'selected' : '' ?> value="1">Activar</option>
-                    <option <?= ($producto['estadoPrd'] == 0) ? 'selected' : '' ?> value="2">Desactivar</option>
                 </select>
             </div>
             <hr>
@@ -266,6 +266,71 @@ if($producto['idCategoria'] == 15){
             <li>Cache L3: <b><input type="number" name="cacheL3Micro" value="<?= $producto['cacheL3Micro'] ?>"></b>Mb</li>
         </ul> 
     </div>
+</div>
+
+</div>
+
+<?php
+    }elseif($producto['idCategoria'] == 2){
+?>
+
+<div class="containerModalInfoConfig__mother">
+
+<div class="containerModalInfoConfig__mother--caracteristicasGeneralesMemoria">
+    
+    <div class="containerModalInfoConfig__mother--caracteristicasGenerales">
+        <h4>CARACTERISTICAS GENERALES</h4>
+        <ul>
+            <li>Socket: <b><input type="text" name="socketMother" value="<?= $producto['socketMother'] ?>"></b></li>
+            <li>Chipset: <b><input type="text" name="chipsetMother" value="<?= $producto['chipsetMother'] ?>"></b></li>
+            <li>Boton FlashBios<b><select name="botonFlashBiosMother" id="">
+                <option <?= ($producto['flashBiosButtonMother'] == 0) ? 'Selected' : '' ?> value="0">No</option>
+                <option <?= ($producto['flashBiosButtonMother'] == 1) ? 'Selected' : '' ?> value="1">Si</option>
+            </select></b></li>
+            <li>Factor de forma: <b><input type="text" name="factorFormaMother" value="<?= $producto['factorFormaMother'] ?>"></b></li>
+        </ul>
+    </div>
+
+    <div class="containerModalInfoConfig__mother--memoria">
+        <h4>MEMORIA</h4>
+        <ul>
+            <li>Cantidad de slots de memorias: <b><input type="number" name="cantSlotsMemoriaMother" value="<?= $producto['slotsRamMother'] ?>"></b></li>
+            <li>Capacidad maxima: <b><input type="number" name="capacidadMaximaMemoriaMother" value="<?= $producto['cantMaxRamMother'] ?>"></b></li>
+            <li>Velocidad maxima: <b><input type="number" name="velocidadMaximaMemoriaMother" value="<?= $producto['velocidadMaxRamMother'] ?>"></b></li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="containerModalInfoConfig__mother--conectividad">
+    <h4>CONECTIVIDAD</h4>
+    <ul>
+        <li>Slots Expasion: <b><input type="text" name="slotExpansionMother" value="<?= $producto['slotsExpasionMother'] ?>"></b></li>
+        <li>Cantidad SATA: <b><input type="number" name="cantSataMother" value="<?= $producto['cantSataMother'] ?>"></b></li>
+        <li>Interfaz M.2:<b><select name="interfazM2Mother" id="">
+            <option <?= ($producto['interfazm2Mother'] == 0) ? 'Selected' : '' ?> value="0">No</option>
+            <option <?= ($producto['interfazm2Mother'] == 1) ? 'Selected' : '' ?> value="1">Si</option>
+        </select></b></li>
+        <li>Puertos M.2:<b><input type="number" name="cantM2Mother" value="<?= $producto['cantPuertosM2Mother'] ?>"></b></li>
+        <li>LAN:<b><select name="lanMother" id="">
+            <option <?= ($producto['lanMother'] == 0) ? 'Selected' : '' ?> value="0">No</option>
+            <option <?= ($producto['lanMother'] == 1) ? 'Selected' : '' ?> value="1">Si</option>
+        </select></b></li>
+        <li>WiFi:<b><select name="wifiMother" id="">
+            <option <?= ($producto['wifiMother'] == 0) ? 'Selected' : '' ?> value="0">No</option>
+            <option <?= ($producto['wifiMother'] == 1) ? 'Selected' : '' ?> value="1">Si</option>
+        </select></b></li>
+        <li>Bluetooth:<b><select name="bluetoothMother" id="">
+            <option <?= ($producto['bluetoothMother'] == 0) ? 'Selected' : '' ?> value="0">No</option>
+            <option <?= ($producto['bluetoothMother'] == 1) ? 'Selected' : '' ?> value="1">Si</option>
+        </select></b></li>
+        <li>Chipset Audio:<b><input type="text" name="chipsetAudioMother" value="<?= $producto['chipsetAudioMother'] ?>"></b></li>
+        <li>Puertos Usb 2.0:<b><input type="number" name="cantUsb20Mother" value="<?= $producto['puertosUsb20Mother'] ?>"></b></li>
+        <li>Puertos Usb 3.0:<b><input type="number" name="cantUsb30Mother" value="<?= $producto['puertosUsb30Mother'] ?>"></b></li>
+        <li>Display Port:<b><input type="number" name="displayPortMother" value="<?= $producto['cantDisplayPortMother'] ?>"></b></li>
+        <li>HDMI:<b><input type="number" name="hdmiMother" value="<?= $producto['cantHdmiMother'] ?>"></b></li>
+        <li>VGA:<b><input type="number" name="vgaMother" value="<?= $producto['cantVgaMother'] ?>"></b></li>
+    </ul>
 </div>
 
 </div>

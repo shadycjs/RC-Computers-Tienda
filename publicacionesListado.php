@@ -47,7 +47,7 @@
     while ($producto = mysqli_fetch_assoc($productos)) {
 ?>
 
-    <div class="item">
+    <div class="item" style="<?= ($producto['estadoPrd'] == 0) ? 'background-color: orange' : 'background-color: lightgreen' ?>">
         <figure>
             <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>
@@ -55,6 +55,7 @@
             <h2><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h2>
             <p class="precio">$<?= $producto['precioPrd'] ?></p>
             <p>Stock: <?= $producto['stockPrd'] ?></p>
+            <p>Estado: <?= ($producto['estadoPrd'] == 0) ? 'Deshabilitada' : 'Activa' ?></p>
             <div class="info-producto__buttons">
                 <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
                 <a href="http://localhost/RC/Tienda/eliminarProducto.php?id=<?= $producto['idPrd'] ?>" class="info-producto-submit" id="buttonEliminar">ELIMINAR PRODUCTO</a>

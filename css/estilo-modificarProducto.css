@@ -296,6 +296,32 @@ main{
 
 /* FIN DE LA PARTE MICROPROCESADOR */
 
+/* INICIO DE LA PARTE MOTHERBOARD */
+
+.containerModalInfoConfig__mother{
+    display: flex;
+    gap: 20px;
+}
+
+.containerModalInfoConfig__mother ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.containerModalInfoConfig__mother input[type="text"], select{
+    height: 30px;
+}
+
+.containerModalInfoConfig__mother input[type="number"]{
+    height: 40px;
+    width: 50px;
+}
+
+/* FIN DE LA PARTE MOTHERBOARD */
+
 /* INICIO DEL FOOTER */
 footer{
     background: linear-gradient(to bottom, black, #575353);

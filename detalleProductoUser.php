@@ -6,8 +6,15 @@
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
     require 'funciones/clientes.php';
-    include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
+    if(isset($_SESSION['idUsuario'])){
+        include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
+    }else{
+        include 'C:\xampp\htdocs\RC\Tienda\header.php';
+    }
     $productos = verPrdPorId( $_GET['id'] );
+    if(isset($_POST['agregarCarrito']) && !isset($_SESSION['idUsuario'])){
+        header('location: tiendaLogOut.php?error=3');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -422,7 +429,7 @@ if($producto['idCategoria'] == 15){
         </div>
 
     </div>
-    <a href="tiendaUser.php">VOLVER A CATALOGO</a>
+    <a href="<?= (isset($_SESSION['idUsuario'])) ? 'tiendaUser.php' : 'tiendaLogOut.php' ?>">VOLVER A CATALOGO</a>
     
 </form>
 <?php
