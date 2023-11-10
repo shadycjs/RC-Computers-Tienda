@@ -426,6 +426,117 @@ main{
 
 /* FIN DE LA PARTE PLACA DE VIDEO */
 
+/* INICIO DE LA PARTE DISCO DURO */
+
+.containerModalInfoConfig__discoDuro{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.containerModalInfoConfig__discoDuro ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.containerModalInfoConfig__discoDuro ul li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerModalInfoConfig__discoDuro input[type="text"], select{
+    height: 30px;
+}
+
+.containerModalInfoConfig__discoDuro input[type="number"]{
+    height: 40px;
+    width: 50px;
+}
+
+.containerModalInfoConfig__discoDuro h4{
+    border-bottom: 1px solid #000;
+}
+
+/* FIN DE LA PARTE DISCO DURO */
+
+/* INICIO DE LA PARTE DISCO SOLIDO */
+
+.containerModalInfoConfig__discoSolido{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.containerModalInfoConfig__discoSolido ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.containerModalInfoConfig__discoSolido ul li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerModalInfoConfig__discoSolido input[type="text"], select{
+    height: 30px;
+}
+
+.containerModalInfoConfig__discoSolido input[type="number"]{
+    height: 40px;
+    width: 50px;
+}
+
+.containerModalInfoConfig__discoSolido h4{
+    border-bottom: 1px solid #000;
+}
+
+/* FIN DE LA PARTE DISCO SOLIDO */
+
+/* INICIO DE LA PARTE FUENTE */
+
+.containerModalInfoConfig__fuente{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.containerModalInfoConfig__fuente ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.containerModalInfoConfig__fuente ul li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerModalInfoConfig__fuente input[type="text"], select{
+    height: 30px;
+}
+
+.containerModalInfoConfig__fuente input[type="number"]{
+    height: 40px;
+    width: 50px;
+}
+
+.containerModalInfoConfig__fuente h4{
+    border-bottom: 1px solid #000;
+}
+
+/* FIN DE LA PARTE FUENTE */
+
 /* INICIO DEL FOOTER */
 footer{
     background: linear-gradient(to bottom, black, #575353);

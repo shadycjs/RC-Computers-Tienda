@@ -409,6 +409,52 @@
         numeroFanCoolersPlacaVideo = $numeroCoolers, displayPortPlacaVideo = $displayPort, hdmiPlacaVideo = $hdmi, dviPlacaVideo = $dvi,
         anchoPlacaVideo = $ancho, largoPlacaVideo = $largo, pesoPlacaVideo = $peso,";
 
+      }elseif($_SESSION['idCategoria'] == 4){
+
+        $interfaz = $_POST['interfazDiscoDuro'];
+        $capacidad = $_POST['capacidadDiscoDuro'];
+        $factorForma = $_POST['factorFormaDiscoDuro'];
+  
+        $rpm = $_POST['rpmDiscoDuro'];
+        $memoriaCache = $_POST['memoriaCacheDiscoDuro'];
+
+        $camposSQL = "factorFormaDiscoDuro = $factorForma, interfazDiscoDuro = '$interfaz', capacidadDiscoDuro = $capacidad,
+        rpmDiscoDuro = $rpm, memoriaCacheDiscoDuro = $memoriaCache,";
+
+      }elseif($_SESSION['idCategoria'] == 5){
+
+        $interfaz = $_POST['interfazDiscoSolido'];
+        $capacidad = $_POST['capacidadDiscoSolido'];
+        $factorForma = $_POST['factorFormaDiscoSolido'];
+  
+        $lectura = $_POST['lecturaDiscoSolido'];
+        $escritura = $_POST['escrituraDiscoSolido'];
+
+        $camposSQL = "factorFormaDiscoSolido = $factorForma, interfazDiscoSolido = '$interfaz', capacidadDiscoSolido = $capacidad,
+        lecturaDiscoSolido = $lectura, escrituraDiscoSolido = $escritura,";
+
+      }elseif($_SESSION['idCategoria'] == 8){
+
+        $potencia = $_POST['potenciaFuente'];
+        $factorForma = $_POST['factorFormaFuente'];
+        $tamañoFanCooler = $_POST['tamanioFanCoolerFuente'];
+        $certificacion = $_POST['certificacionFuente'];
+  
+        $conectorMother204Pin = $_POST['conectorMother204PinFuente'];
+        $conectorCpu44Pin = $_POST['conectorCpu44PinFuente'];
+        $conectorCpu8Pin = $_POST['conectorCpu8PinFuente'];
+        $conectorSata = $_POST['conectorSataFuente'];
+        $conectorMolex4Pin = $_POST['conectorMolex4PinFuente'];
+        $conectorFloppy4Pin = $_POST['conectorFloppy4PinFuente'];
+        $conectorPcie62Pin = $_POST['conectorPcie62PinFuente'];
+  
+        $iluminacion = $_POST['iluminacionFuente'];
+
+        $camposSQL = "certificacionFuente = '$certificacion', potenciaFuente = $potencia, factorFormaFuente = '$factorForma',
+        tamanioFanCoolerFuente = $tamañoFanCooler, conectorMother204PinFuente = $conectorMother204Pin, conectorCpu44PinFuente = $conectorCpu44Pin,
+        conectorCpu8PinFuente = $conectorCpu8Pin, conectorSataFuente = $conectorSata, conectorMolex4PinFuente = $conectorMolex4Pin, 
+        conectorFloppy4PinFuente = $conectorFloppy4Pin, conectorPcie62PinFuente = $conectorPcie62Pin, iluminacionCoolerFuente = $iluminacion,";
+
       }
 
       $id = $_POST['idPrd'];

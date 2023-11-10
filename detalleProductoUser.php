@@ -393,7 +393,8 @@ if($producto['idCategoria'] == 15){
                 <ul>
                     <li>Watts Reales: <b><?= $producto['potenciaFuente'] ?>W</b></li>
                     <li>Formato: <b><?= $producto['factorFormaFuente'] ?></b></li>
-                    <li>Tamaño fan cooler:<b> <?= $producto['tamanioFanCoolerFuente'] ?>mm</b></li>
+                    <li>Tamaño fan cooler:<b><?= $producto['tamanioFanCoolerFuente'] ?>mm</b></li>
+                    <li>Certificacion:<b><?= $producto['certificacionFuente'] ?></b></li>
                 </ul>
             </div>
 

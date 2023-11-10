@@ -415,6 +415,97 @@ if($producto['idCategoria'] == 15){
 </div>
 
 <?php
+    }elseif($producto['idCategoria'] == 4){
+?>
+
+<div class="containerModalInfoConfig__discoDuro">
+
+    <div class="containerModalInfoConfig__discoDuro--caracteristicasGenerales">
+        <h4>CARACTERISTICAS GENERALES</h4>
+        <ul>
+            <li>Tipo de conexion: <b><input type="text" name="interfazDiscoDuro" value="<?= $producto['interfazDiscoDuro'] ?>"></b></li>
+            <li>Capacidad: <b><input type="number" name="capacidadDiscoDuro" value="<?= $producto['capacidadDiscoDuro'] ?>"></b></li>
+            <li>Factor de forma:<b><input type="number" step="0.01" name="factorFormaDiscoDuro" value="<?= $producto['factorFormaDiscoDuro'] ?>"></b></li>
+        </ul>
+    </div>
+
+    <div class="containerModalInfoConfig__discoDuro--rendimiento">
+    <h4>RENDIMIENTO</h4>
+        <ul>
+            <li>Revoluciones por minuto: <b><input type="number" name="rpmDiscoDuro" value="<?= $producto['rpmDiscoDuro'] ?>"></b></li>
+            <li>Cache: <b><input type="number" name="memoriaCacheDiscoDuro" value="<?= $producto['memoriaCacheDiscoDuro'] ?>"></b></li>
+        </ul>
+    </div>
+
+</div>
+
+<?php
+    }elseif($producto['idCategoria'] == 5){
+?>
+
+<div class="containerModalInfoConfig__discoSolido">
+
+    <div class="containerModalInfoConfig__discoSolido--caracteristicasGenerales">
+        <h4>CARACTERISTICAS GENERALES</h4>
+        <ul>
+            <li>Tipo de conexion: <b><input type="text" name="interfazDiscoSolido" value="<?= $producto['interfazDiscoSolido'] ?>"></b></li>
+            <li>Capacidad: <b><input type="number" name="capacidadDiscoSolido" value="<?= $producto['capacidadDiscoSolido'] ?>"></b></li>
+            <li>Factor de forma:<b><input type="number" name="factorFormaDiscoSolido" value="<?= $producto['factorFormaDiscoSolido'] ?>"></b></li>
+        </ul>
+    </div>
+
+    <div class="containerModalInfoConfig__discoSolido--rendimiento">
+    <h4>RENDIMIENTO</h4>
+        <ul>
+            <li>Lectura: <b><input type="number" name="lecturaDiscoSolido" value="<?= $producto['lecturaDiscoSolido'] ?>"></b></li>
+            <li>Escritura: <b><input type="number" name="escrituraDiscoSolido" value="<?= $producto['escrituraDiscoSolido'] ?>"></b></li>
+        </ul>
+    </div>
+
+</div>
+
+<?php
+    }elseif($producto['idCategoria'] == 8 ){
+?>
+
+<div class="containerModalInfoConfig__fuente">
+
+    <div class="containerModalInfoConfig__fuente--caracteristicasGenerales">
+        <h4>CARACTERISTICAS GENERALES</h4>
+        <ul>
+            <li>Watts Reales: <b><input type="number" name="potenciaFuente" value="<?= $producto['potenciaFuente'] ?>"></b></li>
+            <li>Formato: <b><input type="text" name="factorFormaFuente" value="<?= $producto['factorFormaFuente'] ?>"></b></li>
+            <li>Tamaño fan cooler:<b><input type="number" name="tamanioFanCoolerFuente" value="<?= $producto['tamanioFanCoolerFuente'] ?>"></b></li>
+            <li>Certificacion:<b><input type="text" name="certificacionFuente" value="<?= $producto['certificacionFuente'] ?>"></b></li>
+        </ul>
+    </div>
+
+    <div class="containerModalInfoConfig__fuente--cableado">
+        <h4>CABLEADO</h4>
+        <ul>
+            <li>Conector Mother 20 pin: <b><input type="number" name="conectorMother204PinFuente" value="<?= $producto['conectorMother204PinFuente'] ?>"></b></li>
+            <li>Conector CPU 4 pines: <b><input type="number" name="conectorCpu44PinFuente" value="<?= $producto['conectorCpu44PinFuente'] ?>"></b></li>
+            <li>Conector CPU 8 pines: <b><input type="number" name="conectorCpu8PinFuente" value="<?= $producto['conectorCpu8PinFuente'] ?>"></b></li>
+            <li>Conexiones SATA: <b><input type="number" name="conectorSataFuente" value="<?= $producto['conectorSataFuente'] ?>"></b></li>
+            <li>Conexiones MOLEX: <b><input type="number" name="conectorMolex4PinFuente" value="<?= $producto['conectorMolex4PinFuente'] ?>"></b></li>
+            <li>Conexiones FLOPPY: <b><input type="number" name="conectorFloppy4PinFuente" value="<?= $producto['conectorFloppy4PinFuente'] ?>"></b></li>
+            <li>Conector PCIe 6 Pines: <b><input type="number" name="conectorPcie62PinFuente" value="<?= $producto['conectorPcie62PinFuente'] ?>"></b></li>
+        </ul>
+    </div>
+
+    <div class="containerModalInfoConfig__fuente--iluminacion">
+        <h4>ILUMINACION</h4>
+        <ul>
+            <li>Cooler: <b><select name="iluminacionFuente" id="">
+                <option <?= ($producto['iluminacionCoolerFuente'] == 0) ? 'Selected' : '' ?> value="0">No</option>
+                <option <?= ($producto['iluminacionCoolerFuente'] == 1) ? 'Selected' : '' ?> value="1">Si</option>
+            </select></b></li>
+        </ul>
+    </div>
+
+</div>
+
+<?php
     }
 ?>
         </div>
