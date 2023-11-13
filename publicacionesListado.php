@@ -5,10 +5,12 @@
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
     require 'funciones/clientes.php';
+    require 'funciones/categorias.php';
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     autenticar();
     $productos = buscarProductoPublicacionesListado();
+    $categorias = listarCategorias();
 ?>
 
 <!DOCTYPE html>
@@ -37,10 +39,30 @@
         <a href="agregarProducto.php"><ion-icon name="cloud-upload"></ion-icon> AGREGAR PUBLICACION NUEVA </a>
     </div>
 
-    <form action="" method="get" class="container__buscador__grilla--buscador">
-        <button type="submit" class="button__buscador"><ion-icon name="search-circle" class="icono__buscador"></ion-icon></button>
-        <input type="search" name="search" id=""> 
-    </form>
+    <div class="container__todo__filtrosBarraBusqueda">
+
+        <div class="container__todo__barraBusqueda">
+            <form action="" method="get" class="container__buscador__grilla--buscador">
+                <button type="submit" class="button__buscador"><ion-icon name="search-circle" class="icono__buscador"></ion-icon></button>
+                <input type="search" name="search" id=""> 
+            </form>
+        </div>
+
+        <form method="post" action="" class="container__todo__filtros">
+            <label for="">Categoria:</label>
+            <select name="" id="">
+<?php
+    while( $categoria = mysqli_fetch_assoc( $categorias ) ){
+?>
+                <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['nombreCategoria'] ?></option>
+<?php
+    }
+?>
+            </select>
+            <input type="submit" value="Filtrar" id="filtrarCat">
+        </form>
+
+    </div>
 
     <div class="container-items" id="shopContent"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
 <?php
@@ -58,7 +80,7 @@
             <p>Estado: <?= ($producto['estadoPrd'] == 0) ? 'Deshabilitada' : 'Activa' ?></p>
             <div class="info-producto__buttons">
                 <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
-                <a href="http://localhost/RC/Tienda/eliminarProducto.php?id=<?= $producto['idPrd'] ?>" class="info-producto-submit" id="buttonEliminar">ELIMINAR PRODUCTO</a>
+                <a href="http://localhost/RC/Tienda/eliminarProducto.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit" id="buttonEliminar">ELIMINAR PRODUCTO</a>
                 <a href="http://localhost/RC/Tienda/modificarProducto.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria']?>&idMarca=<?= $producto['idMarca'] ?>" class="info-producto-submit" id="buttonModificar">MODIFICAR PRODUCTO</a>
             </div>
         </div>

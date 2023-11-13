@@ -488,7 +488,7 @@
 
       $id = $_GET['id'];
 
-      $sql = "DELETE FROM pc_venta WHERE idPrd = ".$id;
+      $sql = "DELETE FROM productos WHERE idPrd = ".$id;
 
       try{
           $resultado = mysqli_query( $link,$sql );

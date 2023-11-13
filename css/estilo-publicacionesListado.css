@@ -61,7 +61,26 @@ main h1{
     color: green;
 }
 
-/* INICIO DEL CONTAINER BUSCADOR */
+
+/* INICIO DEL CONTAINER BUSCADOR y FILTROS */
+
+.container__todo__filtrosBarraBusqueda{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+}
+
+.container__todo__filtros{
+    display: flex;
+    flex-direction: column;
+}
+
+#filtrarCat{
+    background-color: transparent;
+    cursor: pointer;
+}
 
 .container__buscador__grilla--buscador{
     width: 100%;
