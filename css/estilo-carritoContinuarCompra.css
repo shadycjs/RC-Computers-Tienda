@@ -325,11 +325,13 @@ main{
     height: 100%;
     gap: 20px;
     align-items: center;
+    text-overflow: ellipsis;
 }
 
 .containerModal__carrito__imgNombre--img{
-    width: 300px;
+    min-width: 20%;
     height: 100%;
+    background-color: #fff;
 }
 
 .containerModal__carrito__imgNombre img{
@@ -338,10 +340,18 @@ main{
     object-fit: contain;
 }
 
+.containerModal__carrito__imgNombre--nombre{
+    min-width: 20%;
+}
+
 .containerModal__carrito__cantidad{
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.containerModal__carrito__precio{
+    min-width: 20%; 
 }
 
 .containerModal__carrito__cantidad button{

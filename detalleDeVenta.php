@@ -71,7 +71,7 @@
 
                             <tr class="container__todo__compras__sub--table-tr-1">
                                 <td>Fecha</td>
-                                <td>Importe</td>
+                                <td>Importe Unitario</td>
                                 <td>Cantidad</td>
                                 <td>Condicion de pago</td>
                                 <td>Nombre producto</td>
@@ -86,7 +86,7 @@
                                 <td>$<?= number_format($compra['importe'], 2) ?></td>
                                 <td><?= $compra['cantidad'] ?></td>
                                 <td><?= $compra['condicionPago'] ?></td>
-                                <td><?= $compra['nombrePc'] ?></td>
+                                <td><?= $compra['nombrePrd'] ?></td>
                                 <td><?= $compra['transporte'] ?></td>
                             </tr>
                 <?php

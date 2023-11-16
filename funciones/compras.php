@@ -20,8 +20,8 @@
         $nroVenta = $_GET['nroVenta'];
 
         $idUser = $_SESSION['idUsuario'];
-        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, nombrePc, transporte FROM orden__venta ov
-                  INNER JOIN pc_venta pc ON pc.idPrd = ov.idPrd
+        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, nombrePrd, transporte FROM orden__venta ov
+                  INNER JOIN productos p ON p.idPrd = ov.idPrd
                     WHERE idUsuario = ".$idUser." AND nroVenta = ".$nroVenta;
         $resultado = mysqli_query( $link,$sql );
         return $resultado;

@@ -255,7 +255,11 @@
                 if( $conteoComprasClientes <= 0 ){
             ?>
 
-                    <h1>NO TIENES VENTAS AUN...</h1>
+                    <div class="container__todo__compras__sub--sinCompras">
+                        <h1>NO TIENES VENTAS AUN...</h1>
+                        <ion-icon name="ban" id="iconoSinProductosCarrito"></ion-icon>
+                    </div>
+
 
             <?php
                 }else{
