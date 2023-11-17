@@ -134,8 +134,28 @@ main{
 }
 
 .container__sub__2--datos{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
+    justify-content: center;
+}
+
+#enviarModificarCambios{
+    width: 50%;
+    align-self: center;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+}
+
+#enviarModificarCambios:hover{
+    background-color: #52a838;
+    transition: all 1s;
+    border-color: #fff;
+    color: #fff;
 }
 
 .container__sub__2{

@@ -1,11 +1,13 @@
 <?php
 
     require 'funciones/conexionbd.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/autenticar.php';
+    require 'funciones/usuarios.php';
+    require 'funciones/clientes.php';
     include 'C:\xampp\htdocs\RC\Tienda\login.php';
     include 'C:\xampp\htdocs\RC\Tienda\header.php';
-    $computadoras = verPcPorId( $_GET['id'] );
+    $computadoras = verPrdPorId( $_GET['id'] );
 
     if( isset($_POST['btnIngresar']) ){
         login();

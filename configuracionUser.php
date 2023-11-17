@@ -32,6 +32,12 @@
         $bajarFactura = bajarFactura();
     }
 
+    if( isset($_POST['agregarDatosUser']) ){
+        $actualizarUser = agregarCliente();
+    }elseif( isset($_POST['modificarDatosUser']) ){
+        $actualizarUser = modificarCliente();
+    }
+
     $infoClientes = infoCliente();
 
     if(mysqli_num_rows($infoClientes)!= 0){
@@ -75,6 +81,8 @@
                         ,'Tierra del Fuego'
                         ,'Tucuman');
     $cantProvincias = count($provincias);
+
+    $clientePorId = listarClientePorId();
 
 ?>
 
@@ -155,7 +163,7 @@
 
             </form>
 
-        <div class="container__sub__2--datos">
+        <form action="" method="post" class="container__sub__2--datos">
             <div class="container__sub__2">
 
                 <div class="container__sub__3--TituloInfoPersonal">
@@ -169,7 +177,7 @@
                 <div class="container__sub__3--provinciaCiudad">
                     <div class="container__sub__4--provincia">
                         <label for="provincia">Provincia</label>
-                        <select name="provincia" id="">
+                        <select name="provinciaCli" id="">
 <?php
                     for( $i=0;$i<$cantProvincias;$i++ ){
 ?>
@@ -180,7 +188,7 @@
                         </select>
                     </div>
                     <div class="container__sub__4--ciudad">
-                        <input type="text" name="ciudad" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliCiudad : '' ?>" required>
+                        <input type="text" name="ciudadCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliCiudad'] : '' ?>" required>
                         <label for="ciudad">Ciudad</label>
                     </div>
                 </div>
@@ -191,11 +199,11 @@
 
                 <div class="container__sub__3--calleAltura" id="containerCalleAltura">
                     <div class="container__sub__4--calle">
-                        <input type="text" name="calle" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliCalle : '' ?>" required>
+                        <input type="text" name="calleCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliCalle'] : '' ?>" required>
                         <label for="calle">Calle</label>
                     </div>
                     <div class="container__sub__4--altura">
-                        <input type="number" name="altura" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliAltura : '' ?>" required>
+                        <input type="number" name="alturaCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliAltura'] : '' ?>" required>
                         <label for="altura">Altura</label>
                     </div>
                 </div>
@@ -206,15 +214,15 @@
 
                 <div class="container__sub__3--pisoDeptoTorre" id="containerpisoDeptoTorre">
                     <div class="container__sub__4--piso">
-                        <input type="number" name="piso" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliPiso : '' ?>" required>
+                        <input type="number" name="pisoCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliPiso'] : '' ?>" required>
                         <label for="piso">Piso</label>
                     </div>
                     <div class="container__sub__4--Depto">
-                        <input type="number" name="depto" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliDepto : '' ?>" required>
+                        <input type="number" name="deptoCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliDepto'] : '' ?>" required>
                         <label for="depto">Depto</label>
                     </div>
                     <div class="container__sub__4--Torre">
-                        <input type="number" name="torre" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliTorre : '' ?>" required>
+                        <input type="number" name="torreCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliTorre'] : '' ?>" required>
                         <label for="torre">Torre</label>
                     </div>
                 </div>
@@ -225,11 +233,11 @@
 
                 <div class="container__sub__3--localidadCodpostal" id="containerlocalidadCodpostal">
                     <div class="container__sub__4--localidad">
-                        <input type="text" name="localidad" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliLocalidad : '' ?>" required>
+                        <input type="text" name="localidadCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliLocalidad'] : '' ?>" required>
                         <label for="localidad">Localidad</label>
                     </div>
                     <div class="container__sub__4--codpostal">
-                        <input type="number" name="codpostal" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliPostal : '' ?>" required>
+                        <input type="number" name="codpostalCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliPostal'] : '' ?>" required>
                         <label for="codpostal">Cod.Postal</label>
                     </div>
 
@@ -242,13 +250,26 @@
                 <div class="container__sub__3--observaciones" id="containerobservaciones">
                     <div class="container__sub__4--observaciones">
                         <label for="observaciones">Observaciones</label>
-                        <textarea name="" id="" cols="30" rows="10"><?= mysqli_num_rows($infoClientes)!= 0 ? $CliObser : '' ?></textarea>
+                        <textarea name="observacionesCli" id="" cols="30" rows="10"><?= mysqli_num_rows($infoClientes)!= 0 ? $clientePorId['CliObser'] : '' ?></textarea>
                     </div>
                 </div>
 
             </div>
+            <input type="hidden" name="idCli" value="<?= $clientePorId['idCli'] ?>">
+<?php
+    if($verificarCliente == null){
+?>
 
-        </div>
+            <input type="submit" name="agregarDatosUser" value="Agregar Datos" id="enviarModificarCambios">
+
+<?php
+    }else{
+?>
+            <input type="submit" name="modificarDatosUser" value="Modificar Datos" id="enviarModificarCambios">
+<?php
+    }
+?>
+        </form>
 
         <div class="container__todo__compras__sub">
             <?php

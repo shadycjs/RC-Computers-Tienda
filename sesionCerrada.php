@@ -79,7 +79,7 @@
             <h2><?= $producto['nombrePrd'] ?></h2>
             <p class="precio">$<?= $producto['precioPrd'] ?></p>
             <p>Stock: <?= $producto['stockPrd'] ?></p>
-            <a href="http://localhost/RC/Tienda/detalleProductoLogOut.php?id=<?= $computadora['idPrd'] ?>" class="info-producto-submit">VER DETALLE</a>
+            <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
         </div>
         <ul class="item__contacto">
             <li><ion-icon name="logo-whatsapp"></ion-icon>Whatsapp</li>
