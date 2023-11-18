@@ -18,6 +18,8 @@
         }elseif($_POST['medioPago'] == 'Transf/Depo Bancario'){
             $_SESSION['condPago'] = 'Transf/Depo Bancario';
         }
+    }else{
+        header('location: carritoContinuarCompraPago.php?error=3');
     }
     
 ?>
@@ -154,7 +156,8 @@ if(!empty($_SESSION['CARRITO'])){
 <?php
         if($_SESSION['condPago'] == 'MercadoPago'){
 ?>
-        <div id="wallet_container"></div>
+        <div id="wallet_container">
+        </div>
 <?php
         }
 ?>

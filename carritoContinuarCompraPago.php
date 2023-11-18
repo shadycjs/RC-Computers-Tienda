@@ -8,13 +8,21 @@
     require 'funciones/clientes.php';
     session_start();
     if(isset($_POST['sig'])){
-        $insertarCliente = agregarCliente();
+        $clientePorId = listarClientePorId();
+        if($clientePorId == null){
+            $insertarCliente = agregarCliente();
+        }else{
+            $modificarCliente = modificarCliente();
+        }
+
         if($_POST['transporte'] == 'andreani'){
             $_SESSION['transporte'] = 'Andreani';
             $_SESSION['envio'] = $_POST['precioAndreani'];
         }elseif($_POST['transporte'] == 'oca'){
             $_SESSION['transporte'] = 'Oca';
             $_SESSION['envio'] = $_POST['precioOca'];
+        }else{
+            header('location: carritoContinuarCompra.php?error=3');
         }
     }
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
@@ -76,6 +84,32 @@
             <b id="cerrarSesionNo">NO</b>
         </div>
 </div>
+
+<?php
+    if( isset($_GET['error']) ){
+        $error = $_GET['error'];
+
+        $mensaje = match( $error ){
+            '1' => 'Debe completar todos los campos',
+            '2' => 'Tiene que loguearse para ingresar al sitio',
+            '3' => 'Debe elegir entre los medios de pago ofrecidos para continuar con su compra'
+        };
+
+        $mensaje2 = match( $error ){
+            '1' => 'ERROR AL INGRESAR LOS DATOS DE ENVIO',
+            '2' => 'NO TIENE PERMISO PARA ACCEDER',
+            '3' => 'DEBE SELECCIONAR UNA FORMA DE PAGO'
+        }
+?>
+    <div class="errorFondo"></div>
+    <div class="error">
+        <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1><?= $mensaje2 ?></h1>
+        <p class="error__p"><?= $mensaje ?></p>
+    </div>
+<?php
+    }
+?>
 
     <div class="containerTodo" id="formulario">   
         <form method="post" action="carritoContinuarCompraPagoFinalizar.php" class="containerModal">

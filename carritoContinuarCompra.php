@@ -52,6 +52,8 @@
     ,'Tierra del Fuego'
     ,'Tucuman');
 $cantProvincias = count($provincias);
+
+    $clientePorId = listarClientePorId();
 ?>
 
 <!DOCTYPE html>
@@ -116,12 +118,14 @@ $cantProvincias = count($provincias);
 
         $mensaje = match( $error ){
             '1' => 'Debe completar todos los campos',
-            '2' => 'Tiene que loguearse para ingresar al sitio'
+            '2' => 'Tiene que loguearse para ingresar al sitio',
+            '3' => 'Debe elegir entre los transportes ofrecidos para continuar con su compra'
         };
 
         $mensaje2 = match( $error ){
             '1' => 'ERROR AL INGRESAR LOS DATOS DE ENVIO',
-            '2' => 'NO TIENE PERMISO PARA ACCEDER'
+            '2' => 'NO TIENE PERMISO PARA ACCEDER',
+            '3' => 'DEBE SELECCIONAR UN TRANSPORTE'
         }
 ?>
     <div class="errorFondo"></div>
@@ -140,7 +144,7 @@ $cantProvincias = count($provincias);
 ?>
     <div class="container__sinProductosCarrito">
         <h3>NO HAY PRODUCTOS EN SU CARRITO...</h3>
-        <ion-icon name="ban" id="iconoSinProductosCarrito"></ion-icon>
+        <ion-icon name="ban" id="iconoSinProductosCarritoPagina"></ion-icon>
         <a href="tiendaUser.php">VOLVER A CATALOGO</a>
     </div>
 <?php
@@ -202,9 +206,7 @@ if(!empty($_SESSION['CARRITO'])){
     $total = $total+($precioProducto*$cantidadProducto);
     }
 ?>
-            <div class="contenedor__carrito__modal__sub--totalCompra" id="TOTAL">
-                <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2,'.',',') : '0' ?></h1>
-            </div>
+
     
             
     <form action="carritoContinuarCompraPago.php" method="post" class="contenedor__carrito__modal__envios">
@@ -239,14 +241,6 @@ if(!empty($_SESSION['CARRITO'])){
 
                 <div class="container__sub__3 TituloInfoPersonal">
                     <h3>Información para el envío:</h3>
-                </div>
-
-            </div>
-            
-            <div class="container__sub__2">
-
-                <div class="container__sub__3--TituloInfoPersonal">
-                    <h1>Datos del usuario:</h1>
                 </div>
 
             </div>
@@ -371,17 +365,20 @@ if(!empty($_SESSION['CARRITO'])){
 <?php
 }
 ?>
-
-        <div class="container__siguente">
+                <input type="hidden" name="idCli" value="<?= $clientePorId['idCli'] ?>">
+<div class="container__siguente">
             <div id="anterior">ANTERIOR</div>
             <div id="contadorSiguiente">SIGUIENTE</div>
             <input type="submit" name="sig" value="SIGUIENTE" id="contadorSiguienteInput">
         </div>
+</form>
+        <div class="contenedor__carrito__modal__sub--totalCompra" id="TOTAL">
+            <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2,'.',',') : '0' ?></h1>
+        </div>
+
+
         
         <a href="tiendaUser.php">VOLVER A CATALOGO</a>
-</form>
-
-
 
 
         </div>

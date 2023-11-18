@@ -23,12 +23,14 @@ listElements.forEach(listElement => {
 
 const contenedorCarrito = document.querySelector('.contenedor__carrito');
 const contenedorCarritoModal = document.querySelector('.contenedor__carrito__modal');
+const containerCarrito = document.querySelector('.carrito__modal__on');
 
 if(contenedorCarrito != null){
     contenedorCarrito.addEventListener('click', ()=>{
         contenedorCarritoModal.classList.toggle('carrito__modal__on');
     });
 }
+
 // USER
 
 const nameUser = document.querySelector('.contenedor__perfil__info--user');
@@ -36,11 +38,12 @@ const logOut = document.querySelector('.contenedor__perfil__info--logout');
 const main = document.querySelector('.mainClass');
 const flechitaUser = document.querySelector('.flechitaUser');
 
-nameUser.addEventListener('click', ()=> {
-    logOut.classList.toggle('on');
-    flechitaUser.classList.toggle('flechitaUserRotate');
-});
-
+if(nameUser != null){
+    nameUser.addEventListener('click', ()=> {
+        logOut.classList.toggle('on');
+        flechitaUser.classList.toggle('flechitaUserRotate');
+    });
+}
 main.addEventListener('click', ()=> {
     logOut.classList.remove('on');
     flechitaUser.classList.remove('flechitaUserRotate');
@@ -56,11 +59,12 @@ const noCerrar = document.getElementById('cerrarSesionNo');
 const cerrarSesionH1 = document.getElementById('cerrarSesion');
 
 
-cerrarSesion.addEventListener('click', ()=> {
-    sesionContainer.style.display = "flex";
-    fondoSesion.style.display = "block";
-});
-
+if(cerrarSesion != null){
+    cerrarSesion.addEventListener('click', ()=> {
+        sesionContainer.style.display = "flex";
+        fondoSesion.style.display = "block";
+    });
+}
 iconoCerrarSesion.addEventListener('click', ()=>{
     sesionContainer.style.display = "none";
     fondoSesion.style.display = "none";
