@@ -120,8 +120,11 @@ if(isset($_SESSION['CARRITO'])){
                 <p class="contenedor__carrito-a"><ion-icon class="cart" name="cart"></ion-icon><div class="contenedor__conteo"><?= empty($_SESSION['CARRITO']) ? '0' : count($_SESSION['CARRITO']) ?></div></p>
 
                 <div class="contenedor__carrito__modal">
+                <button name="cerrarCarrito" id="botonCerrarCarrito"><ion-icon name="close-circle-outline" id="iconoCerrarCarrito"></ion-icon></button>
                     <div class="contenedor__carrito__modal__sub">
+
                         <h2>MI CARRITO:</h2>
+
 <?php
     if( empty($_SESSION['CARRITO']) ){
 ?>
@@ -193,19 +196,22 @@ if(!empty($_SESSION['CARRITO'])){
     }
 
 ?>
-                        <div class="contenedor__carrito__modal__sub--totalCompra">
-                            <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2, ',', '.') : '0' ?></h1>
-                        </div>
 <?php
     if( $verificarCliente && isset($_SESSION['envio']) ){
 ?>
                         <div class="contenedor__carrito__modal__sub--continuarComprando">
+                            <div class="contenedor__carrito__modal__sub--totalCompra">
+                                <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2, ',', '.') : '0' ?></h1>
+                            </div>
                             <a href="carritoContinuarCompraPagoFinalizar.php">CONTINUAR CON MI COMPRA</a>
                         </div>
 <?php
     }else{
 ?>
                         <div class="contenedor__carrito__modal__sub--continuarComprando">
+                            <div class="contenedor__carrito__modal__sub--totalCompra">
+                                <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2, ',', '.') : '0' ?></h1>
+                            </div>
                             <a href="carritoContinuarCompra.php">CONTINUAR CON MI COMPRA</a>
                         </div>
 <?php

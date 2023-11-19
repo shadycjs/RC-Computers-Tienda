@@ -515,7 +515,6 @@
     {
       $link = conectar();
       $numrandom = (rand(1,maxIdPc()));
-      var_dump($numrandom);
 
       $sql = "SELECT idPrd, nombrePrd, stockPrd, precioPrd, img1, c.idCategoria FROM productos p
                 INNER JOIN categoria c ON c.idCategoria = p.idCategoria

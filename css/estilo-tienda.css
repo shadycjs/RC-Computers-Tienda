@@ -622,7 +622,6 @@ aside{
     font-family: 'Lato';
     gap: 20px;
     grid-template-columns: 80%;
-    min-width: 562px;
     height: 100%;
     order: 1;
     margin: 0;
@@ -981,21 +980,20 @@ aside{
     font-family: 'Lato';
     gap: 20px;
     width: 100%;
+    min-width: 0;
     margin: 20px 0;
     order: 1;
-    grid-template-columns: 100%;
     justify-content: center;
+    grid-template-columns: 350px;
 }
 
 .item{
     display: flex;
     flex-direction: column;
-    width: 400px;
     border-radius: 10px;
     background-color: #fff;
     transition: background-color 2s;
     overflow: hidden;
-    margin-left: 7px;
 }
 
 .item:hover{
@@ -1116,6 +1114,7 @@ figure img{
 
 .container__buscador__grilla--buscador input{
     height: 80%;
+    width: 80%;
 }
 
 .container__resultado{
@@ -1125,19 +1124,6 @@ figure img{
     width: 33.33%;
 }
 
-.container__lista__grid{
-    width: 33.33%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.icono__lista__grid{
-    height: 100%;
-    width: 10%;
-    cursor: pointer;
-}
 
 /* FIN DEL CONTAINER BUSCADOR */
 
