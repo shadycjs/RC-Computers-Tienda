@@ -403,10 +403,8 @@
 
 /* INICIO DEL RESPONSIVE DESIGN */
 
-@media screen and (max-width: 1088px) {
+@media screen and (max-width: 996px) {
     
-
-
     /* HEADER */
     .header-container{
         display: flex;
@@ -426,7 +424,7 @@
 
     .logo{
         width: 120px;
-        top: 30px;
+        top: 10px;
         right: 90px;
         position: relative;
     }
@@ -441,7 +439,7 @@
         width: 190px;
         display: flex;
         position: relative;
-        bottom: 105px;    
+        bottom: 120px;    
         left: 30px;
     }
 
@@ -471,7 +469,6 @@
         display: flex;     
         width: 350px;
         height: 41px;
-        top: 30px;
         margin-left: auto;
         margin-right: auto;       
     }
@@ -484,6 +481,12 @@
     .contenedor-menu li{
         display: flex;
         margin: 5px;  
+    }
+
+    .btnLogin-popup{
+        position: relative;
+        bottom: 5;
+        left: 38%;
     }
 /* FIN DEL HEADER */
 
