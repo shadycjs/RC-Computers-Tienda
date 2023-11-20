@@ -719,6 +719,8 @@ figure img{
 .item figure{
     overflow: hidden;
     border-radius: 10px 0 0 10px;
+    margin: 0;
+    width: 100%;
 }
 
 .item__contacto{
@@ -1060,6 +1062,8 @@ figure img{
 .item figure{
     overflow: hidden;
     border-radius: 10px 0 0 10px;
+    margin: 0;
+    width: 100%;
 }
 
 .item__contacto{

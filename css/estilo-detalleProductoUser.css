@@ -1,5 +1,6 @@
 @import url(headerUser.css);
 @import url(menuLogin.css);
+@import url(estilo-modalCerrarSesion.css);
 
 * {
     margin: 0;
@@ -25,75 +26,6 @@ nav a{
     font-weight: 600;
     display: inline-block;
 }
-
-/* DIV CERRAR SESION */
-
-.cerrar__sesion--fondo{
-    display: none;
-    background-color: #00000029;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-}
-
-.cerrar__sesion--container{
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: fixed;
-    gap: 10px;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 500px;
-    height: 500px;
-    margin: auto;
-    background-color: #b82222;
-    border: 4px solid #fff;
-    color: #fff;
-    border-radius: 20px;
-    z-index: 70;
-}
-
-.cerrar__sesion-close{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 45px;
-    height: 45px;
-    background: #fff;
-    font-size: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-    color: #000;
-}
-
-.cerrar__sesion--container__sub{
-    display: flex;
-    gap: 40px;
-    font-size: 2vw;
-    cursor: pointer;
-}
-
-#cerrarSesionSi:hover{
-    opacity: 70%;
-}
-
-#cerrarSesionNo:hover{
-    opacity: 70%;
-}
-
-/* FIN DEL DIV CERRAR SESION */
-
 
 /* DETALLE DE PRODUCTO */
 
@@ -971,6 +903,12 @@ main{
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #c2c2c2;
+    padding: 5px;
+}
+
+.containerModalFormasPago{
+    border: 2px solid #107ca7;
+    border-radius: 5px;
 }
 
 .containerModalFormasPago--imagenes{
@@ -1078,6 +1016,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    word-break: break-word;
 }
 
 .containerModalInfoConfig__mother{

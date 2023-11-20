@@ -354,7 +354,7 @@
 }
 
 .contenedor__carrito__modal__sub--item-img{
-    width: 30%;
+    min-width: 30%;
     height: 100%;
 }
 
