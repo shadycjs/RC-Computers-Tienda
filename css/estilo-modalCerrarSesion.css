@@ -66,3 +66,78 @@
 }
 
 /* FIN DEL DIV CERRAR SESION */
+
+
+/* INICIO DEL RESPONSIVE DESIGN 414px*/
+@media screen and (max-width: 414px){
+
+/* DIV CERRAR SESION */
+
+.cerrar__sesion--fondo{
+    display: none;
+    background-color: #00000029;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.cerrar__sesion--container{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    gap: 10px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #b82222;
+    border: 4px solid #fff;
+    color: #fff;
+    border-radius: 20px;
+    z-index: 70;
+    overflow: hidden;
+}
+
+.cerrar__sesion-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    color: #000;
+}
+
+.cerrar__sesion--container__sub{
+    display: flex;
+    gap: 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#cerrarSesionSi:hover{
+    opacity: 70%;
+}
+
+#cerrarSesionNo:hover{
+    opacity: 70%;
+}
+
+/* FIN DEL DIV CERRAR SESION */
+
+}

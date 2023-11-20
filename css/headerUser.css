@@ -399,6 +399,10 @@
     cursor: pointer;
 }
 
+#botonCerrarCarrito{
+    display: none;
+}
+
 /* FIN DEL CARRITO */
 
 
@@ -743,6 +747,7 @@
 }
 
 #botonCerrarCarrito{
+    display: block;
     background-color: transparent;
     border: none;
     width: 40px;
@@ -1204,6 +1209,7 @@
     }
     
     #botonCerrarCarrito{
+        display: block;
         background-color: transparent;
         border: none;
         width: 40px;
