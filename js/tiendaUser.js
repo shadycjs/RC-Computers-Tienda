@@ -86,7 +86,6 @@ cerrarSesionH1.addEventListener('click', ()=> {
 
 const misCompras = document.getElementById('misCompras');
 
-const containerTodoAncho = document.querySelector('.container__todo').clientWidth;
 const containerCompras = document.querySelector('.container__todo__compras__sub');
 const containerConfigUser = document.querySelectorAll('.container__sub__2');
 const infoUser = document.getElementById('infoUser');
@@ -96,13 +95,10 @@ const datos = document.querySelector('.container__sub__2--datos');
 
 if(misCompras != null){
     misCompras.addEventListener('click', ()=>{
-        if(containerTodoAncho < 400){
-            containerCompras.style.display = "none";
-        }else{
         containerCompras.style.display = "flex";
         containerConfigUser.forEach(containerConfig => {
             containerConfig.style.display = "none";
-        });}
+        });
         containerCambiarClave.style.display = "none";
         datos.style.display = "none";
 })

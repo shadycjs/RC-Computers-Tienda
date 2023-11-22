@@ -7,7 +7,6 @@
     require 'funciones/usuarios.php';
     require 'funciones/clientes.php';
     session_start();
-    require 'mercadoPago.php';
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
 
     if(isset($_POST['medioPago'])){
@@ -20,6 +19,80 @@
         }
     }else{
         header('location: carritoContinuarCompraPago.php?error=3');
+    }
+
+    require_once 'vendor/autoload.php';
+    use MercadoPago\MercadoPagoConfig;
+    use MercadoPago\Client\Preference\PreferenceClient;
+    use MercadoPago\Resources\Preference\Item;
+    use MercadoPago\Exceptions\MPApiException;
+    
+    MercadoPagoConfig::setAccessToken("TEST-4496492563717601-100411-0e4fa3be17ab7200067c5cf24481aa79-262415866");
+    
+    $client = new PreferenceClient();
+    
+    try{
+        $total = 0;
+        foreach( $_SESSION['CARRITO'] as $indice => $producto ){
+        $total = $total+(($producto['precio']*$producto['cantidad']))+ $_SESSION['envio'];
+        $request = [
+            "external_reference" => "4567",
+            "items" => array(
+                array(
+                    "id" => "4567",
+                    "title" => "Productos Informaticos",
+                    "description" => "Pc gamer",
+                    "quantity" => 1,
+                    "unit_price" => $total
+                )
+                
+            ),
+            'payer' => array(
+              'name' => 'Matheus',
+              'surname' => 'Brandao',
+              'email' => 'mafe123silva@gmail.com',
+              'phone' => array(
+                'area_code' => '69',
+                'number' => '9993203891',
+              ),
+              'identification' => array(
+                'type' => 'CPF',
+                'number' => '03600717243'
+              ),
+              'address' => array(
+                'street_name' => 'Street',
+                'street_number' => 123,
+                'zip_code' => '06233200',
+              ),
+              "payment_methods" => array(
+                "installments" => 1,
+                "default_payment_method_id" => null,
+                "default_installments" => null,
+                "excluded_payment_methods" => array(), // Mantém os métodos existentes
+                "excluded_payment_types" => array(), // Mantém os tipos de pagamento existentes
+                "pix" => array(
+                    "enabled" => true,
+                    "type" => "standard"
+                    // Configurações específicas do PIX, se necessário
+                ),
+            ),
+              'notification_url' => 'https://crochesdanoadia.com/pastateste/index.php',
+              'statement_descriptor' => 'LIZZIIMPORTS'
+            )
+        ];
+        }
+        $preference = $client->create($request);
+        $preference->back_urls = array(
+            "success" => "http://localhost/RC/Tienda/pagoConfirmado.php",
+            "failure" => "http://localhost/RC/Tienda/pagoErroneo.php",
+        );
+        $preference->auto_return = "approved";
+        $preference->binary_mode = true;
+    }catch (MPApiException $e) {
+        echo "Status code: " . $e->getApiResponse()->getStatusCode() . "\n";
+        var_dump($e->getApiResponse()->getContent());
+    } catch (\Exception $e) {
+        echo $e->getMessage();
     }
     
 ?>
@@ -206,7 +279,7 @@ if(!empty($_SESSION['CARRITO'])){
 
       mp.bricks().create("wallet", "wallet_container", {
         initialization: {
-            preferenceId: "<?= $preference->init_point ?>",
+            preferenceId: "<?= $preference->id ?>",
         },
       });
 

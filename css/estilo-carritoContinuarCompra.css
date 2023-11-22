@@ -1,5 +1,6 @@
 @import url(headerUser.css);
 @import url(menuLogin.css);
+@import url(estilo-modalCerrarSesion.css);
 
 * {
     margin: 0;
@@ -25,74 +26,6 @@ nav a{
     font-weight: 600;
     display: inline-block;
 }
-
-/* DIV CERRAR SESION */
-
-.cerrar__sesion--fondo{
-    display: none;
-    background-color: #00000029;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-}
-
-.cerrar__sesion--container{
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: fixed;
-    gap: 10px;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 500px;
-    height: 500px;
-    margin: auto;
-    background-color: #b82222;
-    border: 4px solid #fff;
-    color: #fff;
-    border-radius: 20px;
-    z-index: 70;
-}
-
-.cerrar__sesion-close{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 45px;
-    height: 45px;
-    background: #fff;
-    font-size: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-    color: #000;
-}
-
-.cerrar__sesion--container__sub{
-    display: flex;
-    gap: 40px;
-    font-size: 2vw;
-    cursor: pointer;
-}
-
-#cerrarSesionSi:hover{
-    opacity: 70%;
-}
-
-#cerrarSesionNo:hover{
-    opacity: 70%;
-}
-
-/* FIN DEL DIV CERRAR SESION */
 
 /* DIV CARGAR DATOS DE ENVIO */
 
@@ -319,7 +252,7 @@ main{
     width: 100%;
     height: 200px;
     background-color: #e6e6e6;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 10px;
     outline: 2px solid #bbb;
     border-radius: 4px;
@@ -440,6 +373,7 @@ main{
 
 #TOTAL{
     display: flex;
+    color: green;
 }
 
 /* FIN DEL CONTAINER TODO CARRITO */
@@ -944,172 +878,142 @@ footer p{
 
 /* INICIO DEL RESPONSIVE DESIGN */
 
-@media screen and (max-width: 1088px) {
-    
+@media screen and (max-width: 996px) {
+   
+/* INICIO DEL TIMELAPSE */
 
-
-    /* HEADER */
-    .header-container{
-        display: flex;
-        height: auto;
-        position: relative;
-    }
-
-    .contenedor-todo{
-        display: flex;
-        flex-direction: column;   
-        width: 500px;
-        height: auto;
-        position: relative;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .logo{
-        width: 120px;
-        top: 30px;
-        right: 90px;
-        position: relative;
-    }
-
-    .logo img{     
-        height: 100%;
-        width: 100%;
-    }
-
-    .contenedor-enlaces{
-        height: auto;
-        width: 190px;
-        display: flex;
-        position: relative;
-        bottom: 105px;    
-        left: 30px;
-    }
-
-    .contenedor-enlaces ul{
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        justify-content: center;
-        display: inline-block;
-    }
-
-    .contenedor-enlaces li{
-        display: inline-block;
-        margin: 5px;
-        width: 40px;
-    }
-
-    .nav-link{
-        border-radius: 10%;
-        padding: 20px;
-        min-width: 50px;
-        min-height: 50px;   
-    }
-
-    .contenedor-menu{
-        position: relative;
-        display: flex;     
-        width: 350px;
-        height: 41px;
-        top: 30px;
-        margin-left: auto;
-        margin-right: auto;       
-    }
-
-    .contenedor-menu ul{
-        width: 100%;
-        height: 100%;
-    }
-
-    .contenedor-menu li{
-        display: flex;
-        margin: 5px;  
-    }
-/* FIN DEL HEADER */
-
-/* PERFIL DEL HEADER ADMIN */
-
-.contenedor__perfil__subir{
-    height: 100%;
-    width: auto;
+.container__timelapse{
     display: flex;
-    gap: 20px;
-    position: relative;
-    right: 0;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.contenedor__perfil{
-    width: 60px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.contenedor__perfil-imagen{
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 100px;
     background-color: #fff;
-    border-radius: 100%;
-    border: 1px solid green;
+    position: relative;
+    font-size: 10px;
 }
 
-.contenedor__perfil-imagen img{
+.container__timelapse__productos{
+    display: flex;
+    text-align: center;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 100%;
-}
-
-.contenedor__perfil h5{
+    background-color: #000;
     color: #fff;
+    position: relative;
+    left: 0;
 }
 
-/* FIN DEL PERFIL DEL HEADER ADMIN */
-
-/* SUBIR PUBLI */
-
-.contenedor__subir{
+.container__timelapse__productos h2{
     display: flex;
-    flex-direction: row;
-
-}
-
-.contenedor__subir a{
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    width: 100%;
 }
 
-/* FIN SUBIR PUBLI */
+.container__timelapse__envio{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
 
-/* DETALLE DE PRODUCTO */
+.container__timelapse__envio h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__pago{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__pago h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__confirmarCompra{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__confirmarCompra h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+/* FIN DEL TIMELAPSE */
+
+
+/* INICIO DEL CONTAINER TODO CARRITO */
 
 main{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
-    display: flex;
-    justify-content: center;
+    min-height: 100vh;
+    justify-content: start;
     align-items: center;
-    padding: 20px 0;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 50px;
+}
+
+.container__sinProductosCarrito{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+#iconoSinProductosCarritoPagina{
+    width: 50vw;
+    height: 50vh;
+    opacity: 70%;
 }
 
 .containerTodo{
     display: flex;
     flex-direction: column;
-    width: 90%;
-    min-height: 80%;
-    height: auto;
+    width: 80%;
+    max-height: 650px;
     background-color: #fff;
     box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
-    margin: 0;
+    align-items: center;
+    margin: 5px;
+    justify-content: space-around;
+}
+
+.containerTodo h1{
+    padding: 10px;
+    display: flex;
 }
 
 .containerTodo a{
@@ -1123,183 +1027,1454 @@ main{
 .containerModal{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
-    height: auto;
+    height: 100%;
+    max-height: 600px;
     background-color: #fff;
-}
-
-.containerModalInfo h1{
-    font-size: 6.3vw;
-}
-
-.containerModal__imagenes{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 50%;
-}
-
-.imagenPrincipal{
-    height: 70%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-.imagenPrincipal img{
-    width: 100%;
-    height: 100%;
-    transition: all .3s;
-}
-
-.imagenPrincipal img:hover{
-    transform: scale(1.2);
-}
-
-.imagenesSecundarias{
-    width: 100%;
-    height: 80px;
-    display: flex;
-    list-style: none;
-    padding: 0;
-    justify-content: center;
-}
-
-.imagenesSecundarias li img{
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-}
-
-.containerModalInfo{
-    width: 100%;
-    height: 50%;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.containerModalInfoMarcaCodigo{
-    font-size: 2.7vw;
-}
-
-.containerModalInfoGarantias{
-    font-size: 3vw;
-}
-
-
-.containerModalInfoDetalles{
-    display: flex;
-    justify-content: space-between;
-    padding-right: 5px;
-    padding-top: 5px;
-}
-
-.containerModalInfoGarantias{
-    list-style: none;
-}
-
-.containerModalInfoGarantias li{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-}
-
-.containerModalInfoPrecioCantidad{
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 10px 0;
-}
-
-.containerModalInfoPrecioCantidad__precio{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 40px;
-    justify-content: center;
-}
-
-.containerModalInfoPrecioCantidad__precio h2{
-    font-size: 45px;
-}
-
-.containerModalInfoPrecioCantidad__cantidad{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    height: 15px;
-}
-
-.containerModalInfoPrecioCantidad__cantidad input{
-    height: 100%;
-    width: 50px;
-}
-
-.containerModalInfoConfig{
     padding: 10px;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.5em;
+    overflow-y: scroll;
+}
+
+.containerModal__carrito{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    width: 100%;
     height: auto;
-}
-
-.containerModalInfoConfig h3{
-    flex-basis: 100%;
-    text-align: center;
-    font-size: 4.5vw;
-}
-
-.containerModalInfoConfig p{
-    font-size:  3.5vw;
-}
-
-.containerModalInfoConfig li{
-    list-style: none;
-    display: flex;
+    background-color: #e6e6e6;
+    justify-content: space-around;
+    padding: 10px;
+    outline: 2px solid #bbb;
+    border-radius: 4px;
     align-items: center;
     gap: 10px;
 }
 
-.containerModalInfoConfig li img{
-    width: 10vw;
-    height: 10vw;
-}
-
-.containerModalInfoButton{
+.containerModal__carrito__imgNombre{
     display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 10px 0;
+    height: 100%;
+    gap: 20px;
+    align-items: center;
+    text-overflow: ellipsis;
 }
 
-#agregarCarrito{
+.containerModal__carrito__imgNombre--img{
+    min-width: 50%;
+    max-width: 50%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.containerModal__carrito__imgNombre img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.containerModal__carrito__imgNombre--nombre{
+    width: 300px;
+    text-overflow: hidden;
+    text-align: center;
+}
+
+.containerModal__carrito__cantidad{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.containerModal__carrito__precio{
+    min-width: 20%; 
+    text-align: center;
+}
+
+.containerModal__carrito__cantidad button{
+    background-color: transparent;
     border: none;
-    background-color: none;
-    background-color: #000;
-    color: #fff;
-    padding: 15px 10px;
+}
+
+.containerModal__carrito__cantidad input{
+    width: 40px;
+    height: 50px;
+    text-align: center;
+}
+
+.agregarRestarPrd{
     cursor: pointer;
+}
+
+.containerModal__carrito__eliminarPrd button{
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+}
+
+.containerModal__carrito__eliminarPrd:hover{
+    color: #b82222;
+    cursor: pointer;
+}
+
+.iconoEliminarItem{
+    width: 100%;
+    height: 100%;
+}
+
+.container__siguente{
+    display: flex;
+    height: 40px;
+    font-size: .8em;
+}
+
+#contadorSiguiente{
+    cursor: pointer;
+}
+
+#contadorSiguiente:hover{
+    color: rgb(33, 158, 100);
+}
+
+#anterior{
+    align-items: center;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#contadorSiguienteInput{
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+
+.container__siguente input:hover{
+    color: rgb(33, 158, 100);
+}
+
+#anterior{
+    display: none;
+}
+
+#anterior:hover{
+    color: #b82222;
+}
+
+#TOTAL{
+    display: flex;
+}
+
+#tituloCarrito{
+    text-align: center;
+}
+
+/* FIN DEL CONTAINER TODO CARRITO */
+
+/* INICIO DEL CONTAINER ENVIOS DEL CARRITO */
+
+.contenedor__carrito__modal__envios{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.contenedor__carrito__modal__envios h2{
+    text-align: center;
+}
+
+.contenedor__carrito__modal__transportes{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 500px;
+}
+
+.contenedor__carrito__modal__transportes input{
+    opacity: 0;
+}
+
+.contenedor__carrito__modal__transportes label{
+    text-align: center;
+}
+
+.contenedor__carrito__modal__transportes--andreani{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+}
+
+.contenedor__carrito__modal__transportes--andreani p{
+    text-align: center;
+    transition: opacity 1.2s;
+    opacity: 0;
+    color: green;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #bbb;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img:hover{
+    border: 4px solid green;
+    cursor: pointer;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contenedor__carrito__modal__transportes--oca{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+    height: 100%;
+}
+
+.contenedor__carrito__modal__transportes--oca p{
+    text-align: center;
+    transition: opacity 1.2s;
+    opacity: 0;
+    color: green;
+}
+
+.contenedor__carrito__modal__transportes--oca-img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #bbb;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.contenedor__carrito__modal__transportes--oca-img:hover{
+    border: 4px solid green;
+    cursor: pointer;
+}
+
+.contenedor__carrito__modal__transportes--oca-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* INICIO CONTAINER INFO USER */
+
+.container__todo__sub{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
+    background-color: #fff;
+    gap: 10px;
+}
+
+.container__sub__2{
+    display: none;
+}
+
+.container__sub__3{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.container__sub__4{
+    display: flex;
+    position: relative;
+    width: 50%;
+    height: 50px;
+}
+
+.container__sub__3--provinciaCiudad{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--provinciaCiudad input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+#containerProvinciaCiudad{
+    height: auto;
+}
+
+.container__sub__4--provincia{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.2vw;
+    width: 50%;
+    height: auto;
+}
+
+.container__sub__4--provincia select{
+    height: 40px;
+    border-radius: 4px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.container__sub__4--ciudad{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 50%;
+    position: relative;
+}
+
+.container__sub__4--ciudad label{
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: 1.5em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__4--ciudad input:focus + label,
+.container__sub__4--ciudad input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--ciudad input{
+    height: 40px;
+}
+
+hr{
+    background-color: #c4bebe;
+    height: 4px;
+    border: 1px solid #5870db29;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.container__sub__3--calleAltura {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--calleAltura input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+.container__sub__3--calleAltura label {
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: 1.5em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+#containerCalleAltura {
+    height: auto;
+}
+
+.container__sub__4--calle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    position: relative;
+}
+
+.container__sub__4--calle input:focus + label,
+.container__sub__4--calle input:valid + label {
+    bottom: 55%;
+    font-size: .7em;
+}
+
+.container__sub__4--calle label {
+    position: absolute;
+    bottom: -5px;
+    font-size: 1.5em;
+    transition: all 0.2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__4--calle input {
+    height: 40px;
+}
+
+.container__sub__4--altura {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.container__sub__4--altura input:focus + label,
+.container__sub__4--altura input:valid + label  {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--altura input {
+    height: 40px;
+}
+
+#containerpisoDeptoTorre{
+    height: auto;
+}
+
+.container__sub__3--pisoDeptoTorre{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--pisoDeptoTorre label{
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: 1.5em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__3--pisoDeptoTorre input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+    height: 40px;
+}
+
+.container__sub__4--piso{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.container__sub__4--piso input:focus + label,
+.container__sub__4--piso input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--Depto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.container__sub__4--depto input:focus + label,
+.container__sub__4--depto input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--Torre{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.container__sub__4--torre input:focus + label,
+.container__sub__4--torre input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+#container__sub__3--localidadCodpostal{
+    height: auto;
+}
+
+.container__sub__3--localidadCodpostal{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--localidadCodpostal label{
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: 1.5em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__4--localidad{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.container__sub__4--localidad input:focus + label,
+.container__sub__4--localidad input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--localidad input{
+    height: 40px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+.container__sub__4--codpostal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15%;
+}
+
+.container__sub__4--codpostal input:focus + label,
+.container__sub__4--codpostal input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--codpostal input{
+    height: 40px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+.container__sub__3--observaciones{
+    width: 100%;
+}
+
+.container__sub__4--observaciones{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+.container__sub__4--observaciones textarea{
+    width: 100%;
+    resize: none;
+}
+
+/* FIN DEL CONTAINER INFO USUARIO */
+
+/* FIN DEL CONTAINER ENVIOS DEL CARRITO */
+
+/* INICIO DEL CONTAINER RECEPTOR DEL ENVIO */
+
+.container__infoReceptorEnvio{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+}
+
+.container__infoReceptorEnvio__sub{
+    display: flex;
+}
+
+.container__infoReceptorEnvio__sub__inputs{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+
+.container__infoReceptorEnvio__sub__inputs label{
+    pointer-events: none;
+    position: absolute;
+    font-size: .8em;
+    transform: all 2s;
+}
+
+.container__infoReceptorEnvio__sub__inputs input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;  
+}
+
+.container__infoReceptorEnvio__sub__inputs input:focus + label,
+.container__infoReceptorEnvio__sub__inputs input:valid + label{
+    bottom: 90%;
+}
+
+/* FIN DEL CONTAINER RECEPTOR DEL ENVIO */
+
+/* INICIO DEL FOOTER */
+footer{
+    background: linear-gradient(to bottom, black, #575353);
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    bottom: 0;
+}
+
+footer p{
+    align-self: center;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* FIN DEL FOOTER */
+
+}
+
+
+@media screen and (max-width: 702px) {
+   
+/* INICIO DEL TIMELAPSE */
+
+.container__timelapse{
+    display: flex;
+    width: 95%;
+    height: 100px;
+    background-color: #fff;
     position: relative;
     font-size: 10px;
+}
+
+.container__timelapse__productos{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse h2{
+    font-size: 10px;
+}
+
+.container__timelapse__productos h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container__timelapse__envio{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__envio h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__pago{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__pago h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__confirmarCompra{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__confirmarCompra h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+/* FIN DEL TIMELAPSE */
+
+
+/* INICIO DEL CONTAINER TODO CARRITO */
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    justify-content: start;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 50px;
+}
+
+.container__sinProductosCarrito{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+#iconoSinProductosCarritoPagina{
+    width: 50vw;
+    height: 50vh;
+    opacity: 70%;
+}
+
+.containerTodo{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    max-height: 650px;
+    background-color: #fff;
+    box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
+    align-items: center;
+    margin: 5px;
+    justify-content: space-around;
+}
+
+.containerTodo h1{
+    padding: 10px;
+    display: flex;
+}
+
+.containerTodo a{
+    color: #000;
+    height: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.containerTodo a{
-    font-size: 10px;
-    padding: 10px 0;
+.containerModal{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    background-color: #fff;
+    padding: 10px;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.5em;
+    overflow-y: scroll;
 }
+
+.containerModal__carrito{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: #e6e6e6;
+    justify-content: space-around;
+    padding: 10px;
+    outline: 2px solid #bbb;
+    border-radius: 4px;
+    align-items: center;
+    gap: 10px;
+}
+
+.containerModal__carrito__imgNombre{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    align-items: center;
+    text-overflow: ellipsis;
+}
+
+.containerModal__carrito__imgNombre--img{
+    min-width: 50%;
+    max-width: 50%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.containerModal__carrito__imgNombre img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.containerModal__carrito__imgNombre--nombre{
+    width: 300px;
+    text-overflow: hidden;
+    text-align: center;
+}
+
+.containerModal__carrito__cantidad{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.containerModal__carrito__precio{
+    min-width: 20%; 
+    text-align: center;
+}
+
+.containerModal__carrito__cantidad button{
+    background-color: transparent;
+    border: none;
+}
+
+.containerModal__carrito__cantidad input{
+    width: 40px;
+    height: 50px;
+    text-align: center;
+}
+
+.agregarRestarPrd{
+    cursor: pointer;
+}
+
+.containerModal__carrito__eliminarPrd button{
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+}
+
+.containerModal__carrito__eliminarPrd:hover{
+    color: #b82222;
+    cursor: pointer;
+}
+
+.iconoEliminarItem{
+    width: 100%;
+    height: 100%;
+}
+
+.container__siguente{
+    display: flex;
+    height: 40px;
+    font-size: .8em;
+}
+
+#contadorSiguiente{
+    cursor: pointer;
+}
+
+#contadorSiguiente:hover{
+    color: rgb(33, 158, 100);
+}
+
+#anterior{
+    align-items: center;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#contadorSiguienteInput{
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+
+.container__siguente input:hover{
+    color: rgb(33, 158, 100);
+}
+
+#anterior{
+    display: none;
+}
+
+#anterior:hover{
+    color: #b82222;
+}
+
+#TOTAL{
+    display: flex;
+}
+
+#tituloCarrito{
+    text-align: center;
+}
+
+/* FIN DEL CONTAINER TODO CARRITO */
+
+/* INICIO DEL CONTAINER ENVIOS DEL CARRITO */
+
+.contenedor__carrito__modal__envios{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.contenedor__carrito__modal__envios h3{
+    text-align: center;
+}
+
+.contenedor__carrito__modal__transportes{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 600px;
+    gap: 5px;
+}
+
+.contenedor__carrito__modal__transportes input{
+    opacity: 0;
+}
+
+.contenedor__carrito__modal__transportes label{
+    text-align: center;
+}
+
+.contenedor__carrito__modal__transportes--andreani{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+}
+
+.contenedor__carrito__modal__transportes--andreani p{
+    text-align: center;
+    transition: opacity 1.2s;
+    opacity: 0;
+    color: green;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #bbb;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img:hover{
+    border: 4px solid green;
+    cursor: pointer;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contenedor__carrito__modal__transportes--oca{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    height: 100%;
+}
+
+.contenedor__carrito__modal__transportes--oca p{
+    text-align: center;
+    transition: opacity 1.2s;
+    opacity: 0;
+    color: green;
+}
+
+.contenedor__carrito__modal__transportes--oca-img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #bbb;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.contenedor__carrito__modal__transportes--oca-img:hover{
+    border: 4px solid green;
+    cursor: pointer;
+}
+
+.contenedor__carrito__modal__transportes--oca-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* INICIO CONTAINER INFO USER */
+
+.container__todo__sub{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    gap: 10px;
+}
+
+.container__sub__2{
+    display: none;
+}
+
+.container__sub__3{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.container__sub__4{
+    display: flex;
+    position: relative;
+    width: 50%;
+    height: 50px;
+}
+
+.container__sub__3--provinciaCiudad{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--provinciaCiudad input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+#containerProvinciaCiudad{
+    height: auto;
+}
+
+.container__sub__4--provincia{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: .8em;
+    width: 50%;
+    height: auto;
+}
+
+.container__sub__4--provincia select{
+    height: 40px;
+    border-radius: 4px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.container__sub__4--ciudad{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 50%;
+    position: relative;
+}
+
+.container__sub__4--ciudad label{
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: .8em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__4--ciudad input:focus + label,
+.container__sub__4--ciudad input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--ciudad input{
+    height: 40px;
+}
+
+hr{
+    background-color: #c4bebe;
+    height: 4px;
+    border: 1px solid #5870db29;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.container__sub__3--calleAltura {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--calleAltura input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+.container__sub__3--calleAltura label {
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: .8em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+#containerCalleAltura {
+    height: auto;
+}
+
+.container__sub__4--calle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    position: relative;
+}
+
+.container__sub__4--calle input:focus + label,
+.container__sub__4--calle input:valid + label {
+    bottom: 55%;
+    font-size: .7em;
+}
+
+.container__sub__4--calle label {
+    position: absolute;
+    bottom: -5px;
+    font-size: .8em;
+    transition: all 0.2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__4--calle input {
+    height: 40px;
+}
+
+.container__sub__4--altura {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.container__sub__4--altura input:focus + label,
+.container__sub__4--altura input:valid + label  {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--altura input {
+    height: 40px;
+}
+
+#containerpisoDeptoTorre{
+    height: auto;
+}
+
+.container__sub__3--pisoDeptoTorre{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--pisoDeptoTorre label{
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: .8em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__3--pisoDeptoTorre input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+    height: 40px;
+}
+
+.container__sub__4--piso{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.container__sub__4--piso input:focus + label,
+.container__sub__4--piso input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--Depto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.container__sub__4--depto input:focus + label,
+.container__sub__4--depto input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--Torre{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.container__sub__4--torre input:focus + label,
+.container__sub__4--torre input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+#container__sub__3--localidadCodpostal{
+    height: auto;
+}
+
+.container__sub__3--localidadCodpostal{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 10px;
+    position: relative;
+}
+
+.container__sub__3--localidadCodpostal label{
+    position: absolute;
+    bottom: -5px;
+    padding: 5px;
+    font-size: .8em;
+    transition: all .2s;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.container__sub__4--localidad{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.container__sub__4--localidad input:focus + label,
+.container__sub__4--localidad input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--localidad input{
+    height: 40px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+.container__sub__4--codpostal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+}
+
+.container__sub__4--codpostal input:focus + label,
+.container__sub__4--codpostal input:valid + label {
+    bottom: 55%;
+    border: none;
+    font-size: .7em;
+}
+
+.container__sub__4--codpostal input{
+    height: 40px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+}
+
+.container__sub__3--observaciones{
+    width: 100%;
+}
+
+.container__sub__4--observaciones{
+    display: flex;
+    flex-direction: column;
+    font-size: .8em;
+    width: 100%;
+}
+
+.container__sub__4--observaciones textarea{
+    width: 100%;
+    resize: none;
+}
+
+/* FIN DEL CONTAINER INFO USUARIO */
+
+/* FIN DEL CONTAINER ENVIOS DEL CARRITO */
+
+/* INICIO DEL CONTAINER RECEPTOR DEL ENVIO */
+
+.container__infoReceptorEnvio{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 15px;
+}
+
+.container__infoReceptorEnvio__sub{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container__infoReceptorEnvio__sub__inputs{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+
+.container__infoReceptorEnvio__sub__inputs label{
+    pointer-events: none;
+    position: absolute;
+    font-size: .8em;
+    transform: all 2s;
+}
+
+.container__infoReceptorEnvio__sub__inputs input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+    width: 100%;  
+}
+
+.container__infoReceptorEnvio__sub__inputs input:focus + label,
+.container__infoReceptorEnvio__sub__inputs input:valid + label{
+    bottom: 90%;
+}
+
+/* FIN DEL CONTAINER RECEPTOR DEL ENVIO */
+
+/* INICIO DEL FOOTER */
+footer{
+    background: linear-gradient(to bottom, black, #575353);
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    bottom: 0;
+}
+
+footer p{
+    align-self: center;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* FIN DEL FOOTER */
 
 }

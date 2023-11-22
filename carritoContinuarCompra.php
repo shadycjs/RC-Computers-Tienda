@@ -182,7 +182,7 @@ if(!empty($_SESSION['CARRITO'])){
                 </div>
 
                 <div class="containerModal__carrito__precio">
-                    <p>$<?= number_format($precioProducto,2) ?></p>
+                    <p>P/unitario: $<?= number_format($precioProducto,2) ?></p>
                 </div>
 
                 <form action="" method="post" class="containerModal__carrito__cantidad">
@@ -193,7 +193,7 @@ if(!empty($_SESSION['CARRITO'])){
                 </form>
 
                 <div class="containerModal__carrito__subtotal">
-                    <p>$<?= number_format($precioProducto*$cantidadProducto,2) ?></p>
+                    <p>Subtotal: $<?= number_format($precioProducto*$cantidadProducto,2) ?></p>
                 </div>
 
                 <form action="" method="post" class="containerModal__carrito__eliminarPrd">
@@ -210,7 +210,7 @@ if(!empty($_SESSION['CARRITO'])){
     
             
     <form action="carritoContinuarCompraPago.php" method="post" class="contenedor__carrito__modal__envios">
-                <h3>SELECCIONE SU TRANSPORTE PREFERIDO</h3>
+                <h3>SELECCIONE UN TRANSPORTE</h3>
                 <div class="contenedor__carrito__modal__transportes">
 
                     <div class="contenedor__carrito__modal__transportes--andreani">
