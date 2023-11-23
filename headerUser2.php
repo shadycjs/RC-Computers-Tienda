@@ -6,7 +6,6 @@
 
     if( isset($_POST['borrarPrd']) ){
         $id = $_POST['idPrd'];
-        print_r($id);
             foreach( $_SESSION['CARRITO'] as $indice => $producto ){
                 if( $producto['id'] == $id ){
                     unset($_SESSION['CARRITO'][$indice]);

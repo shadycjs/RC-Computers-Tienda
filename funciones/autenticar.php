@@ -57,7 +57,7 @@
         //eliminamos la sesion
         session_destroy();
         //redireccion con demora
-        header('refresh:5;url=tiendaLogOut.php');
+        header('url=tiendaLogOut.php');
     }
 
     function autenticar() : void

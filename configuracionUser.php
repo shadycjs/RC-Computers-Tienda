@@ -24,14 +24,6 @@
     $conteoCompras = mysqli_num_rows($compras);
     $usuarios = verUsuarioPorId();
 
-    if( isset($_GET['numeroVenta']) ){
-        $bajarCompro = bajarComprobante();
-    }
-
-    if( isset($_GET['numVentaFactura']) ){
-        $bajarFactura = bajarFactura();
-    }
-
     if( isset($_POST['agregarDatosUser']) ){
         $actualizarUser = agregarCliente();
     }elseif( isset($_POST['modificarDatosUser']) ){
@@ -292,31 +284,17 @@
                             <td>Nro Compra</td>
                             <td>Fecha</td>
                             <td>Total</td>
-                            <td>Condicion de pago</td>
-                            <td>Envio</td>
-                            <td>Transporte</td>
-                            <td>Comprobante de pago</td>
-                            <td>Factura</td>
                             <td>Detalle</td>
                         </tr>
 
             <?php
                 while( $compra = mysqli_fetch_assoc($compras) ){
-                    $configuracionUser = 'configuracionUser';
-                    if($compra['comprobantePago'] == 'Aun sin emitir'){
-                        $configuracionUser = 'subirComprobantePago';
-                    }
             ?>
                         <tr id="container__todo__compras__sub--table-tr-2">
                             <td><?= $compra['nroVenta'] ?></td>
                             <td><?= $compra['fecha'] ?></td>
                             <td>$<?= number_format($compra['Total'], 2) ?></td>
-                            <td><?= $compra['condicionPago'] ?></td>
-                            <td><?= $compra['envio'] ?></td>
-                            <td><?= $compra['transporte'] ?></td>
-                            <td><a href="<?= $configuracionUser ?>.php?numeroVenta=<?= $compra['nroVenta'] ?>"> <?= $compra['comprobantePago'] != 'Aun sin emitir'? $compra['comprobantePago'] : $subirFacturaString = 'SUBIR COMPROBANTE'; ?></a></td>
-                            <td><a href="configuracionUser.php?numVentaFactura=<?= $compra['nroVenta'] ?>"> <?= $compra['factura'] ?></a></td>
-                            <td><a href="detalleDeVenta.php?nroVenta=<?= $compra['nroVenta'] ?>">Ver detalle</a></td>
+                            <td><a href="detalleDeVenta.php?nroVenta=<?= $compra['nroVenta'] ?>&comprobantePago=<?= $compra['comprobantePago'] ?>&factura=<?= $compra['factura'] ?>&fecha=<?= $compra['fecha'] ?>&envio=<?= $compra['envio'] ?>&transporte=<?= $compra['transporte'] ?>">Ver detalle</a></td>
                         </tr>
             <?php
                 }

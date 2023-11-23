@@ -20,7 +20,7 @@
         $nroVenta = $_GET['nroVenta'];
 
         $idUser = $_SESSION['idUsuario'];
-        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, nombrePrd, transporte FROM orden__venta ov
+        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario FROM orden__venta ov
                   INNER JOIN productos p ON p.idPrd = ov.idPrd
                     WHERE idUsuario = ".$idUser." AND nroVenta = ".$nroVenta;
         $resultado = mysqli_query( $link,$sql );
@@ -57,7 +57,6 @@
         $idUsuario = $_SESSION['idUsuario'];
         $nroVenta = $_SESSION['nroVenta'];
         $condPago = $_SESSION['condPago'];
-        var_dump($comprobante);
         
         $sql = "INSERT INTO orden__venta
                 (nroVenta, fecha, importe, cantidad, condicionPago, idPrd, envio, transporte, comprobantePago, idUsuario)

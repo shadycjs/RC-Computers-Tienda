@@ -8,7 +8,6 @@
     require 'funciones/clientes.php';
     require 'funciones/compras.php';
     session_start();
-    require 'mercadoPago.php';
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     if($_POST['confCompra']){
         $comprobante = subirComprobante();

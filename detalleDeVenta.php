@@ -24,6 +24,15 @@
     $conteoCompras = mysqli_num_rows($compras);
     $usuarios = verUsuarioPorId();
 
+    if( isset($_GET['numeroVenta']) ){
+        $bajarCompro = bajarComprobante();
+    }
+
+    if( isset($_GET['numVentaFactura']) ){
+        $bajarFactura = bajarFactura();
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -65,36 +74,59 @@
                 <?php
                     }else{
                 ?>
-                        <h1>DETALLE DE LA COMPRA NRO <?= $_GET['nroVenta'] ?></h1>
-
-                        <table class="container__todo__compras__sub--table">
-
-                            <tr class="container__todo__compras__sub--table-tr-1">
-                                <td>Fecha</td>
-                                <td>Importe Unitario</td>
-                                <td>Cantidad</td>
-                                <td>Condicion de pago</td>
-                                <td>Nombre producto</td>
-                                <td>Transporte</td>
-                            </tr>
-
+                        <div class="container__todo__detalleVenta">
+                            <div class="container__todo__detalleVenta--tituloFecha">
+                                <h1>Detalle de la compra NRO <?= $_GET['nroVenta'] ?></h1>
+                                <h2>Fecha: <?= $_GET['fecha'] ?></h2>
+                            </div>
+                            <div class="container__todo__detalleVenta__sub">
                 <?php
                     while( $compra = mysqli_fetch_assoc($compras) ){
                 ?>
-                            <tr id="container__todo__compras__sub--table-tr-2">
-                                <td><?= $compra['fecha'] ?></td>
-                                <td>$<?= number_format($compra['importe'], 2) ?></td>
-                                <td><?= $compra['cantidad'] ?></td>
-                                <td><?= $compra['condicionPago'] ?></td>
-                                <td><?= $compra['nombrePrd'] ?></td>
-                                <td><?= $compra['transporte'] ?></td>
-                            </tr>
+                         
+
+                            <div class="container__todo__detalleVenta__sub--producto">
+                                <h3><?= $compra['cantidad'] ?> x <?= $compra['nombrePrd'] ?></h3>
+                                <div class="container__todo__detalleVenta__subProducto--precio">
+                                    <h3>$<?= number_format($compra['importe'], 2) ?></h3>
+                                </div>
+                            </div>
+
+
+
+                         
+
                 <?php
                     }
-                }
+                    $detalleDeVenta = 'detalleDeVenta';
+                    if($_GET['comprobantePago'] == 'Aun sin emitir'){
+                        $detalleDeVenta = 'subirComprobantePago';
+                    }
                 ?>
-                        </table>
-                        
+                                <div class="container__todo__detalleVenta__sub--envioTransporte">
+                                    <h3>ENVIO</h3>
+                                    <div class="container__todo__detalleVenta__sub--transporte">
+                                        <h2><?= $_GET['transporte'] ?></h2>
+                                        <h2>$<?= $_GET['envio'] ?></h2>
+                                    </div>
+                                </div>
+
+                                <div class="container__todo__detalleVenta__sub--facturaComprobante">
+                                    <div class="container__todo__detalleVenta__sub--comprobante">
+                                        <h3>Comprobante de pago</h3>
+                                        <a href="<?= $detalleDeVenta ?>.php?numeroVenta=<?= $_GET['nroVenta'] ?>&nroVenta<?= $_GET['nroVenta'] ?>"><?= $_GET['comprobantePago'] != 'Aun sin emitir'? $_GET['comprobantePago'] : $subirFacturaString = 'SUBIR COMPROBANTE'; ?></a>
+                                    </div>
+                                    <div class="container__todo__detalleVenta__sub--factura">
+                                        <h3>Factura</h3>
+                                        <a href="detalleDeVenta.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&nroVenta<?= $_GET['nroVenta'] ?>"><?= $_GET['factura'] ?></a>   
+                                    </div>
+                                </div>
+
+                            </div> 
+                        </div>
+                <?php
+                    }
+                ?>
             </div>
             <a href="configuracionUser.php">VOLVER A CONFIGURACION</a>
         </div>
