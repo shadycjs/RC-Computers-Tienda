@@ -182,7 +182,7 @@ if(!empty($_SESSION['CARRITO'])){
                 </div>
 
                 <div class="containerModal__carrito__precio">
-                    <p>P/unitario: $<?= number_format($precioProducto,2) ?></p>
+                    <p>P/unitario: $<?= number_format($precioProducto,0, ',', '.') ?></p>
                 </div>
 
                 <form action="" method="post" class="containerModal__carrito__cantidad">
@@ -193,7 +193,7 @@ if(!empty($_SESSION['CARRITO'])){
                 </form>
 
                 <div class="containerModal__carrito__subtotal">
-                    <p>Subtotal: $<?= number_format($precioProducto*$cantidadProducto,2) ?></p>
+                    <p>Subtotal: $<?= number_format($precioProducto*$cantidadProducto, 0, ',', '.') ?></p>
                 </div>
 
                 <form action="" method="post" class="containerModal__carrito__eliminarPrd">
@@ -373,7 +373,7 @@ if(!empty($_SESSION['CARRITO'])){
         </div>
 </form>
         <div class="contenedor__carrito__modal__sub--totalCompra" id="TOTAL">
-            <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2,'.',',') : '0' ?></h1>
+            <h1>TOTAL: $<?= (isset($_SESSION['CARRITO']))? number_format($total,2, ',', '.') : '0' ?></h1>
         </div>
 
 

@@ -97,6 +97,7 @@
                          
 
                 <?php
+                    $total = $total+($compra['importe']*$compra['cantidad'])+$_GET['envio'];
                     }
                     $detalleDeVenta = 'detalleDeVenta';
                     if($_GET['comprobantePago'] == 'Aun sin emitir'){
@@ -114,12 +115,17 @@
                                 <div class="container__todo__detalleVenta__sub--facturaComprobante">
                                     <div class="container__todo__detalleVenta__sub--comprobante">
                                         <h3>Comprobante de pago</h3>
-                                        <a href="<?= $detalleDeVenta ?>.php?numeroVenta=<?= $_GET['nroVenta'] ?>&nroVenta<?= $_GET['nroVenta'] ?>"><?= $_GET['comprobantePago'] != 'Aun sin emitir'? $_GET['comprobantePago'] : $subirFacturaString = 'SUBIR COMPROBANTE'; ?></a>
+                                        <a href="<?= $detalleDeVenta ?>.php?numeroVenta=<?= $_GET['nroVenta'] ?>&nroVenta=<?= $_GET['nroVenta'] ?>"><?= $_GET['comprobantePago'] != 'Aun sin emitir'? $_GET['comprobantePago'] : $subirFacturaString = 'SUBIR COMPROBANTE'; ?></a>
                                     </div>
                                     <div class="container__todo__detalleVenta__sub--factura">
                                         <h3>Factura</h3>
-                                        <a href="detalleDeVenta.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&nroVenta<?= $_GET['nroVenta'] ?>"><?= $_GET['factura'] ?></a>   
+                                        <a href="detalleDeVenta.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&nroVenta=<?= $_GET['nroVenta'] ?>"><?= $_GET['factura'] ?></a>   
                                     </div>
+                                </div>
+
+                                <div class="container__todo__detalleVenta__sub--total">
+                                    <h3>TOTAL</h3>
+                                    <h2>$<?= number_format($total, 0, ',', '.') ?></h2>
                                 </div>
 
                             </div> 

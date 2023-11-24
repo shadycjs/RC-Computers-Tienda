@@ -114,6 +114,21 @@
     color: red;
 }
 
+.form-box.reestablecerClave{
+    position: absolute;
+    transform: translateX(-500px);
+}
+
+.wrapper.activeContra .form-box.reestablecerClave{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.activeContra .form-box.login{
+    transition: none;
+    transform: translateX(-500px);
+}
+
 .form-box h2{
     font-size: 2em;
     color: #fff;

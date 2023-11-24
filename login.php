@@ -16,7 +16,7 @@
                 </div>
                 <div class="remember-forgot">
                     <label><input type="checkbox">Recordarme</label>
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a href="#" id="olvideContra">¿Olvidaste tu contraseña?</a>
                 </div>
                 <input type="submit" name="btnIngresar" class="btn" value="Login">
                 <div class="login-register">
@@ -59,4 +59,20 @@
 
             </form>
         </div>
+
+        <div class="form-box reestablecerClave">
+            <h2>Reestablecer Clave</h2>
+            <form action="mailResetPass.php">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" name="usuEmail" required autocomplete= "off">
+                    <label for="usuEmail">Email:</label>
+                </div>
+                <input type="submit" value="Enviar" class="btn">
+                <div class="login-register">
+                    <p>¿Ya tenes una cuenta?<a href="#" id="loginOlvideContra">Logueate</a></p>
+                </div>
+            </form>
+        </div>
+
      </div>
