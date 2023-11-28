@@ -164,12 +164,12 @@ const registroExitosoFondo = document.querySelector('.check__register--fondo');
 const containerRegistroExitoso = document.querySelector('.check__register--container');
 const aquiLogin = document.querySelector('.check__register-logueate-aqui');
 
-cerrarRegistroExitoso.addEventListener('click', ()=>{
+cerrarRegistroExitoso?.addEventListener('click', ()=>{
     registroExitosoFondo.style.display = "none";
     containerRegistroExitoso.style.display = "none";
 });
 
-aquiLogin.addEventListener('click', ()=>{
+aquiLogin?.addEventListener('click', ()=>{
     registroExitosoFondo.style.display = "none";
     containerRegistroExitoso.style.display = "none";
     wrapper.classList.add('active-popup');

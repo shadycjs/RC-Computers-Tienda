@@ -3,6 +3,9 @@
     require 'funciones/conexionbd.php';
     require 'funciones/productos.php';
     require 'funciones/autenticar.php';
+
+    //Load Composer's autoloader
+    require 'vendor/autoload.php';
     require 'funciones/usuarios.php';
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\header.php';
@@ -26,6 +29,11 @@
     if( isset($_POST['reestablecerClave']) ){
         $chequeo = mailResetPass();
     }
+
+    if( isset($_POST['modificarClave']) ){
+        $modificarClaveMail = modificarClaveMail();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +52,12 @@
     <meta http-equiv="Last-Modified" content="0">
     <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
     <meta http-equiv="Pragma" content="no-cache">
+    <style type="text/css">
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -5px;
+        }
+    </style>
 </head>
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\login.php'
@@ -56,7 +70,21 @@
 <div class="check__register--fondo"></div>
     <div class="check__register--container">
         <span class="check__register-close"><ion-icon name="close-outline"></ion-icon></span>
-        <h1>¡USUARIO REGISTRADO CON EXITO!</h1>
+        <h1>¡USUARIO REGISTRADO CON ÉXITO!</h1>
+        <div class="check__register-logueate">Logueate clickeando <b class="check__register-logueate-aqui">AQUI</b> para acceder a todos nuestros productos</div>
+    </div>
+</div>
+<?php
+    }
+?>
+
+<?php
+    if( isset($modificarClaveMail) ){
+?>
+<div class="check__register--fondo"></div>
+    <div class="check__register--container">
+        <span class="check__register-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1>¡SE MODIFICÓ LA CONTRASEÑA CON ÉXITO!</h1>
         <div class="check__register-logueate">Logueate clickeando <b class="check__register-logueate-aqui">AQUI</b> para acceder a todos nuestros productos</div>
     </div>
 </div>
@@ -72,14 +100,18 @@
             '1' => 'Intentelo nuevamente haciendo click aqui...',
             '2' => 'Tiene que loguearse para ingresar al sitio',
             '3' => 'Debe registrarse y loguearse para agregar productos al carrito',
-            '4' => 'Intente nuevamente poniendo su mail'
+            '4' => 'Intente nuevamente poniendo su mail',
+            '5' => 'Las contraseñas deben coincidir',
+            '6' => 'Intente nuevamente con el codigo enviado al mail'
         };
 
         $mensaje2 = match( $error ){
             '1' => 'USUARIO Y/O CONTRASEÑA INCORRECTAS',
             '2' => 'NO TIENE PERMISO PARA ACCEDER',
             '3' => 'TIENE QUE REGISTRARSE PARA COMPRAR',
-            '4' => 'DIRECCION DE CORREO INCORRECTA'
+            '4' => 'DIRECCION DE CORREO INCORRECTA',
+            '5' => 'LAS CLAVES PROPORCIONADAS NO COINCIDEN',
+            '6' => 'EL CODIGO ES INCORRECTO O HA CADUCADO'
         }
 ?>
     <div class="errorFondo"></div>
@@ -96,37 +128,101 @@
     if( isset($chequeo) ){
         $codigo = generarCodigo();
         almacenarCodigo( $codigo );
-        enviarMail( $codigo );
+        enviarMail($chequeo['usuNombre'], $codigo);
 ?>
 
 <div class="errorFondo"></div>
-    <div class="error" style="background: linear-gradient(to top, rgb(32, 29, 29), #575353);">
+    <div class="error" style="background: linear-gradient(to top, rgb(32, 29, 29), #575353);
+                              padding: 10px;">
         <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
-        <h1>Email enviado, chequee su email para reestablecer su clave</h1>
-        <form action="formResetPass.php" method="post" style="display: flex;
+        <h1>Email enviado con exito! chequee su casilla para reestablecer su clave</h1>
+        <form action="" method="post" style="display: flex;
                                                               flex-direction: column;
                                                               gap: 10px;
                                                               width: 100%;
                                                               justify-content: center;
                                                               align-items: center">
                 Ingrese el codigo enviado <br>
-                <input type="text" name="codigo" class="form-control my-3" style="height: 30px;
-                                                                                  width: 80%">
-                <button type="submit" style="width: 80%;
-                                            height: 45px;
-                                            background-color: #fff;
-                                            border: none;
-                                            outline: none;
-                                            border-radius: 6px;
-                                            cursor: pointer;
-                                            font-size: 1em;
-                                            font-weight: 800;
-                                            transition: all 1.5s;">Enviar</button>
+                <div class="input-box">
+                    <input type="text" name="codigo" class="form-control my-3" required style=" width: 100%;
+                                                                                       height: 100%;
+                                                                                       background-color: transparent;
+                                                                                       border: none;
+                                                                                       outline: none;
+                                                                                       font-size: 1em;
+                                                                                       color: #fff;
+                                                                                       font-weight: 600;
+                                                                                       padding: 0 35px 0 5px;">
+                    <label for="usuEmail">Codigo:</label>
+                </div>
+                <button class="btn" type="submit">Enviar</button>
             </form>
     </div>
 
 <?php
     }
+?>
+
+<?php
+if(isset($_POST['codigo'])){
+    $chequeoCodigo = chequearCodigo();
+    if( $chequeoCodigo ){
+?>
+
+<div class="errorFondo"></div>
+    <div class="error" style="background: linear-gradient(to top, rgb(32, 29, 29), #575353);
+                              padding: 10px;">
+        <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1>Cambio de clave:</h1>
+        <form action="" method="post" style="display: flex;
+                                            flex-direction: column;
+                                            gap: 10px;
+                                            width: 100%;
+                                            justify-content: center;
+                                            align-items: center">
+                <br>
+                <div class="input-box">
+                    <input type="password" name="nuevaClave" class="form-control my-3" required style=" width: 100%;
+                                                                                       height: 100%;
+                                                                                       background-color: transparent;
+                                                                                       border: none;
+                                                                                       outline: none;
+                                                                                       font-size: 1em;
+                                                                                       color: #fff;
+                                                                                       font-weight: 600;
+                                                                                       padding: 0 35px 0 5px;">
+                    <label for="usuEmail">Nueva contraseña:</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="nuevaClave2" class="form-control my-3" required style=" width: 100%;
+                                                                                       height: 100%;
+                                                                                       background-color: transparent;
+                                                                                       border: none;
+                                                                                       outline: none;
+                                                                                       font-size: 1em;
+                                                                                       color: #fff;
+                                                                                       font-weight: 600;
+                                                                                       padding: 0 35px 0 5px;">
+                    <label for="usuEmail">Repita contraseña:</label>
+                </div>
+                <button class="btn" type="submit" name="modificarClave">Modificar contraseña</button>
+            </form>
+    </div>
+
+<?php
+    }else{
+?>
+
+<div class="errorFondo"></div>
+    <div class="error">
+        <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1>EL CODIGO ES INCORRECTO O HA CADUCADO</h1>
+        <p class="error__p">Intente nuevamente con el codigo enviado al mail</p>
+    </div>
+
+<?php
+    }
+}
 ?>
 
 <div class="container-items" id="shopContent"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
