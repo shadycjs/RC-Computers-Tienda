@@ -11,6 +11,13 @@
     }else{
         include 'C:\xampp\htdocs\RC\Tienda\header.php';
     }
+    if( isset($_POST['btnReg']) ){
+        registrarUser();
+    }
+    $productos = listarProductos();
+    if( isset($_POST['btnIngresar']) ){
+        login();
+    }
     $productos = verPrdPorId( $_GET['id'] );
     if(isset($_POST['agregarCarrito']) && !isset($_SESSION['idUsuario'])){
         header('location: tiendaLogOut.php?error=3');
@@ -38,8 +45,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     
 </head>
-
-
+<?php
+    include 'C:\xampp\htdocs\RC\Tienda\login.php'
+?>
 <main class="mainClass">
 
 <div class="cerrar__sesion--fondo"></div>

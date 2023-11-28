@@ -21,7 +21,11 @@
     $registros_por_pagina = 6;
     $total_paginas = ceil($total_registros/$registros_por_pagina);
     $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
-    $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
+    $primer_registro = ($pagina_actual-1) * $registros_por_pagina;
+    
+    if( isset($_POST['reestablecerClave']) ){
+        $chequeo = mailResetPass();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -67,13 +71,15 @@
         $mensaje = match( $error ){
             '1' => 'Intentelo nuevamente haciendo click aqui...',
             '2' => 'Tiene que loguearse para ingresar al sitio',
-            '3' => 'Debe registrarse y loguearse para agregar productos al carrito'
+            '3' => 'Debe registrarse y loguearse para agregar productos al carrito',
+            '4' => 'Intente nuevamente poniendo su mail'
         };
 
         $mensaje2 = match( $error ){
             '1' => 'USUARIO Y/O CONTRASEÑA INCORRECTAS',
             '2' => 'NO TIENE PERMISO PARA ACCEDER',
-            '3' => 'TIENE QUE REGISTRARSE PARA COMPRAR'
+            '3' => 'TIENE QUE REGISTRARSE PARA COMPRAR',
+            '4' => 'DIRECCION DE CORREO INCORRECTA'
         }
 ?>
     <div class="errorFondo"></div>
@@ -82,6 +88,43 @@
         <h1><?= $mensaje2 ?></h1>
         <p class="error__p"><?= $mensaje ?></p>
     </div>
+<?php
+    }
+?>
+
+<?php
+    if( isset($chequeo) ){
+        $codigo = generarCodigo();
+        almacenarCodigo( $codigo );
+        enviarMail( $codigo );
+?>
+
+<div class="errorFondo"></div>
+    <div class="error" style="background: linear-gradient(to top, rgb(32, 29, 29), #575353);">
+        <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1>Email enviado, chequee su email para reestablecer su clave</h1>
+        <form action="formResetPass.php" method="post" style="display: flex;
+                                                              flex-direction: column;
+                                                              gap: 10px;
+                                                              width: 100%;
+                                                              justify-content: center;
+                                                              align-items: center">
+                Ingrese el codigo enviado <br>
+                <input type="text" name="codigo" class="form-control my-3" style="height: 30px;
+                                                                                  width: 80%">
+                <button type="submit" style="width: 80%;
+                                            height: 45px;
+                                            background-color: #fff;
+                                            border: none;
+                                            outline: none;
+                                            border-radius: 6px;
+                                            cursor: pointer;
+                                            font-size: 1em;
+                                            font-weight: 800;
+                                            transition: all 1.5s;">Enviar</button>
+            </form>
+    </div>
+
 <?php
     }
 ?>

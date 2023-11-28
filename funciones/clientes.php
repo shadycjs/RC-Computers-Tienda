@@ -31,13 +31,16 @@
         $idUsuario = $_SESSION['idUsuario'];
         $telefono = (isset($_POST['telRecep'])) ? $_POST['telRecep'] : 'DEFAULT';
         $dniCuit = (isset($_POST['dniCuilRecep'])) ? $_POST['dniCuilRecep'] : 'DEFAULT';
+        $nombreRecep = $_POST['nombreRecep'];
+        $apellidoRecep = $_POST['apellidoRecep'];
 
         $sql = "INSERT INTO clientes
                 (idUsuario, CliProvincia, CliCiudad, CliCalle, CliAltura, CliPiso, CliDepto
-                , CliTorre, CliLocalidad, CliPostal, CliObser, telefono, dniCuit)
+                , CliTorre, CliLocalidad, CliPostal, CliObser, telefono, dniCuit, nombreRecep, apellidoRecep)
                 VALUES
                 ($idUsuario, '".$provinciaCli."', '".$ciudadCli."', '".$calleCli."', $alturaCli
-                ,$pisoCli, $deptoCli, $torreCli, '".$localidadCli."', $codpostalCli,'".$observacionesCli."', $telefono, $dniCuit)";
+                ,$pisoCli, $deptoCli, $torreCli, '".$localidadCli."', $codpostalCli,'".$observacionesCli."', '$telefono', $dniCuit,
+                '$nombreRecep', '$apellidoRecep')";
 
         try{
             $resultado = mysqli_query( $link,$sql );
@@ -65,10 +68,16 @@
         $observacionesCli = $_POST['observacionesCli'];
         $idUsuario = $_SESSION['idUsuario'];
         $idCli = $_POST['idCli'];
+        $telefono = (isset($_POST['telRecep'])) ? $_POST['telRecep'] : 'DEFAULT';
+        $dniCuit = (isset($_POST['dniCuilRecep'])) ? $_POST['dniCuilRecep'] : 'DEFAULT';
+        $nombreRecep = $_POST['nombreRecep'];
+        $apellidoRecep = $_POST['apellidoRecep'];
 
         $sql = "UPDATE clientes SET CliProvincia = '$provinciaCli', CliCiudad = '$ciudadCli', CliCalle = '$calleCli',
         CliAltura = $alturaCli, CliPiso = $pisoCli, CliDepto = $deptoCli, CliTorre = $torreCli,
-        CliLocalidad = '$localidadCli', CliPostal = $codpostalCli, CliObser = '$observacionesCli' WHERE idCli = ".$idCli;
+        CliLocalidad = '$localidadCli', CliPostal = $codpostalCli, CliObser = '$observacionesCli',
+        nombreRecep = '$nombreRecep', apellidoRecep = '$apellidoRecep', telefono = '$telefono',
+        dniCuit = $dniCuit WHERE idCli = ".$idCli;
 
         try{
             $resultado = mysqli_query( $link,$sql );

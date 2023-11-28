@@ -1,3 +1,41 @@
+//LOGIN Y REGISTER
+const wrapper = document.querySelector('.wrapper');
+const loginLink = document.querySelector('.login-link');
+const registerLink = document.querySelector('.register-link');
+const btnPopup = document.querySelector('.btnLogin-popup');
+const iconClose = document.querySelector('.icon-close');
+const btnfondo = document.querySelector(".btnfondo");
+const olvideContra = document.getElementById('olvideContra');
+const loginOlvideContra = document.getElementById('loginOlvideContra');
+
+registerLink?.addEventListener('click', ()=> {
+    wrapper.classList.add('active');
+});
+
+loginLink?.addEventListener('click', ()=> {
+    wrapper.classList.remove('active');
+});
+
+btnPopup?.addEventListener('click', ()=> {
+    wrapper.classList.add('active-popup');
+    btnfondo.style.display = "block";
+});
+
+iconClose?.addEventListener('click', ()=> {
+    wrapper.classList.remove('active-popup');
+    wrapper.classList.remove('activeContra');
+    btnfondo.style.display = "none";
+    errorFondo.style.display = "none";
+});
+
+olvideContra?.addEventListener('click', ()=>{
+    wrapper.classList.add('activeContra');
+});
+
+loginOlvideContra?.addEventListener('click', ()=>{
+    wrapper.classList.remove('activeContra');
+})
+
 // CATEGORIA
 
 let listElements = document.querySelectorAll('.contenedor-cat--click');
@@ -423,6 +461,27 @@ if(contenedorBanco != null){
         contenedorMercadopago.style.border = "2px solid #000";
     });
 }
+
+//VALIDACION INPUT CELULAR
+
+let celular = document.getElementById('celular');
+
+celular.addEventListener('keypress', (event) => {
+    event.preventDefault();
+    let codigoKey = event.keyCode;
+    console.log(codigoKey);
+    let valorKey = String.fromCharCode(codigoKey);
+    console.log(valorKey);
+
+    let valor = parseInt(valorKey);
+    console.log(valor);
+
+    if(valor) {
+        celular.value += valor
+    } else if (valor || valorKey === "0") { 
+        (celular.value += valor);
+    }
+})
 
 // GRID
 

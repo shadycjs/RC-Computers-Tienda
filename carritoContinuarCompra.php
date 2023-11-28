@@ -119,13 +119,17 @@ $cantProvincias = count($provincias);
         $mensaje = match( $error ){
             '1' => 'Debe completar todos los campos',
             '2' => 'Tiene que loguearse para ingresar al sitio',
-            '3' => 'Debe elegir entre los transportes ofrecidos para continuar con su compra'
+            '3' => 'Debe elegir entre los transportes ofrecidos para continuar con su compra',
+            '4' => 'Ingrese correctamente el número de telefono',
+            '5' => 'Ingrese correctamente el DNI'
         };
 
         $mensaje2 = match( $error ){
             '1' => 'ERROR AL INGRESAR LOS DATOS DE ENVIO',
             '2' => 'NO TIENE PERMISO PARA ACCEDER',
-            '3' => 'DEBE SELECCIONAR UN TRANSPORTE'
+            '3' => 'DEBE SELECCIONAR UN TRANSPORTE',
+            '4' => 'INGRESÓ UN NÚMERO DE TELEFONO NO VÁLIDO',
+            '5' => 'INGRESÓ UN NRO DE DOCUMENTO NO VÁLIDO'
         }
 ?>
     <div class="errorFondo"></div>
@@ -345,12 +349,12 @@ if(!empty($_SESSION['CARRITO'])){
                 </div>
 
                 <div class="container__infoReceptorEnvio__sub__inputs dni">
-                    <input type="number" name="dniCuilRecep" id="" required>
+                    <input type="number" name="dniCuilRecep" id="" placeholder="Por ej: 42951395" required>
                     <label for="dniCuilRecep">DNI(Del receptor)</label>
                 </div>
 
                 <div class="container__infoReceptorEnvio__sub__inputs telefono">
-                    <input type="number" name="telRecep" id="" required>
+                    <input id="celular" maxlength="12" type="text" name="telRecep" placeholder="Por ej: 011 6444-5156" required>
                     <label for="telRecep">Telefono(Del receptor)</label>
                 </div>
 

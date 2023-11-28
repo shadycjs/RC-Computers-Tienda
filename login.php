@@ -62,13 +62,13 @@
 
         <div class="form-box reestablecerClave">
             <h2>Reestablecer Clave</h2>
-            <form action="mailResetPass.php">
+            <form method="post" action="">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                     <input type="email" name="usuEmail" required autocomplete= "off">
                     <label for="usuEmail">Email:</label>
                 </div>
-                <input type="submit" value="Enviar" class="btn">
+                <input type="submit" value="Enviar" class="btn" name="reestablecerClave">
                 <div class="login-register">
                     <p>¿Ya tenes una cuenta?<a href="#" id="loginOlvideContra">Logueate</a></p>
                 </div>

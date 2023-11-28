@@ -3,6 +3,7 @@
 @import url(menuLogin.css);
 @import url(errorLogin.css);
 @import url(registroExitoso.css);
+@import url(codigoEnviado.css);
 
 * {
     margin: 0;

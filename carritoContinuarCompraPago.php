@@ -8,6 +8,16 @@
     require 'funciones/clientes.php';
     session_start();
     if(isset($_POST['sig'])){
+        $expresionRegularTelefono = '/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/D';
+        $telefonoCliente = $_POST['telRecep'];
+        if(!preg_match($expresionRegularTelefono,$telefonoCliente)) {
+            header('location: carritoContinuarCompra.php?error=4');
+        } 
+        $expresionRegularDni = '/[0-9]{7,8}/';
+        $dniCliente = $_POST['dniCuilRecep'];
+        if(!preg_match($expresionRegularDni,$dniCliente)) {
+            header('location: carritoContinuarCompra.php?error=5');
+        }
         $clientePorId = listarClientePorId();
         if($clientePorId == null){
             $insertarCliente = agregarCliente();
@@ -23,7 +33,7 @@
             $_SESSION['envio'] = $_POST['precioOca'];
         }else{
             header('location: carritoContinuarCompra.php?error=3');
-        }
+        } 
     }
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
 

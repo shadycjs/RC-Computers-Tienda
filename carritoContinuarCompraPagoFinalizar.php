@@ -27,7 +27,7 @@
     use MercadoPago\Resources\Preference\Item;
     use MercadoPago\Exceptions\MPApiException;
     
-    MercadoPagoConfig::setAccessToken("TEST-4496492563717601-100411-0e4fa3be17ab7200067c5cf24481aa79-262415866");
+    MercadoPagoConfig::setAccessToken("APP_USR-2539014882362896-100414-2d1019db0a61d179af420af3bda65b9c-1500470140");
     
     $client = new PreferenceClient();
     
@@ -40,7 +40,7 @@
             "items" => array(
                 array(
                     "id" => "4567",
-                    "title" => "Productos Informaticos",
+                    "title" => "Compra en RC Computers",
                     "description" => "Pc gamer",
                     "quantity" => 1,
                     "unit_price" => $total
@@ -83,11 +83,13 @@
         }
         $preference = $client->create($request);
         $preference->back_urls = array(
-            "success" => "http://localhost/RC/Tienda/pagoConfirmado.php",
-            "failure" => "http://localhost/RC/Tienda/pagoErroneo.php",
+            "success" => "http://localhost/RC/Tienda/pagoConfirmado.php/success",
+            "failure" => "http://localhost/RC/Tienda/pagoErroneo.php/failure",
+            "pending" => "http://www.tu-sitio/pending"
         );
         $preference->auto_return = "approved";
         $preference->binary_mode = true;
+        echo $preference->init_point;
     }catch (MPApiException $e) {
         echo "Status code: " . $e->getApiResponse()->getStatusCode() . "\n";
         var_dump($e->getApiResponse()->getContent());
@@ -204,17 +206,17 @@ if(!empty($_SESSION['CARRITO'])){
 
         <tr class="container__todo__tabla--segundaFila">
             <td><?= $nombreProducto ?></td>
-            <td><?= number_format($precioProducto,2) ?></td>
+            <td>$<?= number_format($precioProducto,0, ',', '.') ?></td>
             <td><?= $cantidadProducto ?></td>
-            <td><?= number_format($precioProducto*$cantidadProducto,2) ?></td>
+            <td>$<?= number_format($precioProducto*$cantidadProducto,0, ',', '.') ?></td>
         </tr>
 <?php
     $total = $total+($precioProducto*$cantidadProducto)+$_SESSION['envio'];
     }
 }
 ?>
-        <tr class="container__todo__tabla--tercerFila" id="filaEnvio"><td colspan="4">Envio: $<?= $_SESSION['envio'] ?></td>
-        <tr class="container__todo__tabla--tercerFila"><td colspan="4">Total: $<?= number_format($total,2) ?></td>
+        <tr class="container__todo__tabla--tercerFila" id="filaEnvio"><td colspan="4">Envio: $<?= number_format($_SESSION['envio'], 0, ',', '.') ?></td>
+        <tr class="container__todo__tabla--tercerFila"><td colspan="4">Total: $<?= number_format($total,2, ',', '.') ?></td>
         </tr>
         </table>
 
@@ -273,7 +275,7 @@ if(!empty($_SESSION['CARRITO'])){
 
 <script> <!-- CODIGO JS PARA EL BOTON DE MERCADOPAGO -->
 
-      const mp = new MercadoPago('TEST-4609f14d-4c49-471a-a587-acde269abcdf', {
+      const mp = new MercadoPago('APP_USR-6c0fb4ff-d246-4c01-b6e2-b14727e30931', {
         locale: 'es-AR'
       });
 
