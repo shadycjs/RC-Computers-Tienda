@@ -76,6 +76,19 @@
                         ,'Tucuman');
     $cantProvincias = count($provincias);
 
+    if( isset($_POST['guardarCambios']) ){
+        foreach($_POST['idOrdenVenta'] as $ids) {
+            $modificarEstadoVenta = modificarEstadoVenta($ids);
+        }
+    }
+
+    //PAGINACION
+    $total_registros = totalRegistrosCompras();
+    $registros_por_pagina = 10;
+    $total_paginas = ceil($total_registros/$registros_por_pagina);
+    $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
+    $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
+
 ?>
 
 <!DOCTYPE html>
@@ -94,11 +107,27 @@
     <meta http-equiv="Last-Modified" content="0">
     <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
     <meta http-equiv="Pragma" content="no-cache">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\login.php'
 ?>
 <main class="mainClass">
+    <script>
+        $('#submit').click(function() {
+        $.ajax({
+            url: 'compras.php',
+            type: 'GET',
+            data: {
+                email: 'email@example.com',
+                message: 'hello world!'
+            },
+            success: function(msg) {
+                alert('Email Sent');
+            }               
+        });
+    });
+    </script>
     
 <?php include 'modalCerrarSesion.php'; ?>
 
@@ -250,7 +279,7 @@
 
         </div>
 
-        <div class="container__todo__compras__sub">
+        <form action="" method="post" class="container__todo__compras__sub">
             <?php
                 if( $conteoComprasClientes <= 0 ){
             ?>
@@ -272,9 +301,7 @@
                             <td>Usuario</td>
                             <td>Nro Venta</td>
                             <td>Fecha</td>
-                            <td>Total</td>
-                            <td>Condicion de pago</td>
-                            <td>Transporte</td>
+                            <td>Estado</td>
                             <td>Comprobante de pago</td>
                             <td>Factura</td>
                             <td>Detalle</td>
@@ -282,7 +309,7 @@
 
             <?php
                 while( $compraCliente = mysqli_fetch_assoc($comprasClientes) ){
-                    $configuracionUser = 'configuracionUser';
+                    $configuracionUser = 'configuracionAdmin';
                     if($compraCliente['factura'] == 'Aun sin emitir'){
                         $configuracionUser = 'subirFacturaCompra';
                     }
@@ -291,20 +318,55 @@
                             <td><?= $compraCliente['usuNombre'], ' ',$compraCliente['usuApellido'] ?></td>
                             <td><?= $compraCliente['nroVenta'] ?></td>
                             <td><?= $compraCliente['fecha'] ?></td>
-                            <td>$<?= number_format($compraCliente['Total'], 2) ?></td>
-                            <td><?= $compraCliente['condicionPago'] ?></td>
-                            <td><?= $compraCliente['transporte'] ?></td>
+                            <td><select name="estadoOrden[<?= $compraCliente['idOrdenVenta'] ?>]" id="">
+                                <option <?= ($compraCliente['estado'] == 'En espera') ? 'selected' : '' ?> value="En espera">En espera</option>
+                                <option <?= ($compraCliente['estado'] == 'En preparacion') ? 'selected' : ''  ?> value="En preparacion">En preparacion</option>
+                                <option <?= ($compraCliente['estado'] == 'En viaje hacia destino') ? 'selected' : ''  ?> value="En viaje hacia destino">En viaje hacia destino</option>
+                                <option <?= ($compraCliente['estado'] == 'Entregado') ? 'selected' : ''  ?> value="Entregado">Entregado</option>
+                            </select></td>
                             <td><a href="configuracionAdmin.php?numeroVenta=<?= $compraCliente['nroVenta'] ?>"> <?= $compraCliente['comprobantePago'] ?></a></td>
-                            <td><a href="<?= $configuracionUser ?>.php?numVentaFactura=<?= $compraCliente['nroVenta'] ?>&usuNombre=<?= $compraCliente['usuNombre'] ?>&usuApellido=<?= $compraCliente['usuApellido'] ?>"><?= $compraCliente['factura'] != 'Aun sin emitir'? $compraCliente['factura'] : 'SUBIR FACTURA'; ?></a></td>
+                            <td><a href="<?= $configuracionUser ?>.php?idOrdenVenta=<?= $compraCliente['idOrdenVenta'] ?>&numVentaFactura=<?= $compraCliente['nroVenta'] ?>&usuNombre=<?= $compraCliente['usuNombre'] ?>&usuApellido=<?= $compraCliente['usuApellido'] ?>"><?= $compraCliente['factura'] != 'Aun sin emitir'? $compraCliente['factura'] : 'SUBIR FACTURA'; ?></a></td>
                             <td><a href="detalleDeVentaAdmin.php?nroVenta=<?= $compraCliente['nroVenta'] ?>">Ver detalle</a></td>
                         </tr>
+                        <input type="hidden" name="idOrdenVenta[<?= $compraCliente['idOrdenVenta'] ?>]" value="<?= $compraCliente['idOrdenVenta'] ?>">
             <?php
                 }
             }
             ?>
                     </table>
+                    <div class="container__todo__paginacion">
+                        <div class="container__todo__paginacion__sub">
+                            <div class="container__todo__paginacion__sub--numeracion">
+            <?php
+                if($pagina_actual > 1){
+            ?>
 
-        </div>
+                    <a href="configuracionAdmin.php?pagActual=<?= $pagina_actual-1 ?>">Anterior</a>
+
+            <?php
+                }
+            ?>
+            <?php
+                        for($i=1; $i<$total_paginas+1; $i++){
+            ?>
+                                <a href="configuracionAdmin.php?pagActual=<?= $i ?>"><?= $i ?></a>
+            <?php
+                        }
+            ?>
+
+            <?php
+                if($pagina_actual < $total_paginas){
+            ?>
+                                <a href="configuracionAdmin.php?pagActual=<?= $pagina_actual+1 ?>">Siguiente</a>
+            <?php
+                }
+            ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <input class="btn" type="submit" value="GUARDAR CAMBIOS" name="guardarCambios">
+        </form>
 
 
         <form method="post" action="resultadoModificarClave.php" class="container__todo_cambiarClave__sub">

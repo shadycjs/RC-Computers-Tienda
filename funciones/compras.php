@@ -2,12 +2,22 @@
 
     #CRUD COMPRAS
 
+    function totalRegistrosCompras() : int
+    {
+      $link = conectar();
+
+      $sql = "SELECT * FROM orden__venta";
+      $consulta = mysqli_query($link,$sql);
+      $resultado = mysqli_num_rows($consulta);
+      return $resultado;
+    }
+
     function verCompras()
     {
         $link = conectar();
 
         $idUser = $_SESSION['idUsuario'];
-        $sql = "SELECT nroVenta, fecha, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario FROM orden__venta
+        $sql = "SELECT idOrdenVenta, nroVenta, fecha, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario FROM orden__venta
                   GROUP BY nroVenta
                     HAVING idUsuario = ".$idUser;
         $resultado = mysqli_query( $link,$sql );
@@ -17,12 +27,42 @@
     function verDetalleCompra()
     {
         $link = conectar();
-        $nroVenta = $_GET['nroVenta'];
+        $idOrdenVenta = $_GET['idOrdenVenta'];
 
         $idUser = $_SESSION['idUsuario'];
         $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario FROM orden__venta ov
                   INNER JOIN productos p ON p.idPrd = ov.idPrd
-                    WHERE idUsuario = ".$idUser." AND nroVenta = ".$nroVenta;
+                    WHERE idUsuario = ".$idUser." AND idOrdenVenta = ".$idOrdenVenta;
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+    }
+
+    function listarComprasClientes()
+    {
+        $link = conectar();
+
+        //Paginacion
+        $total_registros = totalRegistrosCompras();
+        $registros_por_pagina = 10;
+        $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
+        $primer_registro = ($pagina_actual-1) * $registros_por_pagina;
+
+        $sql = "SELECT nroVenta, idOrdenVenta, fecha, estado, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, ov.idUsuario, u.usuNombre, u.usuApellido FROM orden__venta ov
+                    INNER JOIN usuarios u ON u.idUsuario = ov.idUsuario
+                        GROUP BY nroVenta
+                            LIMIT $registros_por_pagina OFFSET $primer_registro";
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+    }
+
+    function listarComprasDetalladasClientes()
+    {
+        $link = conectar();
+
+        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, transporte, pv.nombrePc, ov.idUsuario FROM orden__venta ov
+                    INNER JOIN usuarios u ON u.idUsuario = ov.idUsuario
+                        INNER JOIN pc_venta pv ON pv.idPrd = ov.idPrd
+                            WHERE nroVenta = ".$_GET['nroVenta'];
         $resultado = mysqli_query( $link,$sql );
         return $resultado;
     }
@@ -42,7 +82,7 @@
         $ruta = 'comprobantes/';
         
         $extension = pathinfo( $_FILES['facturaCompra']['name'], PATHINFO_EXTENSION );
-        $comprobante = 'Comprobante Orden NRO '.$_GET['nroVenta'].' - '.$_SESSION['usuNombre'].' '.$_SESSION['usuApellido'].'.'.$extension;
+        $comprobante = time().'.'.$extension;
         move_uploaded_file( $temp,$ruta.$comprobante );
       }
       return $comprobante;
@@ -66,12 +106,27 @@
         return $resultado;
     }
 
+    function modificarEstadoVenta($ids) : bool
+    {
+        $link = conectar();
+
+        $estado = mysqli_real_escape_string($link, $_POST['estadoOrden'][$ids]);
+        $idOrdenVenta =  $_POST['idOrdenVenta'][$ids];
+        var_dump($idOrdenVenta);
+        $sql = "UPDATE orden__venta SET estado = '$estado' WHERE idOrdenVenta = ".$idOrdenVenta;
+        try{
+            $resultado = mysqli_query( $link,$sql );
+            return $resultado;
+        }catch(EXCEPTION $e){
+            return false;
+        }
+    }
+
     function bajarComprobante()
     {
-        $nroVenta = $_GET['numeroVenta'];
-        $sql = "SELECT comprobantePago, nroVenta FROM orden__venta
-                  GROUP BY nroVenta
-                    HAVING nroVenta = $nroVenta";
+        $idOrdenVenta = $_GET['idOrdenVenta'];
+        $sql = "SELECT * FROM orden__venta
+                  WHERE idOrdenVenta = '$idOrdenVenta'";
         $link = conectar();
         $resultado = mysqli_query($link, $sql);
     
@@ -94,12 +149,49 @@
         }
     }
 
+    function actualizarComprobante() : bool
+    {
+        $link = conectar();
+
+        $nroVenta = $_GET['idOrdenVenta'];
+        $comprobanteSubida = subirComprobante();
+        $sql = "UPDATE orden__venta SET comprobantePago = '$comprobanteSubida' 
+                    WHERE idOrdenVenta = ".$nroVenta;
+        try{
+            $resultado = mysqli_query( $link,$sql );
+            return $resultado;
+        }catch(EXCEPTION $e){
+            return false;
+        }
+    }
+
+    function subirFactura() : string
+    {
+
+      //si enviaron un archivo
+      if( $_FILES['facturaCompra']['error'] == 0 ){
+
+        $archivo = $_FILES['facturaCompra'];
+
+        #### Mover el archivo desde /tmp a nuestra carpeta /productos
+        $temp = $_FILES['facturaCompra']['tmp_name'];
+        $ruta = 'facturas/';
+        
+        $extension = pathinfo( $_FILES['facturaCompra']['name'], PATHINFO_EXTENSION );
+        $factura = time().'.'.$extension;
+        move_uploaded_file( $temp,$ruta.$factura );
+
+      }
+
+      return $factura;
+    }
+
     function bajarFactura()
     {
         $nroVenta = $_GET['numVentaFactura'];
         $sql = "SELECT factura, nroVenta FROM orden__venta
                   GROUP BY nroVenta
-                    HAVING nroVenta = $nroVenta";
+                    HAVING nroVenta = '$nroVenta'";
         $link = conectar();
         $resultado = mysqli_query($link, $sql);
     
@@ -122,18 +214,20 @@
         }
     }
 
-    function actualizarComprobante() : bool
+    function actualizarFactura() : string
     {
         $link = conectar();
 
-        $nroVenta = $_GET['nroVenta'];
-        $comprobanteSubida = subirComprobante();
-        $sql = "UPDATE orden__venta SET comprobantePago = '$comprobanteSubida' 
-                    WHERE nroVenta = ".$nroVenta;
+        $id = $_GET['idOrdenVenta'];
+        $factura = subirFactura();
+        $sql = "UPDATE orden__venta SET factura = '$factura' WHERE idOrdenVenta = '$id'";
+
         try{
             $resultado = mysqli_query( $link,$sql );
             return $resultado;
-        }catch(EXCEPTION $e){
-            return false;
+        }
+        catch( EXCEPTION $e ){
+            $e->getMessage(); 
+            return FALSE;
         }
     }

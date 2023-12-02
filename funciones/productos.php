@@ -109,8 +109,7 @@
                 INNER JOIN categoria c ON p.idCategoria = c.idCategoria
                   INNER JOIN marca m ON p.idMarca = m.idMarca
                       WHERE estadoPrd = 1 AND (p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
-                        OR m.nombreMarca LIKE '%".$search."%')
-                          LIMIT $registros_por_pagina OFFSET $primer_registro";
+                        OR m.nombreMarca LIKE '%".$search."%')";
       
       $filtroCategoria = '';
       if( isset( $_GET['idCategoria'] ) && $_GET['idCategoria'] != 0 ){
@@ -122,9 +121,30 @@
         $filtroMarca = " AND p.idMarca = ".$_GET['idMarca'];
       }
 
+      $filtroCategoriaAside = '';
+      if( (isset($_GET['categoriasMarcaPc']) == 'intel') || (isset($_GET['categoriasMarcaPc']) == 'amd') ){
+        $marcaPc = $_GET['categoriasMarcaPc'];
+        $filtroCategoriaAside = " AND (c.nombreCategoria = 'Computadora Escritorio' AND m.nombreMarca = '$marcaPc')";
+      }elseif( (isset($_GET['categoriasMarcaMicro']) == 'intel') || (isset($_GET['categoriasMarcaMicro']) == 'amd') ){
+        $marcaMicro = $_GET['categoriasMarcaMicro'];
+        $filtroCategoriaAside = " AND (c.nombreCategoria = 'Microprocesador' AND m.nombreMarca = '$marcaMicro')";
+      }elseif( (isset($_GET['categoriasSocketMother']) == 'AM4') || (isset($_GET['categoriasSocketMother']) == 'LGA1200') || (isset($_GET['categoriasSocketMother']) == 'LGA1700') ){
+        $socketMother = $_GET['categoriasSocketMother'];
+        $filtroCategoriaAside = " AND (c.nombreCategoria = 'Motherboard' AND socketMother = '$socketMother')";
+      }elseif( (isset($_GET['categoriasRam']) == '4') || (isset($_GET['categoriasRam']) == '8') || (isset($_GET['categoriasRam']) == '16') ){
+        $tamanioRam = $_GET['categoriasRam'];
+        $filtroCategoriaAside = " AND (c.nombreCategoria = 'Memoria RAM' AND tamanioMemoriaRam = '$tamanioRam')";
+      }elseif( (isset($_GET['categoriasPlacaVideo']) == 'amd') || (isset($_GET['categoriasPlacaVideo']) == 'nvidia')){
+        $marcaPlacaVideo = $_GET['categoriasPlacaVideo'];
+        $filtroCategoriaAside = " AND (c.nombreCategoria = 'Placa de video' AND m.nombreMarca = '$marcaPlacaVideo')";
+      }
+
+      $limit = " LIMIT $registros_por_pagina OFFSET $primer_registro";
       $sql .= $filtroCategoria; //$sql = $sql.$filtroCategoria
       $sql .= $filtroMarca; //$sql = $sql.$filtroMarca
-        
+      $sql .= $filtroCategoriaAside;
+      $sql .= $limit;
+
       $resultado = mysqli_query( $link,$sql );
       return $resultado;
     }

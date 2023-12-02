@@ -49,7 +49,7 @@
 
             <div class="container__todo__sub__subirComprobante">
                 <h1>SUBIR FACTURA DE COMPRA PARA LA ORDEN NRO <?= $_GET['numVentaFactura'] ?></h1>
-                <form action="resultadoSubirFacturaCompra.php?nroVenta=<?= $_GET['numVentaFactura'] ?>&usuNombre=<?= $_GET['usuNombre'] ?>&usuApellido=<?= $_GET['usuApellido'] ?>" enctype="multipart/form-data" method="post" class="container__todo__sub__subirComprobante--input">
+                <form action="resultadoSubirFacturaCompra.php?nroVenta=<?= $_GET['numVentaFactura'] ?>&usuNombre=<?= $_GET['usuNombre'] ?>&usuApellido=<?= $_GET['usuApellido'] ?>&idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>" enctype="multipart/form-data" method="post" class="container__todo__sub__subirComprobante--input">
                     <label for="facturaCompra">SUBA LA FACTURA</label>
                     <input type="file" name="facturaCompra" id="inputCompro">
                     <ion-icon name="cloud-upload" class="iconoSubirCompro"></ion-icon>

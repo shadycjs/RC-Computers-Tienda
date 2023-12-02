@@ -56,6 +56,7 @@ nav a{
     justify-content: center;
     align-items: center;
     width: 80%;
+    opacity: 50%;
 }
 
 .container__timelapse__envio{
@@ -112,7 +113,6 @@ nav a{
     justify-content: center;
     align-items: center;
     width: 80%;
-    opacity: 50%;
 }
 
 /* FIN DEL TIMELAPSE */
@@ -276,7 +276,7 @@ main{
 .container__todo__banco{
     display: flex;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, black, #575353);
 }
 
 .container__todo__banco__sub{
@@ -298,14 +298,28 @@ main{
     flex-direction: column;
 }
 
-.container__todo__banco__sub--factura{
+.container__sub__4--imagenNueva{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    background-color: #d69b42;
 }
 
-.container__todo__banco__sub--factura input{
+.container__sub__4--imagenNueva label{
     display: flex;
-    height: 50px;
+    position: absolute;
+    font-size: 1em;
+    color: #fff;
+    gap: 10px;
+}
+
+.container__sub__4--imagenNueva input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
 }
 
 .container__todo__banco__sub--confirmar{

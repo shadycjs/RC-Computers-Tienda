@@ -65,15 +65,7 @@
         <div class="container__todo__sub">
 
             <div class="container__todo__compras__sub">
-                <?php
-                    if( $conteoCompras <= 0 ){
-                ?>
 
-                        <h1>NO TIENES COMPRAS AUN...</h1>
-
-                <?php
-                    }else{
-                ?>
                         <div class="container__todo__detalleVenta">
                             <div class="container__todo__detalleVenta--tituloFecha">
                                 <h1>Detalle de la compra NRO <?= $_GET['nroVenta'] ?></h1>
@@ -115,11 +107,11 @@
                                 <div class="container__todo__detalleVenta__sub--facturaComprobante">
                                     <div class="container__todo__detalleVenta__sub--comprobante">
                                         <h3>Comprobante de pago</h3>
-                                        <a href="<?= $detalleDeVenta ?>.php?numeroVenta=<?= $_GET['nroVenta'] ?>&nroVenta=<?= $_GET['nroVenta'] ?>"><?= $_GET['comprobantePago'] != 'Aun sin emitir'? $_GET['comprobantePago'] : $subirFacturaString = 'SUBIR COMPROBANTE'; ?></a>
+                                        <a href="<?= $detalleDeVenta ?>.php?idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>&nroVenta=<?= $_GET['nroVenta'] ?>&factura=<?= $_GET['factura'] ?>&fecha=<?= $_GET['fecha'] ?>&envio=<?= $_GET['envio'] ?>&transporte=<?= $_GET['transporte'] ?>&comprobantePago=<?= $_GET['comprobantePago'] ?>&numeroVenta=<?= $_GET['nroVenta'] ?>"><?= $_GET['comprobantePago'] != 'Aun sin emitir'? $_GET['comprobantePago'] : $subirFacturaString = 'SUBIR COMPROBANTE'; ?></a>
                                     </div>
                                     <div class="container__todo__detalleVenta__sub--factura">
                                         <h3>Factura</h3>
-                                        <a href="detalleDeVenta.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&nroVenta=<?= $_GET['nroVenta'] ?>"><?= $_GET['factura'] ?></a>   
+                                        <a href="detalleDeVenta.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>&factura=<?= $_GET['factura'] ?>&fecha=<?= $_GET['fecha'] ?>&envio=<?= $_GET['envio'] ?>&transporte=<?= $_GET['transporte'] ?>"><?= $_GET['factura'] ?></a>   
                                     </div>
                                 </div>
 
@@ -130,9 +122,7 @@
 
                             </div> 
                         </div>
-                <?php
-                    }
-                ?>
+
             </div>
             <a href="configuracionUser.php">VOLVER A CONFIGURACION</a>
         </div>

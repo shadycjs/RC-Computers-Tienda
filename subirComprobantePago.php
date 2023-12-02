@@ -49,11 +49,11 @@
 
             <div class="container__todo__sub__subirComprobante">
                 <h1>SUBIR COMPROBANTE DE PAGO PARA LA ORDEN DE COMPRA NRO <?= $_GET['numeroVenta'] ?></h1>
-                <form action="resultadoSubirComprobantePago.php?nroVenta=<?= $_GET['numeroVenta'] ?>" enctype="multipart/form-data" method="post" class="container__todo__sub__subirComprobante--input">
+                <form action="resultadoSubirComprobantePago.php?idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>&nroVenta=<?= $_GET['nroVenta'] ?>" enctype="multipart/form-data" method="post" class="container__todo__sub__subirComprobante--input">
                     <label for="facturaCompra">SUBA SU COMPROBANTE DE PAGO</label>
                     <input type="file" name="facturaCompra" id="inputCompro">
                     <ion-icon name="cloud-upload" class="iconoSubirCompro"></ion-icon>
-                    <input type="submit" value="SUBIR COMPROBANTE" id="inputSubirCompro">
+                    <input type="submit" value="SUBIR COMPROBANTE" id="inputSubirCompro" name="subirComprobantePago">
                 </form>
             </div>
 

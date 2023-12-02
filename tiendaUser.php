@@ -20,6 +20,7 @@
     $total_paginas = ceil($total_registros/$registros_por_pagina);
     $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
     $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
+
 ?>
 
 <!DOCTYPE html>

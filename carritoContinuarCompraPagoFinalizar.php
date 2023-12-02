@@ -83,13 +83,11 @@
         }
         $preference = $client->create($request);
         $preference->back_urls = array(
-            "success" => "http://localhost/RC/Tienda/pagoConfirmado.php/success",
-            "failure" => "http://localhost/RC/Tienda/pagoErroneo.php/failure",
-            "pending" => "http://www.tu-sitio/pending"
+            "success" => "https://flooring-fares-alice-supplies.trycloudflare.com/paymentsuccess"
         );
         $preference->auto_return = "approved";
         $preference->binary_mode = true;
-        echo $preference->init_point;
+        //echo $preference->init_point;
     }catch (MPApiException $e) {
         echo "Status code: " . $e->getApiResponse()->getStatusCode() . "\n";
         var_dump($e->getApiResponse()->getContent());
@@ -231,8 +229,7 @@ if(!empty($_SESSION['CARRITO'])){
 <?php
         if($_SESSION['condPago'] == 'MercadoPago'){
 ?>
-        <div id="wallet_container">
-        </div>
+
 <?php
         }
 ?>
@@ -249,10 +246,10 @@ if(!empty($_SESSION['CARRITO'])){
                     <p>CUIT: <b>20-43049529-2</b></p>
                     <p>CBU: <b>19100421-55004201628700</b></p>
                 </div>
-                <div class="container__todo__banco__sub--factura">
-                    <label for="factura">Adjuntar comprobante de pago aqui:</label>
-                    <input type="file" name="facturaCompra" accept=".pdf">
-                </div>
+                <div class="container__sub__4--imagenNueva">
+                        <label for="file">SUBI TU FACTURA ACA<ion-icon name="cloud-upload" id="uploadIcon"></ion-icon></label>
+                        <input type="file" name="facturaCompra" id="">
+                    </div>
                 <div class="container__todo__banco__sub--confirmar">
                     <input type="submit" value="CONFIRMAR COMPRA" name="confCompra">
                 </div>
@@ -336,6 +333,8 @@ if(!empty($_SESSION['CARRITO'])){
 </script>
 
         </form>
+        <div id="wallet_container">
+        </div>
     </div>
 
 </main>

@@ -9,8 +9,10 @@
     require 'funciones/compras.php';
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
-    $actualizarCompro = actualizarComprobante();
-    $subirCompro = subirComprobante();
+    if( isset($_POST['subirComprobantePago']) ){
+        $subirCompro = actualizarComprobante();
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +57,7 @@
 
             <div class="container__todo__pagoConfirmado">
 <?php
-    if( $subirCompro != 'Aun sin emitir' ){
+    if( $subirCompro ){
 ?>
                 <div class="container__todo__pagoConfirmado__sub">
                     <h1>¡SUBISTE EL COMPROBANTE PARA LA ORDEN DE COMPRA NRO <?= $_GET['nroVenta'] ?>!</h1>

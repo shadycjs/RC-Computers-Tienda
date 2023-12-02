@@ -2,13 +2,12 @@
 
     require 'funciones/conexionbd.php';
     require 'funciones/carrito.php';
-    require 'funciones/computadoras.php';
+    require 'funciones/productos.php';
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
     require 'funciones/clientes.php';
     require 'funciones/compras.php';
     session_start();
-    require 'mercadoPago.php';
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     $actualizarFactura = actualizarFactura();
     $subirFactura = subirFactura();

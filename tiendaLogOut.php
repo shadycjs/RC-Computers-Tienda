@@ -3,7 +3,6 @@
     require 'funciones/conexionbd.php';
     require 'funciones/productos.php';
     require 'funciones/autenticar.php';
-
     //Load Composer's autoloader
     require 'vendor/autoload.php';
     require 'funciones/usuarios.php';
