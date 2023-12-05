@@ -82,7 +82,7 @@ if(nameUser != null){
         flechitaUser.classList.toggle('flechitaUserRotate');
     });
 }
-main.addEventListener('click', ()=> {
+main?.addEventListener('click', ()=> {
     logOut.classList.remove('on');
     flechitaUser.classList.remove('flechitaUserRotate');
 });
@@ -466,7 +466,7 @@ if(contenedorBanco != null){
 
 let celular = document.getElementById('celular');
 
-celular.addEventListener('keypress', (event) => {
+celular?.addEventListener('keypress', (event) => {
     event.preventDefault();
     let codigoKey = event.keyCode;
     console.log(codigoKey);

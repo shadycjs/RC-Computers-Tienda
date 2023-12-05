@@ -81,13 +81,21 @@
             $modificarEstadoVenta = modificarEstadoVenta($ids);
         }
     }
-
+                    
     //PAGINACION
     $total_registros = totalRegistrosCompras();
     $registros_por_pagina = 10;
     $total_paginas = ceil($total_registros/$registros_por_pagina);
     $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
-    $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
+    $primer_registro = ($pagina_actual-1) * $registros_por_pagina;
+    
+    if( isset($_POST['agregarDatosUser']) ){
+        $actualizarUser = agregarCliente();
+    }elseif( isset($_POST['modificarDatosUser']) ){
+        $actualizarUser = modificarCliente();
+    }
+
+    $clientePorId = listarClientePorId();
 
 ?>
 
@@ -113,21 +121,6 @@
     include 'C:\xampp\htdocs\RC\Tienda\login.php'
 ?>
 <main class="mainClass">
-    <script>
-        $('#submit').click(function() {
-        $.ajax({
-            url: 'compras.php',
-            type: 'GET',
-            data: {
-                email: 'email@example.com',
-                message: 'hello world!'
-            },
-            success: function(msg) {
-                alert('Email Sent');
-            }               
-        });
-    });
-    </script>
     
 <?php include 'modalCerrarSesion.php'; ?>
 
@@ -184,7 +177,7 @@
 
             </form>
 
-        <div class="container__sub__2--datos">
+        <form action="" method="post" class="container__sub__2--datos">
             <div class="container__sub__2">
 
                 <div class="container__sub__3--TituloInfoPersonal">
@@ -198,7 +191,7 @@
                 <div class="container__sub__3--provinciaCiudad">
                     <div class="container__sub__4--provincia">
                         <label for="provincia">Provincia</label>
-                        <select name="provincia" id="">
+                        <select name="provinciaCli" id="">
 <?php
                     for( $i=0;$i<$cantProvincias;$i++ ){
 ?>
@@ -209,7 +202,7 @@
                         </select>
                     </div>
                     <div class="container__sub__4--ciudad">
-                        <input type="text" name="ciudad" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliCiudad : '' ?>" required>
+                        <input type="text" name="ciudadCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliCiudad : '' ?>" required>
                         <label for="ciudad">Ciudad</label>
                     </div>
                 </div>
@@ -220,11 +213,11 @@
 
                 <div class="container__sub__3--calleAltura" id="containerCalleAltura">
                     <div class="container__sub__4--calle">
-                        <input type="text" name="calle" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliCalle : '' ?>" required>
+                        <input type="text" name="calleCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliCalle : '' ?>" required>
                         <label for="calle">Calle</label>
                     </div>
                     <div class="container__sub__4--altura">
-                        <input type="number" name="altura" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliAltura : '' ?>" required>
+                        <input type="number" name="alturaCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliAltura : '' ?>" required>
                         <label for="altura">Altura</label>
                     </div>
                 </div>
@@ -235,15 +228,15 @@
 
                 <div class="container__sub__3--pisoDeptoTorre" id="containerpisoDeptoTorre">
                     <div class="container__sub__4--piso">
-                        <input type="number" name="piso" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliPiso : '' ?>" required>
+                        <input type="number" name="pisoCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliPiso : '' ?>" required>
                         <label for="piso">Piso</label>
                     </div>
                     <div class="container__sub__4--Depto">
-                        <input type="number" name="depto" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliDepto : '' ?>" required>
+                        <input type="number" name="deptoCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliDepto : '' ?>" required>
                         <label for="depto">Depto</label>
                     </div>
                     <div class="container__sub__4--Torre">
-                        <input type="number" name="torre" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliTorre : '' ?>" required>
+                        <input type="number" name="torreCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliTorre : '' ?>" required>
                         <label for="torre">Torre</label>
                     </div>
                 </div>
@@ -254,11 +247,11 @@
 
                 <div class="container__sub__3--localidadCodpostal" id="containerlocalidadCodpostal">
                     <div class="container__sub__4--localidad">
-                        <input type="text" name="localidad" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliLocalidad : '' ?>" required>
+                        <input type="text" name="localidadCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliLocalidad : '' ?>" required>
                         <label for="localidad">Localidad</label>
                     </div>
                     <div class="container__sub__4--codpostal">
-                        <input type="number" name="codpostal" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliPostal : '' ?>" required>
+                        <input type="number" name="codpostalCli" value="<?= mysqli_num_rows($infoClientes)!= 0 ? $CliPostal : '' ?>" required>
                         <label for="codpostal">Cod.Postal</label>
                     </div>
 
@@ -270,14 +263,28 @@
 
                 <div class="container__sub__3--observaciones" id="containerobservaciones">
                     <div class="container__sub__4--observaciones">
-                        <label for="observaciones">Observaciones</label>
-                        <textarea name="" id="" cols="30" rows="10"><?= mysqli_num_rows($infoClientes)!= 0 ? $CliObser : '' ?></textarea>
+                        <label for="observacionesCli">Observaciones</label>
+                        <textarea name="observacionesCli" id="" cols="30" rows="10"><?= mysqli_num_rows($infoClientes)!= 0 ? $CliObser : '' ?></textarea>
                     </div>
                 </div>
 
             </div>
+            <input type="hidden" name="idCli" value="<?= $clientePorId['idCli'] ?>">
+<?php
+    if($verificarCliente == null){
+?>
 
-        </div>
+            <input type="submit" name="agregarDatosUser" value="Agregar Datos" id="enviarModificarCambios">
+
+<?php
+    }else{
+?>
+            <input type="submit" name="modificarDatosUser" value="Modificar Datos" id="enviarModificarCambios">
+<?php
+    }
+?>
+
+        </form>
 
         <form action="" method="post" class="container__todo__compras__sub">
             <?php
@@ -302,8 +309,6 @@
                             <td>Nro Venta</td>
                             <td>Fecha</td>
                             <td>Estado</td>
-                            <td>Comprobante de pago</td>
-                            <td>Factura</td>
                             <td>Detalle</td>
                         </tr>
 
@@ -324,9 +329,7 @@
                                 <option <?= ($compraCliente['estado'] == 'En viaje hacia destino') ? 'selected' : ''  ?> value="En viaje hacia destino">En viaje hacia destino</option>
                                 <option <?= ($compraCliente['estado'] == 'Entregado') ? 'selected' : ''  ?> value="Entregado">Entregado</option>
                             </select></td>
-                            <td><a href="configuracionAdmin.php?numeroVenta=<?= $compraCliente['nroVenta'] ?>"> <?= $compraCliente['comprobantePago'] ?></a></td>
-                            <td><a href="<?= $configuracionUser ?>.php?idOrdenVenta=<?= $compraCliente['idOrdenVenta'] ?>&numVentaFactura=<?= $compraCliente['nroVenta'] ?>&usuNombre=<?= $compraCliente['usuNombre'] ?>&usuApellido=<?= $compraCliente['usuApellido'] ?>"><?= $compraCliente['factura'] != 'Aun sin emitir'? $compraCliente['factura'] : 'SUBIR FACTURA'; ?></a></td>
-                            <td><a href="detalleDeVentaAdmin.php?nroVenta=<?= $compraCliente['nroVenta'] ?>">Ver detalle</a></td>
+                            <td><a href="detalleDeVentaAdmin.php?idOrdenVenta=<?= $compraCliente['idOrdenVenta'] ?>&comprobantePago=<?= $compraCliente['comprobantePago'] ?>&factura=<?= $compraCliente['factura'] ?>&fecha=<?= $compraCliente['fecha'] ?>&envio=<?= $compraCliente['envio'] ?>&transporte=<?= $compraCliente['transporte'] ?>&nroVenta=<?= $compraCliente['nroVenta'] ?>&idUsuario=<?= $compraCliente['idUsuario'] ?>&condicionPago=<?= $compraCliente['condicionPago'] ?>">Ver detalle</a></td>
                         </tr>
                         <input type="hidden" name="idOrdenVenta[<?= $compraCliente['idOrdenVenta'] ?>]" value="<?= $compraCliente['idOrdenVenta'] ?>">
             <?php

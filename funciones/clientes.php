@@ -31,8 +31,8 @@
         $idUsuario = $_SESSION['idUsuario'];
         $telefono = (isset($_POST['telRecep'])) ? $_POST['telRecep'] : 'DEFAULT';
         $dniCuit = (isset($_POST['dniCuilRecep'])) ? $_POST['dniCuilRecep'] : 'DEFAULT';
-        $nombreRecep = $_POST['nombreRecep'];
-        $apellidoRecep = $_POST['apellidoRecep'];
+        $nombreRecep = (isset($_POST['nombreRecep'])) ? $_POST['nombreRecep'] : 'DEFAULT';
+        $apellidoRecep = (isset($_POST['apellidoRecep'])) ? $_POST['apellidoRecep'] : 'DEFAULT';
 
         $sql = "INSERT INTO clientes
                 (idUsuario, CliProvincia, CliCiudad, CliCalle, CliAltura, CliPiso, CliDepto
@@ -41,7 +41,6 @@
                 ($idUsuario, '".$provinciaCli."', '".$ciudadCli."', '".$calleCli."', $alturaCli
                 ,$pisoCli, $deptoCli, $torreCli, '".$localidadCli."', $codpostalCli,'".$observacionesCli."', '$telefono', $dniCuit,
                 '$nombreRecep', '$apellidoRecep')";
-
         try{
             $resultado = mysqli_query( $link,$sql );
             return $resultado;
@@ -70,8 +69,8 @@
         $idCli = $_POST['idCli'];
         $telefono = (isset($_POST['telRecep'])) ? $_POST['telRecep'] : 'DEFAULT';
         $dniCuit = (isset($_POST['dniCuilRecep'])) ? $_POST['dniCuilRecep'] : 'DEFAULT';
-        $nombreRecep = $_POST['nombreRecep'];
-        $apellidoRecep = $_POST['apellidoRecep'];
+        $nombreRecep = (isset($_POST['nombreRecep'])) ? $_POST['nombreRecep'] : 'DEFAULT';
+        $apellidoRecep = (isset($_POST['apellidoRecep'])) ? $_POST['apellidoRecep'] : 'DEFAULT';
 
         $sql = "UPDATE clientes SET CliProvincia = '$provinciaCli', CliCiudad = '$ciudadCli', CliCalle = '$calleCli',
         CliAltura = $alturaCli, CliPiso = $pisoCli, CliDepto = $deptoCli, CliTorre = $torreCli,
@@ -102,7 +101,7 @@
     {
         $link = conectar();
 
-        $sql = "SELECT CliProvincia, CliCiudad, CliCalle, CliAltura, CliPiso, CliDepto,
+        $sql = "SELECT idCli, CliProvincia, CliCiudad, CliCalle, CliAltura, CliPiso, CliDepto,
                     CliTorre, CliLocalidad, CliPostal, CliObser, telefono, dniCuit FROM clientes 
                         WHERE idUsuario = ".$_SESSION['idUsuario'];
         $resultado = mysqli_query( $link,$sql );

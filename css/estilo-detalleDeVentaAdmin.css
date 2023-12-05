@@ -1,0 +1,350 @@
+@import url(headerUser.css);
+@import url(menuLogin.css);
+@import url(estilo-modalCerrarSesion.css);
+
+* {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-sizing: border-box;
+}
+
+html, body{
+    min-width: 100vw;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    background: radial-gradient(circle, #fff, #bbb);
+    display: flex;
+    flex-direction: column;
+}    
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav a{   
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* IMAGEN DE CARGA DE INICIO */
+.imagen-carga{
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    animation: opac ease-out 2s;
+    animation-fill-mode: forwards;
+    z-index: 70;
+    background-color: #252121;
+    align-items: center;
+}
+
+.imagen-carga img{
+    margin-right: auto;
+    margin-left: auto;
+    min-width: 350px;
+    min-height: 350px;
+    animation: opac ease-out 2s;
+    animation-fill-mode: forwards;
+}
+
+/* INICIO DEL MAIN */
+
+main{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    margin-top: 130px;
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+.container__todo{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-height: 80%;
+    margin: 30px;
+    box-shadow: 10px 5px 5px rgb(54, 54, 54);
+}
+
+.container__todo__sub{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.container__todo__sub a{
+    text-align: center;
+    color: #000;
+}
+
+/* INICIO DEL CONTAINER COMPRAS */
+
+.container__todo__compras__sub{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.container__todo__compras__sub a{
+    color: #000;
+}
+
+.container__todo__compras__sub a:hover{
+    text-decoration: underline;
+}
+
+.container__todo__detalleVenta{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: start;
+}
+
+.container__todo__detalleVenta__sub{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    max-height: 950px;
+    overflow-y: scroll;
+}
+
+.container__todo__detalleVenta__sub--producto{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    background-color: #4bc28e;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.container__todo__detalleVenta__sub--facturaComprobante{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-around;
+    background-color: rgb(131, 67, 128);
+    color: #fff;
+}
+
+.container__todo__detalleVenta__sub--facturaComprobante a{
+    color: #fff;
+}
+
+.container__todo__detalleVenta__sub--envioTransporte{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    background-color: #4b5dc2;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+
+.container__todo__detalleVenta__sub--formaPagoMercadoPago{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    background-color: #4097c9;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+
+.container__todo__detalleVenta__sub--formaPagoTransf{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    background-color: #a7c440;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+
+.container__todo__detalleVenta__sub--total{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    background-color: #df7b0a;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+
+/* FIN DEL CONTAINER COMPRAS */
+
+/* FIN DEL MAIN */
+
+/* INICIO DEL FOOTER */
+footer{
+    background: linear-gradient(to bottom, black, #575353);
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    bottom: 0;
+}
+
+footer p{
+    align-self: center;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* FIN DEL FOOTER */
+
+
+/* ANIMACIONES */
+@keyframes opac {
+    0% {opacity: 1;}
+    10% {opacity: 1;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
+    90% {opacity: .5;}
+    100% {opacity: 0;visibility: hidden;}
+}
+
+
+
+/* INICIO DEL RESPONSIVE DESIGN 996px */
+@media screen and (max-width: 996px){
+
+    main{
+        margin-top: 10px;
+    }
+
+}
+
+
+/* INICIO DEL RESPONSIVE DESIGN 732px*/
+@media screen and (max-width: 732px){
+
+/* INICIO DEL MAIN */
+
+.container__todo{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    min-height: 90%;
+    max-height: 90%;
+    margin: 0;
+    box-shadow: 10px 5px 5px rgb(54, 54, 54);
+}
+
+.container__todo__sub{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.container__todo__sub a{
+    text-align: center;
+    color: #000;
+}
+
+/* INICIO DEL CONTAINER COMPRAS */
+
+.container__todo__compras__sub{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.container__todo__compras__sub a{
+    color: #000;
+}
+
+.container__todo__compras__sub a:hover{
+    text-decoration: underline;
+}
+
+.container__todo__detalleVenta{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: start;
+}
+
+.container__todo__detalleVenta__sub{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    max-height: 950px;
+    overflow-y: scroll;
+}
+
+.container__todo__detalleVenta__sub--producto{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    background-color: #4bc28e;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.container__todo__detalleVenta__sub--facturaComprobante{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-around;
+    background-color: rgb(131, 67, 128);
+    color: #fff;
+}
+
+.container__todo__detalleVenta__sub--facturaComprobante a{
+    color: #fff;
+}
+
+.container__todo__detalleVenta__sub--envioTransporte{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    background-color: #4b5dc2;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+
+/* FIN DEL CONTAINER COMPRAS */
+
+/* FIN DEL MAIN */
+
+}

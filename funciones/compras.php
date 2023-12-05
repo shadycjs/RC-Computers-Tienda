@@ -37,6 +37,19 @@
         return $resultado;
     }
 
+    function verDetalleVenta()
+    {
+        $link = conectar();
+        $idOrdenVenta = $_GET['idOrdenVenta'];
+
+        $idUser = $_GET['idUsuario'];
+        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario FROM orden__venta ov
+                  INNER JOIN productos p ON p.idPrd = ov.idPrd
+                    WHERE idUsuario = ".$idUser." AND idOrdenVenta = ".$idOrdenVenta;
+        $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+    }
+
     function listarComprasClientes()
     {
         $link = conectar();

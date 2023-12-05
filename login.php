@@ -18,7 +18,7 @@
                     <label><input type="checkbox">Recordarme</label>
                     <a href="#" id="olvideContra">¿Olvidaste tu contraseña?</a>
                 </div>
-                <input type="submit" name="btnIngresar" class="btn" value="Login">
+                <input type="submit" name="btnIngresar" class="btnLog" value="Login">
                 <div class="login-register">
                     <p>¿No tenes una cuenta?<a href="#" class="register-link">Registrate</a></p>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="remember-forgot">
                     <label><input type="checkbox" required>Acepto los terminos y condiciones</label>
                 </div>
-                <input type="submit" name="btnReg" class="btn" value="Registrarse">
+                <input type="submit" name="btnReg" class="btnLog" value="Registrarse">
                 <div class="login-register">
                     <p>¿Ya tenes una cuenta?<a href="#" class="login-link">Logueate</a></p>
                 </div>
@@ -68,7 +68,7 @@
                     <input type="email" name="usuEmail" required autocomplete= "off">
                     <label for="usuEmail">Email:</label>
                 </div>
-                <input type="submit" value="Enviar" class="btn" name="reestablecerClave">
+                <input type="submit" value="Enviar" class="btnLog" name="reestablecerClave">
                 <div class="login-register">
                     <p>¿Ya tenes una cuenta?<a href="#" id="loginOlvideContra">Logueate</a></p>
                 </div>

@@ -172,7 +172,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 30%;
+    width: 50%;
     height: 100%;
 }
 
