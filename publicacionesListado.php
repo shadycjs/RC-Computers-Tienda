@@ -10,10 +10,10 @@
     autenticar();
     $productos = buscarProductoPublicacionesListado();
     $categorias = listarCategorias();
-    
+    $existe = mysqli_num_rows($productos);
     //PAGINACION
     $total_registros = totalRegistrosProductos();
-    $registros_por_pagina = 6;
+    $registros_por_pagina = 4;
     $total_paginas = ceil($total_registros/$registros_por_pagina);
     $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
     $primer_registro = ($pagina_actual-1) * $registros_por_pagina;   
@@ -57,11 +57,11 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Categoria:</label>
                 </div>
-                <select name=""class="custom-select" id="inputGroupSelect01">
+                <select name="categoria"class="custom-select" id="inputGroupSelect01">
 <?php
     while( $categoria = mysqli_fetch_assoc( $categorias ) ){
 ?>
-                <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['nombreCategoria'] ?></option>
+                <option value="<?= $categoria['nombreCategoria'] ?>"><?= $categoria['nombreCategoria'] ?></option>
 <?php
     }
 ?>
@@ -80,6 +80,19 @@
     </div>
 
     <div class="container" id="shopContent"> <!-- PAGINA PRINCIPAL GRID TIENDA -->
+<?php
+    if(!$existe) {
+?>
+
+        <div class="row bg-danger d-flex justify-content-center align-items-center">
+            <h1>NO SE ENCONTRARON RESULTADOS DE BUSQUEDA</h1>
+            <i class="bi bi-ban text-center" style="font-size: 30rem"></i>
+        </div>
+
+<?php
+    }else{
+?>
+
 <?php
     while ($producto = mysqli_fetch_assoc($productos)) {
         $borde = 'success';
@@ -132,6 +145,7 @@
         <li class="page-item"><a class="page-link" href="publicacionesListado.php?pagActual=<?= $pagina_actual+1 ?>">Siguiente</a></li>
 <?php
     }
+}
 ?>
     </ul>
     </nav>

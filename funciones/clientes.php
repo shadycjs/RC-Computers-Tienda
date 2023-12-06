@@ -14,6 +14,20 @@
         return $resultado;
     }
 
+    function listarClientePorCompra()
+    {
+        $link = conectar();
+
+        $sql = "SELECT u.usuNombre, u.usuApellido, c.idCli, c.idUsuario, c.CliProvincia, c.CliCiudad, c.CliCalle, c.CliAltura, c.CliPiso, 
+                    c.CliDepto, c.CliTorre, c.CliLocalidad, c.CliPostal, c.CliObser, c.telefono, c.dniCuit FROM clientes c
+                        INNER JOIN usuarios u ON u.idUsuario = c.idUsuario
+                            INNER JOIN orden__venta ov ON ov.idUsuario = c.idUsuario 
+                                WHERE c.idUsuario = ".$_GET['idUsuario'];
+        $consulta = mysqli_query( $link,$sql );
+        $resultado = mysqli_fetch_assoc( $consulta );
+        return $resultado;
+    }
+
     function agregarCliente() : bool
     {
         $link = conectar();

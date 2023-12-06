@@ -107,6 +107,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RC Computers - Configuracion usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
     <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-configuracionUser.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,18 +130,18 @@
     <div class="container__todo">
     <div class="container__todo__aside">
             <div class="container__infoUser" id="infoUser">
-                <ion-icon class="iconoAside" name="person-sharp"></ion-icon>
-                <h1>MI INFORMACION</h1>
+                <i class="bi bi-person-fill fs-1"></i>
+                <h1 class="m-0">MI INFORMACION</h1>
             </div>
             <hr>
             <div class="container__infoUser" id="misCompras">
-                <ion-icon class="iconoAside" name="bag-handle"></ion-icon>
-                <h1>VENTAS</h1>
+                <i class="bi bi-bag-check-fill fs-1"></i>
+                <h1 class="m-0">VENTAS</h1>
             </div>
             <hr>
             <div class="container__infoUser" id="cambiarClave">
-                <ion-icon class="iconoAside" name="key"></ion-icon>
-                <h1>CAMBIAR CONTRASEÑA</h1>
+                <i class="bi bi-key-fill fs-1"></i>
+                <h1 class="m-0">CAMBIAR CONTRASEÑA</h1>
             </div>
             <hr>
             <div class="container__infoUser" id="cerrarSesion">
@@ -302,9 +304,9 @@
             ?>
                     <h1>TUS VENTAS</h1>
 
-                    <table class="container__todo__compras__sub--table">
+                    <table class="table">
 
-                        <tr class="container__todo__compras__sub--table-tr-1">
+                        <tr>
                             <td>Usuario</td>
                             <td>Nro Venta</td>
                             <td>Fecha</td>
@@ -319,7 +321,7 @@
                         $configuracionUser = 'subirFacturaCompra';
                     }
             ?>
-                        <tr id="container__todo__compras__sub--table-tr-2">
+                        <tr>
                             <td><?= $compraCliente['usuNombre'], ' ',$compraCliente['usuApellido'] ?></td>
                             <td><?= $compraCliente['nroVenta'] ?></td>
                             <td><?= $compraCliente['fecha'] ?></td>
@@ -429,6 +431,8 @@
 ?>
 
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\footerUser.php'

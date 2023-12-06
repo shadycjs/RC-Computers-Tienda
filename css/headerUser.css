@@ -71,6 +71,10 @@
     width: 40px;
 }
 
+.contenedor-enlaces li a{
+    color: #fff;
+}
+
 .nav-link{
     background-color: transparent;
     border-width: 2px;
@@ -188,6 +192,10 @@
     border-radius: 3px;
 }
 
+.contenedor__perfil__info--logout hr{
+    margin: 0;
+}
+
 .on{
     display: flex;
 }
@@ -209,6 +217,10 @@
 
 .contenedor__perfil__info--logout li:hover{
     opacity: 70%;
+}
+
+#logOut p{
+    margin: 0   ;
 }
 
 #logOut:hover{
@@ -259,6 +271,7 @@
     position: relative;
     color: #fff;
     cursor: pointer;
+    margin: 0;
 }
 
 .contenedor__conteo{

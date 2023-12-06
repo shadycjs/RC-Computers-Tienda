@@ -568,7 +568,6 @@ hr{
 .container__todo__compras__sub{
     display: none;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
     height: 100%;
     background-color: #fff;

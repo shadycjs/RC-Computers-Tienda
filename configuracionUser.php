@@ -87,6 +87,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RC Computers - Configuracion usuario</title>
     <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-configuracionUser.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/62ea397d3a.js"></script>
@@ -278,9 +279,9 @@
             ?>
                     <h1>TUS COMPRAS</h1>
 
-                    <table class="container__todo__compras__sub--table">
+                    <table class="table table-striped">
 
-                        <tr class="container__todo__compras__sub--table-tr-1">
+                        <tr class="bg-primary">
                             <td>Nro Compra</td>
                             <td>Fecha</td>
                             <td>Total</td>
@@ -290,7 +291,7 @@
             <?php
                 while( $compra = mysqli_fetch_assoc($compras) ){
             ?>
-                        <tr id="container__todo__compras__sub--table-tr-2">
+                        <tr>
                             <td><?= $compra['nroVenta'] ?></td>
                             <td><?= $compra['fecha'] ?></td>
                             <td>$<?= number_format($compra['Total'], 2) ?></td>

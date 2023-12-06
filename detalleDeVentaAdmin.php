@@ -32,7 +32,7 @@
         $bajarFactura = bajarFactura();
     }
 
-
+    $detalleCliente = listarClientePorCompra();
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +43,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RC Computers - Configuracion usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
     <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-detalleDeVentaAdmin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,6 +112,98 @@
                                     <div class="container__todo__detalleVenta__sub--transporte">
                                         <h2><?= $_GET['condicionPago'] ?></h2>
                                     </div>
+                                    <!-- Button to Open the Modal -->
+                                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Ver info Cliente
+                                    </button>
+
+                                    <!-- The Modal -->
+                                    <div class="modal" id="myModal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title text-dark"><?= $detalleCliente['usuNombre'].' '.$detalleCliente['usuApellido'] ?></h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body text-dark">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="provincia" placeholder="" name="provincia" value="<?= $detalleCliente['CliProvincia'] ?>" readonly>
+                                                            <label for="provincia">Provincia</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="" value="<?= $detalleCliente['CliCiudad'] ?>" readonly>
+                                                            <label for="ciudad">Ciudad</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="calle" name="calle" placeholder="" value="<?= $detalleCliente['CliCalle'] ?>" readonly>
+                                                            <label for="calle">Calle</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="alutra" placeholder="" name="alutra" value="<?= $detalleCliente['CliAltura'] ?>" readonly>
+                                                            <label for="alutra">Altura</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="piso" placeholder="" name="piso" value="<?= $detalleCliente['CliPiso'] ?>" readonly>
+                                                            <label for="piso">Piso</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="depto" name="depto" placeholder="" value="<?= $detalleCliente['CliDepto'] ?>" readonly>
+                                                            <label for="depto">Depto</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="torre" placeholder="" name="torre" value="<?= $detalleCliente['CliTorre'] ?>" readonly>
+                                                            <label for="torre">Torre</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="postal" placeholder="" name="postal" value="<?= $detalleCliente['CliPostal'] ?>" readonly>
+                                                            <label for="postal">Cod.Postal</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-floating mb-3 mt-3">
+                                                            <input type="text" class="form-control" id="localidad" name="depto" placeholder="" value="<?= $detalleCliente['CliLocalidad'] ?>" readonly>
+                                                            <label for="localidad">Localidad</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        </div>
+
+                                        </div>
+                                    </div>
+                                    </div>
                                 </div>
 
                                 <div class="container__todo__detalleVenta__sub--facturaComprobante">
@@ -158,7 +252,7 @@
 ?>
 
 </main>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\footerUser.php'
 ?>

@@ -162,9 +162,18 @@
       $sql = "SELECT c.nombreCategoria, c.idCategoria, m.idMarca, m.nombreMarca, idPrd, nombrePrd, precioPrd, descPrd, estadoPrd, stockPrd, descPrd, img1 FROM productos p
                 INNER JOIN categoria c ON p.idCategoria = c.idCategoria
                   INNER JOIN marca m ON p.idMarca = m.idMarca
-                      WHERE p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
-                        OR m.nombreMarca LIKE '%".$search."%'
-                          LIMIT $registros_por_pagina OFFSET $primer_registro";
+                      WHERE (p.nombrePrd LIKE '%".$search."%' OR c.nombreCategoria LIKE '%".$search."%' 
+                        OR m.nombreMarca LIKE '%".$search."%')";
+      
+      $filtroCategoria = '';
+      if( (isset($_POST['categoria']))){
+        $categoria = $_POST['categoria'];
+        $filtroCategoria = " AND (c.nombreCategoria = '$categoria')";
+      }
+      
+      $limit = " LIMIT $registros_por_pagina OFFSET $primer_registro";
+      $sql .= $filtroCategoria;
+      $sql .= $limit;
 
       $resultado = mysqli_query( $link,$sql );
       return $resultado;
