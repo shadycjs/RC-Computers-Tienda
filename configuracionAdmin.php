@@ -145,7 +145,7 @@
             </div>
             <hr>
             <div class="container__infoUser" id="cerrarSesion">
-                <ion-icon class="iconoAside" name="log-out"></ion-icon>
+                <i class="bi bi-box-arrow-right fs-1"></i>
                 <h1>CERRAR SESION</h1>
             </div>
         </div>
@@ -275,13 +275,16 @@
 <?php
     if($verificarCliente == null){
 ?>
-
+        <div class="row d-flex justify-content-center p-2">
             <input type="submit" name="agregarDatosUser" value="Agregar Datos" id="enviarModificarCambios">
+        </div>
 
 <?php
     }else{
 ?>
+        <div class="row d-flex justify-content-center p-2">
             <input type="submit" name="modificarDatosUser" value="Modificar Datos" id="enviarModificarCambios">
+        </div>            
 <?php
     }
 ?>
@@ -290,7 +293,7 @@
 
         <form action="" method="post" class="container__todo__compras__sub">
             <?php
-                if( $conteoComprasClientes <= 0 ){
+                if( $conteoComprasClientes == 0 ){
             ?>
 
                     <div class="container__todo__compras__sub--sinCompras">
@@ -304,7 +307,7 @@
             ?>
                     <h1>TUS VENTAS</h1>
 
-                    <table class="table">
+                    <table class="table text-center" style="height: 100%">
 
                         <tr>
                             <td>Usuario</td>
@@ -321,7 +324,7 @@
                         $configuracionUser = 'subirFacturaCompra';
                     }
             ?>
-                        <tr>
+                        <tr class="align-middle">
                             <td><?= $compraCliente['usuNombre'], ' ',$compraCliente['usuApellido'] ?></td>
                             <td><?= $compraCliente['nroVenta'] ?></td>
                             <td><?= $compraCliente['fecha'] ?></td>
@@ -336,7 +339,7 @@
                         <input type="hidden" name="idOrdenVenta[<?= $compraCliente['idOrdenVenta'] ?>]" value="<?= $compraCliente['idOrdenVenta'] ?>">
             <?php
                 }
-            }
+
             ?>
                     </table>
                     <div class="container__todo__paginacion">
@@ -371,6 +374,9 @@
                     </div>
                     
                 <input class="btn" type="submit" value="GUARDAR CAMBIOS" name="guardarCambios">
+            <?php
+            }
+            ?>
         </form>
 
 

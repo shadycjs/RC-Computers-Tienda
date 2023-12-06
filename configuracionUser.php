@@ -87,6 +87,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RC Computers - Configuracion usuario</title>
     <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-configuracionUser.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,22 +108,22 @@
     <div class="container__todo">
     <div class="container__todo__aside">
             <div class="container__infoUser" id="infoUser">
-                <ion-icon class="iconoAside" name="person-sharp"></ion-icon>
-                <h1>MI INFORMACION</h1>
+                <i class="bi bi-person-fill fs-1"></i>
+                <h1 class="m-0">MI INFORMACION</h1>
             </div>
             <hr>
             <div class="container__infoUser" id="misCompras">
-                <ion-icon class="iconoAside" name="bag-handle"></ion-icon>
-                <h1>MIS COMPRAS</h1>
+                <i class="bi bi-bag-check-fill fs-1"></i>
+                <h1 class="m-0">COMPRAS</h1>
             </div>
             <hr>
             <div class="container__infoUser" id="cambiarClave">
-                <ion-icon class="iconoAside" name="key"></ion-icon>
-                <h1>CAMBIAR CONTRASEÑA</h1>
+                <i class="bi bi-key-fill fs-1"></i>
+                <h1 class="m-0">CAMBIAR CONTRASEÑA</h1>
             </div>
             <hr>
             <div class="container__infoUser" id="cerrarSesion">
-                <ion-icon class="iconoAside" name="log-out"></ion-icon>
+                <i class="bi bi-box-arrow-right fs-1"></i>
                 <h1>CERRAR SESION</h1>
             </div>
         </div>
@@ -252,13 +253,15 @@
 <?php
     if($verificarCliente == null){
 ?>
-
+        <div class="row d-flex justify-content-center p-2">
             <input type="submit" name="agregarDatosUser" value="Agregar Datos" id="enviarModificarCambios">
-
+        </div>
 <?php
     }else{
 ?>
+        <div class="row d-flex justify-content-center p-2">
             <input type="submit" name="modificarDatosUser" value="Modificar Datos" id="enviarModificarCambios">
+        </div>            
 <?php
     }
 ?>
@@ -279,9 +282,9 @@
             ?>
                     <h1>TUS COMPRAS</h1>
 
-                    <table class="table table-striped">
+                    <table class="table table-striped text-center" style="height: 100%">
 
-                        <tr class="bg-primary">
+                        <tr class="bg-primary align-middle">
                             <td>Nro Compra</td>
                             <td>Fecha</td>
                             <td>Total</td>
@@ -291,7 +294,7 @@
             <?php
                 while( $compra = mysqli_fetch_assoc($compras) ){
             ?>
-                        <tr>
+                        <tr class="align-middle" style="max-height: 20px">
                             <td><?= $compra['nroVenta'] ?></td>
                             <td><?= $compra['fecha'] ?></td>
                             <td>$<?= number_format($compra['Total'], 2) ?></td>

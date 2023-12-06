@@ -6,7 +6,8 @@
     {
       $link = conectar();
 
-      $sql = "SELECT * FROM orden__venta";
+      $sql = "SELECT * FROM orden__venta
+                GROUP BY nroVenta";
       $consulta = mysqli_query($link,$sql);
       $resultado = mysqli_num_rows($consulta);
       return $resultado;
@@ -57,6 +58,7 @@
         //Paginacion
         $total_registros = totalRegistrosCompras();
         $registros_por_pagina = 10;
+        $total_paginas = ceil($total_registros/$registros_por_pagina);
         $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
         $primer_registro = ($pagina_actual-1) * $registros_por_pagina;
 
