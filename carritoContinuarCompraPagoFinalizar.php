@@ -21,79 +21,7 @@
         header('location: carritoContinuarCompraPago.php?error=3');
     }
 
-    require_once 'vendor/autoload.php';
-    use MercadoPago\MercadoPagoConfig;
-    use MercadoPago\Client\Preference\PreferenceClient;
-    use MercadoPago\Resources\Preference\Item;
-    use MercadoPago\Exceptions\MPApiException;
-    
-    MercadoPagoConfig::setAccessToken("APP_USR-2539014882362896-100414-2d1019db0a61d179af420af3bda65b9c-1500470140");
-    
-    $client = new PreferenceClient();
-    
-    try{
-        $total = 0;
-        foreach( $_SESSION['CARRITO'] as $indice => $producto ){
-        $total = $total+(($producto['precio']*$producto['cantidad']))+ $_SESSION['envio'];
-        $request = [
-            "external_reference" => "4567",
-            "items" => array(
-                array(
-                    "id" => "4567",
-                    "title" => "Compra en RC Computers",
-                    "description" => "Pc gamer",
-                    "quantity" => 1,
-                    "unit_price" => $total
-                )
-                
-            ),
-            'payer' => array(
-              'name' => 'Matheus',
-              'surname' => 'Brandao',
-              'email' => 'mafe123silva@gmail.com',
-              'phone' => array(
-                'area_code' => '69',
-                'number' => '9993203891',
-              ),
-              'identification' => array(
-                'type' => 'CPF',
-                'number' => '03600717243'
-              ),
-              'address' => array(
-                'street_name' => 'Street',
-                'street_number' => 123,
-                'zip_code' => '06233200',
-              ),
-              "payment_methods" => array(
-                "installments" => 1,
-                "default_payment_method_id" => null,
-                "default_installments" => null,
-                "excluded_payment_methods" => array(), // Mantém os métodos existentes
-                "excluded_payment_types" => array(), // Mantém os tipos de pagamento existentes
-                "pix" => array(
-                    "enabled" => true,
-                    "type" => "standard"
-                    // Configurações específicas do PIX, se necessário
-                ),
-            ),
-              'notification_url' => 'https://crochesdanoadia.com/pastateste/index.php',
-              'statement_descriptor' => 'LIZZIIMPORTS'
-            )
-        ];
-        }
-        $preference = $client->create($request);
-        $preference->back_urls = array(
-            "success" => "https://flooring-fares-alice-supplies.trycloudflare.com/paymentsuccess"
-        );
-        $preference->auto_return = "approved";
-        $preference->binary_mode = true;
-        //echo $preference->init_point;
-    }catch (MPApiException $e) {
-        echo "Status code: " . $e->getApiResponse()->getStatusCode() . "\n";
-        var_dump($e->getApiResponse()->getContent());
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
+
     
 ?>
 
@@ -229,7 +157,9 @@ if(!empty($_SESSION['CARRITO'])){
 <?php
         if($_SESSION['condPago'] == 'MercadoPago'){
 ?>
-
+                <div class="container__todo__banco__sub--confirmar">
+                    <input type="submit" value="CONFIRMAR COMPRA" name="confCompra">
+                </div>
 <?php
         }
 ?>
@@ -272,7 +202,7 @@ if(!empty($_SESSION['CARRITO'])){
 
 <script> <!-- CODIGO JS PARA EL BOTON DE MERCADOPAGO -->
 
-      const mp = new MercadoPago('APP_USR-6c0fb4ff-d246-4c01-b6e2-b14727e30931', {
+      const mp = new MercadoPago('TEST-26dd2f44-361a-4eba-8075-cbf1aeee5ee9', {
         locale: 'es-AR'
       });
 
@@ -333,7 +263,7 @@ if(!empty($_SESSION['CARRITO'])){
 </script>
 
         </form>
-        <div id="wallet_container">
+            <div id="wallet_container">
         </div>
     </div>
 

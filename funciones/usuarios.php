@@ -373,6 +373,158 @@
 
     }
 
+    function enviarMailRegistrarUser($usuNombre, $codigo)
+    {
+        //Capturamos datos enviadops por el form
+        $email = $_POST['usuEmail'];
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->SMTPDebug = 0;                     //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'unreinramiro2000@gmail.com';                     //SMTP username
+            $mail->Password   = 'hxwk qbjz tqox zgju';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+            //Recipients
+            $mail->setFrom('unreinramiro2000@gmail.com', 'RC-Computers');
+            $mail->addAddress($email, $usuNombre);     //Add a recipient
+
+            //Attachments
+            $mail->AddEmbeddedImage('C:\xampp\htdocs\RC\Tienda\images\LOGO RC BLANCO SIN FONDO.png', 'logoRc', 'attachment', 'base64', 'image/png');
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = 'CODIGO DE REGISTRO RC COMPUTERS';
+            $mail->Body    = '<!DOCTYPE html>
+            <html>
+                <head>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>RC Computers - Tienda</title>
+                <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <script src="https://kit.fontawesome.com/62ea397d3a.js"></script>
+                <meta http-equiv="Expires" content="0">
+                <meta http-equiv="Last-Modified" content="0">
+                <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+                <meta http-equiv="Pragma" content="no-cache">
+                <style type="text/css">
+            
+                    *{
+                        font-family: "Roboto Condensed", sans-serif;
+                    }
+            
+                    header{
+                        display: flex;
+                        width: 400px; 
+                        height: 130px;
+                        background: linear-gradient(to bottom, black, #575353);
+                        color: #fff;
+                    }
+            
+                    header h1{
+                        margin: auto;
+                    }
+            
+                    .container__todo{
+                        height: 100%;
+                        width: 30%
+                    }
+            
+                    .container__todo--imagen{
+                        width: 35%;
+                        height: 100%;
+                    }
+            
+                    .container__todo__sub{
+                        display: inline-block;
+                        width: 400px;
+                        height: 300px;
+                        background-color: #464444;
+                        color: #fff;
+                        margin: 5px 0;
+                    }
+            
+                    .container__todo__sub p{
+                        margin-top: 50px;
+                        font-size: 2em;
+                        text-align: center;
+                        color: #fff !important;
+                    }
+
+                    .container__todo__sub--codigo{
+                        display: flex;
+                        width: 100%;
+                        height: 100px;
+                        background-color: #fff;
+                        text-align: center;
+                    }
+            
+                    .container__todo__sub b{
+                        font-size: 4em;
+                        border-radius: 5px;
+                        color: #000;
+                        margin: auto;
+                        width: 100%;
+                        padding: 10px;
+                        background-color: beige;
+                    }
+            
+                    footer{
+                        background: linear-gradient(to bottom, black, #575353);
+                        color: white;
+                        display: flex;
+                        width: 400px;
+                        height: 60px;
+                        position: relative;
+                        bottom: 0;
+                    }
+            
+                    footer p{
+                        align-self: center;
+                        font-size: 1em;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+            
+                </style>
+                </head>
+                    <body>
+                        <header>
+                            <div class="container__todo--imagen">
+                                <img alt="PHPMailer" src="cid:logoRc" style="width: 100%;
+                                                                             height: 100%">
+                                </div>
+                                <h1>RC Computers</h1>
+                        </header>
+                        <div class="container__todo">
+                                    <div class="container__todo__sub">
+                                        <p>CÓDIGO DE REGISTRO: </p>
+                                        <div class="container__todo__sub--codigo">
+                                            <b>'.$codigo.'</b>
+                                        </div>
+                                    </div>
+                    
+                        </div>
+                        <footer> <!-- PIE DE PÁGINA -->
+                            <p> RC Computers © All rights reserved </p>
+                        </footer>
+                        </body>
+            </html>';
+            $mail->AltBody = 'Codigo de registro para RC Comupters';
+
+            $mail->CharSet = 'UTF-8';
+            $mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+    }
+
     function generarCodigo( $length = 6 )
     {
         $chars = [
