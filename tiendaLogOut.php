@@ -9,8 +9,18 @@
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\header.php';
     if( isset($_POST['btnReg']) ){
-        registrarUser();
+        $codigo = generarCodigo();
+        almacenarCodigo( $codigo );
+        $mailRegistro = enviarMailRegistrarUser($_POST['rnombre'], $codigo);
+        $_SESSION['nombreReg'] = $_POST['rnombre'];
+        $_SESSION['apellidoReg'] = $_POST['rapellido'];
+        $_SESSION['emailReg'] = $_POST['remail'];
+        $_SESSION['contraReg'] = $_POST['rcontra'];
     }
+    if( isset($_POST['codigoRegistro']) ){
+        $registrarUser = registrarUser();
+    }
+
     $productos = listarProductos();
     if( isset($_POST['btnIngresar']) ){
         login();
@@ -64,7 +74,7 @@
 <main class="mainClass">
 
 <?php
-    if( isset($_POST['btnReg']) ){
+    if( isset($registrarUser) == true ){
 ?>
 <div class="check__register--fondo"></div>
     <div class="check__register--container">
@@ -101,7 +111,8 @@
             '3' => 'Debe registrarse y loguearse para agregar productos al carrito',
             '4' => 'Intente nuevamente poniendo su mail',
             '5' => 'Las contraseñas deben coincidir',
-            '6' => 'Intente nuevamente con el codigo enviado al mail'
+            '6' => 'Intente nuevamente con el codigo enviado al mail',
+            '7' => 'Si ya estas registrado logueate'
         };
 
         $mensaje2 = match( $error ){
@@ -110,7 +121,8 @@
             '3' => 'TIENE QUE REGISTRARSE PARA COMPRAR',
             '4' => 'DIRECCION DE CORREO INCORRECTA',
             '5' => 'LAS CLAVES PROPORCIONADAS NO COINCIDEN',
-            '6' => 'EL CODIGO ES INCORRECTO O HA CADUCADO'
+            '6' => 'EL CODIGO ES INCORRECTO O HA CADUCADO',
+            '7' => 'EL EMAIL INGRESADO YA EXISTE'
         }
 ?>
     <div class="errorFondo"></div>
@@ -154,7 +166,43 @@
                                                                                        padding: 0 35px 0 5px;">
                     <label for="usuEmail">Codigo:</label>
                 </div>
-                <button class="btn" type="submit">Enviar</button>
+                <button class="btnLog" type="submit">Enviar</button>
+            </form>
+    </div>
+
+<?php
+    }
+?>
+
+<?php
+    if( isset($mailRegistro) ){
+?>
+
+<div class="errorFondo"></div>
+    <div class="error" style="background: linear-gradient(to top, rgb(32, 29, 29), #575353);
+                              padding: 10px;">
+        <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1>Email enviado con exito! Ingrese el codigo recibido para registrarse</h1>
+        <form action="" method="post" style="display: flex;
+                                                              flex-direction: column;
+                                                              gap: 10px;
+                                                              width: 100%;
+                                                              justify-content: center;
+                                                              align-items: center">
+                Ingrese el codigo enviado <br>
+                <div class="input-box">
+                    <input type="text" name="codigoRegistro" class="form-control my-3" required style=" width: 100%;
+                                                                                       height: 100%;
+                                                                                       background-color: transparent;
+                                                                                       border: none;
+                                                                                       outline: none;
+                                                                                       font-size: 1em;
+                                                                                       color: #fff;
+                                                                                       font-weight: 600;
+                                                                                       padding: 0 35px 0 5px;">
+                    <label for="usuEmail">Codigo:</label>
+                </div>
+                <button class="btnLog" type="submit">Enviar</button>
             </form>
     </div>
 

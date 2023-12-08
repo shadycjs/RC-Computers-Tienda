@@ -13,21 +13,71 @@
         return $resultado;
     }
 
+    function chequearCodigoRegistro() : bool
+    {
+        //Capturamos codigo enviado
+        $codigo = $_POST['codigoRegistro'];
+        /**Chequear codigo + activo = 1 */
+        $link = conectar();
+        
+        $sql = "SELECT id, usuEmail FROM password_resets
+                    WHERE codigo = '".$codigo."' AND activo = 1";             
+        $resultado = mysqli_query( $link,$sql );
+        $cantidad = mysqli_num_rows( $resultado );
+        if( $cantidad ){
+            $datos = mysqli_fetch_assoc( $resultado );
+            //Seteamos activo en 0
+            $sql = "UPDATE password_resets SET activo = 0 WHERE id = '".$datos['id']."'";
+            mysqli_query( $link,$sql );
+            /**Almacenar en sesion el email */
+            $_SESSION['usuEmail'] = $datos['usuEmail'];
+
+            //Retornar booleano
+            return true;
+        }
+        return false;
+    }
+
+    function chequearMail()
+    {
+        $link = conectar();
+
+        $email = $_SESSION['emailReg'];
+
+        $sql = "SELECT 1 FROM usuarios
+                    WHERE usuEmail = '$email'";
+        $resultado = mysqli_query( $link,$sql );
+        $cantidad = mysqli_num_rows( $resultado );
+        if( $cantidad ){
+            return true;
+        }
+
+        return false;
+    }
+
     function registrarUser() : bool
     {
         $link = conectar();
 
-        $nombre = $_POST['rnombre'];
-        $apellido = $_POST['rapellido'];
-        $email = $_POST['remail'];
-        $contra = $_POST['rcontra'];   
-        $claveHash = password_hash( $contra, PASSWORD_DEFAULT );
+        $codigoChequeo = chequearCodigoRegistro();
+        if( $codigoChequeo ){
+            $nombre = $_SESSION['nombreReg'];
+            $apellido = $_SESSION['apellidoReg'];
+            $email = $_SESSION['emailReg'];
+            $contra = $_SESSION['contraReg'];   
+            $claveHash = password_hash( $contra, PASSWORD_DEFAULT );
+            $existeMail = chequearMail();
 
-        $sql = "INSERT INTO usuarios
-                (usuNombre, usuApellido, usuEmail, usuClave)
-                VALUES
-                ( '".$nombre."', '".$apellido."', '".$email."', '".$claveHash."' )";
-        
+            if( $existeMail ){
+                header('location: tiendaLogOut.php?error=7');
+                return false;
+            }
+
+            $sql = "INSERT INTO usuarios
+                        (usuNombre, usuApellido, usuEmail, usuClave)
+                        VALUES
+                        ( '".$nombre."', '".$apellido."', '".$email."', '".$claveHash."' )";
+        }
         try{
             $resultado = mysqli_query( $link,$sql );
             return $resultado;
@@ -376,7 +426,7 @@
     function enviarMailRegistrarUser($usuNombre, $codigo)
     {
         //Capturamos datos enviadops por el form
-        $email = $_POST['usuEmail'];
+        $email = $_POST['remail'];
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -519,6 +569,7 @@
 
             $mail->CharSet = 'UTF-8';
             $mail->send();
+            return true;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
@@ -542,7 +593,8 @@
     
     function almacenarCodigo( $codigo ) : bool
     {
-        $email = $_POST['usuEmail'];
+        $email = isset($_POST['usuEmail']) ;
+        $email = isset($_POST['remail']);
 
         $link = conectar();
         $sql = "INSERT INTO password_resets
@@ -635,3 +687,4 @@
         return true;
     
     }
+
