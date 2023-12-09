@@ -298,7 +298,7 @@
                             <td><?= $compra['nroVenta'] ?></td>
                             <td><?= $compra['fecha'] ?></td>
                             <td>$<?= number_format($compra['Total'], 2) ?></td>
-                            <td><a href="detalleDeVenta.php?idOrdenVenta=<?= $compra['idOrdenVenta'] ?>&comprobantePago=<?= $compra['comprobantePago'] ?>&factura=<?= $compra['factura'] ?>&fecha=<?= $compra['fecha'] ?>&envio=<?= $compra['envio'] ?>&transporte=<?= $compra['transporte'] ?>&nroVenta=<?= $compra['nroVenta'] ?>">Ver detalle</a></td>
+                            <td><a href="detalleDeVenta.php?idOrdenVenta=<?= $compra['idOrdenVenta'] ?>&comprobantePago=<?= $compra['comprobantePago'] ?>&factura=<?= $compra['factura'] ?>&fecha=<?= $compra['fecha'] ?>&envio=<?= $compra['envio'] ?>&transporte=<?= $compra['transporte'] ?>&nroVenta=<?= $compra['nroVenta'] ?>&estado=<?= $compra['estado'] ?>">Ver detalle</a></td>
                         </tr>
             <?php
                 }

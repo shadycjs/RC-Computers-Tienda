@@ -104,6 +104,11 @@
                                     </div>
                                 </div>
 
+                                <div class="container__todo__detalleVenta__sub--estado">
+                                    <h3>ESTADO DEL PEDIDO</h3>
+                                    <h2><?= $_GET['estado'] ?></h2>
+                                </div>
+
                                 <div class="container__todo__detalleVenta__sub--facturaComprobante">
                                     <div class="container__todo__detalleVenta__sub--comprobante">
                                         <h3>Comprobante de pago</h3>

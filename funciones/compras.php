@@ -18,7 +18,7 @@
         $link = conectar();
 
         $idUser = $_SESSION['idUsuario'];
-        $sql = "SELECT idOrdenVenta, nroVenta, fecha, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario FROM orden__venta
+        $sql = "SELECT idOrdenVenta, nroVenta, fecha, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta
                   GROUP BY nroVenta
                     HAVING idUsuario = ".$idUser;
         $resultado = mysqli_query( $link,$sql );
