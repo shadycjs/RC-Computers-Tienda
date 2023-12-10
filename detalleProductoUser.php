@@ -74,9 +74,10 @@
                 <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="" class="mainImg">
             </div>
             <ul class="ImagenesSecundarias">
-                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>" alt="" class="secuImg"></li>
-                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>" alt="" class="secuImg"></li>
-                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>" alt="" class="secuImg"></li>
+                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="" id="img1" class="secuImg imgSelected"></li>
+                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>" alt="" id="img2" class="secuImg"></li>
+                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>" alt="" id="img3" class="secuImg"></li>
+                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>" alt="" id="img4" class="secuImg"></li>
             </ul>
         </div>
         <div class="containerModalInfo">
@@ -116,7 +117,55 @@
                     </div>
                 </div>
             </div>
-                
+    <script>
+        //IMAGENES CAMBIAN AL CLICKEAR
+        const mainImg = document.querySelector('.mainImg');
+        const secuImg = document.querySelectorAll('.secuImg');
+        const imgId1 = document.getElementById('img1');
+        const imgId2 = document.getElementById('img2');
+        const imgId3 = document.getElementById('img3');
+        const imgId4 = document.getElementById('img4');
+        
+        let img1 = 'http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>';
+        let img2 = 'http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>';
+        let img3 = 'http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>';
+        let img4 = 'http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>';
+
+        secuImg.forEach(secu => {
+            imgId1.addEventListener('click', ()=>{
+                mainImg.src = img1;
+                imgId1.src = mainImg.src;
+                imgId2.classList.remove('imgSelected');
+                imgId3.classList.remove('imgSelected');
+                imgId4.classList.remove('imgSelected');
+                imgId1.classList.add('imgSelected');
+            });
+            imgId2.addEventListener('click', ()=>{
+                mainImg.src = img2;
+                imgId2.src = mainImg.src;
+                imgId1.classList.remove('imgSelected');
+                imgId3.classList.remove('imgSelected');
+                imgId4.classList.remove('imgSelected');
+                imgId2.classList.add('imgSelected');
+            });
+            imgId3.addEventListener('click', ()=>{
+                mainImg.src = img3
+                imgId3.src = mainImg.src;
+                imgId1.classList.remove('imgSelected');
+                imgId2.classList.remove('imgSelected');
+                imgId4.classList.remove('imgSelected');
+                imgId3.classList.add('imgSelected');
+            });
+            imgId4.addEventListener('click', ()=>{
+                mainImg.src = img4;
+                imgId4.src = mainImg.src;
+                imgId1.classList.remove('imgSelected');
+                imgId2.classList.remove('imgSelected');
+                imgId3.classList.remove('imgSelected');
+                imgId4.classList.add('imgSelected');
+            });
+        });
+    </script>
             </div>
             <ul class="containerModalInfoConfig">
 <?php
