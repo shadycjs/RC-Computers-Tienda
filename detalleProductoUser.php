@@ -33,6 +33,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RC Computers - Detalle Producto</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
     <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-detalleProductoUser.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +100,7 @@
                 
                 <div class="containerModalInfoPrecioCantidad">
                     <div class="containerModalInfoPrecioCantidad__cantidad">
-                        <h2>Unidades disponibles:</h2>
+                        <h2>Unidades:</h2>
                         <p><?= $producto['stockPrd'] ?></p> 
                         <input type="hidden" name="cantidad" value="">
                     </div>
@@ -117,8 +119,47 @@
                     </div>
                 </div>
             </div>
+            <!-- Carousel -->
+        <div class="fondoCarousel"></div>
+            <div id="demo" class="container carouselTienda carousel slide" data-bs-ride="carousel">
+            <button type="button" class="btn-close bg-danger" aria-label="Close" id="botonCerrarCarousel"></button>
+                
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                </div>
+
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    <div class="col-12 carousel-item active">
+                        <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="img1" class="d-block w-100">
+                    </div>
+                    <div class="col-12 carousel-item">
+                        <img src="http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>" alt="img2" class="d-block w-100">
+                    </div>
+                    <div class="col-12 carousel-item">
+                        <img src="http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>" alt="img3" class="d-block w-100">
+                    </div>
+                    <div class="col-12 carousel-item">
+                        <img src="http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>" alt="img4" class="d-block w-100">
+                    </div>
+                </div>
+
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev p-0" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next p-0" type="button" data-bs-target="#demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
     <script>
         //IMAGENES CAMBIAN AL CLICKEAR
+        const carousel = document.querySelector('.carouselTienda');
+        const fondoCarousel = document.querySelector('.fondoCarousel');
+        const btnCerrarCarousel = document.getElementById('botonCerrarCarousel');
         const mainImg = document.querySelector('.mainImg');
         const secuImg = document.querySelectorAll('.secuImg');
         const imgId1 = document.getElementById('img1');
@@ -130,6 +171,16 @@
         let img2 = 'http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>';
         let img3 = 'http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>';
         let img4 = 'http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>';
+
+        mainImg.addEventListener('click', ()=>{
+            carousel.style.display = "block";
+            fondoCarousel.style.display = "block";
+        });
+
+        btnCerrarCarousel.addEventListener('click', ()=>{
+            carousel.style.display = "none";
+            fondoCarousel.style.display = "none";
+        });
 
         secuImg.forEach(secu => {
             imgId1.addEventListener('click', ()=>{
@@ -495,8 +546,11 @@ if($producto['idCategoria'] == 15){
 }
 ?>
 
+
+
 </main>
     
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\footerUser.php'

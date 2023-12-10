@@ -27,6 +27,26 @@ nav a{
     display: inline-block;
 }
 
+h1{
+    margin: 0;
+}
+
+h2{
+    margin: 0;
+}
+
+h6{
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+ul{
+    margin: 0;
+}
+
 /* DETALLE DE PRODUCTO */
 
 main{
@@ -43,8 +63,8 @@ main{
 .containerTodo{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    min-height: 80%;
+    width: 90%;
+    height: 90%;
     background-color: #fff;
     box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
     margin-top: 120px;
@@ -72,7 +92,7 @@ main{
     display: flex;
     flex-direction: column;
     width: 40%;
-    height: auto;
+    height: 100%;
     border: 1px solid #c2c2c2;
 }
 
@@ -88,6 +108,7 @@ main{
     height: 100%;
     transition: all .3s;
     object-fit: scale-down;
+    cursor: pointer;
 }
 
 .imagenPrincipal img:hover{
@@ -110,7 +131,8 @@ main{
 }
 
 .imgSelected{
-    border: 1px solid #000;
+    border: 1px solid #88ad6a;
+    padding: 5px;
 }
 
 .containerModalInfo{
@@ -154,7 +176,7 @@ main{
 .containerModalInfoPrecioCantidad{
     display: flex;
     flex-direction: column;
-    height: 80px;
+    height: 100%;
     justify-content: space-between;
     gap: 15px;
 }
@@ -163,7 +185,6 @@ main{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 40px;
     padding-bottom: 5px;
 }
 
@@ -196,7 +217,7 @@ main{
 .containerModalInfoPrecioCantidadFormasPago{
     display: flex;
     width: 100%;
-    height: 100px;
+    height: 150px;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #c2c2c2;
@@ -556,6 +577,51 @@ footer p{
 }
 
 /* FIN DEL CONTAINER DE LA INFO DE LA FUENTE */
+
+/* INICIO DEL DEL CAROUSSEL */
+
+.carouselTienda{
+    display: none;
+    position: fixed;
+
+    height: 80%;
+    top: 10%;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    margin: auto;
+    border: 1px solid #706b6b  ;
+    z-index: 100;
+}
+
+.carousel-item{
+    height: 100%;
+}
+
+.carousel-item img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.fondoCarousel{
+    display: none;
+    background-color: #00000029;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+#botonCerrarCarousel{
+    position: absolute;
+    right: 0;
+    z-index: 150;
+}
+
+/* FIN DEL CAROUSSEL */
 
 /* INICIO DEL RESPONSIVE DESIGN */
 
