@@ -1,7 +1,6 @@
 ># RC-Computers-Tienda 
 
 ![LOGO RC BN enfocado prueba WEB](https://github.com/shadycjs/RC-Computers-Tienda/assets/129355768/06deee99-ece0-4dd5-a07e-0f9bd294ff79)
-## Tienda online de productos informaticos.
 
 ## Tecnologias utilizadas en el proyecto:
 <div style="display: flex; gap: 10px">
@@ -16,6 +15,7 @@
   <img src="PHP-logo.svg" style="width: 100px;
                           height: 100px"/>
 </div>
+<hr>
 <h3>Parte Usuarios:</h3>
 <ul>
   <li>Logueo/Registro de usuarios</li>
@@ -26,6 +26,7 @@
   <li>Pago con PayPal</li>
   <li>Pago con Transferencia</li>
 </ul>
+<hr>
 <h3>Parte Administrador:</h3>
 <ul>
   <li>Alta/Baja/Modificacion de un producto</li>
