@@ -129,6 +129,7 @@
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
                 </div>
 
                 <!-- The slideshow/carousel -->
@@ -148,10 +149,10 @@
                 </div>
 
                 <!-- Left and right controls/icons -->
-                <button class="carousel-control-prev p-0" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <button class="botonespreview carousel-control-prev p-0" type="button" data-bs-target="#demo" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
-                <button class="carousel-control-next p-0" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <button class="botonespreview carousel-control-next p-0" type="button" data-bs-target="#demo" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </button>
             </div>
