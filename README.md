@@ -10,10 +10,12 @@
                            height: 80px"/>
   <img src="JavaScript-logo.png" style="width: 80px;
                                  height: 80px"/>
-  <img src="MySQL-logo.png" style="width: 140px;
-                            height: 100px"/>
+  <img src="MySqlNuevoLogo.png" style="width: 100px;
+                                height: 100px;"/>
   <img src="PHP-logo.svg" style="width: 100px;
-                          height: 100px"/>
+                                 height: 100px"/>
+  <img src="Bootstrap_logo.svg" style="width: 120px;
+                                       height: 100px"/>
 </div>
 <hr>
 <h3>Parte Usuarios:</h3>
