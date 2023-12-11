@@ -40,7 +40,7 @@
     <meta http-equiv="Pragma" content="no-cache">
 </head>
 
-<main class="container">
+<main>
 <?php include 'modalCerrarSesion.php'; ?>
 
 <div class="container mt-100 bg-light d-flex flex-column align-items-center">
