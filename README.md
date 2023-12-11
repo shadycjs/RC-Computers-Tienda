@@ -4,7 +4,7 @@
 ## Tienda online de productos informaticos.
 
 ## Tecnologias utilizadas en el proyecto:
-
+<span style="width: 100px; height: 100px">![imagen de php](https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg)</span>
 <h3>Parte Usuarios:</h3>
 <ul>
   <li>Logueo/Registro de usuarios</li>
