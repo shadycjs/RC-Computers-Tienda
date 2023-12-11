@@ -4,7 +4,18 @@
 ## Tienda online de productos informaticos.
 
 ## Tecnologias utilizadas en el proyecto:
-<span style="width: 100px; height: 100px">![imagen de php](https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg)</span>
+<div style="display: flex; gap: 10px">
+  <img src="HTML5_logo_and_wordmark.svg" style="width: 100px;
+                                         height: 100px"/>
+  <img src="CSS3_logo.svg" style="width: 100px;
+                           height: 80px"/>
+  <img src="JavaScript-logo.png" style="width: 80px;
+                                 height: 80px"/>
+  <img src="MySQL-logo.png" style="width: 140px;
+                            height: 100px"/>
+  <img src="PHP-logo.svg" style="width: 100px;
+                          height: 100px"/>
+</div>
 <h3>Parte Usuarios:</h3>
 <ul>
   <li>Logueo/Registro de usuarios</li>
