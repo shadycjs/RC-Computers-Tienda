@@ -199,7 +199,7 @@
         $ruta = 'images/';
         
         $extension = pathinfo( $_FILES['img1']['name'], PATHINFO_EXTENSION );
-        $prdImagen = time().'.'.$extension;
+        $prdImagen = time().'img1'.'.'.$extension;
         move_uploaded_file( $temp,$ruta.$prdImagen );
       }
       return $prdImagen;
@@ -225,7 +225,7 @@
         $ruta = 'images/';
         
         $extension = pathinfo( $_FILES['img2']['name'], PATHINFO_EXTENSION );
-        $prdImagen = time().'.'.$extension;
+        $prdImagen = time().'img2'.'.'.$extension;
         move_uploaded_file( $temp,$ruta.$prdImagen );
 
       }
@@ -252,7 +252,7 @@
         $ruta = 'images/';
         
         $extension = pathinfo( $_FILES['img3']['name'], PATHINFO_EXTENSION );
-        $prdImagen = time().'.'.$extension;
+        $prdImagen = time().'img3'.'.'.$extension;
         move_uploaded_file( $temp,$ruta.$prdImagen );
 
       }
@@ -279,7 +279,7 @@
         $ruta = 'images/';
         
         $extension = pathinfo( $_FILES['img4']['name'], PATHINFO_EXTENSION );
-        $prdImagen = time().'.'.$extension;
+        $prdImagen = time().'img4'.'.'.$extension;
         move_uploaded_file( $temp,$ruta.$prdImagen );
 
       }
@@ -693,6 +693,11 @@
       $img2 = subirImagen2();
       $img3 = subirImagen3();
       $img4 = subirImagen4();
+
+      var_dump($img1);
+      var_dump($img2);
+      var_dump($img3);
+      var_dump($img4);
 
       $sql = "INSERT INTO productos
       ( idMarca, idCategoria, nombrePrd, precioPrd, stockPrd, descPrd, img1, img2, img3, img4, 

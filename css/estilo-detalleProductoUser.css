@@ -339,7 +339,7 @@ footer p{
 .containerModalInfoConfig__micro li{
     display: flex;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
 }
 
@@ -388,7 +388,7 @@ footer p{
 .containerModalInfoConfig__mother li{
     display: flex;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
 }
 
@@ -434,7 +434,7 @@ footer p{
 .containerModalInfoConfig__ram li{
     display: flex;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
 }
 
@@ -469,7 +469,7 @@ footer p{
 .containerModalInfoConfig__placaVideo li{
     display: flex;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
 }
 
@@ -510,7 +510,7 @@ footer p{
 .containerModalInfoConfig__discoDuro li{
     display: flex;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
 }
 
@@ -543,7 +543,7 @@ footer p{
 .containerModalInfoConfig__discoSolido li{
     display: flex;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
 }
 
