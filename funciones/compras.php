@@ -18,7 +18,7 @@
         $link = conectar();
 
         $idUser = $_SESSION['idUsuario'];
-        $sql = "SELECT idOrdenVenta, nroVenta, fecha, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta
+        $sql = "SELECT idOrdenVenta, nroVenta, fecha, (SUM(importe)+envio) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta
                   GROUP BY nroVenta
                     HAVING idUsuario = ".$idUser;
         $resultado = mysqli_query( $link,$sql );
@@ -28,13 +28,28 @@
     function verDetalleCompra()
     {
         $link = conectar();
-        $idOrdenVenta = $_GET['idOrdenVenta'];
+        $nroVenta = $_GET['nroVenta'];
 
         $idUser = $_SESSION['idUsuario'];
-        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario FROM orden__venta ov
+        $sql = "SELECT idOrdenVenta, nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta ov
                   INNER JOIN productos p ON p.idPrd = ov.idPrd
-                    WHERE idUsuario = ".$idUser." AND idOrdenVenta = ".$idOrdenVenta;
+                    WHERE idUsuario = ".$idUser." AND nroVenta = ".$nroVenta;
         $resultado = mysqli_query( $link,$sql );
+        return $resultado;
+    }
+
+    //Funcion utilizada para encontrar la ultima compra de un cliente y enviarle un mail con su orden de compra
+    function verUltimaCompraCliente()
+    {
+        $link = conectar();
+        $idUsuario = $_SESSION['idUsuario'];
+
+        $idUser = $_SESSION['idUsuario'];
+        $sql = "SELECT MAX(idOrdenVenta) as MaxIdOrdenVenta, nroVenta, fecha, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta
+		            GROUP BY nroVenta
+			            HAVING idUsuario = ".$idUsuario." AND MAX(idOrdenVenta) = (SELECT MAX(idOrdenVenta) FROM orden__venta WHERE idUsuario = ".$idUsuario.")";
+        $consulta = mysqli_query( $link,$sql );
+        $resultado = mysqli_fetch_assoc($consulta);
         return $resultado;
     }
 

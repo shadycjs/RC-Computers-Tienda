@@ -73,6 +73,7 @@
                             </div>
                             <div class="container__todo__detalleVenta__sub">
                 <?php
+                    $total = $_GET['envio'];
                     while( $compra = mysqli_fetch_assoc($compras) ){
                 ?>
                          
@@ -89,7 +90,7 @@
                          
 
                 <?php
-                    $total = $total+($compra['importe']*$compra['cantidad'])+$_GET['envio'];
+                    $total = $total+($compra['importe']*$compra['cantidad']);
                     }
                     $detalleDeVenta = 'detalleDeVenta';
                     if($_GET['comprobantePago'] == 'Aun sin emitir'){

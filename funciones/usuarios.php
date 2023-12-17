@@ -596,6 +596,9 @@
         $nombreReceptor = $_SESSION['nombreRecepSession'];
         $apellidoReceptor = $_SESSION['apellidoSession'];
 
+        //Enviamos el detalle de compra
+        $compra = verUltimaCompraCliente();
+
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -692,6 +695,16 @@
                 #datosComprador__sub{
                     margin: 0 auto;
                 }
+
+                .datosProducto{
+                    text-align: center;
+                }
+
+                .datosProducto__sub a{
+                    font-size: 1.5rem;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                }
         
                 footer{
                     background: linear-gradient(to bottom, black, #575353);
@@ -757,28 +770,9 @@
                                 </div>
                             </div>
                             <div class="datosProducto">
-                                <h1>Detalle del pedido: </h1>
+                                <h1>Para ver el detalle de la compra haga click en el siguiente enlace:</h1>
                                 <div class="datosProducto__sub">
-                                '.$total = 0;
-                                foreach( $_SESSION['CARRITO'] as $indice => $producto ){
-
-                                    $nombreProducto = $producto['nombre'];
-                                    $precioProducto = $producto['precio'];
-                                    $cantidadProducto = $producto['cantidad'];
-                                    $imagenProducto = $producto['img'];
-                            
-                                    $idProductos = array_column($_SESSION['CARRITO'],'id');
-                                    $posicionPrd = array_search($producto['id'],$idProductos);
-                                }'
-                                    <div class="datosProducto__sub--item">
-                                        <div class="datosProducto__sub--item-nombre">
-                                            '.$nombreProducto.'
-                                        </div>
-                                    </div>
-                         
-                                    <div class="datosProducto__sub--total">
-                                        <h1>Total: '.$total.'</h1>
-                                    </div>
+                                    <a href="http://localhost/RC/Tienda/detalleDeVenta.php?idOrdenVenta='.$compra['MaxIdOrdenVenta'].'&comprobantePago='.$compra['comprobantePago'].'&factura='.$compra['factura'].'&fecha='.$compra['fecha'].'&envio='.$compra['envio'].'&transporte='.$compra['transporte'].'&nroVenta='.$compra['nroVenta'].'&estado='.$compra['estado'].'"">Click aqui!</a>
                                 </div>
                             </div>
                         </div>

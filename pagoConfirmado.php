@@ -15,14 +15,14 @@
         }else{
             $comprobante = subirComprobante();
             // Agregamos los productos que estaban en la session a la base de datos
-            // foreach($_SESSION['CARRITO'] as $indice => $producto){
-            //     $agregarOrden = agregarOrdenVenta($producto['id'],$producto['precio'],$comprobante, $producto['cantidad']);
-            // }
+            foreach($_SESSION['CARRITO'] as $indice => $producto){
+                $agregarOrden = agregarOrdenVenta($producto['id'],$producto['precio'],$comprobante, $producto['cantidad']);
+            }
             $enviarMailComprador = enviarMailComprador($_SESSION['usuNombre']);
 
         }
-        // unset($_SESSION['CARRITO']);
-        // unset($_SESSION['nroVenta']);
+        unset($_SESSION['CARRITO']);
+        unset($_SESSION['nroVenta']);
 
 ?>
 
@@ -75,8 +75,8 @@
                 </div>
 
                 <div class="container__todo__pagoConfirmado__sub .descripcion">
-                    <p>Te recordamos que la confirmacion del pago puede demorar hasta 48hs.
-                        Recorda subir el comprobante de pago haciendo click <a href="">AQUI</a></p>
+                    <p>Te recordamos que la confirmacion del pago puede demorar hasta 48hs habiles.</p>
+                    <b>Te enviamos un e-mail con toda la informacion de tu pedido!</b>
                 </div> 
                 
             </div>
