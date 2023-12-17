@@ -88,15 +88,15 @@
       $comprobante = 'Aun sin emitir';
 
       //si enviaron un archivo
-      if( $_FILES['facturaCompra']['error'] == 0 ){
+      if( $_FILES['comprobantePago']['error'] == 0 ){
 
-        $archivo = $_FILES['facturaCompra'];
+        $archivo = $_FILES['comprobantePago'];
 
         #### Mover el archivo desde /tmp a nuestra carpeta /productos
-        $temp = $_FILES['facturaCompra']['tmp_name'];
+        $temp = $_FILES['comprobantePago']['tmp_name'];
         $ruta = 'comprobantes/';
         
-        $extension = pathinfo( $_FILES['facturaCompra']['name'], PATHINFO_EXTENSION );
+        $extension = pathinfo( $_FILES['comprobantePago']['name'], PATHINFO_EXTENSION );
         $comprobante = time().'.'.$extension;
         move_uploaded_file( $temp,$ruta.$comprobante );
       }

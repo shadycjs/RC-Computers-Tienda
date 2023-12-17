@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row gap-2">
         <form method="post" action="" class="col-6 input-group d-flex justify-content-center gap-2">
                 <div class="input-group-prepend">

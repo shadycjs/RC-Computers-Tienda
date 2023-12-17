@@ -24,6 +24,21 @@
         }else{
             $modificarCliente = modificarCliente();
         }
+        // Guardo los clientes en variables de sesion para luego enviarlo por mail
+        $_SESSION['provinciaSession'] = $_POST['provinciaCli'];
+        $_SESSION['ciudadSession'] = $_POST['ciudadCli'];
+        $_SESSION['calleSession'] = $_POST['calleCli'];
+        $_SESSION['alturaSession'] = $_POST['alturaCli'];
+        $_SESSION['pisoSession'] = $_POST['pisoCli'];
+        $_SESSION['deptoSession'] = $_POST['deptoCli'];
+        $_SESSION['torreSession'] = $_POST['torreCli'];
+        $_SESSION['localidadSession'] = $_POST['localidadCli'];
+        $_SESSION['codPostalSession'] = $_POST['codpostalCli'];
+        $_SESSION['observacionesSession'] = $_POST['observacionesCli'];
+        $_SESSION['telRecepSession'] = (isset($_POST['telRecep'])) ? $_POST['telRecep'] : 'DEFAULT';
+        $_SESSION['dniCuitSession'] = (isset($_POST['dniCuilRecep'])) ? $_POST['dniCuilRecep'] : 'DEFAULT';
+        $_SESSION['nombreRecepSession'] = (isset($_POST['nombreRecep'])) ? $_POST['nombreRecep'] : 'DEFAULT';
+        $_SESSION['apellidoSession'] = (isset($_POST['apellidoRecep'])) ? $_POST['apellidoRecep'] : 'DEFAULT';
 
         if($_POST['transporte'] == 'andreani'){
             $_SESSION['transporte'] = 'Andreani';
@@ -127,13 +142,13 @@
 
             <div class="container__todo__mediosPago">
 
-                <div class="container__todo__mediosPago--sub paypal">
+                <!-- <div class="container__todo__mediosPago--sub paypal">
                     <h3>Paypal</h3>
                     <div class="container__todo__mediosPago--sub-img paypal">
                         <img src="images/paypallogo.png" alt="">
                     </div>
                     <input type="radio" name="medioPago" id="paypal" value="PayPal">
-                </div>
+                </div> -->
 
                 <div class="container__todo__mediosPago--sub mercadoPago">
                     <h3>MercadoPago</h3>

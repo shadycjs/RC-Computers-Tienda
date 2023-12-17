@@ -9,6 +9,7 @@
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
 
+    // Si eligio el medio de pago entonces lo guardamos en una variable de sesion
     if(isset($_POST['medioPago'])){
         if($_POST['medioPago'] == 'MercadoPago'){
             $_SESSION['condPago'] = 'MercadoPago';
@@ -17,11 +18,88 @@
         }elseif($_POST['medioPago'] == 'Transf/Depo Bancario'){
             $_SESSION['condPago'] = 'Transf/Depo Bancario';
         }
-    }else{
+    }
+
+    // Si no existe la sesion Condicion de pago entonces redireccionamos con un error
+    if( !isset($_SESSION['condPago']) ){
         header('location: carritoContinuarCompraPago.php?error=3');
     }
 
-
+    // API DE MERCADOPAGO 
+    require_once 'vendor/autoload.php';
+    use MercadoPago\MercadoPagoConfig;
+    use MercadoPago\Client\Preference\PreferenceClient;
+    use MercadoPago\Resources\Preference\Item;
+    use MercadoPago\Exceptions\MPApiException;
+    
+    MercadoPagoConfig::setAccessToken("APP_USR-2539014882362896-100414-2d1019db0a61d179af420af3bda65b9c-1500470140");
+    
+    $client = new PreferenceClient();
+    
+    try{
+        $total = 0;
+        foreach( $_SESSION['CARRITO'] as $indice => $producto ){
+        $total = $total+(($producto['precio']*$producto['cantidad']))+ $_SESSION['envio'];
+        $request = [
+            "external_reference" => "4567",
+            "items" => array(
+                array(
+                    "id" => "4567",
+                    "title" => "Compra en RC Computers",
+                    "description" => "Pc gamer",
+                    "quantity" => 1,
+                    "unit_price" => $total
+                )
+                
+            ),
+            'payer' => array(
+              'name' => 'Matheus',
+              'surname' => 'Brandao',
+              'email' => 'mafe123silva@gmail.com',
+              'phone' => array(
+                'area_code' => '69',
+                'number' => '9993203891',
+              ),
+              'identification' => array(
+                'type' => 'CPF',
+                'number' => '03600717243'
+              ),
+              'address' => array(
+                'street_name' => 'Street',
+                'street_number' => 123,
+                'zip_code' => '06233200',
+              ),
+              "payment_methods" => array(
+                "installments" => 1,
+                "default_payment_method_id" => null,
+                "default_installments" => null,
+                "excluded_payment_methods" => array(), // Mantém os métodos existentes
+                "excluded_payment_types" => array(), // Mantém os tipos de pagamento existentes
+                "pix" => array(
+                    "enabled" => true,
+                    "type" => "standard"
+                    // Configurações específicas do PIX, se necessário
+                ),
+            ),
+              'notification_url' => 'https://crochesdanoadia.com/pastateste/index.php',
+              'statement_descriptor' => 'LIZZIIMPORTS'
+            )
+        ];
+        }
+        $preference = $client->create($request);
+        $preference->back_urls = array(
+            "success" => "https://www.mercadolibre.com.ar",
+            "failure" => "RC/Tienda/pagoErroneo.php/failure"
+        );
+        $preference->auto_return = "approved";
+        $preference->binary_mode = true;
+        //echo $preference->init_point;
+    }catch (MPApiException $e) {
+        echo "Status code: " . $e->getApiResponse()->getStatusCode() . "\n";
+        var_dump($e->getApiResponse()->getContent());
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
     
 ?>
 
@@ -68,6 +146,28 @@
 </style>
 
 <main class="mainClass">
+
+<?php
+    if( isset($_GET['error']) ){
+        $error = $_GET['error'];
+
+        $mensaje = match( $error ){
+            '1' => 'Debe subir el comprobante de pago para continuar con su compra',
+        };
+
+        $mensaje2 = match( $error ){
+            '1' => 'NO SUBIO EL COMPROBANTE DE PAGO',
+        }
+?>
+    <div class="errorFondo"></div>
+    <div class="error">
+        <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1><?= $mensaje2 ?></h1>
+        <p class="error__p"><?= $mensaje ?></p>
+    </div>
+<?php
+    }
+?>
 
 <div class="container__timelapse">
 
@@ -142,7 +242,7 @@ if(!empty($_SESSION['CARRITO'])){
 }
 ?>
         <tr class="container__todo__tabla--tercerFila" id="filaEnvio"><td colspan="4">Envio: $<?= number_format($_SESSION['envio'], 0, ',', '.') ?></td>
-        <tr class="container__todo__tabla--tercerFila"><td colspan="4">Total: $<?= number_format($total,2, ',', '.') ?></td>
+        <tr class="container__todo__tabla--tercerFila"><td colspan="4">Total: <b style="color: green">$<?= number_format($total,2, ',', '.') ?></b></td>
         </tr>
         </table>
 
@@ -150,16 +250,6 @@ if(!empty($_SESSION['CARRITO'])){
         if($_SESSION['condPago'] == 'PayPal'){
 ?>
         <div id="paypal-button-container"></div>
-<?php
-        }
-?>
-
-<?php
-        if($_SESSION['condPago'] == 'MercadoPago'){
-?>
-                <div class="container__todo__banco__sub--confirmar">
-                    <input type="submit" value="CONFIRMAR COMPRA" name="confCompra">
-                </div>
 <?php
         }
 ?>
@@ -177,8 +267,8 @@ if(!empty($_SESSION['CARRITO'])){
                     <p>CBU: <b>19100421-55004201628700</b></p>
                 </div>
                 <div class="container__sub__4--imagenNueva">
-                        <label for="file">SUBI TU FACTURA ACA<ion-icon name="cloud-upload" id="uploadIcon"></ion-icon></label>
-                        <input type="file" name="facturaCompra" id="">
+                        <label for="file">SUBI TU COMPROBANTE ACA<ion-icon name="cloud-upload" id="uploadIcon"></ion-icon></label>
+                        <input type="file" name="comprobantePago" id="">
                     </div>
                 <div class="container__todo__banco__sub--confirmar">
                     <input type="submit" value="CONFIRMAR COMPRA" name="confCompra">
@@ -189,13 +279,17 @@ if(!empty($_SESSION['CARRITO'])){
         }
 ?>
         <div class="container__cambiar__envioPago">
-            <div class="container__cambiar__envioPago--envio">
-                <a href="carritoContinuarCompra.php">Cambiar metodo de envio</a>
-                <ion-icon name="airplane" class="iconosEnvioPago"></ion-icon>
+            <div class="container__cambiar__envioPago--sub">
+                <a href="carritoContinuarCompra.php">
+                    <ion-icon name="airplane" class="iconosEnvioPago"></ion-icon>
+                    Cambiar metodo de envio
+                </a>
             </div>
-            <div class="container__cambiar__envioPago--pago">
-                <a href="carritoContinuarCompraPago.php">Cambiar forma de pago</a>
-                <ion-icon name="cash" class="iconosEnvioPago"></ion-icon>
+            <div class="container__cambiar__envioPago--sub">
+                <a href="carritoContinuarCompraPago.php">
+                    <ion-icon name="cash" class="iconosEnvioPago"></ion-icon>
+                    Cambiar forma de pago
+                </a>
             </div>
         </div>
         <a href="tiendaUser.php">VOLVER A CATALOGO</a>
@@ -263,7 +357,13 @@ if(!empty($_SESSION['CARRITO'])){
 </script>
 
         </form>
+<?php
+        if($_SESSION['condPago'] == 'MercadoPago'){
+?>
             <div id="wallet_container">
+<?php
+        }
+?>
         </div>
     </div>
 

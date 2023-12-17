@@ -9,113 +9,21 @@
     require 'funciones/compras.php';
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
-    if($_POST['confCompra']){
-        $comprobante = subirComprobante();
-        foreach($_SESSION['CARRITO'] as $indice => $producto){
-            $agregarOrden = agregarOrdenVenta($producto['id'],$producto['precio'],$comprobante, $producto['cantidad']);
+        // Preguntamos si recibimos el comprobante de pago, en caso de no recibirlo lo redireccionamos a la pagina anterior
+        if($_FILES['comprobantePago']['error'] != 0){
+            header('location: carritoContinuarCompraPagoFinalizar.php?error=1');
+        }else{
+            $comprobante = subirComprobante();
+            // Agregamos los productos que estaban en la session a la base de datos
+            // foreach($_SESSION['CARRITO'] as $indice => $producto){
+            //     $agregarOrden = agregarOrdenVenta($producto['id'],$producto['precio'],$comprobante, $producto['cantidad']);
+            // }
+            $enviarMailComprador = enviarMailComprador($_SESSION['usuNombre']);
+
         }
-        unset($_SESSION['CARRITO']);
-        unset($_SESSION['nroVenta']);
-    }
+        // unset($_SESSION['CARRITO']);
+        // unset($_SESSION['nroVenta']);
 
-
-    function __construct()
-	{
-		$this->client = new \GuzzleHttp\Client();
-		$this->token = config('APP_USR-2539014882362896-100414-2d1019db0a61d179af420af3bda65b9c-1500470140'); // en SLipt Payment no se usa
-	}
-
-	function getPreference($preference_id, $token)
-	{
-		$response = $this->client->request('GET ', 'https://api.mercadopago.com/checkout/preferences/' . $preference_id, [
-			'headers' => [
-				'Content-Type' => 'application/json',
-				'Authorization' => 'Bearer ' . $token,
-			]
-		]);
-
-		return $response;
-	}
-
-    function createPayment(){
-        // Logica para almacenar datos en bd
-        $payment = $_GET['payment_id'];
-        $status = $_GET['status'];
-        $payment_type = $_GET['payment_type'];
-        $order_id = $_GET['merchant_order_id'];
-        // setPreference(datos del formulario)
-
-        
-        
-    }
-
-	function setPreference($parameters, $token)
-	{
-		$response = $this->client->request('POST', 'https://api.mercadopago.com/checkout/preferences', [
-			'headers' => [
-				'Content-Type' => 'application/json',
-				'Authorization' => 'Bearer ' . $token,
-			],
-			'body' => json_encode([
-				'marketplace' 			=> config('mercadopago.id'),
-				'marketplace_fee' 		=>  (int) $package->price * config('qivli.fee'),
-				'external_reference' 	=> $external_reference,
-				'additional_info' 		=> $package->uuid,
-				'installments' 			=> 1,
-				'items' => [
-					[
-						'title' 		=> $package->name,
-						'description' 	=> $package->School->name,
-						'quantity' 		=> 1,
-						'category_id' 	=> 'services',
-						'currency_id' 	=> "ARS",
-						'unit_price' 	=> (int) $package->price + $package->price * config('qivli.fee'),
-					]
-				],
-				'payer' => [
-					'name' 		=> $user->Person->firstname,
-					'surname' 	=> $user->Person->lastname,
-					'email' 	=> $user->email,
-					'phone' => [
-						'area_code' => '',
-						'number' 	=> ''
-					],
-					'identification' => [
-						'type' 		=> '',
-						'number' 	=> ''
-					],
-					'address' => [
-						'street_name' 	=>  '',
-						'street_number' =>  '',
-						'zip_code' 		=>  ''
-					]
-				],
-				'payment_methods' => [
-					'excluded_payment_methods' => [
-						null
-					],
-					'excluded_payment_types' => [
-						null
-					]
-				],
-				'shipments' => [
-					'free_methods' => [
-						null
-					],
-					'receiver_address' => null
-				],
-				'back_urls' => [
-					'success' => config('mercadopago.url') . '/mercadopago/callback'
-				],
-				'auto_return' => 'approved',
-				'differential_pricing' => null,
-				'tracks' 	=> null,
-				'metadata' 	=> null
-			]),
-		]);
-
-		return $response;
-	}
 ?>
 
 <!DOCTYPE html>

@@ -11,7 +11,7 @@
         $usuEmail = $_POST['lemail'];
         $usuClave = $_POST['lcontra'];
 
-        $sql = "SELECT idUsuario, usuNombre, usuApellido, idRol, usuClave FROM usuarios
+        $sql = "SELECT idUsuario, usuNombre, usuApellido, idRol, usuClave, usuEmail FROM usuarios
                     WHERE usuEmail = '".$usuEmail."'
                         AND usuActivo = 1";
         try{

@@ -576,6 +576,231 @@
 
     }
 
+    function enviarMailComprador($usuNombre)
+    {
+        //Capturamos datos enviados por el form
+        $email = $_SESSION['usuEmail'];
+
+        $provincia = $_SESSION['provinciaSession'];
+        $ciudad = $_SESSION['ciudadSession'];
+        $calle = $_SESSION['calleSession'];
+        $altura = $_SESSION['alturaSession'];
+        $piso = $_SESSION['pisoSession'];
+        $depto = $_SESSION['deptoSession'];
+        $torre = $_SESSION['torreSession'];
+        $localidad = $_SESSION['localidadSession'];
+        $codPostal = $_SESSION['codPostalSession'];
+        $observaciones = $_SESSION['observacionesSession'];
+        $telReceptor = $_SESSION['telRecepSession'];
+        $dniCuitReceptor = $_SESSION['dniCuitSession'];
+        $nombreReceptor = $_SESSION['nombreRecepSession'];
+        $apellidoReceptor = $_SESSION['apellidoSession'];
+
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->SMTPDebug = 0;                     //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'unreinramiro2000@gmail.com';                     //SMTP username
+            $mail->Password   = 'hxwk qbjz tqox zgju';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+            //Recipients
+            $mail->setFrom('unreinramiro2000@gmail.com', 'RC-Computers');
+            $mail->addAddress('unreinramiro2000@gmail.com', $usuNombre);     //Add a recipient (ACORDARSE DE CAMBIAR EL MAIL AL $email!!!)
+
+            //Attachments
+            $mail->AddEmbeddedImage('C:\xampp\htdocs\RC\Tienda\images\LOGO RC BLANCO SIN FONDO.png', 'logoRc', 'attachment', 'base64', 'image/png');
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = 'GRACIAS POR CONFIAR EN RC COMPUTERS';
+            $mail->Body    = '<!DOCTYPE html>
+            <html>
+            <head>
+            <meta charset="UTF-8">
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>RC Computers - Tienda</title>
+            <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <script src="https://kit.fontawesome.com/62ea397d3a.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+            <meta http-equiv="Expires" content="0">
+            <meta http-equiv="Last-Modified" content="0">
+            <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+            <meta http-equiv="Pragma" content="no-cache">
+            <style type="text/css">
+        
+                *{
+                    font-family: "Roboto Condensed", sans-serif;
+                    box-sizing: border-box;
+                }
+        
+                html, body{
+                    min-height: 100%;
+                }
+
+                ul{
+                    padding: 0;
+                    margin: 0;
+                }
+
+                li{
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    font-size: 1.4rem;
+                }
+        
+                header{
+                    display: flex;
+                    height: 200px;
+                    background: linear-gradient(to bottom, black, #575353);
+                    color: #fff;
+                    align-self: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+        
+                header h1{
+                    margin: auto;
+                }
+
+                #headerSub{
+                    display: flex;
+                    width: 100%;
+                }
+
+                #headerSub h1{
+                    display: flex;
+                    margin: auto;
+                    text-align: center;
+                }
+
+                #containerTodo{
+                    background: linear-gradient(to bottom, black, #575353);
+                    color: #fff;
+                }
+
+                #datosComprador{
+                    text-align: center;
+                }
+        
+                #datosComprador__sub{
+                    margin: 0 auto;
+                }
+        
+                footer{
+                    background: linear-gradient(to bottom, black, #575353);
+                    color: white;
+                    display: flex;
+                    position: relative;
+                    bottom: 0;
+                    margin-top: 20px;
+                }
+        
+                footer p{
+                    align-self: center;
+                    font-size: 1em;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+        
+            </style>
+            </head>
+                <body>
+                    <header class="container">
+                        <div class="row" style="display: flex;
+                                                justify-content: center;
+                                                align-items: center;>
+                            <div class="col-4 header-img" style="width: 40%;
+                                                                 margin-left: 100px;">
+                                <img alt="PHPMailer" src="cid:logoRc" style="width: 200px;
+                                                                             min-width: 150px;">
+                            </div>
+                            <div id="headerSub">
+                                <h1>RC Computers</h1>
+                            </div>
+                        </div> 
+                    </header>
+                    <div id="containerTodo">
+                        <div>
+                            <h1 style="text-align: center">'.$usuNombre.' ¡Muchas gracias por tu compra!</h1>
+                            <div id="datosComprador">
+                                <h2>Tus datos para el envio:</h2>
+                                <div>
+                                    <div class="datosComprador__sub">
+                                        <ul>
+                                            <li>Provincia: <b>'.$provincia.'</b></li>
+                                            <li>Ciudad: <b>'.$ciudad.'</b></li>
+                                            <li>Calle: <b>'.$calle.'</b></li>
+                                            <li>Altura: <b>'.$altura.'</b></li>
+                                            <li>Depto: <b>'.$depto.'</b></li>
+                                            <li>Torre: <b>'.$torre.'</b></li>
+                                            <li>Localidad: <b>'.$localidad.'</b></li>
+                                            <li>Provincia: <b>'.$ciudad.'</b></li>
+                                            <li>Cod.Postal: <b>'.$codPostal.'</b></li>
+                                        </ul>
+                                    </div>
+                                    <div class="datosComprador__sub">
+                                        <h2>Datos del receptor del envio</h2>
+                                        <ul>
+                                            <li>Nombre: <b>'.$nombreReceptor.'</b></li>
+                                            <li>Apellido: <b>'.$apellidoReceptor.'</b></li>
+                                            <li>DNI: <b>'.$dniCuitReceptor.'</b></li>
+                                            <li>Telefono: <b>'.$telReceptor.'</b></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="datosProducto">
+                                <h1>Detalle del pedido: </h1>
+                                <div class="datosProducto__sub">
+                                '.$total = 0;
+                                foreach( $_SESSION['CARRITO'] as $indice => $producto ){
+
+                                    $nombreProducto = $producto['nombre'];
+                                    $precioProducto = $producto['precio'];
+                                    $cantidadProducto = $producto['cantidad'];
+                                    $imagenProducto = $producto['img'];
+                            
+                                    $idProductos = array_column($_SESSION['CARRITO'],'id');
+                                    $posicionPrd = array_search($producto['id'],$idProductos);
+                                }'
+                                    <div class="datosProducto__sub--item">
+                                        <div class="datosProducto__sub--item-nombre">
+                                            '.$nombreProducto.'
+                                        </div>
+                                    </div>
+                         
+                                    <div class="datosProducto__sub--total">
+                                        <h1>Total: '.$total.'</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="container"> <!-- PIE DE PÁGINA -->
+                        <p> RC Computers © All rights reserved </p>
+                    </footer>
+                    </body>
+        </html>';
+            $mail->AltBody = 'Aca podras ver la informacion de tu compra';
+
+            $mail->CharSet = 'UTF-8';
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+    }
+
+    //PONER ESTA IMAGEN AL MODIFICA EL HTML DEL MAIL: img alt="PHPMailer" src="cid:logoRc"
+
     function generarCodigo( $length = 6 )
     {
         $chars = [

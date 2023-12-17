@@ -56,7 +56,6 @@
     if( $_GET['idCategoria'] == 15 ){
         $_SESSION['idCategoria'] = 15;
     }
-    var_dump($_SESSION['idCategoria']);
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +67,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RC Computers - Modificar Producto</title>
     <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-modificarProducto.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/62ea397d3a.js"></script>
@@ -81,86 +82,99 @@
 <?php
     while( $producto = mysqli_fetch_assoc( $productos ) ){
 ?> 
-<div class="containerTodo">    
-    <form action="resultadoModificarPublicacion.php" method="post" class="containerModal" enctype="multipart/form-data">
+<div class="container">    
+    <form action="resultadoModificarPublicacion.php" method="post" class="container bg-light f-flex flex-column" enctype="multipart/form-data">
         <div class="containerModal__imagenes">
             <div class="imagenPrincipal">
                 <H1>IMAGEN ACTUAL:</H1>
-                <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="">
+                <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="" id="img1">
                 <div class="imagenPrincipal__sub">
                     <b>IMAGEN PRINCIPAL NUEVA:</b>
-                    <input type="file" name="img1" id="">
+                    <input type="file" name="img1" id="imagenPrincipal">
                     <input type="hidden" name="imgActual1" value="<?= $producto['img1'] ?>">
                 </div>
             </div>
             <hr>
             <h2 id="imgSecuAct">IMAGENES SECUNDARIAS ACTUALES:</h2>
-            <ul class="ImagenesSecundarias">
-                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>" alt="">
-                    <div class="imagenesSecundarias__sub">
-                        <b>NUEVA IMAGEN:</b>
-                        <input type="file" name="img2" id="">
-                        <input type="hidden" name="imgActual2" value="<?= $producto['img2'] ?>">
-                    </div>    
-                </li>
-                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>" alt="">
-                    <div class="imagenesSecundarias__sub">
-                        <b>NUEVA IMAGEN:</b>
-                        <input type="file" name="img3" id="">
-                        <input type="hidden" name="imgActual3" value="<?= $producto['img3'] ?>">
-                    </div>  
-                </li>
-                <li><img src="http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>" alt="">
-                    <div class="imagenesSecundarias__sub">
-                        <b>NUEVA IMAGEN:</b>
-                        <input type="file" name="img4" id="">
-                        <input type="hidden" name="imgActual4" value="<?= $producto['img4'] ?>">
-                    </div>  
-                </li>
-            </ul>
-            <div class="containerModalInfoButton">
-                <input type="submit" value="GUARDAR CAMBIOS" id="agregarCarrito" name="guardarCambios">
+            <div class="container">
+                <ul class="row">
+                    <li class="col-md-4">
+                        <img class="img-fluid" src="http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>" alt="" id="img2">
+                        <div class="imagenesSecundarias__sub">
+                            <b>NUEVA IMAGEN:</b>
+                            <input type="file" name="img2" id="imagenDos">
+                            <input type="hidden" name="imgActual2" value="<?= $producto['img2'] ?>">
+                        </div>    
+                    </li>
+                    <li class="col-md-4">
+                        <img class="img-fluid" src="http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>" alt="" id="img3">
+                        <div class="imagenesSecundarias__sub">
+                            <b>NUEVA IMAGEN:</b>
+                            <input type="file" name="img3" id="imagenTres">
+                            <input type="hidden" name="imgActual3" value="<?= $producto['img3'] ?>">
+                        </div>  
+                    </li>
+                    <li class="col-md-4">
+                        <img class="img-fluid" src="http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>" alt="" id="img4">
+                        <div class="imagenesSecundarias__sub">
+                            <b>NUEVA IMAGEN:</b>
+                            <input type="file" name="img4" id="imagenCuatro">
+                            <input type="hidden" name="imgActual4" value="<?= $producto['img4'] ?>">
+                        </div>  
+                    </li>
+                </ul>
             </div>
+
         </div>
-        <div class="containerModalInfo">
-            <h1>TITULO DEL PRODUCTO:</h1>
-            <input type="text" name="nombrePubli" value="<?= $producto['nombrePrd'] ?>" id="titulo">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <h1>Titulo del producto:</h1>
+                    <input type="text" name="nombrePubli" value="<?= $producto['nombrePrd'] ?>">
+                </div>
+            </div>
             <hr>
-            <div class="containerModalInfoDetalles">
-                <div class="containerModalInfoMarcaCodigo">
-                    <h4><b>MARCA: <select name="marca" id="">
+            <div class="container d-flex flex-column gap-2">
+                <div class="row">
+                    <h4 class="col-sm-4 col-md-2">Marca:</h4> 
+                    <select class="col-sm-8 col-md-10" name="marca">
 <?php
         while( $marca = mysqli_fetch_assoc( $marcas ) ){
 ?>
-                        <option <?= ( $marca['idMarca'] == $_GET['idMarca'] ) ? 'selected' : '' ?> value="<?= $marca['idMarca'] ?>"><?= $marca['nombreMarca'] ?></option>
+                    <option <?= ( $marca['idMarca'] == $_GET['idMarca'] ) ? 'selected' : '' ?> value="<?= $marca['idMarca'] ?>"><?= $marca['nombreMarca'] ?></option>
 <?php
         }
 ?>
-                    </select></b></h4>
-                    <h4><b>CODIGO: <input type="text" name="idPrd" value="<?= $producto['idPrd'] ?>" id="id"></b></h4>
+                    </select>
                 </div>
+                <div class="row">
+                    <h4 class="col-sm-4 col-md-2">Codigo:</h4> 
+                    <input class="col-sm-8 col-md-10" type="text" name="idPrd" value="<?= $producto['idPrd'] ?>">
+                </div>
+                <div class="row">
+                    <h4 class="col-sm-4 col-md-2">Stock:</h4>
+                    <input class="col-sm-8 col-md-10" type="number" name="stock" value="<?= $producto['stockPrd'] ?>" id="cantidad">
+                </div>
+                <div class="row">
+                    <h4 class="col-sm-4 col-md-2">Precio:</h4>
+                    <input class="col-sm-8 col-md-10" type="number" name="precio" step="0.01" value="<?= $producto['precioPrd'] ?>">   
+                </div>
+                <div class="row">
+                    <h4>Descripcion:</h4>
+                    <textarea name="descPrd" id="" cols="30" rows="10"><?= $producto['descPrd'] ?></textarea>
+                </div>
+                <div class="row">
+                    <h4>ESTADO PUBLICACION:</h4>
+                    <select name="estadoPc">
+                        <option <?= ($producto['estadoPrd'] == 0) ? 'selected' : '' ?> value="0">Desactivar</option>
+                        <option <?= ($producto['estadoPrd'] == 1) ? 'selected' : '' ?> value="1">Activar</option>
+                    </select>
             </div>
-            <div class="containerModalInfoPrecioCantidad">
-                <div class="containerModalInfoPrecioCantidad__cantidad">
-                    <h2>Stock</h2>
-                    <input type="number" name="stock" value="<?= $producto['stockPrd'] ?>" id="cantidad">
-                </div>
-                <div class="containerModalInfoPrecioCantidad__precio">
-                    <h1>PRECIO:</h1>
-                    <h2>$<input type="number" name="precio" step="0.01" value="<?= $producto['precioPrd'] ?>" id="precio"></h2>   
-                </div>
-                <div class="containerModalInfoPrecioCantidad__descripcion">
-                    <h2>DESCRIPCION:</h2>
-                    <h2><textarea name="descPrd" id="" cols="30" rows="10"><?= $producto['descPrd'] ?></textarea></h2>   
-                </div>
             </div>
-            <div class="containerModalInfoEstado">
-                <h2>ESTADO PUBLICACION:</h2>
-                <select name="estadoPc" id="">
-                    <option <?= ($producto['estadoPrd'] == 0) ? 'selected' : '' ?> value="0">Desactivar</option>
-                    <option <?= ($producto['estadoPrd'] == 1) ? 'selected' : '' ?> value="1">Activar</option>
-                </select>
-            </div>
+
+        </div>
+
+
             <hr>
             <ul class="containerModalInfoConfig">
 <?php
@@ -508,16 +522,88 @@ if($producto['idCategoria'] == 15){
 <?php
     }
 ?>
+            <div class="containerModalInfoButton">
+                <input type="submit" value="GUARDAR CAMBIOS" id="agregarCarrito" name="guardarCambios">
+                <a class="text-dark"href="publicacionesListado.php">VOLVER AL LISTADO</a>
+            </div>
         </div>
         <hr>
+
     </form>
 
-    <a href="publicacionesListado.php">VOLVER AL LISTADO</a>
+    
 </div>
+<script>
+    const img1Default = "http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>";
+    const img2Default = "http://localhost/RC/Tienda/images/<?= $producto['img2'] ?>";
+    const img3Default = "http://localhost/RC/Tienda/images/<?= $producto['img3'] ?>";
+    const img4Default = "http://localhost/RC/Tienda/images/<?= $producto['img4'] ?>";
+
+    const fileImg1 = document.getElementById('imagenPrincipal');
+    const fileImg2 = document.getElementById('imagenDos');
+    const fileImg3 = document.getElementById('imagenTres');
+    const fileImg4 = document.getElementById('imagenCuatro');
+
+    const img = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    const img3 = document.getElementById('img3');
+    const img4 = document.getElementById('img4');
+
+    fileImg1.addEventListener('change', e =>{
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function(e){
+            img.src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = img1Default;
+        }
+    });
+
+    fileImg2.addEventListener('change', e =>{
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function(e){
+            img2.src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img2.src = img2Default;
+        }
+    });
+
+    fileImg3.addEventListener('change', e =>{
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function(e){
+            img3.src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img3.src = img3Default;
+        }
+    });
+
+    fileImg4.addEventListener('change', e =>{
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function(e){
+            img4.src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img4.src = img4Default;
+        }
+    });
+
+</script>
 <?php
 }
 ?>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\footerUser.php'
 ?>

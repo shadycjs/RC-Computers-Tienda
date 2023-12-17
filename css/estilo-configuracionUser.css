@@ -114,9 +114,10 @@ main{
 .container__todo{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
     height: 100%;
     box-shadow: 10px 5px 5px rgb(54, 54, 54);
+    margin: 10px 0;
 }
 
 .container__todo__sub{

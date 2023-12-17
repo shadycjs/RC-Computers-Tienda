@@ -103,12 +103,12 @@ if(cerrarSesion != null){
         fondoSesion.style.display = "block";
     });
 }
-iconoCerrarSesion.addEventListener('click', ()=>{
+iconoCerrarSesion?.addEventListener('click', ()=>{
     sesionContainer.style.display = "none";
     fondoSesion.style.display = "none";
 });
 
-noCerrar.addEventListener('click', ()=>{
+noCerrar?.addEventListener('click', ()=>{
     sesionContainer.style.display = "none";
     fondoSesion.style.display = "none";
 });
