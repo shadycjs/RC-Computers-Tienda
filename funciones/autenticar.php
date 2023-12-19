@@ -66,3 +66,10 @@
             header('location: tiendaLogOut.php?error=2');
         }
     }
+
+    function esAdmin() : void
+    {
+        if( $_SESSION['idRol'] != 1 ) {
+            header('location: tiendaLogOut.php?error=8');
+        }
+    }

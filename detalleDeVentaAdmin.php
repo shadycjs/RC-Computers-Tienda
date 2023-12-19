@@ -8,6 +8,8 @@
     require 'funciones/clientes.php';
     error_reporting(-1);
     session_start();
+    autenticar();
+    esAdmin();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     if( isset($_POST['btnReg']) ){
         registrarUser();
@@ -75,7 +77,7 @@
                             </div>
                             <div class="container__todo__detalleVenta__sub">
                 <?php
-                    $total = 0;
+                    $total = $_GET['envio'];
                     while( $compra = mysqli_fetch_assoc($compras) ){
                 ?>
                          
@@ -92,7 +94,7 @@
                          
 
                 <?php
-                    $total = $total+($compra['importe']*$compra['cantidad'])+$_GET['envio'];
+                    $total = $total+($compra['importe']*$compra['cantidad']);
                     }
                     $detalleDeVenta = 'detalleDeVentaAdmin';
                     if($_GET['factura'] == 'Aun sin emitir'){

@@ -43,7 +43,9 @@
     {
         $link = conectar();
         $idUsuario = $_SESSION['idUsuario'];
-
+        if($_SESSION['idRol'] == 1){
+            $idUsuario = $_GET['idUsuario'];
+        }
         $idUser = $_SESSION['idUsuario'];
         $sql = "SELECT MAX(idOrdenVenta) as MaxIdOrdenVenta, nroVenta, fecha, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta
 		            GROUP BY nroVenta
@@ -51,17 +53,18 @@
         $consulta = mysqli_query( $link,$sql );
         $resultado = mysqli_fetch_assoc($consulta);
         return $resultado;
+
     }
 
     function verDetalleVenta()
     {
         $link = conectar();
-        $idOrdenVenta = $_GET['idOrdenVenta'];
+        $nroVenta = $_GET['nroVenta'];
 
         $idUser = $_GET['idUsuario'];
-        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario FROM orden__venta ov
+        $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta ov
                   INNER JOIN productos p ON p.idPrd = ov.idPrd
-                    WHERE idUsuario = ".$idUser." AND idOrdenVenta = ".$idOrdenVenta;
+                    WHERE idUsuario = ".$idUser." AND nroVenta = ".$nroVenta;
         $resultado = mysqli_query( $link,$sql );
         return $resultado;
     }

@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="container__todo__detalleVenta__sub--factura">
                                         <h3>Factura</h3>
-                                        <a href="detalleDeVenta.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>&factura=<?= $_GET['factura'] ?>&fecha=<?= $_GET['fecha'] ?>&envio=<?= $_GET['envio'] ?>&transporte=<?= $_GET['transporte'] ?>"><?= $_GET['factura'] ?></a>   
+                                        <a href="detalleDeVenta.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>&factura=<?= $_GET['factura'] ?>&fecha=<?= $_GET['fecha'] ?>&envio=<?= $_GET['envio'] ?>&transporte=<?= $_GET['transporte'] ?>&nroVenta=<?= $_GET['nroVenta'] ?>&comprobantePago=<?= $_GET['comprobantePago'] ?>&estado=<?= $_GET['estado'] ?>"><?= $_GET['factura'] ?></a>   
                                     </div>
                                 </div>
 

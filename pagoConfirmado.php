@@ -18,9 +18,12 @@
             foreach($_SESSION['CARRITO'] as $indice => $producto){
                 $agregarOrden = agregarOrdenVenta($producto['id'],$producto['precio'],$comprobante, $producto['cantidad']);
             }
+            //Enviamos el mail al comprador con los datos de la compra
             $enviarMailComprador = enviarMailComprador($_SESSION['usuNombre']);
-
+            //Enviamos el mail al vededor avisandole de la compra y de sus datos
+            $enviarMailVendedor = enviarMailVendedor($_SESSION['usuNombre'], $_SESSION['usuApellido']);
         }
+        //Vaciamos las sesiones del carrito
         unset($_SESSION['CARRITO']);
         unset($_SESSION['nroVenta']);
 
@@ -74,7 +77,7 @@
                     <ion-icon name="bag-check" class="IconCompraConf"></ion-icon>
                 </div>
 
-                <div class="container__todo__pagoConfirmado__sub .descripcion">
+                <div class="container__todo__pagoConfirmado__sub .descripcion d-flex flex-column">
                     <p>Te recordamos que la confirmacion del pago puede demorar hasta 48hs habiles.</p>
                     <b>Te enviamos un e-mail con toda la informacion de tu pedido!</b>
                 </div> 

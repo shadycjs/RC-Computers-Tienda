@@ -112,7 +112,8 @@
             '4' => 'Intente nuevamente poniendo su mail',
             '5' => 'Las contraseñas deben coincidir',
             '6' => 'Intente nuevamente con el codigo enviado al mail',
-            '7' => 'Si ya estas registrado logueate'
+            '7' => 'Si ya estas registrado logueate',
+            '8' => 'Debe ser administrador para ingresar'
         };
 
         $mensaje2 = match( $error ){
@@ -122,7 +123,8 @@
             '4' => 'DIRECCION DE CORREO INCORRECTA',
             '5' => 'LAS CLAVES PROPORCIONADAS NO COINCIDEN',
             '6' => 'EL CODIGO ES INCORRECTO O HA CADUCADO',
-            '7' => 'EL EMAIL INGRESADO YA EXISTE'
+            '7' => 'EL EMAIL INGRESADO YA EXISTE',
+            '8' => 'NO TIENE PERMISOS PARA ACCEDER AL SITIO'
         }
 ?>
     <div class="errorFondo"></div>
