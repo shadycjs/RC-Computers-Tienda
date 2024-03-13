@@ -22,10 +22,12 @@
             $enviarMailComprador = enviarMailComprador($_SESSION['usuNombre']);
             //Enviamos el mail al vededor avisandole de la compra y de sus datos
             $enviarMailVendedor = enviarMailVendedor($_SESSION['usuNombre'], $_SESSION['usuApellido']);
+
+            //Vaciamos las sesiones del carrito
+            unset($_SESSION['CARRITO']);
+            unset($_SESSION['nroVenta']);
         }
-        //Vaciamos las sesiones del carrito
-        unset($_SESSION['CARRITO']);
-        unset($_SESSION['nroVenta']);
+
 
 ?>
 

@@ -76,6 +76,13 @@
 
     $clientePorId = listarClientePorId();
 
+    //PAGINACION
+    $total_registros = totalRegistrosCompras();
+    $registros_por_pagina = 10;
+    $total_paginas = ceil($total_registros/$registros_por_pagina);
+    $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
+    $primer_registro = ($pagina_actual-1) * $registros_por_pagina;
+
 ?>
 
 <!DOCTYPE html>
@@ -273,7 +280,7 @@
             ?>
 
                     <div class="container__todo__compras__sub--sinCompras">
-                        <h1>NO TIENES VENTAS AUN...</h1>
+                        <h1>NO TIENES COMPRAS AUN...</h1>
                         <ion-icon name="ban" id="iconoSinProductosCarrito"></ion-icon>
                     </div>
 
@@ -306,6 +313,36 @@
             ?>
             
                     </table>
+                    <div class="container__todo__paginacion">
+                        <div class="container__todo__paginacion__sub">
+                            <div class="container__todo__paginacion__sub--numeracion">
+            <?php
+                if($pagina_actual > 1){
+            ?>
+
+                    <a href="configuracionUser.php?pagActual=<?= $pagina_actual-1 ?>">Anterior</a>
+
+            <?php
+                }
+            ?>
+            <?php
+                        for($i=1; $i<$total_paginas+1; $i++){
+            ?>
+                                <a href="configuracionUser.php?pagActual=<?= $i ?>"><?= $i ?></a>
+            <?php
+                        }
+            ?>
+
+            <?php
+                if($pagina_actual < $total_paginas){
+            ?>
+                                <a href="configuracionUser.php?pagActual=<?= $pagina_actual+1 ?>">Siguiente</a>
+            <?php
+                }
+            ?>
+                            </div>
+                        </div>
+                    </div>
 
         </div>
 

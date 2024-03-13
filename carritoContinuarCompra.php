@@ -327,7 +327,7 @@ if(!empty($_SESSION['CARRITO'])){
                 <div class="container__sub__3--observaciones" id="containerobservaciones">
                     <div class="container__sub__4--observaciones">
                         <label for="observaciones">Observaciones</label>
-                        <textarea name="observacionesCli" id="" cols="30" rows="10"><?= mysqli_num_rows($infoClientes)!= 0 ? $CliObser : '' ?></textarea>
+                        <textarea name="observacionesCli" placeholder="Por ejemplo: Entre calles..." cols="30" rows="10"><?= mysqli_num_rows($infoClientes)!= 0 ? $CliObser : '' ?></textarea>
                     </div>
                 </div>
 

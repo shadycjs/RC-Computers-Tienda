@@ -95,6 +95,17 @@
         return $resultado; 
     }
 
+    function verNombrePrdPorId( int $idPrd ) 
+    {
+      $link = conectar();
+
+      $sql = "SELECT nombrePrd FROM productos
+                WHERE idPrd = ".$idPrd;
+      $consulta = mysqli_query( $link,$sql );
+      $resultado =  mysqli_fetch_assoc($consulta);
+      return $resultado;
+    }
+
     function buscarProducto()
     {
       $search = $_GET['search'] ?? '';

@@ -8,11 +8,89 @@
     require 'funciones/clientes.php';
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
+    // API DE MERCADOPAGO 
+    require_once 'vendor/autoload.php';
+    use MercadoPago\MercadoPagoConfig;
+    use MercadoPago\Client\Preference\PreferenceClient;
+    use MercadoPago\Resources\Preference\Item;
+    use MercadoPago\Exceptions\MPApiException;
 
+    // Si no existe la sesion Condicion de pago entonces redireccionamos con un error
+    if( !isset($_SESSION['condPago']) || empty(($_SESSION['condPago'])) ){
+        header('location: carritoContinuarCompraPago.php?error=3');
+    }
     // Si eligio el medio de pago entonces lo guardamos en una variable de sesion
     if(isset($_POST['medioPago'])){
         if($_POST['medioPago'] == 'MercadoPago'){
             $_SESSION['condPago'] = 'MercadoPago';
+            MercadoPagoConfig::setAccessToken("APP_USR-2539014882362896-100414-2d1019db0a61d179af420af3bda65b9c-1500470140");
+    
+            $client = new PreferenceClient();
+            
+            try{
+                $total = 0;
+                foreach( $_SESSION['CARRITO'] as $indice => $producto ){
+                $total = $total+(($producto['precio']*$producto['cantidad']))+ $_SESSION['envio'];
+                $request = [
+                    "external_reference" => "4567",
+                    "items" => array(
+                        array(
+                            "id" => "4567",
+                            "title" => "Compra en RC Computers",
+                            "description" => "Pc gamer",
+                            "quantity" => 1,
+                            "unit_price" => $total
+                        )
+                        
+                    ),
+                    'payer' => array(
+                      'name' => 'Matheus',
+                      'surname' => 'Brandao',
+                      'email' => 'mafe123silva@gmail.com',
+                      'phone' => array(
+                        'area_code' => '69',
+                        'number' => '9993203891',
+                      ),
+                      'identification' => array(
+                        'type' => 'CPF',
+                        'number' => '03600717243'
+                      ),
+                      'address' => array(
+                        'street_name' => 'Street',
+                        'street_number' => 123,
+                        'zip_code' => '06233200',
+                      ),
+                      "payment_methods" => array(
+                        "installments" => 1,
+                        "default_payment_method_id" => null,
+                        "default_installments" => null,
+                        "excluded_payment_methods" => array(), // Mantém os métodos existentes
+                        "excluded_payment_types" => array(), // Mantém os tipos de pagamento existentes
+                        "pix" => array(
+                            "enabled" => true,
+                            "type" => "standard"
+                            // Configurações específicas do PIX, se necessário
+                        ),
+                    ),
+                      'notification_url' => 'https://crochesdanoadia.com/pastateste/index.php',
+                      'statement_descriptor' => 'LIZZIIMPORTS'
+                    )
+                ];
+                }
+                $preference = $client->create($request);
+                $preference->back_urls = array(
+                    "success" => "https://www.tu-sitio/success",
+                    "failure" => "http://www.tu-sitio/failure"
+                );
+                $preference->auto_return = "approved";
+                $preference->binary_mode = true;
+                //echo $preference->init_point;
+            }catch (MPApiException $e) {
+                echo "Status code: " . $e->getApiResponse()->getStatusCode() . "\n";
+                var_dump($e->getApiResponse()->getContent());
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
         }elseif($_POST['medioPago'] == 'PayPal'){
             $_SESSION['condPago'] = 'PayPal';
         }elseif($_POST['medioPago'] == 'Transf/Depo Bancario'){
@@ -20,87 +98,11 @@
         }
     }
 
-    // Si no existe la sesion Condicion de pago entonces redireccionamos con un error
-    if( !isset($_SESSION['condPago']) ){
-        header('location: carritoContinuarCompraPago.php?error=3');
-    }
 
-    // API DE MERCADOPAGO 
-    require_once 'vendor/autoload.php';
-    use MercadoPago\MercadoPagoConfig;
-    use MercadoPago\Client\Preference\PreferenceClient;
-    use MercadoPago\Resources\Preference\Item;
-    use MercadoPago\Exceptions\MPApiException;
-    
-    MercadoPagoConfig::setAccessToken("APP_USR-2539014882362896-100414-2d1019db0a61d179af420af3bda65b9c-1500470140");
-    
-    $client = new PreferenceClient();
-    
-    try{
-        $total = 0;
-        foreach( $_SESSION['CARRITO'] as $indice => $producto ){
-        $total = $total+(($producto['precio']*$producto['cantidad']))+ $_SESSION['envio'];
-        $request = [
-            "external_reference" => "4567",
-            "items" => array(
-                array(
-                    "id" => "4567",
-                    "title" => "Compra en RC Computers",
-                    "description" => "Pc gamer",
-                    "quantity" => 1,
-                    "unit_price" => $total
-                )
-                
-            ),
-            'payer' => array(
-              'name' => 'Matheus',
-              'surname' => 'Brandao',
-              'email' => 'mafe123silva@gmail.com',
-              'phone' => array(
-                'area_code' => '69',
-                'number' => '9993203891',
-              ),
-              'identification' => array(
-                'type' => 'CPF',
-                'number' => '03600717243'
-              ),
-              'address' => array(
-                'street_name' => 'Street',
-                'street_number' => 123,
-                'zip_code' => '06233200',
-              ),
-              "payment_methods" => array(
-                "installments" => 1,
-                "default_payment_method_id" => null,
-                "default_installments" => null,
-                "excluded_payment_methods" => array(), // Mantém os métodos existentes
-                "excluded_payment_types" => array(), // Mantém os tipos de pagamento existentes
-                "pix" => array(
-                    "enabled" => true,
-                    "type" => "standard"
-                    // Configurações específicas do PIX, se necessário
-                ),
-            ),
-              'notification_url' => 'https://crochesdanoadia.com/pastateste/index.php',
-              'statement_descriptor' => 'LIZZIIMPORTS'
-            )
-        ];
-        }
-        $preference = $client->create($request);
-        $preference->back_urls = array(
-            "success" => "https://www.mercadolibre.com.ar",
-            "failure" => "RC/Tienda/pagoErroneo.php/failure"
-        );
-        $preference->auto_return = "approved";
-        $preference->binary_mode = true;
-        //echo $preference->init_point;
-    }catch (MPApiException $e) {
-        echo "Status code: " . $e->getApiResponse()->getStatusCode() . "\n";
-        var_dump($e->getApiResponse()->getContent());
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-    
+
+    var_dump($_SESSION['condPago']);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -146,6 +148,28 @@
 </style>
 
 <main class="mainClass">
+
+<?php
+    if( isset($_GET['error']) ){
+        $error = $_GET['error'];
+
+        $mensaje = match( $error ){
+            '1' => 'Cargue el comprobante e intente nuevamente..'
+        };
+
+        $mensaje2 = match( $error ){
+            '1' => 'DEBE SUBIR EL COMPROBANTE DE PAGO'
+        }
+?>
+    <div class="errorFondo"></div>
+    <div class="error">
+        <span class="error__icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <h1><?= $mensaje2 ?></h1>
+        <p class="error__p"><?= $mensaje ?></p>
+    </div>
+<?php
+    }
+?>
 
 <?php
     if( isset($_GET['error']) ){
@@ -205,14 +229,13 @@
 
         <h4>Detalle de venta</h4>
         <table class="container__todo__tabla">
-
+            <caption><img style="height: 100px" src="http://localhost/RC/Tienda/images/LOGO%20RC%20PROFESSIONAL%20NEGRO.png" alt=""></caption>
             <tr class="container__todo__tabla--primerFila">
                 <td>Producto</td>
                 <td>Precio unitario</td>
                 <td>Cantidad</td>
                 <td>Subtotal</td>
             </tr>
-
 <?php
 $SID = session_id();
 $total = 0;
@@ -231,7 +254,9 @@ if(!empty($_SESSION['CARRITO'])){
 ?>
 
         <tr class="container__todo__tabla--segundaFila">
-            <td><?= $nombreProducto ?></td>
+            <td><img src="images/<?= $imagenProducto ?>" alt="" style="width: 100%; 
+                                                                       height: 100%;
+                                                                       border-radius: 5%"><i><?= $nombreProducto ?></i></td>
             <td>$<?= number_format($precioProducto,0, ',', '.') ?></td>
             <td><?= $cantidadProducto ?></td>
             <td>$<?= number_format($precioProducto*$cantidadProducto,0, ',', '.') ?></td>
@@ -267,8 +292,9 @@ if(!empty($_SESSION['CARRITO'])){
                     <p>CBU: <b>19100421-55004201628700</b></p>
                 </div>
                 <div class="container__sub__4--imagenNueva">
-                        <label for="file">SUBI TU COMPROBANTE ACA<ion-icon name="cloud-upload" id="uploadIcon"></ion-icon></label>
-                        <input type="file" name="comprobantePago" id="">
+                        <label for="file" id="subiTuCompro">SUBI TU COMPROBANTE ACA<ion-icon name="cloud-upload" id="uploadIcon"></ion-icon></label>
+                        <label style="display: none" for="file" id="exitoCompro">¡SE CARGO EL COMPROBANTE!<ion-icon name="checkmark-circle-outline"></ion-icon></label>
+                        <input type="file" name="comprobantePago" id="subaCompro">
                     </div>
                 <div class="container__todo__banco__sub--confirmar">
                     <input type="submit" value="CONFIRMAR COMPRA" name="confCompra">
@@ -308,52 +334,27 @@ if(!empty($_SESSION['CARRITO'])){
 
     </script>
 
-<script>  <!-- CODIGO JS PARA EL BOTON DE PAYPAL -->
+<script>  
 
-    paypal.Button.render({
-        env: 'sandbox', // sandbox | production
-        style: {
-            label: 'checkout',  // checkout | credit | pay | buynow | generic
-            size:  'responsive', // small | medium | large | responsive
-            shape: 'pill',   // pill | rect
-            color: 'gold'   // gold | blue | silver | black
-        },
- 
-        // PayPal Client IDs - replace with your own
-        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
- 
-        client: {
-            sandbox:    'AaUApbO8_K6EITg_mMr40JlAu21JJHOM90Nb1s5Lk3ptw9VwjDjp7A2x4tG7dk5r049bkYsvY5lBmdlT',
-            production: ''
-        },
- 
-        // Wait for the PayPal button to be clicked
- 
-        payment: function(data, actions) {
-            return actions.payment.create({
-                payment: {
-                    transactions: [
-                        {
-                            amount: { total: '<?= number_format($total,2) ?>', currency: 'USD' }, 
-                            description:"Compra de productos a RC Computers:$<?= number_format($total,2) ?>",
-                            custom:"<?= $SID ?>"
-                        }
-                    ]
-                }
-            });
-        },
- 
-        // Wait for the payment to be authorized by the customer
- 
-        onAuthorize: function(data, actions) {
-            return actions.payment.execute().then(function() {
-                console.log(data);
-                window.location="verificador.php?paymentToken="+data.paymentToken
-            });
+const file = document.getElementById('subaCompro');
+const subiTuCompro = document.getElementById('subiTuCompro');
+const exitoCompro = document.getElementById('exitoCompro');
+const contenedorFile = document.querySelector('.container__sub__4--imagenNueva');
+
+file.addEventListener('change', e =>{
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function(e){
+            contenedorFile.style.backgroundColor = "green";
+            exitoCompro.style.display = "block";
+            subiTuCompro.style.display = "none";
         }
-    
-    }, '#paypal-button-container');
- 
+        reader.readAsDataURL(e.target.files[0]);
+        }else{
+            ontenedorFile.style.backgroundColor = "#d69b42";
+        }
+    });
+
 </script>
 
         </form>
