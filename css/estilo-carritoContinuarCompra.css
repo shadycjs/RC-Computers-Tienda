@@ -1,6 +1,7 @@
 @import url(headerUser.css);
 @import url(menuLogin.css);
 @import url(estilo-modalCerrarSesion.css);
+@import url(estilo-timelapse.css);  
 
 * {
     margin: 0;
@@ -26,6 +27,14 @@ nav a{
     font-weight: 600;
     display: inline-block;
 }
+
+/* TIMELAPSE H2 */
+
+.container__timelapse__productos h2{
+    opacity: 100%;
+}
+
+/* TIMELAPSE H2 */
 
 /* DIV CARGAR DATOS DE ENVIO */
 
@@ -91,93 +100,6 @@ nav a{
 }
 
 /* FIN DEL DIV ERROR AL CARGAR DATOS DE ENVIO */
-
-/* INICIO DEL TIMELAPSE */
-
-.container__timelapse{
-    display: flex;
-    width: 80%;
-    height: 100px;
-    background-color: #fff;
-    position: relative;
-}
-
-.container__timelapse__productos{
-    display: flex;
-    text-align: center;
-    width: 35%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: absolute;
-}
-
-.container__timelapse__productos h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-}
-
-.container__timelapse__envio{
-    display: flex;
-    text-align: center;
-    width: 35%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: absolute;
-    left: 25%;
-}
-
-.container__timelapse__envio h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    opacity: 50%;
-}
-
-.container__timelapse__pago{
-    display: flex;
-    text-align: center;
-    width: 35%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: absolute;
-    left: 50%;
-}
-
-.container__timelapse__pago h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    opacity: 50%;
-}
-
-.container__timelapse__confirmarCompra{
-    display: flex;
-    text-align: center;
-    width: 26.5%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: absolute;
-    left: 73.5%;
-}
-
-.container__timelapse__confirmarCompra h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    opacity: 50%;
-}
-
-/* FIN DEL TIMELAPSE */
-
 
 /* INICIO DEL CONTAINER TODO CARRITO */
 
@@ -486,6 +408,10 @@ main{
     height: auto;
     background-color: #fff;
     gap: 10px;
+}
+
+.container__todo__sub input, textarea{
+    font-size: 1rem;
 }
 
 .container__sub__2{
@@ -807,6 +733,11 @@ hr{
     resize: none;
 }
 
+
+.container__todo__sub label{
+    font-size: 1.5rem;
+}
+
 /* FIN DEL CONTAINER INFO USUARIO */
 
 /* FIN DEL CONTAINER ENVIOS DEL CARRITO */
@@ -819,6 +750,10 @@ hr{
     width: 100%;
     height: 100%;
     gap: 15px;
+}
+
+.container__infoReceptorEnvio input{
+    font-size: .7rem;
 }
 
 .container__infoReceptorEnvio__sub{
@@ -836,7 +771,7 @@ hr{
 .container__infoReceptorEnvio__sub__inputs label{
     pointer-events: none;
     position: absolute;
-    font-size: .8em;
+    font-size: 1rem;
     transform: all 2s;
 }
 
@@ -849,7 +784,7 @@ hr{
 
 .container__infoReceptorEnvio__sub__inputs input:focus + label,
 .container__infoReceptorEnvio__sub__inputs input:valid + label{
-    bottom: 90%;
+    bottom: 95%;
 }
 
 /* FIN DEL CONTAINER RECEPTOR DEL ENVIO */
@@ -880,96 +815,6 @@ footer p{
 
 @media screen and (max-width: 996px) {
    
-/* INICIO DEL TIMELAPSE */
-
-.container__timelapse{
-    display: flex;
-    width: 80%;
-    height: 100px;
-    background-color: #fff;
-    position: relative;
-    font-size: 10px;
-}
-
-.container__timelapse__productos{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse__productos h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.container__timelapse__envio{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse__envio h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    opacity: 50%;
-}
-
-.container__timelapse__pago{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse__pago h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    opacity: 50%;
-}
-
-.container__timelapse__confirmarCompra{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse__confirmarCompra h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    opacity: 50%;
-}
-
-/* FIN DEL TIMELAPSE */
-
-
 /* INICIO DEL CONTAINER TODO CARRITO */
 
 main{
@@ -1002,8 +847,8 @@ main{
 .containerTodo{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    max-height: 650px;
+    width: 90%;
+    max-height: 90%;
     background-color: #fff;
     box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
     align-items: center;
@@ -1674,102 +1519,7 @@ footer p{
 
 }
 
-
 @media screen and (max-width: 702px) {
-   
-/* INICIO DEL TIMELAPSE */
-
-.container__timelapse{
-    display: flex;
-    width: 95%;
-    height: 100px;
-    background-color: #fff;
-    position: relative;
-    font-size: 10px;
-}
-
-.container__timelapse__productos{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse h2{
-    font-size: 10px;
-}
-
-.container__timelapse__productos h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.container__timelapse__envio{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse__envio h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    opacity: 50%;
-}
-
-.container__timelapse__pago{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse__pago h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    opacity: 50%;
-}
-
-.container__timelapse__confirmarCompra{
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    position: relative;
-    left: 0;
-}
-
-.container__timelapse__confirmarCompra h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    opacity: 50%;
-}
-
-/* FIN DEL TIMELAPSE */
-
 
 /* INICIO DEL CONTAINER TODO CARRITO */
 
@@ -1804,7 +1554,7 @@ main{
     display: flex;
     flex-direction: column;
     width: 95%;
-    max-height: 650px;
+    max-height: 85%;
     background-color: #fff;
     box-shadow: 4px 4px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
     align-items: center;
@@ -2476,5 +2226,114 @@ footer p{
     margin-right: auto;
 }
 /* FIN DEL FOOTER */
+
+}
+
+
+@media screen and (max-width: 430px) {
+
+/* INICIO DEL ELEGIR TRANSPORTE */
+
+.contenedor__carrito__modal__envios{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.contenedor__carrito__modal__envios h3{
+    text-align: center;
+}
+
+.contenedor__carrito__modal__transportes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 600px;
+    gap: 5px;
+}
+
+.contenedor__carrito__modal__transportes input{
+    opacity: 0;
+}
+
+.contenedor__carrito__modal__transportes label{
+    text-align: center;
+}
+
+.contenedor__carrito__modal__transportes--andreani{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 300px;
+}
+
+.contenedor__carrito__modal__transportes--andreani p{
+    text-align: center;
+    transition: opacity 1.2s;
+    opacity: 0;
+    color: green;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #bbb;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img:hover{
+    border: 4px solid green;
+    cursor: pointer;
+}
+
+.contenedor__carrito__modal__transportes--andreani-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contenedor__carrito__modal__transportes--oca{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 300px;
+}
+
+.contenedor__carrito__modal__transportes--oca p{
+    text-align: center;
+    transition: opacity 1.2s;
+    opacity: 0;
+    color: green;
+}
+
+.contenedor__carrito__modal__transportes--oca-img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #bbb;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.contenedor__carrito__modal__transportes--oca-img:hover{
+    border: 4px solid green;
+    cursor: pointer;
+}
+
+.contenedor__carrito__modal__transportes--oca-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FIN DEL ELEGIR TRANSPORTE */
 
 }

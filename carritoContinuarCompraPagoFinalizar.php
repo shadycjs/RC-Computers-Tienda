@@ -16,9 +16,10 @@
     use MercadoPago\Exceptions\MPApiException;
 
     // Si no existe la sesion Condicion de pago entonces redireccionamos con un error
-    if( !isset($_SESSION['condPago']) || empty(($_SESSION['condPago'])) ){
+    if( !isset($_POST['medioPago']) || empty(($_POST['medioPago'])) ){
         header('location: carritoContinuarCompraPago.php?error=3');
     }
+    
     // Si eligio el medio de pago entonces lo guardamos en una variable de sesion
     if(isset($_POST['medioPago'])){
         if($_POST['medioPago'] == 'MercadoPago'){
@@ -98,54 +99,15 @@
         }
     }
 
-
-
-    var_dump($_SESSION['condPago']);
-
-
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="pc, gamer, computadora, pc gamer">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RC Computers - Carrito de compras - Finalizar</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
-    <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-carritoContinuarCompraPagoFinalizar.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/62ea397d3a.js"></script>
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Last-Modified" content="0">
-    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-</head>
-
-<style>
-    
-    /* Media query for mobile viewport */
-    @media screen and (max-width: 400px) {
-        #paypal-button-container {
-            width: 100%;
-        }
-    }
-    
-    /* Media query for desktop viewport */
-    @media screen and (min-width: 400px) {
-        #paypal-button-container {
-            width: 650px;
-            display: inline-block;
-        }
-    }
-    
-</style>
+<?php 
+    $estiloCss = 'estilo-carritoContinuarCompraPagoFinalizar.css';
+    $descTitulo = 'Finalizar Compra';
+    include 'C:\xampp\htdocs\RC\Tienda\head.php' 
+?>
 
 <main class="mainClass">
 
@@ -193,25 +155,9 @@
     }
 ?>
 
-<div class="container__timelapse">
-
-    <div class="container__timelapse__productos">
-        <h2 class="prdH2">PRODUCTOS</h2>
-    </div>
-
-    <div class="container__timelapse__envio">
-        <h2 class="enviodH2">ENVIO</h2>
-    </div>
-
-    <div class="container__timelapse__pago">
-        <h2 id="pagoH2">FORMA DE PAGO</h2>
-    </div>
-    
-    <div class="container__timelapse__confirmarCompra">
-        <h2 id="confH2">CONFIRMAR COMPRA</h2>
-    </div>
-
-</div>
+<?php
+    include 'timelapse.php';
+?>
 
 <div class="cerrar__sesion--fondo"></div>
     <div class="cerrar__sesion--container">
@@ -229,7 +175,6 @@
 
         <h4>Detalle de venta</h4>
         <table class="container__todo__tabla">
-            <caption><img style="height: 100px" src="http://localhost/RC/Tienda/images/LOGO%20RC%20PROFESSIONAL%20NEGRO.png" alt=""></caption>
             <tr class="container__todo__tabla--primerFila">
                 <td>Producto</td>
                 <td>Precio unitario</td>
@@ -270,14 +215,6 @@ if(!empty($_SESSION['CARRITO'])){
         <tr class="container__todo__tabla--tercerFila"><td colspan="4">Total: <b style="color: green">$<?= number_format($total,2, ',', '.') ?></b></td>
         </tr>
         </table>
-
-<?php
-        if($_SESSION['condPago'] == 'PayPal'){
-?>
-        <div id="paypal-button-container"></div>
-<?php
-        }
-?>
 
 <?php
         if($_SESSION['condPago'] == 'Transf/Depo Bancario'){
@@ -331,6 +268,7 @@ if(!empty($_SESSION['CARRITO'])){
             preferenceId: "<?= $preference->id ?>",
         },
       });
+      
 
     </script>
 
@@ -361,7 +299,7 @@ file.addEventListener('change', e =>{
 <?php
         if($_SESSION['condPago'] == 'MercadoPago'){
 ?>
-            <div id="wallet_container">
+            <div id="wallet_container"></div>
 <?php
         }
 ?>

@@ -7,7 +7,8 @@
       $link = conectar();
       $idUser = $_SESSION['idUsuario'];
       $sql = "SELECT * FROM orden__venta
-                HAVING idUsuario = ".$idUser;
+                GROUP BY nroVenta
+                    HAVING idUsuario = ".$idUser;
       $consulta = mysqli_query($link,$sql);
       $resultado = mysqli_num_rows($consulta);
       return $resultado;

@@ -1,0 +1,385 @@
+/* INICIO DEL TIMELAPSE */
+
+.container__timelapse{
+    display: flex;
+    width: 80%;
+    height: 100px;
+    background-color: #fff;
+    position: relative;
+}
+
+.container__timelapse h2{
+    font-size: 1.2em !important;
+}
+
+.container__timelapse__productos{
+    display: flex;
+    text-align: center;
+    width: 35%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+}
+
+.container__timelapse__productos h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    opacity: 50%;
+}
+
+.container__timelapse__envio{
+    display: flex;
+    text-align: center;
+    width: 35%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    left: 25%;
+}
+
+.container__timelapse__envio h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    opacity: 50%;
+}
+
+.container__timelapse__pago{
+    display: flex;
+    text-align: center;
+    width: 35%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+}
+
+.container__timelapse__pago h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    opacity: 50%;
+}
+
+.container__timelapse__confirmarCompra{
+    display: flex;
+    text-align: center;
+    width: 26.5%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    left: 73.5%;
+}
+
+.container__timelapse__confirmarCompra h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    opacity: 50%
+}
+
+/* FIN DEL TIMELAPSE */
+
+
+/* INICIO DEL RESPONSIVE DESIGN */
+
+@media screen and (max-width: 996px) {
+   
+/* INICIO DEL TIMELAPSE */
+
+.container__timelapse{
+    display: flex;
+    width: 90%;
+    height: 100px;
+    background-color: #fff;
+    position: relative;
+    font-size: 10px;
+}
+
+.container__timelapse__productos{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__productos h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container__timelapse__envio{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__envio h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__pago{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__pago h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__confirmarCompra{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__confirmarCompra h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+/* FIN DEL TIMELAPSE */
+}
+
+
+@media screen and (max-width: 702px) {
+   
+/* INICIO DEL TIMELAPSE */
+
+.container__timelapse{
+    display: flex;
+    width: 95%;
+    height: 100px;
+    background-color: #fff;
+    position: relative;
+    font-size: 10px;
+}
+
+.container__timelapse__productos{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse h2{
+    font-size: 10px;
+}
+
+.container__timelapse__productos h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container__timelapse__envio{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__envio h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__pago{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__pago h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__confirmarCompra{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__confirmarCompra h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+/* FIN DEL TIMELAPSE */
+}
+
+
+@media screen and (max-width: 430px) {
+
+/* INICIO DEL TIMELAPSE */
+
+.container__timelapse{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 250px;
+    background-color: #fff;
+    position: relative;
+    font-size: 10px;
+}
+
+.container__timelapse__productos{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+    margin: 0;
+}
+
+.container__timelapse h2{
+    font-size: 20px;
+    margin: 0;
+}
+
+.container__timelapse__productos h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+.container__timelapse__envio{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+    margin: 0;
+}
+
+.container__timelapse__envio h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+    margin: 0;
+}
+
+.container__timelapse__pago{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__pago h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+.container__timelapse__confirmarCompra{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    left: 0;
+}
+
+.container__timelapse__confirmarCompra h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    opacity: 50%;
+}
+
+/* FIN DEL TIMELAPSE */
+
+}
