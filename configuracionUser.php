@@ -129,11 +129,12 @@
 
                 <div class="container__sub__3--imagen">
                     <div class="container__sub__3--imagen--container">
-                        <img src="http://localhost/RC/Tienda/images/<?= $_SESSION['imagenActual']['usuImg'] ?>" alt="">
+                        <img src="http://localhost/RC/Tienda/images/<?= $_SESSION['imagenActual']['usuImg'] ?>" id="imagenPerfil" alt="Foto de perfil">
                     </div>
                     <div class="container__sub__4--imagenNueva">
                         <label for="file">ELEGI TU FOTO <ion-icon name="cloud-upload" id="uploadIcon"></ion-icon></label>
-                        <input type="file" name="imgUserNueva" id="">
+                        <input type="file" name="imgUserNueva" id="imgUserNueva">
+                        <input type="hidden" name="imgActual1" value="<?= $_SESSION['imagenActual']['usuImg'] ?>">
                     </div>
                     <input type="hidden" name="imgUserVieja" value="<?= $_SESSION['imagenActual']['usuImg'] ?>">
                     <input type="submit" value="Cambiar foto de perfil" name="cambiarImgPerfil" id="cambiarFotoPerfil">
@@ -392,7 +393,26 @@
 ?>
 
 </main>
+<script>
+    const imgDefault = "http://localhost/RC/Tienda/images/<?= $_SESSION['imagenActual']['usuImg'] ?>";
 
+    const fileImg = document.getElementById('imgUserNueva');
+
+    const img = document.getElementById('imagenPerfil');
+
+    fileImg.addEventListener('change', e =>{
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function(e){
+            img.src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = imgDefault;
+        }
+    });
+
+</script>
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\footerUser.php'
 ?>
