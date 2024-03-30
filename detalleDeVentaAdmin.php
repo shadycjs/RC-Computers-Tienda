@@ -215,7 +215,7 @@
                                     </div>
                                     <div class="container__todo__detalleVenta__sub--factura">
                                         <h3>Factura</h3>
-                                        <a href="<?= $detalleDeVenta ?>.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>&factura=<?= $_GET['factura'] ?>&fecha=<?= $_GET['fecha'] ?>&envio=<?= $_GET['envio'] ?>&transporte=<?= $_GET['transporte'] ?>&idUsuario=<?= $_GET['idUsuario'] ?>"><?= $_GET['factura'] != 'Aun sin emitir'? $_GET['factura'] : $subirFacturaString = 'SUBIR FACTURA'; ?></a>   
+                                        <a href="<?= $detalleDeVenta ?>.php?numVentaFactura=<?= $_GET['nroVenta'] ?>&idOrdenVenta=<?= $_GET['idOrdenVenta'] ?>&factura=<?= $_GET['factura'] ?>&fecha=<?= $_GET['fecha'] ?>&envio=<?= $_GET['envio'] ?>&transporte=<?= $_GET['transporte'] ?>&idUsuario=<?= $_GET['idUsuario'] ?>&usuNombre=<?= $detalleCliente['usuNombre'] ?>&usuApellido=<?= $detalleCliente['usuApellido'] ?>"><?= $_GET['factura'] != 'Aun sin emitir'? $_GET['factura'] : $subirFacturaString = 'SUBIR FACTURA'; ?></a>   
                                     </div>
                                 </div>
 

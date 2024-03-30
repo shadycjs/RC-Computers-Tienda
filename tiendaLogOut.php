@@ -301,9 +301,9 @@ if(isset($_POST['codigo'])){
             <img src="http://localhost/RC/Tienda/images/<?= $producto['img1'] ?>" alt="producto">
         </figure>
         <div class="info-producto">
-            <h2><?= $producto['nombrePrd'] ?></h2>
+            <h2><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h2>
             <p class="precio">$<?= number_format($producto['precioPrd'], 0, ',', '.' ) ?></p>
-            <p><?= $producto['descPrd'] ?></p>
+            <p id="descripcion"><?= $producto['descPrd'] ?></p>
             <p>Stock: <?= $producto['stockPrd'] ?></p>
             <a href="http://localhost/RC/Tienda/detalleProductoUser.php?id=<?= $producto['idPrd'] ?>&idCategoria=<?= $producto['idCategoria'] ?>" class="info-producto-submit">VER DETALLE</a>
         </div>
@@ -316,6 +316,9 @@ if(isset($_POST['codigo'])){
     }}
 ?>
 
+<?php
+    if($resultadoBusqueda != 0){
+?>
     <div class="container__todo__paginacion">
         <div class="container__todo__paginacion__sub">
             <div class="container__todo__paginacion__sub--numeracion">
@@ -344,6 +347,9 @@ if(isset($_POST['codigo'])){
             </div>
         </div>
     </div>
+<?php
+    }
+?>
     </div>
     
     <?php include 'C:\xampp\htdocs\RC\Tienda\categoriasAside.php'; ?>

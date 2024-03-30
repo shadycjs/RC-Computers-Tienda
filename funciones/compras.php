@@ -14,6 +14,17 @@
       return $resultado;
     }
 
+    function totalRegistrosVentas() : int
+    {
+      $link = conectar();
+      $idUser = $_SESSION['idUsuario'];
+      $sql = "SELECT * FROM orden__venta
+                GROUP BY nroVenta";
+      $consulta = mysqli_query($link,$sql);
+      $resultado = mysqli_num_rows($consulta);
+      return $resultado;
+    }
+
     function verCompras()
     {
         $link = conectar();
@@ -28,7 +39,8 @@
         $sql = "SELECT idOrdenVenta, nroVenta, fecha, (SUM(importe)+envio) as Total, condicionPago, envio, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta
                   GROUP BY nroVenta
                     HAVING idUsuario = ".$idUser."
-                       LIMIT $registros_por_pagina OFFSET $primer_registro";
+                       ORDER BY fecha DESC
+                            LIMIT $registros_por_pagina OFFSET $primer_registro";
         $resultado = mysqli_query( $link,$sql );
         return $resultado;
     }
@@ -67,7 +79,7 @@
     function verDetalleVenta()
     {
         $link = conectar();
-        $nroVenta = $_GET['nroVenta'];
+        $nroVenta = $_GET['nroVenta'] || $_GET['numVentaFactura'];
 
         $idUser = $_GET['idUsuario'];
         $sql = "SELECT nroVenta, fecha, importe, cantidad, condicionPago, envio, nombrePrd, transporte, comprobantePago, factura, idUsuario, estado FROM orden__venta ov
@@ -82,7 +94,7 @@
         $link = conectar();
 
         //Paginacion
-        $total_registros = totalRegistrosCompras();
+        $total_registros = totalRegistrosVentas();
         $registros_por_pagina = 10;
         $total_paginas = ceil($total_registros/$registros_por_pagina);
         $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
@@ -91,7 +103,8 @@
         $sql = "SELECT nroVenta, idOrdenVenta, fecha, estado, SUM(importe) as Total, condicionPago, envio, transporte, comprobantePago, factura, ov.idUsuario, u.usuNombre, u.usuApellido FROM orden__venta ov
                     INNER JOIN usuarios u ON u.idUsuario = ov.idUsuario
                         GROUP BY nroVenta
-                            LIMIT $registros_por_pagina OFFSET $primer_registro";
+                            ORDER BY fecha DESC
+                                LIMIT $registros_por_pagina OFFSET $primer_registro";
         $resultado = mysqli_query( $link,$sql );
         return $resultado;
     }

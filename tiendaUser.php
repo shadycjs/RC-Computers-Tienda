@@ -99,7 +99,9 @@
 <?php
     }
 ?>
-
+<?php
+    if($resultadoBusqueda != 0){
+?>
     <div class="container__todo__paginacion">
         <div class="container__todo__paginacion__sub">
             <div class="container__todo__paginacion__sub--numeracion">
@@ -128,6 +130,9 @@
             </div>
         </div>
     </div>
+<?php
+    }
+?>
     </div>
     
     <?php include 'C:\xampp\htdocs\RC\Tienda\categoriasAside.php'; ?>

@@ -49,6 +49,9 @@
         <div class="col-12 text-center">
             <a href="agregarProducto.php"><i class="bi bi-cloud-upload-fill"></i> AGREGAR PUBLICACION NUEVA </a>
         </div>
+        <div class="col-12 text-center">
+            <a href="cambiarEnvios.php"><ion-icon name="airplane-sharp"></ion-icon> ENVIOS </a>
+        </div>
     </div>
 
     <div class="container-fluid">

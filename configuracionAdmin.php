@@ -83,7 +83,7 @@
     }
                     
     //PAGINACION
-    $total_registros = totalRegistrosCompras();
+    $total_registros = totalRegistrosVentas();
     $registros_por_pagina = 10;
     $total_paginas = ceil($total_registros/$registros_por_pagina);
     $pagina_actual = isset($_GET['pagActual']) ? $_GET['pagActual'] : 1;
@@ -101,24 +101,11 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="pc, gamer, computadora, pc gamer">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RC Computers - Configuracion usuario</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="icon" href="http://localhost/Rc/LOGO%20RC%20BLANCO%20SIN%20FONDO%20-%20copia.ico">
-    <link rel="stylesheet" type="text/css" href="http://localhost/RC/Tienda/css/estilo-configuracionUser.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <script src="https://kit.fontawesome.com/62ea397d3a.js"></script>
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Last-Modified" content="0">
-    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
+<?php 
+    $estiloCss = 'estilo-configuracionUser.css';
+    $descTitulo = 'Configuracion '.$_SESSION['usuNombre'];
+    include 'C:\xampp\htdocs\RC\Tienda\head.php' 
+?>
 <?php
     include 'C:\xampp\htdocs\RC\Tienda\login.php'
 ?>
@@ -307,7 +294,7 @@
             ?>
                     <h1>TUS VENTAS</h1>
 
-                    <table class="table text-center" style="height: 100%">
+                    <table class="table table-striped text-center" style="height: 100%">
 
                         <tr>
                             <td>Usuario</td>
@@ -326,7 +313,7 @@
             ?>
                         <tr class="align-middle">
                             <td><?= $compraCliente['usuNombre'], ' ',$compraCliente['usuApellido'] ?></td>
-                            <td><?= $compraCliente['nroVenta'] ?></td>
+                            <td style="font-weight: bold"><?= $compraCliente['nroVenta'] ?></td>
                             <td><?= $compraCliente['fecha'] ?></td>
                             <td><select name="estadoOrden[<?= $compraCliente['idOrdenVenta'] ?>]" id="">
                                 <option <?= ($compraCliente['estado'] == 'En espera') ? 'selected' : '' ?> value="En espera">En espera</option>
@@ -357,7 +344,7 @@
             <?php
                         for($i=1; $i<$total_paginas+1; $i++){
             ?>
-                                <a href="configuracionAdmin.php?pagActual=<?= $i ?>"><?= $i ?></a>
+                                <a <?php if(isset($_GET['pagActual'])) { ?>style="color: <?= ($_GET['pagActual'] == $i)? 'green' : '' ?>"<?php } ?> href="configuracionAdmin.php?pagActual=<?= $i ?>"><?= $i ?></a>
             <?php
                         }
             ?>

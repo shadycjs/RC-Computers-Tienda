@@ -290,9 +290,9 @@
                 while( $compra = mysqli_fetch_assoc($compras) ){
             ?>
                         <tr class="align-middle" style="max-height: 20px">
-                            <td><?= $compra['nroVenta'] ?></td>
-                            <td><?= $compra['fecha'] ?></td>
-                            <td>$<?= number_format($compra['Total'], 2) ?></td>
+                            <td style="font-weight: bold"><?= $compra['nroVenta'] ?></td>
+                            <td style="min-width: 100px"><?= $compra['fecha'] ?></td>
+                            <td style="color: green">$<?= number_format($compra['Total'], 2) ?></td>
                             <td><a href="detalleDeVenta.php?idOrdenVenta=<?= $compra['idOrdenVenta'] ?>&comprobantePago=<?= $compra['comprobantePago'] ?>&factura=<?= $compra['factura'] ?>&fecha=<?= $compra['fecha'] ?>&envio=<?= $compra['envio'] ?>&transporte=<?= $compra['transporte'] ?>&nroVenta=<?= $compra['nroVenta'] ?>&estado=<?= $compra['estado'] ?>">Ver detalle</a></td>
                         </tr>
             <?php
