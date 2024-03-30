@@ -10,6 +10,10 @@
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
     autenticar();
     $transportes = listarTransportes();
+
+    if(isset($_POST['cambiarPrecio'])){
+        $cambiarPrecio = modificarTransportes();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,19 +38,23 @@
 </head>
 
 <main>
+    <a class="btn btn-info" href="publicacionesListado.php">Volver</a>
 <?php include 'modalCerrarSesion.php';
     while( $transporte = mysqli_fetch_assoc($transportes) ){
 ?>
 <div class="container mt-100 bg-light d-flex flex-column align-items-center">
 
-    <div class="row d-flex align-items-center">
+    <form method="post" action="" class="container row d-flex align-items-center">
         <div style="height: 100px" class="col">
             <img style="height: 100%" src="images/<?= $transporte['imgTransporte'] ?>" alt="">
         </div>
         <div class="col precio">
-            <input type="number" value="<?= $transporte['precioTransporte'] ?>" name="" id="">
+            $<input type="number" value="<?= $transporte['precioTransporte'] ?>" name="precioTransporte" id="">
+            <input type="hidden" name="idTransporte" value="<?= $transporte['idTransporte'] ?>">
         </div>
-    </div>
+        <input type="submit" value="Cambiar Precio" class="btn btn-success" name="cambiarPrecio">
+    </form>
+
 </div>
 <?php
     }

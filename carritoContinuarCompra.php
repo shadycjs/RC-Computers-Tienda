@@ -6,6 +6,7 @@
     require 'funciones/autenticar.php';
     require 'funciones/usuarios.php';
     require 'funciones/clientes.php';
+    require 'funciones/transportes.php';
     session_start();
     include 'C:\xampp\htdocs\RC\Tienda\headerUser2.php';
 
@@ -178,6 +179,8 @@ if(!empty($_SESSION['CARRITO'])){
 <?php
     $total = $total+($precioProducto*$cantidadProducto);
     }
+    $andreani = precioAndreani();
+    $oca = preciooca();
 ?>
 
     
@@ -193,8 +196,8 @@ if(!empty($_SESSION['CARRITO'])){
                         <div class="contenedor__carrito__modal__transportes--andreani-img">
                             <img src="images/logo andreani.jpg" alt="">
                         </div>
-                        <p id="precioAndreani">$2.300</p>
-                        <input type="hidden" name="precioAndreani" value="2300">                    
+                        <p id="precioAndreani">$<?= $andreani['precioTransporte'] ?></p>
+                        <input type="hidden" name="precioAndreani" value="<?= $andreani['precioTransporte'] ?>">                    
                     </div>
 
                     <div class="contenedor__carrito__modal__transportes--oca">
@@ -204,8 +207,8 @@ if(!empty($_SESSION['CARRITO'])){
                         <div class="contenedor__carrito__modal__transportes--oca-img">
                             <img src="images/logooca.png" alt="">
                         </div>
-                        <p id="precioOca">$4.300</p>
-                        <input type="hidden" name="precioOca" value="4300">
+                        <p id="precioOca">$<?= $oca['precioTransporte'] ?></p>
+                        <input type="hidden" name="precioOca" value="<?= $oca['precioTransporte'] ?>">
                     </div>
                 </div>
         <div class="container__todo__sub">
