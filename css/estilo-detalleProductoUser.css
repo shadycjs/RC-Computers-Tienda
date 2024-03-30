@@ -80,6 +80,11 @@ main{
     justify-content: center;
 }
 
+.volver:hover{
+    background-color: #c8ccc5;
+    border-radius: 5px;
+}
+
 .containerModal{
     display: flex;
     width: 100%;

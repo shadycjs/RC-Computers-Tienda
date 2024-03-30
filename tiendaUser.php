@@ -115,7 +115,7 @@
 <?php
             for($i=1; $i<$total_paginas+1; $i++){
 ?>
-                <a href="tiendaUser.php?pagActual=<?= $i ?>"><?= $i ?></a>
+                <a <?php if(isset($_GET['pagActual'])) { ?>style="color: <?= ($_GET['pagActual'] == $i)? 'green' : '' ?>"<?php } ?> href="tiendaUser.php?pagActual=<?= $i ?>"><?= $i ?></a>
 <?php
             }
 ?>

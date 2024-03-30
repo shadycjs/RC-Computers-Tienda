@@ -49,6 +49,7 @@
         </div>
 </div>
 <?php
+    $refer = $_SERVER['HTTP_REFERER'];
     while( $producto = mysqli_fetch_assoc( $productos ) ){
 ?> 
 <form action="" method="post" class="containerTodo" id="formulario">   
@@ -69,7 +70,14 @@
             </ul>
         </div>
         <div class="containerModalInfo">
-            <h1><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h1>
+            <div class="d-flex align-items-center containerModalInfo--titulo-atras">
+                <div style="width: 85%" class="titulo">
+                    <h1><?= $producto['nombreCategoria'], ' '.$producto['nombreMarca'], ' '.$producto['nombrePrd'] ?></h1>
+                </div>
+                <div style="width: 15%" class="volver">
+                    <a style="height: 100%" class="d-flex flex-column" href="<?= $refer ?>"><ion-icon style="height: 70%; width: 70%" name="arrow-undo-circle-sharp"></ion-icon>Volver</a>
+                </div>
+            </div>
             
             <div class="containerModalInfoDetalles">
                 <div class="containerModalInfoMarcaCodigo">

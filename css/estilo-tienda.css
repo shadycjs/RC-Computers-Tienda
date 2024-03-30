@@ -220,14 +220,14 @@ figure img{
 }
 
 .info-producto h2{
-    white-space: nowrap;
-    overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #descripcion{
     height: 40px;
-    overflow: ellipsis;
-    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .info-producto-grilla{
