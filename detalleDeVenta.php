@@ -86,6 +86,16 @@
                     if($_GET['comprobantePago'] == 'Aun sin emitir'){
                         $detalleDeVenta = 'subirComprobantePago';
                     }
+
+                    if($_GET['estado'] == 'En espera'){
+                        $cssEstado = '#912828';
+                    }elseif($_GET['estado'] == 'En preparacion'){
+                        $cssEstado = '#e3e655';
+                    }elseif($_GET['estado'] == 'En viaje hacia destino'){
+                        $cssEstado = '#7b1aeb';
+                    }else{
+                        $cssEstado = '#19d338';
+                    }
                 ?>
                                 <div class="container__todo__detalleVenta__sub--envioTransporte">
                                     <h3>ENVIO</h3>
@@ -95,7 +105,7 @@
                                     </div>
                                 </div>
 
-                                <div class="container__todo__detalleVenta__sub--estado">
+                                <div style="background-color: <?= $cssEstado ?>" class="container__todo__detalleVenta__sub--estado">
                                     <h3>ESTADO DEL PEDIDO</h3>
                                     <h2><?= $_GET['estado'] ?></h2>
                                 </div>
